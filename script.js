@@ -3,9 +3,6 @@
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lenis Smooth Scroll
-    initSmoothScrolling();
-
     // Initialize all components
     initNavbar();
     initMobileMenu();
@@ -17,32 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initSmoothScroll();
 });
-
-/* =====================================================
-   LENIS SMOOTH SCROLLING
-   ===================================================== */
-function initSmoothScrolling() {
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-        infinite: false
-    });
-
-    // Request animation frame for Lenis
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Make Lenis globally accessible
-    window.lenis = lenis;
-}
 
 /* =====================================================
    NAVBAR
