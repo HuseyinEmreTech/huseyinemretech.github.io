@@ -59,11 +59,11 @@ function initMobileMenu() {
 function initTypingEffect() {
     const typingElement = document.getElementById('typing-text');
     const phrases = [
-        'Full Stack Developer',
-        'Web Developer',
-        'Problem Solver',
-        'Creative Coder',
-        'Tech Enthusiast'
+        'ERP Çözüm Danışmanı',
+        '.NET Developer',
+        'Blazor Developer',
+        'Yazılım Geliştirici',
+        'Teknik Destek Uzmanı'
     ];
 
     let phraseIndex = 0;
