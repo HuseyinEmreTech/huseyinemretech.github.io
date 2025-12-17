@@ -11,7 +11,7 @@
 
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.github.com; frame-ancestors 'none'; upgrade-insecure-requests;">
+        content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Fonts -->
@@ -29,6 +29,9 @@
 </head>
 
 <body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-rain"></canvas>
+
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="custom-cursor">
         <div class="cursor-dot"></div>
@@ -63,8 +66,8 @@
         <i class="fas fa-cog fa-spin-hover"></i>
     </button>
     <div class="theme-switcher" id="theme-switcher">
-        <button class="theme-btn active" data-theme="cyberpunk" title="Cyberpunk"></button>
-        <button class="theme-btn" data-theme="matrix" title="The Matrix"></button>
+        <button class="theme-btn" data-theme="cyberpunk" title="Cyberpunk"></button>
+        <button class="theme-btn active" data-theme="matrix" title="The Matrix"></button>
         <button class="theme-btn" data-theme="institute" title="The Institute"></button>
     </div>
 

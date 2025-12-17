@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHUD();
     initAudioUI();
     init3DTilt();
+    initMatrixRain();
 
     // Load projects last
     fetchGitHubProjects();
@@ -184,9 +185,18 @@ async function fetchGitHubProjects() {
 
     try {
         const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error('GitHub API error');
+
+        // Check for rate limiting
+        if (response.status === 403) {
+            throw new Error('GitHub API rate limit exceeded. Please try again later.');
+        }
+
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+        }
 
         const repos = await response.json();
+        console.log('GitHub repos loaded:', repos.length);
 
         // Clear loading state
         projectsGrid.innerHTML = '';
@@ -457,8 +467,8 @@ function initThemeSwitcher() {
     const themeBtns = document.querySelectorAll('.theme-btn');
     const body = document.body;
 
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme') || 'cyberpunk';
+    // Load saved theme (default to Matrix)
+    const savedTheme = localStorage.getItem('theme') || 'matrix';
     body.setAttribute('data-theme', savedTheme);
 
     themeBtns.forEach(btn => {
@@ -590,6 +600,81 @@ function init3DTilt() {
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
         });
+    });
+}
+
+/* =====================================================
+   MATRIX DIGITAL RAIN EFFECT
+   ===================================================== */
+function initMatrixRain() {
+    const canvas = document.getElementById('matrix-rain');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Matrix characters
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    // Array of drops - one per column
+    const drops = [];
+    for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100; // Start at random positions
+    }
+
+    // Drawing the characters
+    function draw() {
+        // Check if matrix theme is active
+        const isMatrixTheme = document.body.getAttribute('data-theme') === 'matrix';
+
+        if (!isMatrixTheme) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            return;
+        }
+
+        // Black background with opacity for trail effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Green text
+        ctx.fillStyle = '#00ff00';
+        ctx.font = fontSize + 'px monospace';
+
+        // Loop through drops
+        for (let i = 0; i < drops.length; i++) {
+            // Random character
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+
+            // Draw character
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            // Reset drop randomly after it reaches bottom
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+
+            // Increment Y coordinate
+            drops[i]++;
+        }
+    }
+
+    // Run animation
+    setInterval(draw, 35);
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        drops.length = 0;
+        const newColumns = canvas.width / fontSize;
+        for (let i = 0; i < newColumns; i++) {
+            drops[i] = Math.random() * -100;
+        }
     });
 }
 
