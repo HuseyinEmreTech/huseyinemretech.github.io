@@ -9,10 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypingEffect();
     initParticles();
     initScrollAnimations();
-    initProjectFilters();
     initCounterAnimation();
     initContactForm();
     initSmoothScroll();
+
+    // New UI Features
+    initCustomCursor();
+    initThemeSwitcher();
+    initHUD();
+    initAudioUI();
+    init3DTilt();
+
+    // Load projects last
+    fetchGitHubProjects();
 });
 
 /* =====================================================
@@ -73,24 +82,24 @@ function initTypingEffect() {
 
     function type() {
         const currentPhrase = phrases[phraseIndex];
+        const displayText = currentPhrase.substring(0, charIndex); // Fix off-by-one visual logic
+        typingElement.textContent = displayText;
 
         if (isDeleting) {
-            typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
             typingSpeed = 50;
         } else {
-            typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
             typingSpeed = 100;
         }
 
-        if (!isDeleting && charIndex === currentPhrase.length) {
+        if (!isDeleting && charIndex === currentPhrase.length + 1) {
             isDeleting = true;
-            typingSpeed = 2000; // Pause at end
+            typingSpeed = 2000;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typingSpeed = 500; // Pause before next phrase
+            typingSpeed = 500;
         }
 
         setTimeout(type, typingSpeed);
@@ -104,6 +113,9 @@ function initTypingEffect() {
    ===================================================== */
 function initParticles() {
     const container = document.getElementById('particles');
+    // Safety check if particles exist (they should)
+    if (!container) return;
+
     const particleCount = 30;
 
     for (let i = 0; i < particleCount; i++) {
@@ -140,7 +152,7 @@ function createParticle(container) {
    ===================================================== */
 function initScrollAnimations() {
     const fadeElements = document.querySelectorAll(
-        '.about-content, .about-stats, .project-card, .skill-category, .blog-card, .contact-content'
+        '.about-content, .about-stats, .project-card, .skill-category, .blog-card, .contact-content, .timeline-item'
     );
 
     fadeElements.forEach(el => el.classList.add('fade-in'));
@@ -149,6 +161,9 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                if (entry.target.classList.contains('timeline-item')) {
+                    entry.target.classList.add('active');
+                }
             }
         });
     }, {
@@ -160,25 +175,138 @@ function initScrollAnimations() {
 }
 
 /* =====================================================
-   PROJECT FILTERS
+   GITHUB PROJECTS INTEGRATION
+   ===================================================== */
+async function fetchGitHubProjects() {
+    const projectsGrid = document.getElementById('projects-grid');
+    const username = 'huseyinemretech';
+    const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('GitHub API error');
+
+        const repos = await response.json();
+
+        // Clear loading state
+        projectsGrid.innerHTML = '';
+
+        // Filter out forks or profile repo if desired (optional)
+        const relevantRepos = repos.filter(repo => !repo.fork && repo.name !== username);
+
+        if (relevantRepos.length === 0) {
+            projectsGrid.innerHTML = '<div class="error-state"><p>Henüz proje bulunamadı.</p></div>';
+            return;
+        }
+
+        relevantRepos.forEach(repo => {
+            const card = createProjectCard(repo);
+            projectsGrid.appendChild(card);
+        });
+
+        // Initialize filters AFTER content is loaded
+        initProjectFilters();
+
+        // Re-run scroll animations/Tilt for new elements
+        initScrollAnimations();
+        init3DTilt(); // Re-bind tilt to new cards
+
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        projectsGrid.innerHTML = `
+            <div class="error-state">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Projeler yüklenirken bir sorun oluştu.</p>
+                <a href="https://github.com/${username}" target="_blank" class="btn btn-secondary">GitHub'da Görüntüle</a>
+            </div>
+        `;
+    }
+}
+
+function createProjectCard(repo) {
+    // Determine category based on topics or language
+    let category = 'web'; // Default
+    const topics = repo.topics || [];
+    const lang = (repo.language || '').toLowerCase();
+
+    if (topics.includes('ai') || topics.includes('machine-learning') || topics.includes('python')) {
+        category = 'ai';
+    } else if (topics.includes('mobile') || topics.includes('react-native') || topics.includes('flutter')) {
+        category = 'mobile';
+    } else if (topics.includes('web') || lang === 'html' || lang === 'css' || lang === 'javascript' || lang === 'typescript' || lang === 'c#') {
+        category = 'web';
+    }
+
+    // Determine icon
+    let icon = 'fas fa-code';
+    if (category === 'ai') icon = 'fas fa-robot';
+    if (category === 'mobile') icon = 'fas fa-mobile-alt';
+    if (category === 'web') icon = 'fas fa-globe';
+
+    const article = document.createElement('article');
+    article.className = 'project-card fade-in';
+    article.setAttribute('data-category', category);
+
+    article.innerHTML = `
+        <div class="project-image">
+            <div class="project-placeholder">
+                <i class="${icon}"></i>
+            </div>
+            <div class="project-overlay">
+                <div class="project-links">
+                    <a href="${repo.html_url}" target="_blank" class="project-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    ${repo.homepage ? `
+                    <a href="${repo.homepage}" target="_blank" class="project-link" aria-label="Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    ` : ''}
+                </div>
+            </div>
+        </div>
+        <div class="project-content">
+            <h3 class="project-title">${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</h3>
+            <p class="project-description">
+                ${repo.description || 'Bu proje için henüz bir açıklama eklenmemiş.'}
+            </p>
+            <div class="project-tech">
+                ${repo.language ? `<span class="tech-tag">${repo.language}</span>` : ''}
+                <span class="tech-tag"><i class="far fa-star"></i> ${repo.stargazers_count}</span>
+            </div>
+        </div>
+    `;
+
+    return article;
+}
+
+/* =====================================================
+   PROJECT FILTERS (Refactored)
    ===================================================== */
 function initProjectFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
 
     filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        // Remove old listeners to prevent duplicates if called multiple times
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
 
-            const filter = btn.dataset.filter;
+        newBtn.addEventListener('click', () => {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            newBtn.classList.add('active');
+
+            const filter = newBtn.dataset.filter;
+            const projectCards = document.querySelectorAll('.project-card');
 
             projectCards.forEach(card => {
                 const category = card.dataset.category;
 
                 if (filter === 'all' || category === filter) {
                     card.style.display = 'block';
+                    // Reset animation
+                    card.style.animation = 'none';
+                    card.offsetHeight; /* trigger reflow */
                     card.style.animation = 'fadeIn 0.5s ease forwards';
                 } else {
                     card.style.display = 'none';
@@ -230,6 +358,7 @@ function animateCounter(element, target) {
    ===================================================== */
 function initContactForm() {
     const form = document.getElementById('contact-form');
+    if (!form) return;
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -244,6 +373,9 @@ function initContactForm() {
 
         btn.innerHTML = '<span class="btn-text">Gönderildi!</span> <i class="fas fa-check"></i>';
         btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+
+        // Play success sound
+        if (window.playConfirmSound) window.playConfirmSound();
 
         setTimeout(() => {
             btn.innerHTML = originalText;
@@ -284,33 +416,184 @@ function initSmoothScroll() {
 }
 
 /* =====================================================
-   GLITCH EFFECT INTENSIFY ON HOVER
+   CUSTOM CURSOR
    ===================================================== */
-const glitchText = document.querySelector('.glitch');
-if (glitchText) {
-    glitchText.addEventListener('mouseenter', () => {
-        glitchText.style.animation = 'glitch 0.3s infinite';
+function initCustomCursor() {
+    const cursor = document.getElementById('custom-cursor');
+    if (!cursor) return;
+
+    // Use simple mouse move without lerp for instant response on standard sites, 
+    // or add lerp for "floaty" feel. Let's do a slight 0.1s CSS delay which is already in style.
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
-    glitchText.addEventListener('mouseleave', () => {
-        glitchText.style.animation = 'glitch 2s infinite';
+    const clickables = document.querySelectorAll('a, button, .btn, .social-link, input, textarea');
+
+    clickables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('cursor-hover');
+            // Magnetic effect logic could go here (complex), 
+            // for now CSS scale/rotate is enough visual feedback.
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('cursor-hover');
+        });
+    });
+
+    document.addEventListener('mousedown', () => cursor.classList.add('cursor-active'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('cursor-active'));
+}
+
+/* =====================================================
+   THEME SWITCHER
+   ===================================================== */
+function initThemeSwitcher() {
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const switcher = document.getElementById('theme-switcher');
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    const body = document.body;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'cyberpunk';
+    body.setAttribute('data-theme', savedTheme);
+
+    themeBtns.forEach(btn => {
+        if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+        else btn.classList.remove('active');
+    });
+
+    // Toggle Menu
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        switcher.classList.toggle('active');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!switcher.contains(e.target) && !toggleBtn.contains(e.target)) {
+            switcher.classList.remove('active');
+        }
+    });
+
+    // Switch Theme
+    themeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.dataset.theme;
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+
+            // Audio Feedback
+            if (window.playClickSound) window.playClickSound();
+
+            // Update Active State
+            themeBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
     });
 }
 
 /* =====================================================
-   ANIMATION KEYFRAMES (added via JS for fadeIn)
+   HUD SYSTEM
    ===================================================== */
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+function initHUD() {
+    const timeEl = document.getElementById('sys-time');
+    const cpuEl = document.getElementById('sys-cpu');
+
+    // Update Time
+    setInterval(() => {
+        const now = new Date();
+        timeEl.textContent = now.toLocaleTimeString('tr-TR');
+    }, 1000);
+
+    // Simulated CPU Load
+    setInterval(() => {
+        const load = Math.floor(Math.random() * 30) + 10;
+        cpuEl.textContent = load + '%';
+    }, 2000);
+}
+
+/* =====================================================
+   AUDIO UI (Web Audio API)
+   ===================================================== */
+function initAudioUI() {
+    // Check for AudioContext
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    const audioCtx = new AudioContext();
+    const gainNode = audioCtx.createGain();
+    gainNode.gain.value = 0.1; // Low volume
+    gainNode.connect(audioCtx.destination);
+
+    // Oscillator Helper
+    function beep(frequency, type, duration) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const oscGain = audioCtx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+
+        oscGain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        oscGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+
+        osc.connect(oscGain);
+        oscGain.connect(gainNode);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
     }
-`;
-document.head.appendChild(style);
+
+    // Expose sounds globally
+    window.playHoverSound = () => beep(800, 'sine', 0.1);
+    window.playClickSound = () => beep(1200, 'square', 0.1);
+    window.playConfirmSound = () => {
+        beep(400, 'sine', 0.1);
+        setTimeout(() => beep(600, 'sine', 0.1), 100);
+    };
+
+    // Attach to elements
+    const interactiveElements = document.querySelectorAll('a, button, .theme-btn');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', window.playHoverSound);
+        el.addEventListener('click', window.playClickSound);
+    });
+}
+
+/* =====================================================
+   3D TILT EFFECT
+   ===================================================== */
+function init3DTilt() {
+    const cards = document.querySelectorAll('.project-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    });
+}
+
+/* =====================================================
+   ANIMATION KEYFRAMES (Moved to CSS)
+   ===================================================== */
+

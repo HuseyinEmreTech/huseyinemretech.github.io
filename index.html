@@ -9,6 +9,11 @@
     <meta name="author" content="Hüseyin Emre">
     <title>Hüseyin Emre | Yazılım Geliştirici</title>
 
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.github.com; frame-ancestors 'none'; upgrade-insecure-requests;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +29,45 @@
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
+    <!-- HUD Overlay -->
+    <div class="hud-overlay">
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
+
+        <div class="hud-system-status">
+            <div class="status-item">
+                <span class="status-label">SYS.TIME</span>
+                <span class="status-value" id="sys-time">00:00:00</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">CPU.LOAD</span>
+                <span class="status-value" id="sys-cpu">12%</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">NET.STAT</span>
+                <span class="status-value online" style="color: var(--neon-green)">CONNECTED</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Theme Settings">
+        <i class="fas fa-cog fa-spin-hover"></i>
+    </button>
+    <div class="theme-switcher" id="theme-switcher">
+        <button class="theme-btn active" data-theme="cyberpunk" title="Cyberpunk"></button>
+        <button class="theme-btn" data-theme="matrix" title="The Matrix"></button>
+        <button class="theme-btn" data-theme="institute" title="The Institute"></button>
+    </div>
+
     <!-- Scanline Overlay -->
     <div class="scanline"></div>
 
@@ -41,7 +85,6 @@
                 <a href="#about" class="nav-link">Hakkımda</a>
                 <a href="#projects" class="nav-link">Projeler</a>
                 <a href="#skills" class="nav-link">Yetenekler</a>
-                <a href="#blog" class="nav-link">Blog</a>
                 <a href="#contact" class="nav-link">İletişim</a>
             </div>
 
@@ -85,9 +128,6 @@
                     aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://twitter.com/" target="_blank" class="social-link" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
             </div>
         </div>
 
@@ -124,47 +164,42 @@
                         <span class="terminal-dot red"></span>
                         <span class="terminal-dot yellow"></span>
                         <span class="terminal-dot green"></span>
-                        <span class="terminal-title">about.txt</span>
+                        <span class="terminal-title">career_log.txt</span>
                     </div>
-                    <div class="terminal-body">
-                        <p class="terminal-line">
-                            <span class="prompt">$</span>
-                            <span class="command">cat about.txt</span>
-                        </p>
-                        <p class="about-description">
-                            İş süreçleri analizi, saha operasyonları ve modern yazılım geliştirme (.NET, Blazor)
-                            yetkinliklerini bir araya getiren, çözüm odaklı bir ERP profesyoneliyim. ERP sistemlerinin
-                            sadece kurulum ve desteğini vermekle kalmıyor, aynı zamanda sahadan topladığım gerçek
-                            kullanıcı ihtiyaçlarını koda dökerek, işletmeler için uçtan uca, verimli ve kullanıcı
-                            dostu çözümler üretiyorum.
-                        </p>
-                        <p class="about-description">
-                            Hisar Yazılım'da ERP Çözüm Danışmanı ve Yazılım Geliştirici olarak ERP sistemlerinin
-                            kurulum, özelleştirme ve son kullanıcı eğitim süreçlerini yönetiyor, Blazor ve C# ile
-                            modern web arayüzleri ve özel modüller geliştiriyorum.
-                        </p>
+                    <div class="terminal-body" style="padding: 20px;">
+
+                        <div class="timeline">
+                            <div class="timeline-item active">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-date">2023 - Günümüz</div>
+                                <h3 class="timeline-title">ERP Çözüm Danışmanı & Dev</h3>
+                                <div class="timeline-company">Hisar Yazılım</div>
+                                <p class="timeline-desc">ERP sistemlerinin kurulumu, .NET/Blazor ile özel modül
+                                    geliştirme ve saha operasyonları yönetimi.</p>
+                            </div>
+
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-date">Teknik Yetkinlikler</div>
+                                <h3 class="timeline-title">Full Stack Development</h3>
+                                <p class="timeline-desc">C#, .NET Core, Blazor, SQL Server, JavaScript ve Modern Web
+                                    Teknolojileri.</p>
+                            </div>
+
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-date">Misyon</div>
+                                <h3 class="timeline-title">Çözüm Odaklı Yaklaşım</h3>
+                                <p class="timeline-desc">Sahadan gelen gerçek kullanıcı ihtiyaçlarını analiz edip,
+                                    verimli ve kullanıcı dostu yazılım çözümleri üretmek.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <div class="about-stats">
-                <div class="stat-card">
-                    <span class="stat-number" data-count="2">0</span>
-                    <span class="stat-label">Yıl Deneyim</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-count="50">0</span>
-                    <span class="stat-label">Müşteri</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-count="100">0</span>
-                    <span class="stat-label">ERP Kurulum</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" data-count="99">0</span>
-                    <span class="stat-label">% Tutku</span>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -184,192 +219,12 @@
                 <button class="filter-btn" data-filter="ai">AI/ML</button>
             </div>
 
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <article class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Ticaret Platformu</h3>
-                        <p class="project-description">
-                            Modern ve responsive bir e-ticaret web uygulaması.
-                            Kullanıcı kimlik doğrulama, ödeme entegrasyonu ve admin paneli.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="project-card" data-category="ai">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">AI Sohbet Botu</h3>
-                        <p class="project-description">
-                            Doğal dil işleme ile çalışan akıllı sohbet botu.
-                            GPT API entegrasyonu ve öğrenen diyalog sistemi.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">OpenAI</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Fitness Takip Uygulaması</h3>
-                        <p class="project-description">
-                            Cross-platform mobil fitness uygulaması.
-                            Egzersiz takibi, kalori hesaplama ve ilerleme grafikleri.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Redux</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 4 -->
-                <article class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Developer Dashboard</h3>
-                        <p class="project-description">
-                            Geliştiriciler için real-time analytics dashboard.
-                            API izleme, log analizi ve performans metrikleri.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 5 -->
-                <article class="project-card" data-category="ai">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Görüntü Sınıflandırma</h3>
-                        <p class="project-description">
-                            Deep learning tabanlı görüntü sınıflandırma sistemi.
-                            CNN modeli ve web arayüzü ile gerçek zamanlı tahmin.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Keras</span>
-                            <span class="tech-tag">Flask</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 6 -->
-                <article class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-link" aria-label="Demo">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Proje Yönetim Aracı</h3>
-                        <p class="project-description">
-                            Takımlar için işbirlikçi proje yönetim uygulaması.
-                            Kanban board, timeline ve takım iletişimi özellikleri.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Prisma</span>
-                            <span class="tech-tag">Socket.io</span>
-                        </div>
-                    </div>
-                </article>
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be loaded dynamically from GitHub -->
+                <div class="loading-state">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    <p>Projeler GitHub'dan yükleniyor...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -489,111 +344,7 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-decorator">//</span>
-                Blog
-                <span class="title-line"></span>
-            </h2>
 
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <span class="blog-category">Web Development</span>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i>
-                                15 Aralık 2024
-                            </span>
-                            <span class="blog-read">
-                                <i class="far fa-clock"></i>
-                                5 dk okuma
-                            </span>
-                        </div>
-                        <h3 class="blog-title">Modern Web Geliştirme Trendleri 2024</h3>
-                        <p class="blog-excerpt">
-                            Bu yıl web geliştirme dünyasında neler değişti? En popüler
-                            frameworkler, araçlar ve yaklaşımlar hakkında detaylı bir bakış.
-                        </p>
-                        <a href="#" class="blog-link">
-                            Devamını Oku
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <span class="blog-category">Yapay Zeka</span>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i>
-                                10 Aralık 2024
-                            </span>
-                            <span class="blog-read">
-                                <i class="far fa-clock"></i>
-                                8 dk okuma
-                            </span>
-                        </div>
-                        <h3 class="blog-title">AI ile Projelerinizi Hızlandırın</h3>
-                        <p class="blog-excerpt">
-                            Yapay zeka araçlarını kullanarak geliştirme sürecinizi
-                            nasıl optimize edebilirsiniz? Pratik ipuçları ve öneriler.
-                        </p>
-                        <a href="#" class="blog-link">
-                            Devamını Oku
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <span class="blog-category">Güvenlik</span>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i>
-                                5 Aralık 2024
-                            </span>
-                            <span class="blog-read">
-                                <i class="far fa-clock"></i>
-                                6 dk okuma
-                            </span>
-                        </div>
-                        <h3 class="blog-title">Web Güvenliği: Temel Prensipler</h3>
-                        <p class="blog-excerpt">
-                            Uygulamalarınızı güvende tutmak için bilmeniz gereken
-                            güvenlik prensipleri ve en iyi uygulamalar.
-                        </p>
-                        <a href="#" class="blog-link">
-                            Devamını Oku
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -643,12 +394,6 @@
                         <a href="https://www.linkedin.com/in/huseyinemretech/" target="_blank" class="social-btn"
                             aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-btn" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-btn" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
@@ -709,7 +454,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Hüseyin Emre. Tüm hakları saklıdır.</p>
+                <p>&copy; 2025 Hüseyin Emre. Tüm hakları saklıdır.</p>
                 <p class="footer-made">
                     <i class="fas fa-heart"></i> ile yapıldı
                 </p>
