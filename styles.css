@@ -10,16 +10,21 @@
     --bg-tertiary: #1a1a25;
     --bg-card: rgba(20, 20, 30, 0.8);
 
-    /* Neon Colors */
-    --neon-pink: #ff0080;
-    --neon-pink-glow: rgba(255, 0, 128, 0.5);
-    --neon-cyan: #00ffff;
-    --neon-cyan-glow: rgba(0, 255, 255, 0.5);
-    --neon-purple: #a855f7;
-    --neon-purple-glow: rgba(168, 85, 247, 0.5);
-    --neon-blue: #3b82f6;
-    --neon-yellow: #fbbf24;
-    --neon-green: #22c55e;
+    /* Neon Colors - Improved Harmony */
+    --neon-pink: #ff006e;
+    --neon-pink-glow: rgba(255, 0, 110, 0.5);
+    --neon-cyan: #00f5ff;
+    --neon-cyan-glow: rgba(0, 245, 255, 0.5);
+    --neon-purple: #8b5cf6;
+    --neon-purple-glow: rgba(139, 92, 246, 0.5);
+    --neon-blue: #0ea5e9;
+    --neon-yellow: #ffd60a;
+    --neon-green: #10b981;
+
+    /* Terminal Colors */
+    --terminal-red: #ff5f56;
+    --terminal-yellow: #ffbd2e;
+    --terminal-green: #27c93f;
 
     /* Text */
     --text-primary: #ffffff;
@@ -42,49 +47,75 @@
 
     /* Borders */
     --border-color: rgba(255, 255, 255, 0.1);
-    --border-glow: rgba(0, 255, 255, 0.3);
+    --border-glow: rgba(0, 245, 255, 0.3);
 
     /* Cursor */
     --cursor-size: 20px;
 }
 
-/* Matrix Theme */
+/* Matrix Theme - Improved Green Harmony */
 [data-theme="matrix"] {
     --bg-primary: #000000;
     --bg-secondary: #0a0f0a;
     --bg-tertiary: #0f1a0f;
     --bg-card: rgba(10, 20, 10, 0.9);
+
+    /* Primary green colors */
     --neon-pink: #00ff00;
+    /* Bright green (primary) */
     --neon-pink-glow: rgba(0, 255, 0, 0.5);
-    --neon-cyan: #008f11;
-    --neon-cyan-glow: rgba(0, 143, 17, 0.5);
-    --neon-purple: #003b00;
-    --neon-purple-glow: rgba(0, 59, 0, 0.5);
+    --neon-cyan: #39ff14;
+    /* Neon lime (accent) */
+    --neon-cyan-glow: rgba(57, 255, 20, 0.5);
+    --neon-purple: #00cc00;
+    /* Medium green */
+    --neon-purple-glow: rgba(0, 204, 0, 0.5);
+    --neon-blue: #008f11;
+    /* Dark green */
+    --neon-green: #00ff00;
+    /* Consistent with primary */
+
+    /* Terminal colors (green variants) */
+    --terminal-red: #00ff00;
+    --terminal-yellow: #39ff14;
+    --terminal-green: #00cc00;
+
     --text-primary: #d0ffd0;
     --text-secondary: #00ff00;
     --border-color: rgba(0, 255, 0, 0.2);
     --border-glow: rgba(0, 255, 0, 0.4);
 }
 
-/* Institute Theme */
+/* Institute Theme - Modern Professional Palette */
 [data-theme="institute"] {
     --bg-primary: #f0f2f5;
     --bg-secondary: #ffffff;
     --bg-tertiary: #e0e5ec;
     --bg-card: rgba(255, 255, 255, 0.9);
-    --neon-pink: #2563eb;
-    /* Blue */
-    --neon-pink-glow: rgba(37, 99, 235, 0.3);
-    --neon-cyan: #0891b2;
-    /* Cyan darken */
-    --neon-cyan-glow: rgba(8, 145, 178, 0.2);
-    --neon-purple: #4f46e5;
+
+    /* Professional color scheme */
+    --neon-pink: #3b82f6;
+    /* Primary blue */
+    --neon-pink-glow: rgba(59, 130, 246, 0.3);
+    --neon-cyan: #06b6d4;
+    /* Cyan accent */
+    --neon-cyan-glow: rgba(6, 182, 212, 0.3);
+    --neon-purple: #6366f1;
     /* Indigo */
-    --neon-purple-glow: rgba(79, 70, 229, 0.2);
+    --neon-purple-glow: rgba(99, 102, 241, 0.3);
+    --neon-blue: #3b82f6;
+    --neon-green: #10b981;
+    /* Emerald */
+
+    /* Terminal colors (professional variants) */
+    --terminal-red: #ef4444;
+    --terminal-yellow: #f59e0b;
+    --terminal-green: #10b981;
+
     --text-primary: #1f2937;
     --text-secondary: #4b5563;
     --border-color: rgba(0, 0, 0, 0.1);
-    --border-glow: rgba(37, 99, 235, 0.2);
+    --border-glow: rgba(59, 130, 246, 0.25);
     --scanline-opacity: 0.05;
 }
 
@@ -856,15 +887,15 @@ body {
 }
 
 .terminal-dot.red {
-    background: #ff5f56;
+    background: var(--terminal-red);
 }
 
 .terminal-dot.yellow {
-    background: #ffbd2e;
+    background: var(--terminal-yellow);
 }
 
 .terminal-dot.green {
-    background: #27c93f;
+    background: var(--terminal-green);
 }
 
 .terminal-title {
