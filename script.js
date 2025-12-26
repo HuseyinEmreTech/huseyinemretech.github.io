@@ -237,7 +237,7 @@ async function fetchGitHubProjects() {
                 <i class="fas fa-exclamation-triangle" style="color: var(--neon-pink); font-size: 3rem; margin-bottom: 20px;"></i>
                 <p style="color: var(--text-primary); font-size: 1.2rem;">${error.message || 'Projeler yüklenirken bir sorun oluştu.'}</p>
                 <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
-                    <button onclick="localStorage.removeItem('github_repos_cache'); location.reload();" class="btn btn-primary" style="padding: 10px 20px;">
+                    <button id="retry-btn" class="btn btn-primary" style="padding: 10px 20px;">
                         Yeniden Dene
                     </button>
                     <a href="https://github.com/${username}" target="_blank" class="btn btn-secondary" style="padding: 10px 20px;">
@@ -246,6 +246,15 @@ async function fetchGitHubProjects() {
                 </div>
             </div>
         `;
+
+        // Add event listener to the retry button (CSP compliant)
+        const retryBtn = document.getElementById('retry-btn');
+        if (retryBtn) {
+            retryBtn.addEventListener('click', () => {
+                localStorage.removeItem('github_repos_cache');
+                location.reload();
+            });
+        }
     }
 }
 
