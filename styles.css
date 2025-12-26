@@ -646,9 +646,17 @@ body {
 }
 
 @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .btn-primary:hover {
@@ -2031,4 +2039,54 @@ a.contact-value:hover {
 .timeline-desc {
     font-size: 0.9rem;
     color: var(--text-muted);
+}
+
+/* =====================================================
+   SECURITY & UTILITY CLASSES (CSP Compliance)
+   ===================================================== */
+.online {
+    color: var(--neon-green);
+}
+
+.error-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--neon-pink-glow) !important;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.error-icon {
+    color: var(--neon-pink);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.error-message {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+}
+
+/* Ensure terminal body has correct padding */
+.terminal-body {
+    padding: 25px !important;
+}
+
+@media (max-width: 768px) {
+    .error-actions {
+        flex-direction: column;
+    }
 }

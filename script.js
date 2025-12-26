@@ -234,13 +234,13 @@ async function fetchGitHubProjects() {
 
         projectsGrid.innerHTML = `
             <div class="error-state">
-                <i class="fas fa-exclamation-triangle" style="color: var(--neon-pink); font-size: 3rem; margin-bottom: 20px;"></i>
-                <p style="color: var(--text-primary); font-size: 1.2rem;">${error.message || 'Projeler yüklenirken bir sorun oluştu.'}</p>
-                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
-                    <button id="retry-btn" class="btn btn-primary" style="padding: 10px 20px;">
+                <i class="fas fa-exclamation-triangle error-icon"></i>
+                <p class="error-message">${error.message || 'Projeler yüklenirken bir sorun oluştu.'}</p>
+                <div class="error-actions">
+                    <button id="retry-btn" class="btn btn-primary">
                         Yeniden Dene
                     </button>
-                    <a href="https://github.com/${username}" target="_blank" class="btn btn-secondary" style="padding: 10px 20px;">
+                    <a href="https://github.com/${username}" target="_blank" class="btn btn-secondary">
                         GitHub'da Gör
                     </a>
                 </div>
@@ -435,14 +435,14 @@ function initContactForm() {
         const originalText = btn.innerHTML;
 
         btn.innerHTML = '<span class="btn-text">Gönderildi!</span> <i class="fas fa-check"></i>';
-        btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+        btn.classList.add('btn-success');
 
         // Play success sound
         if (window.playConfirmSound) window.playConfirmSound();
 
         setTimeout(() => {
             btn.innerHTML = originalText;
-            btn.style.background = '';
+            btn.classList.remove('btn-success');
             form.reset();
         }, 3000);
 

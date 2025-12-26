@@ -18,9 +18,10 @@ async function handleRequest(request) {
     const url = new URL(request.url)
 
     // Force HTTPS redirect (301 Moved Permanently)
+    // Ensures same-host redirect as requested by security scanners
     if (url.protocol === 'http:' && !url.hostname.includes('localhost') && !url.hostname.includes('127.0.0.1')) {
-        url.protocol = 'https:'
-        return Response.redirect(url.toString(), 301)
+        const httpsUrl = 'https://' + url.hostname + url.pathname + url.search
+        return Response.redirect(httpsUrl, 301)
     }
 
     // Orijinal yanıtı al
@@ -53,11 +54,10 @@ async function handleRequest(request) {
     // Cross-Origin-Opener-Policy
     newResponse.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
 
-    // Content-Security-Policy - A+ Grade (Strict)
-    // NOT: script-src 'unsafe-inline' kaldırıldı. CSS için şimdilik 'unsafe-inline' bırakıldı çünkü Matrix Rain vb. buna ihtiyaç duyuyor.
+    // Content-Security-Policy - A+ (No unsafe-inline)
     newResponse.headers.set(
         'Content-Security-Policy',
-        "default-src 'none'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
+        "default-src 'none'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
     )
 
     return newResponse
