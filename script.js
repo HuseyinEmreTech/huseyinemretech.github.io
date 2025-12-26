@@ -182,55 +182,92 @@ async function fetchGitHubProjects() {
     const projectsGrid = document.getElementById('projects-grid');
     const username = 'huseyinemretech';
     const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`;
+    const cacheKey = 'github_repos_cache';
+    const cacheTimeKey = 'github_repos_cache_time';
+    const cacheDuration = 3600000; // 1 hour
 
     try {
+        // Try to load from cache first
+        const cachedData = localStorage.getItem(cacheKey);
+        const cacheTime = localStorage.getItem(cacheTimeKey);
+        const now = new Date().getTime();
+
+        if (cachedData && cacheTime && (now - cacheTime < cacheDuration)) {
+            console.log('Loading repositories from cache');
+            const repos = JSON.parse(cachedData);
+            displayRepos(repos);
+            return;
+        }
+
         const response = await fetch(apiUrl);
 
         // Check for rate limiting
         if (response.status === 403) {
-            throw new Error('GitHub API rate limit exceeded. Please try again later.');
+            const resetTime = response.headers.get('X-RateLimit-Reset');
+            const waitTime = resetTime ? Math.ceil((resetTime * 1000 - now) / 60000) : 'bir süre';
+            throw new Error(`GitHub API limitine takıldık. Yaklaşık ${waitTime} dakika sonra tekrar deneyin.`);
         }
 
         if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
+            throw new Error(`GitHub API hatası: ${response.status}`);
         }
 
         const repos = await response.json();
-        console.log('GitHub repos loaded:', repos.length);
+        console.log('GitHub repos loaded from API:', repos.length);
 
-        // Clear loading state
-        projectsGrid.innerHTML = '';
+        // Save to cache
+        localStorage.setItem(cacheKey, JSON.stringify(repos));
+        localStorage.setItem(cacheTimeKey, now.toString());
 
-        // Filter out forks or profile repo if desired (optional)
-        const relevantRepos = repos.filter(repo => !repo.fork && repo.name !== username);
-
-        if (relevantRepos.length === 0) {
-            projectsGrid.innerHTML = '<div class="error-state"><p>Henüz proje bulunamadı.</p></div>';
-            return;
-        }
-
-        relevantRepos.forEach(repo => {
-            const card = createProjectCard(repo);
-            projectsGrid.appendChild(card);
-        });
-
-        // Initialize filters AFTER content is loaded
-        initProjectFilters();
-
-        // Re-run scroll animations/Tilt for new elements
-        initScrollAnimations();
-        init3DTilt(); // Re-bind tilt to new cards
+        displayRepos(repos);
 
     } catch (error) {
         console.error('Error fetching projects:', error);
+
+        // Final fallback: try cache even if expired
+        const cachedData = localStorage.getItem(cacheKey);
+        if (cachedData) {
+            console.log('API error, falling back to expired cache');
+            displayRepos(JSON.parse(cachedData));
+            return;
+        }
+
         projectsGrid.innerHTML = `
             <div class="error-state">
                 <i class="fas fa-exclamation-triangle"></i>
-                <p>Projeler yüklenirken bir sorun oluştu.</p>
+                <p>${error.message || 'Projeler yüklenirken bir sorun oluştu.'}</p>
                 <a href="https://github.com/${username}" target="_blank" class="btn btn-secondary">GitHub'da Görüntüle</a>
             </div>
         `;
     }
+}
+
+function displayRepos(repos) {
+    const projectsGrid = document.getElementById('projects-grid');
+    const username = 'huseyinemretech';
+
+    // Clear loading/error state
+    projectsGrid.innerHTML = '';
+
+    // Filter out forks or profile repo if desired
+    const relevantRepos = repos.filter(repo => !repo.fork && repo.name !== username);
+
+    if (relevantRepos.length === 0) {
+        projectsGrid.innerHTML = '<div class="error-state"><p>Henüz proje bulunamadı.</p></div>';
+        return;
+    }
+
+    relevantRepos.forEach(repo => {
+        const card = createProjectCard(repo);
+        projectsGrid.appendChild(card);
+    });
+
+    // Initialize filters AFTER content is loaded
+    initProjectFilters();
+
+    // Re-run scroll animations/Tilt for new elements
+    initScrollAnimations();
+    init3DTilt();
 }
 
 function createProjectCard(repo) {

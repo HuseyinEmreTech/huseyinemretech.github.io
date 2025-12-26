@@ -49,7 +49,7 @@ async function handleRequest(request) {
 
     // Cross-Origin-Resource-Policy - Kaynak izolasyonu
     // same-origin: Sadece aynı origin'den erişim
-    newResponse.headers.set('Cross-Origin-Resource-Policy', 'same-origin')
+    // newResponse.headers.set('Cross-Origin-Resource-Policy', 'same-origin')
 
     // Cross-Origin-Opener-Policy - Pencere izolasyonu
     // same-origin: Popup'lar aynı origin'den olmalı
