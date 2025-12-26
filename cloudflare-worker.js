@@ -60,5 +60,11 @@ async function handleRequest(request) {
     // NOT: CDN kullanıyorsanız bu sorun çıkarabilir, dikkatli kullanın
     // newResponse.headers.set('Cross-Origin-Embedder-Policy', 'require-corp')
 
+    // Content-Security-Policy - Relaxed to allow CDN and API
+    newResponse.headers.set(
+        'Content-Security-Policy',
+        "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src *; img-src * data:; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
+    )
+
     return newResponse
 }
