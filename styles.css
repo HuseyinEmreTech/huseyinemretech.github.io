@@ -51,6 +51,32 @@
     --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 2px solid var(--bg-primary);
+    transition: var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Selection */
+::selection {
+    background: var(--accent-primary);
+    color: white;
+}
+
 /* Reset */
 *,
 *::before,
@@ -477,6 +503,35 @@ section {
     border-color: rgba(255, 255, 255, 0.15);
     background: rgba(30, 30, 45, 0.6);
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+.loading-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 60px;
+}
+
+.skeleton {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.03) 25%,
+            rgba(255, 255, 255, 0.06) 50%,
+            rgba(255, 255, 255, 0.03) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .project-header {

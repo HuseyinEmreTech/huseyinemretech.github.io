@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coğrafi Bilgi Sistemleri (CBS) R Dili Analiz Projesi - Hüseyin Emre">
+    <title>CBS Projesi | Hüseyin Emre</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Aurora Background -->
+    <div class="aurora-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hüseyin Emre</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Geri Dön</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container hero-content">
+            <div class="text-sm mono" style="color: var(--accent-secondary); margin-bottom: 16px;">Üniversite Projesi /
+                R Dili</div>
+            <h1 class="text-gradient">Coğrafi Bilgi Sistemleri <br>& Mekansal Analiz</h1>
+            <p>
+                R dili kullanılarak geliştirilen, CBS dersi kapsamında mekansal verilerin
+                analizi, görselleştirilmesi ve haritalandırılması üzerine odaklanan kapsamlı bir çalışma.
+            </p>
+            <div class="cta-group">
+                <a href="https://github.com/huseyinemretech" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github" style="margin-right: 8px;"></i> Kodları İncele
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section>
+        <div class="container">
+            <div style="display: grid; gap: 80px;">
+                <!-- Overview -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 24px;">Proje Hakkında</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 24px;">
+                        Bu proje, "Coğrafi Bilgi Sistemleri" (GIS) dersi için özel olarak hazırlanmıştır.
+                        Modern veri bilimi araçları (R, ggplot2, sf) kullanılarak coğrafi katmanların
+                        birleştirilmesi ve demografik/ekonomik verilerin harita üzerinde anlamlandırılmasını hedefler.
+                    </p>
+                    <div class="skills-list">
+                        <span class="skill-tag">R Studio</span>
+                        <span class="skill-tag">SF (Simple Features)</span>
+                        <span class="skill-tag">Tidyverse</span>
+                        <span class="skill-tag">Leaflet</span>
+                        <span class="skill-tag">Geospatial Analysis</span>
+                    </div>
+                </div>
+
+                <!-- Methodology -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div>
+                        <h3 style="margin-bottom: 20px;">1. Veri Hazırlama</h3>
+                        <p style="color: var(--text-muted);">
+                            Shapefile ve GeoJSON formatındaki ham verilerin R ortamına aktarılması,
+                            temizlenmesi ve koordinat sistemlerinin (CRS) normalize edilmesi süreçleri.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 20px;">2. Mekansal Analiz</h3>
+                        <p style="color: var(--text-muted);">
+                            Öznitelik verilerinin coğrafi katmanlarla birleştirilmesi (join) ve
+                            belirli kriterlere göre mekansal filtreleme işlemleri.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 20px;">3. Görselleştirme</h3>
+                        <p style="color: var(--text-muted);">
+                            Statik (ggplot2) ve interaktif (leaflet/tmap) haritaların oluşturulması,
+                            lejant yönetimi ve renk paletlerinin optimizasyonu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Codes Section (Themed) -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h3 style="margin-bottom: 24px;">Teknik Detaylar</h3>
+                    <div
+                        style="background: rgba(0,0,0,0.3); padding: 24px; border-radius: var(--radius-sm); border: var(--glass-border);">
+                        <code class="mono" style="color: var(--accent-secondary); font-size: 0.9rem;">
+                            # Örnek R Analiz Kodu<br>
+                            library(sf)<br>
+                            library(ggplot2)<br><br>
+                            # Harita verisini oku<br>
+                            data <- st_read("map_data.shp")<br>
+                            # Analiz ve Görselleştirme<br>
+                            ggplot(data) + <br>
+                            &nbsp;&nbsp;geom_sf(aes(fill = value)) + <br>
+                            &nbsp;&nbsp;scale_fill_viridis_c() + <br>
+                            &nbsp;&nbsp;theme_minimal()
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container disable-select">
+            <p>&copy; 2026 Hüseyin Emre. CBS Projesi Eğitim Materyali.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

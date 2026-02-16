@@ -92,23 +92,38 @@ async function fetchGitHubProjects() {
 
 function renderProjects(repos) {
     const projectsGrid = document.getElementById('projects-grid');
+    if (!projectsGrid) return;
     projectsGrid.innerHTML = '';
 
-    repos.forEach((repo, index) => {
+    // Local/Featured Projects
+    const localProjects = [
+        {
+            name: 'GIS Mekansal Analiz',
+            description: 'R dili kullanılarak geliştirilen, Coğrafi Bilgi Sistemleri (CBS) dersi kapsamında hazırlanan mekansal veri analizi projesi.',
+            language: 'R Language',
+            html_url: 'gis-project.html',
+            isLocal: true,
+            stargazers_count: 'Special'
+        }
+    ];
+
+    const allProjects = [...localProjects, ...repos];
+
+    allProjects.forEach((repo, index) => {
         const card = document.createElement('article');
         card.className = 'project-card';
-        // Add staggering delay
         card.style.transitionDelay = `${index * 100}ms`;
 
         card.innerHTML = `
             <div class="project-header">
                 <i class="far fa-folder folder-icon"></i>
                 <div class="project-links">
-                    <a href="${repo.html_url}" target="_blank" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
-                    ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                    <a href="${repo.html_url}" ${repo.isLocal ? '' : 'target="_blank"'} aria-label="Project Link">
+                        <i class="${repo.isLocal ? 'fas fa-arrow-right' : 'fab fa-github'}"></i>
+                    </a>
                 </div>
             </div>
-            <h3 class="project-title">${formatTitle(repo.name)}</h3>
+            <h3 class="project-title">${repo.isLocal ? repo.name : formatTitle(repo.name)}</h3>
             <p class="project-desc">${repo.description || 'Açıklama bulunmuyor.'}</p>
             <div class="project-tech">
                 ${repo.language ? `<span>${repo.language}</span>` : ''}
@@ -118,7 +133,7 @@ function renderProjects(repos) {
 
         projectsGrid.appendChild(card);
 
-        // Observe new elements
+        // Intersection Observer for reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
