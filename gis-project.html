@@ -100,21 +100,29 @@
                 </div>
 
                 <!-- Codes Section (Themed) -->
-                <div class="project-card" style="padding: 40px; height: auto;">
-                    <h3 style="margin-bottom: 24px;">Teknik Detaylar</h3>
+                <div class="project-card" style="padding: 0; overflow: hidden; height: auto;">
                     <div
-                        style="background: rgba(0,0,0,0.3); padding: 24px; border-radius: var(--radius-sm); border: var(--glass-border);">
-                        <code class="mono" style="color: var(--accent-secondary); font-size: 0.9rem;">
-                            # Örnek R Analiz Kodu<br>
-                            library(sf)<br>
-                            library(ggplot2)<br><br>
-                            # Harita verisini oku<br>
-                            data <- st_read("map_data.shp")<br>
-                            # Analiz ve Görselleştirme<br>
-                            ggplot(data) + <br>
-                            &nbsp;&nbsp;geom_sf(aes(fill = value)) + <br>
-                            &nbsp;&nbsp;scale_fill_viridis_c() + <br>
-                            &nbsp;&nbsp;theme_minimal()
+                        style="background: rgba(255,255,255,0.05); padding: 12px 24px; border-bottom: var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
+                        <span class="mono text-sm" style="color: var(--text-secondary);"><i class="fas fa-terminal"
+                                style="margin-right: 8px;"></i> R Studio / Analysis</span>
+                        <div style="display: flex; gap: 6px;">
+                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></span>
+                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></span>
+                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></span>
+                        </div>
+                    </div>
+                    <div style="padding: 32px; background: rgba(0,0,0,0.4);">
+                        <code class="mono" style="color: var(--text-primary); font-size: 0.95rem; line-height: 1.8;">
+                            <span style="color: var(--text-muted);"># Mekansal veri analizi kütüphaneleri</span><br>
+                            <span style="color: var(--accent-secondary);">library</span>(sf)<br>
+                            <span style="color: var(--accent-secondary);">library</span>(ggplot2)<br><br>
+                            <span style="color: var(--text-muted);"># Shapefile verisini oku</span><br>
+                            data &lt;- <span style="color: var(--accent-primary);">st_read</span>(<span style="color: var(--success);">"turkiye_iller.shp"</span>)<br><br>
+                            <span style="color: var(--text-muted);"># Görselleştirme katmanlarını oluştur</span><br>
+                            <span style="color: var(--accent-primary);">ggplot</span>(data) + <br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-primary);">geom_sf</span>(<span style="color: var(--accent-secondary);">aes</span>(fill = nufus)) + <br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-primary);">scale_fill_viridis_c</span>(option = <span style="color: var(--success);">"magma"</span>) + <br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-primary);">theme_minimal</span>()
                         </code>
                     </div>
                 </div>
@@ -129,7 +137,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

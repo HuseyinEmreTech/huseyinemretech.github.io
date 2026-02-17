@@ -1,83 +1,61 @@
-# 🎮 Hüseyin Emre - Kişisel Portfolyo
+# 🚀 Hüseyin Emre - ERP Consultant & Developer
 
 <div align="center">
 
-![Cyberpunk Badge](https://img.shields.io/badge/Theme-Cyberpunk-ff0080?style=for-the-badge)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Theme](https://img.shields.io/badge/Theme-Modern_Tech-6366f1?style=for-the-badge)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Blazor](https://img.shields.io/badge/Blazor-512BD4?style=for-the-badge&logo=blazor&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-**Cyberpunk tarzı kişisel yazılım geliştirici portfolyo web sitesi**
+**ERP çözüm danışmanlığı, saha operasyonları ve modern .NET ekosistemi ile iş süreçlerini dijitalleştiriyorum.**
 
-🔗 [**Siteyi Ziyaret Et**](https://huseyinemretech.github.io)
+🔗 [**Canlı Portfolyo**](https://huseyinemretech.github.io)
 
 </div>
 
 ---
 
-## ✨ Özellikler
+## ✨ Modern Tasarım & UX
 
-- 🎨 **Cyberpunk Tasarım** - Neon renkler, glitch efektleri ve karanlık tema
-- ⚡ **Glitch Text Efekti** - Hero bölümünde animasyonlu başlık
-- ⌨️ **Typing Animasyonu** - Değişen roller için yazı makinesi efekti
-- 🔮 **Floating Particles** - Rastgele renkli yüzen parçacıklar
-- 🎯 **Proje Filtreleme** - Kategoriye göre proje filtreleme
-- 📱 **Responsive Tasarım** - Tüm cihazlara uyumlu
-- 🖱️ **Smooth Scroll** - Yumuşak sayfa geçişleri
-- ✨ **Hover Efektleri** - Neon glow animasyonları
+Bu portfolyo, geleneksel tasarımların ötesine geçerek **Modern Professional Tech** estetiğiyle geliştirilmiştir:
 
-## 📂 Dosya Yapısı
+- 🌌 **Aurora Background** - Hareketli ve derinlik algısı yaratan dinamik arka plan.
+- 🧪 **Glassmorphism 2.0** - Ultra-modern, bulanık ve şeffaf katmanlar.
+- ⚡ **Performance First** - Intersection Observer API ile optimize edilmiş animasyonlar.
+- 📱 **Responsive Excellence** - Masaüstünden mobil cihazlara uçtan uca kusursuz deneyim.
+- 🎨 **Minimalist Typography** - Inter ve JetBrains Mono ile üst düzey okunabilirlik.
+
+## 📂 Mimari Yapı
 
 ```
 huseyinemretech.github.io/
-├── index.html      # Ana HTML dosyası
-├── styles.css      # CSS stilleri ve animasyonlar
-├── script.js       # JavaScript etkileşimleri
-└── README.md       # Bu dosya
+├── index.html          # Ana uygulama iskeleti (Semantic HTML5)
+├── styles.css          # Gelişmiş CSS tasarım sistemi ve değişkenler
+├── script.js           # GitHub API entegrasyonu ve mikro etkileşimler
+├── gis-project.html    # Özel CBS/GIS analiz sunum sayfası
+└── cloudflare-worker.js # Gelecek entegrasyonlar için hazırlık
 ```
 
-## 🎨 Renk Paleti
+## 🛠️ Teknik Yetkinlikler
 
-| Renk | Hex | Kullanım |
-|------|-----|----------|
-| 🖤 Arka Plan | `#0a0a0f` | Ana arka plan |
-| 💗 Neon Pembe | `#ff0080` | Vurgular, butonlar |
-| 💎 Neon Cyan | `#00ffff` | Başlıklar, linkler |
-| 💜 Neon Mor | `#a855f7` | Tech tag'ler |
-
-## 🛠️ Teknolojiler
-
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, animations, flexbox, grid
-- **JavaScript** - Vanilla JS, Intersection Observer API
-- **Font Awesome** - İkonlar
-- **Google Fonts** - Orbitron, Rajdhani, JetBrains Mono
+- **Frontend:** HTML5, CSS3 (Modern Grid & Flexbox), JavaScript (Vanilla), Blazor
+- **Backend:** .NET Core, C#, Entity Framework
+- **Database:** MS SQL Server, Veri Modelleme
+- **ERP:** Süreç Analizi, Kurulum, Destek ve Özelleştirme Modülleri
+- **Data Science:** R Studio, Mekansal Analiz (GIS)
 
 ## 📄 Bölümler
 
-1. **Hero** - Glitch efektli karşılama
-2. **Hakkımda** - Terminal tarzı tanıtım
-3. **Projeler** - Filtrelenebilir proje kartları
-4. **Yetenekler** - Kategorize edilmiş beceriler
-5. **Blog** - Blog yazıları
-6. **İletişim** - İletişim formu ve sosyal linkler
-
-## 🚀 Kullanım
-
-Site GitHub Pages üzerinde otomatik olarak yayınlanmaktadır:
-
-```
-https://huseyinemretech.github.io
-```
-
-## 📝 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır.
+1. **Hakkımda** - Profesyonel özet ve çözüm odaklı yaklaşım.
+2. **Deneyim** - Timeline formatında kariyer yolculuğu.
+3. **Projeler** - GitHub üzerinden anlık güncellenen projeler.
+4. **Yetenekler** - Kategorize edilmiş teknik beceri seti.
+5. **İletişim** - Hızlı erişim kanalları.
 
 ---
 
 <div align="center">
 
-**⚡ Kod ile dünyayı şekillendirmek ⚡**
+**⚡ Verimlilik odaklı çözümler, gelecek odaklı teknolojiler. ⚡**
 
 </div>

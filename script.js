@@ -21,27 +21,21 @@ function initMobileMenu() {
     menuBtn.addEventListener('click', () => {
         const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
         menuBtn.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
 
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.display = 'none';
-        } else {
-            navLinks.style.display = 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '80px';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = 'var(--bg-secondary)';
-            navLinks.style.padding = '20px';
-            navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        // Toggle icon
+        const icon = menuBtn.querySelector('i');
+        if (icon) {
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
         }
     });
 
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
-            }
+            navLinks.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            const icon = menuBtn.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
         });
     });
 }
@@ -99,7 +93,7 @@ function renderProjects(repos) {
     const localProjects = [
         {
             name: 'GIS Mekansal Analiz',
-            description: 'R dili kullanılarak geliştirilen, Coğrafi Bilgi Sistemleri (CBS) dersi kapsamında hazırlanan mekansal veri analizi projesi.',
+            description: 'R dili ile mekansal veri analizi, sf ve ggplot2 paketleri kullanılarak hazırlanan üniversite projesi.',
             language: 'R Language',
             html_url: 'gis-project.html',
             isLocal: true,
@@ -107,12 +101,32 @@ function renderProjects(repos) {
         }
     ];
 
+    const repoDetails = {
+        'Sinema-Bilet-Otamasyonu': {
+            name: 'Sinema Bilet Otomasyonu',
+            desc: 'C# ve SQL Server kullanılarak geliştirilen, kapsamlı biletleme ve salon yönetim sistemi.'
+        },
+        'Teknik-Destek-Sistemi': {
+            desc: 'Firmaların teknik destek taleplerini organize eden, durum takibi yapılabilen web tabanlı çözüm.'
+        },
+        'ERP-Modul-Gelistirme': {
+            desc: 'Blazor ve .NET kullanılarak hazırlanan, stok ve fatura yönetimi odaklı özel ERP modülleri.'
+        },
+        'HuseyinEmreTech': {
+            desc: 'Şu an incelediğiniz modern portfolyo sitesinin kaynak kodları ve tasarım sistemi.'
+        }
+    };
+
     const allProjects = [...localProjects, ...repos];
 
     allProjects.forEach((repo, index) => {
         const card = document.createElement('article');
         card.className = 'project-card';
         card.style.transitionDelay = `${index * 100}ms`;
+
+        const detail = repoDetails[repo.name] || {};
+        const title = repo.isLocal ? repo.name : (detail.name || formatTitle(repo.name));
+        const description = repo.isLocal ? repo.description : (detail.desc || repo.description || 'Açıklama bulunmuyor.');
 
         card.innerHTML = `
             <div class="project-header">
@@ -123,8 +137,8 @@ function renderProjects(repos) {
                     </a>
                 </div>
             </div>
-            <h3 class="project-title">${repo.isLocal ? repo.name : formatTitle(repo.name)}</h3>
-            <p class="project-desc">${repo.description || 'Açıklama bulunmuyor.'}</p>
+            <h3 class="project-title">${title}</h3>
+            <p class="project-desc">${description}</p>
             <div class="project-tech">
                 ${repo.language ? `<span>${repo.language}</span>` : ''}
                 <span><i class="far fa-star"></i> ${repo.stargazers_count}</span>
@@ -180,18 +194,24 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // Optional: Stop observing once visible to save performance
+                observer.unobserve(entry.target);
             }
         });
     }, {
         threshold: 0.1,
-        rootMargin: '0px'
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element leaves bottom
     });
 
-    const elements = document.querySelectorAll('.timeline-item, .skills-list, .hero-content');
+    // Removed .hero-content from here because it has its own CSS animation (fadeUp)
+    // This prevents the conflict where JS hides it (opacity: 0) while CSS tries to show it
+    const elements = document.querySelectorAll('.timeline-item, .skills-list');
+
     elements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.willChange = 'opacity, transform'; // Performance optimization
         observer.observe(el);
     });
 
