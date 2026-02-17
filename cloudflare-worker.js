@@ -54,10 +54,10 @@ async function handleRequest(request) {
     // Cross-Origin-Opener-Policy
     newResponse.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
 
-    // Content-Security-Policy - A+ (No unsafe-inline)
+    // Content-Security-Policy - Optimized for Performance and Security
     newResponse.headers.set(
         'Content-Security-Policy',
-        "default-src 'none'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
+        "default-src 'none'; script-src 'self' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://static.cloudflareinsights.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
     )
 
     return newResponse
