@@ -15,7 +15,13 @@
         content="Modern and professional portfolio of Hüseyin Emre, specializing in ERP solutions and .NET development.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://huseyinemretech.github.io">
+    <meta property="og:image" content="https://huseyinemretech.github.io/social_preview_image.png">
+
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hüseyin Emre | ERP Consultant & Developer">
+    <meta name="twitter:description"
+        content="Modern and professional portfolio of Hüseyin Emre, specializing in ERP solutions and .NET development.">
+    <meta name="twitter:image" content="https://huseyinemretech.github.io/social_preview_image.png">
 
     <title>Hüseyin Emre | ERP Consultant & Developer</title>
 
@@ -45,12 +51,13 @@
             <div class="nav-links">
                 <a href="#about" class="nav-link">Hakkımda</a>
                 <a href="#experience" class="nav-link">Deneyim</a>
+                <a href="#education" class="nav-link">Eğitim</a>
                 <a href="#projects" class="nav-link">Projeler</a>
                 <a href="#skills" class="nav-link">Yetenekler</a>
                 <a href="#contact" class="nav-link">İletişim</a>
             </div>
 
-            <button class="menu-btn"><i class="fas fa-bars"></i></button>
+            <button class="menu-btn" aria-label="Menu Paneli"><i class="fas fa-bars" aria-hidden="true"></i></button>
         </div>
     </nav>
 
@@ -83,12 +90,11 @@
                     <div class="timeline-content">
                         <h3>ERP Çözüm Danışmanı & Yazılım Geliştirici</h3>
                         <div class="company">Hisar Yazılım ve Barkodlu Satış Sistemleri</div>
-                        <p style="margin-bottom: 12px;">
+                        <p>
                             ERP sistemlerinin kurulum, özelleştirme ve son kullanıcı eğitim süreçlerini yöneterek
                             operasyonel verimliliği artırdım.
                         </p>
-                        <ul
-                            style="list-style: disc; padding-left: 20px; color: var(--text-muted); font-size: 1rem; margin-bottom: 16px;">
+                        <ul class="experience-list">
                             <li>İş süreçlerini analiz ederek Blazor ve C# ile kullanıcı dostu, modern web arayüzleri ve
                                 özel modüller geliştirdim.</li>
                             <li>Müşteri lokasyonlarında donanım entegrasyonu (yazıcı, kasa) ve yerinde teknik destek
@@ -104,7 +110,7 @@
                     <div class="timeline-content">
                         <h3>IT Altyapı ve Sistem Destek Stajyeri</h3>
                         <div class="company">Osmaniye Belediyesi</div>
-                        <ul style="list-style: disc; padding-left: 20px; color: var(--text-muted); font-size: 1rem;">
+                        <ul class="experience-list">
                             <li>Kurum personelinin bilgisayar, yazıcı ve ağ bağlantısı ile ilgili teknik sorunlarını
                                 çözdüm.</li>
                             <li>Yazılım ve donanım kurulumu ile sistem güncellemelerini gerçekleştirdim.</li>
@@ -121,8 +127,8 @@
         <div class="container">
             <h2 class="section-title">Eğitim <span class="mono text-muted text-sm">/education</span></h2>
 
-            <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="project-card" style="height: auto;">
+            <div class="education-grid">
+                <div class="project-card education-card">
                     <div class="timeline-content">
                         <span class="timeline-date">Ekim 2024 - Devam Ediyor</span>
                         <h3>Yönetim Bilişim Sistemleri</h3>
@@ -131,7 +137,7 @@
                     </div>
                 </div>
 
-                <div class="project-card" style="height: auto;">
+                <div class="project-card education-card">
                     <div class="timeline-content">
                         <span class="timeline-date">Ekim 2021 – Haziran 2023</span>
                         <h3>Bilgisayar Programcılığı</h3>
@@ -164,10 +170,9 @@
         <div class="container">
             <h2 class="section-title">Yetenekler <span class="mono text-muted text-sm">/skills</span></h2>
 
-            <div style="display: grid; gap: 40px;">
-                <div>
-                    <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-primary);">ERP & İş Süreçleri
-                    </h3>
+            <div class="skills-grid">
+                <div class="skills-group">
+                    <h3><i class="fas fa-briefcase text-muted"></i> ERP & İş Süreçleri</h3>
                     <div class="skills-list">
                         <span class="skill-tag">ERP Danışmanlığı</span>
                         <span class="skill-tag">Kurulum & Özelleştirme</span>
@@ -177,9 +182,8 @@
                     </div>
                 </div>
 
-                <div>
-                    <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-primary);">Yazılım Geliştirme
-                    </h3>
+                <div class="skills-group">
+                    <h3><i class="fas fa-code text-muted"></i> Yazılım Geliştirme</h3>
                     <div class="skills-list">
                         <span class="skill-tag">C#</span>
                         <span class="skill-tag">.NET Core</span>
@@ -189,12 +193,11 @@
                     </div>
                 </div>
 
-                <div>
-                    <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--text-primary);">Teknik Destek &
-                        Sistem</h3>
+                <div class="skills-group">
+                    <h3><i class="fas fa-tools text-muted"></i> Teknik Destek & Sistem</h3>
                     <div class="skills-list">
-                        <span class="skill-tag">Donanım Entegrasyonu (Yazıcı/Kasa)</span>
-                        <span class="skill-tag">Uçtan Uca Sorun Giderme</span>
+                        <span class="skill-tag">Donanım Entegrasyonu</span>
+                        <span class="skill-tag">Sorun Giderme</span>
                         <span class="skill-tag">Ağ Yapılandırması</span>
                         <span class="skill-tag">Sunucu Desteği</span>
                         <span class="skill-tag">Uzaktan Destek</span>
