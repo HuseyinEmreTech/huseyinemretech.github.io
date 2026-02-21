@@ -16,10 +16,14 @@ async function handleRequest(request) {
     if (url.pathname === '/api/contact') {
         // CORS Ön kontrolü (Preflight Options isteği)
         if (request.method === 'OPTIONS') {
+            const origin = request.headers.get('Origin');
+            const allowedOrigins = ['https://huseyinemretech.github.io', 'https://huseyinemre.tech', 'https://www.huseyinemre.tech', 'http://localhost:5173', 'http://127.0.0.1:5173'];
+            const responseOrigin = allowedOrigins.includes(origin) ? origin : 'https://huseyinemre.tech';
+
             return new Response(null, {
                 status: 204,
                 headers: {
-                    'Access-Control-Allow-Origin': 'https://huseyinemretech.github.io', // Sadece sizin sitenize izin verir
+                    'Access-Control-Allow-Origin': responseOrigin, // Gelen isteğe göre izin ver
                     'Access-Control-Allow-Methods': 'POST, OPTIONS',
                     'Access-Control-Allow-Headers': 'Content-Type',
                     'Access-Control-Max-Age': '86400',
@@ -96,12 +100,24 @@ async function handleContactForm(request) {
     try {
         // CSRF ve Origin Koruması - Sadece sizin sitenizden gelen istekleri kabul eder
         const origin = request.headers.get('Origin');
-        if (origin !== 'https://huseyinemretech.github.io' && !origin.includes('localhost') && !origin.includes('127.0.0.1')) {
+        const allowedOrigins = ['https://huseyinemretech.github.io', 'https://huseyinemre.tech', 'https://www.huseyinemre.tech'];
+
+        let isLocalNode = false;
+        if (origin) {
+            isLocalNode = origin.includes('localhost') || origin.includes('127.0.0.1');
+        }
+
+        if (!isLocalNode && (!origin || !allowedOrigins.includes(origin))) {
             return new Response(JSON.stringify({ success: false, error: 'Yetkisiz erişim (Unauthorized Origin)' }), {
                 status: 403,
-                headers: { 'Content-Type': 'application/json' }
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': origin || 'https://huseyinemre.tech'
+                }
             });
         }
+
+        const responseOrigin = origin || 'https://huseyinemre.tech';
 
         const data = await request.json();
 
@@ -124,7 +140,7 @@ async function handleContactForm(request) {
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://huseyinemretech.github.io' // Wildcard (*) yerine orijinal domain
+                'Access-Control-Allow-Origin': responseOrigin // Dinamik Origin
             }
         });
 
@@ -133,7 +149,7 @@ async function handleContactForm(request) {
             status: 400, // 500 yerine 400 (Bad Request) dönmek güvenlik açısından bazen daha iyidir
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://huseyinemretech.github.io'
+                'Access-Control-Allow-Origin': request.headers.get('Origin') || 'https://huseyinemre.tech'
             }
         });
     }
