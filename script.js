@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubProjects();
     initScrollAnimations();
     initMagneticButtons();
+    initCustomCursor();
+    initCustomCursor();
+    initSkillsFilter();
+    initContactForm();
+    initLanguageToggle();
 });
 
 /* =====================================================
@@ -49,7 +54,7 @@ async function fetchGitHubProjects() {
 
     const username = 'huseyinemretech';
     const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=6`;
-    const cacheKey = 'github_repos_v2';
+    const cacheKey = 'github_repos_v3';
 
     const cached = localStorage.getItem(cacheKey);
     if (cached) {
@@ -65,7 +70,7 @@ async function fetchGitHubProjects() {
         if (!response.ok) throw new Error('GitHub API Error');
 
         const repos = await response.json();
-        const validRepos = repos.filter(repo => !repo.fork).slice(0, 6);
+        const validRepos = repos.slice(0, 6);
 
         localStorage.setItem(cacheKey, JSON.stringify({
             data: validRepos,
@@ -223,4 +228,211 @@ function initScrollAnimations() {
             }
         </style>
     `);
+}
+
+/* =====================================================
+   CUSTOM CURSOR
+   ===================================================== */
+function initCustomCursor() {
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (!cursorDot || !cursorOutline) return;
+
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Slight delay for the outline
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    // Add glowing effect on links/buttons
+    document.querySelectorAll('a, button, .project-card').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorOutline.style.width = '50px';
+            cursorOutline.style.height = '50px';
+            cursorOutline.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorOutline.style.width = '30px';
+            cursorOutline.style.height = '30px';
+            cursorOutline.style.backgroundColor = 'transparent';
+        });
+    });
+}
+
+/* =====================================================
+   SKILLS FILTER
+   ===================================================== */
+function initSkillsFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const skillGroups = document.querySelectorAll('.skills-group');
+
+    if (!filterBtns.length || !skillGroups.length) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            skillGroups.forEach(group => {
+                const category = group.getAttribute('data-category');
+
+                // Add fade out effect
+                group.style.opacity = '0';
+                group.style.transform = 'translateY(10px)';
+
+                setTimeout(() => {
+                    if (filterValue === 'all' || category === filterValue) {
+                        group.style.display = 'block';
+                        // Fade in briefly after display change
+                        setTimeout(() => {
+                            group.style.opacity = '1';
+                            group.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        group.style.display = 'none';
+                    }
+                }, 400); // 400ms matches the transition duration in CSS
+            });
+        });
+    });
+}
+
+/* =====================================================
+   CONTACT FORM
+   ===================================================== */
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    const statusDiv = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Gönderiliyor...';
+        submitBtn.disabled = true;
+        statusDiv.className = 'form-status';
+        statusDiv.textContent = '';
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            // Send to Cloudflare Worker
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                form.reset();
+                statusDiv.textContent = 'Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağım!';
+                statusDiv.classList.add('success');
+            } else {
+                throw new Error('Server error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            statusDiv.textContent = 'Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan e-posta gönderin.';
+            statusDiv.classList.add('error');
+        } finally {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+
+            // Clear status after 5 seconds
+            setTimeout(() => {
+                statusDiv.className = 'form-status';
+                statusDiv.textContent = '';
+            }, 5000);
+        }
+    });
+}
+
+/* =====================================================
+   MULTI-LANGUAGE SUPPORT
+   ===================================================== */
+const translations = {
+    tr: {
+        "nav-about": "Hakkımda", "nav-exp": "Deneyim", "nav-edu": "Eğitim", "nav-proj": "Projeler", "nav-skills": "Yetenekler", "nav-contact": "İletişim",
+        "hero-title": "ERP Çözüm Danışmanı <br>& Yazılım Geliştirici",
+        "hero-desc": "İş süreçleri analizi, saha operasyonları ve modern yazılım geliştirme (.NET, Blazor) yetkinliklerini bir araya getiren, çözüm odaklı bir ERP profesyoneliyim. İşletmeler için uçtan uca, verimli ve kullanıcı dostu çözümler üretiyorum.",
+        "btn-proj": "Projelerimi İncele", "btn-contact": "İletişime Geç", "btn-cv": "<i class=\"fas fa-file-download\" style=\"margin-right: 8px;\"></i> CV İndir",
+        "sec-exp": "Deneyim <span class=\"mono text-muted text-sm\">/experience</span>",
+        "sec-edu": "Eğitim <span class=\"mono text-muted text-sm\">/education</span>",
+        "sec-proj": "Projeler <span class=\"mono text-muted text-sm\">/work</span>",
+        "sec-skills": "Yetenekler <span class=\"mono text-muted text-sm\">/skills</span>",
+        "sec-contact": "İletişim <span class=\"mono text-muted text-sm\">/contact</span>",
+        "filter-all": "Tümü", "filter-erp": "ERP", "filter-dev": "Yazılım", "filter-tech": "Sistem",
+        "form-name": "Adınız Soyadınız", "form-email": "E-posta Adresiniz", "form-msg": "Mesajınız", "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Mesaj Gönder</span>"
+    },
+    en: {
+        "nav-about": "About", "nav-exp": "Experience", "nav-edu": "Education", "nav-proj": "Projects", "nav-skills": "Skills", "nav-contact": "Contact",
+        "hero-title": "ERP Solutions Consultant <br>& Software Developer",
+        "hero-desc": "A solution-oriented ERP professional bridging business process analysis, field operations, and modern software development (.NET, Blazor). Delivering end-to-end, efficient, and user-friendly solutions for enterprises.",
+        "btn-proj": "View Projects", "btn-contact": "Contact Me", "btn-cv": "<i class=\"fas fa-file-download\" style=\"margin-right: 8px;\"></i> Download CV",
+        "sec-exp": "Experience <span class=\"mono text-muted text-sm\">/experience</span>",
+        "sec-edu": "Education <span class=\"mono text-muted text-sm\">/education</span>",
+        "sec-proj": "Projects <span class=\"mono text-muted text-sm\">/work</span>",
+        "sec-skills": "Skills <span class=\"mono text-muted text-sm\">/skills</span>",
+        "sec-contact": "Contact <span class=\"mono text-muted text-sm\">/contact</span>",
+        "filter-all": "All", "filter-erp": "ERP", "filter-dev": "Development", "filter-tech": "Systems",
+        "form-name": "Full Name", "form-email": "Email Address", "form-msg": "Your Message", "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Send Message</span>"
+    }
+};
+
+function initLanguageToggle() {
+    const langBtn = document.getElementById('lang-toggle');
+    if (!langBtn) return;
+
+    let currentLang = localStorage.getItem('site_lang') || 'tr';
+
+    if (currentLang === 'en') {
+        applyTranslations('en');
+        langBtn.innerHTML = '🇹🇷 TR';
+    }
+
+    langBtn.addEventListener('click', () => {
+        if (currentLang === 'tr') {
+            currentLang = 'en';
+            langBtn.innerHTML = '🇹🇷 TR';
+        } else {
+            currentLang = 'tr';
+            langBtn.innerHTML = '🇬🇧 EN';
+        }
+
+        localStorage.setItem('site_lang', currentLang);
+        applyTranslations(currentLang);
+    });
+}
+
+function applyTranslations(lang) {
+    const dict = translations[lang];
+    if (!dict) return;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+            el.innerHTML = dict[key];
+        }
+    });
+
+    document.documentElement.lang = lang === 'tr' ? 'tr' : 'en';
 }
