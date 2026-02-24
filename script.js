@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubProjects();
     initScrollAnimations();
     initMagneticButtons();
-    initCustomCursor();
+    initMobileMenu();
+    fetchGitHubProjects();
+    initScrollAnimations();
+    initMagneticButtons();
     initCustomCursor();
     initSkillsFilter();
     initContactForm();
@@ -97,10 +100,12 @@ function renderProjects(repos) {
     // Local/Featured Projects
     const localProjects = [
         {
-            name: 'GIS Mekansal Analiz',
-            description: 'R dili ile mekansal veri analizi, sf ve ggplot2 paketleri kullanılarak hazırlanan üniversite projesi.',
-            language: 'R Language',
-            html_url: 'gis-project.html',
+            name: "GIS Analysis Project",
+            description: "gis-card-desc",
+            tech: ["R", "sf", "ggplot2", "Leaflet"],
+            category: "dev",
+            link: "gis-project.html",
+            github: "https://github.com/huseyinemretech",
             isLocal: true,
             stargazers_count: 'Special'
         }
@@ -109,16 +114,16 @@ function renderProjects(repos) {
     const repoDetails = {
         'Sinema-Bilet-Otamasyonu': {
             name: 'Sinema Bilet Otomasyonu',
-            desc: 'C# ve SQL Server kullanılarak geliştirilen, kapsamlı biletleme ve salon yönetim sistemi.'
+            desc: 'Sinema-Bilet-Otamasyonu-desc'
         },
         'Teknik-Destek-Sistemi': {
-            desc: 'Firmaların teknik destek taleplerini organize eden, durum takibi yapılabilen web tabanlı çözüm.'
+            desc: 'Teknik-Destek-Sistemi-desc'
         },
         'ERP-Modul-Gelistirme': {
-            desc: 'Blazor ve .NET kullanılarak hazırlanan, stok ve fatura yönetimi odaklı özel ERP modülleri.'
+            desc: 'ERP-Modul-Gelistirme-desc'
         },
         'HuseyinEmreTech': {
-            desc: 'Şu an incelediğiniz modern portfolyo sitesinin kaynak kodları ve tasarım sistemi.'
+            desc: 'HuseyinEmreTech-desc'
         }
     };
 
@@ -131,7 +136,14 @@ function renderProjects(repos) {
 
         const detail = repoDetails[repo.name] || {};
         const title = repo.isLocal ? repo.name : (detail.name || formatTitle(repo.name));
-        const description = repo.isLocal ? repo.description : (detail.desc || repo.description || 'Açıklama bulunmuyor.');
+
+        const currentLang = document.documentElement.lang || 'tr';
+        let description = repo.isLocal ? repo.description : (detail.desc || repo.description || translations[currentLang]["project-no-desc"]);
+
+        // If description is a translation key, translate it
+        if (translations[currentLang] && translations[currentLang][description]) {
+            description = translations[currentLang][description];
+        }
 
         card.innerHTML = `
             <div class="project-header">
@@ -323,8 +335,11 @@ function initContactForm() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        const currentLang = document.documentElement.lang || 'tr';
+        const dict = translations[currentLang];
+
         const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Gönderiliyor...';
+        submitBtn.innerHTML = dict["form-sending"];
         submitBtn.disabled = true;
         statusDiv.className = 'form-status';
         statusDiv.textContent = '';
@@ -344,14 +359,14 @@ function initContactForm() {
 
             if (response.ok) {
                 form.reset();
-                statusDiv.textContent = 'Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağım!';
+                statusDiv.textContent = dict["form-success"];
                 statusDiv.classList.add('success');
             } else {
                 throw new Error('Server error');
             }
         } catch (error) {
             console.error('Form submission error:', error);
-            statusDiv.textContent = 'Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan e-posta gönderin.';
+            statusDiv.textContent = dict["form-error"];
             statusDiv.classList.add('error');
         } finally {
             submitBtn.innerHTML = originalBtnText;
@@ -371,30 +386,166 @@ function initContactForm() {
    ===================================================== */
 const translations = {
     tr: {
+        "site-title": "Hüseyin Emre | ERP Çözüm Danışmanı & Yazılım Geliştirici",
+        "meta-desc": "Hüseyin Emre - ERP Çözüm Danışmanı & Yazılım Geliştirici (.NET)",
+        "meta-keywords": "yazılım, geliştirici, .net, blazor, erp, danışman, c#, teknik destek",
+        "og-title": "Hüseyin Emre | ERP Çözüm Danışmanı & Yazılım Geliştirici",
+        "og-desc": "Hüseyin Emre'nin ERP çözümleri ve .NET geliştirme üzerine uzmanlaşmış modern portfolyosu.",
+        "tw-title": "Hüseyin Emre | ERP Çözüm Danışmanı & Yazılım Geliştirici",
+        "tw-desc": "Hüseyin Emre'nin ERP çözümleri ve .NET geliştirme üzerine uzmanlaşmış modern portfolyosu.",
         "nav-about": "Hakkımda", "nav-exp": "Deneyim", "nav-edu": "Eğitim", "nav-proj": "Projeler", "nav-skills": "Yetenekler", "nav-contact": "İletişim",
         "hero-title": "ERP Çözüm Danışmanı <br>& Yazılım Geliştirici",
         "hero-desc": "İş süreçleri analizi, saha operasyonları ve modern yazılım geliştirme (.NET, Blazor) yetkinliklerini bir araya getiren, çözüm odaklı bir ERP profesyoneliyim. İşletmeler için uçtan uca, verimli ve kullanıcı dostu çözümler üretiyorum.",
         "btn-proj": "Projelerimi İncele", "btn-contact": "İletişime Geç", "btn-cv": "<i class=\"fas fa-file-download\" style=\"margin-right: 8px;\"></i> CV İndir",
         "sec-exp": "Deneyim <span class=\"mono text-muted text-sm\">/experience</span>",
+        "exp1-date": "Haziran 2025 – Devam Ediyor",
+        "exp1-title": "ERP Çözüm Danışmanı & Yazılım Geliştirici",
+        "exp1-company": "Hisar Yazılım ve Barkodlu Satış Sistemleri",
+        "exp1-desc": "ERP sistemlerinin kurulum, özelleştirme ve son kullanıcı eğitim süreçlerini yöneterek operasyonel verimliliği artırdım.",
+        "exp1-li1": "İş süreçlerini analiz ederek Blazor ve C# ile kullanıcı dostu, modern web arayüzleri ve özel modüller geliştirdim.",
+        "exp1-li2": "Müşteri lokasyonlarında donanım entegrasyonu (yazıcı, kasa) ve yerinde teknik destek sağladım.",
+        "exp2-date": "Haziran 2023 – Haziran 2023",
+        "exp2-title": "IT Altyapı ve Sistem Destek Stajyeri",
+        "exp2-company": "Osmaniye Belediyesi",
+        "exp2-li1": "Kurum personelinin bilgisayar, yazıcı ve ağ bağlantısı ile ilgili teknik sorunlarını çözdüm.",
+        "exp2-li2": "Yazılım ve donanım kurulumu ile sistem güncellemelerini gerçekleştirdim.",
+        "exp2-li3": "Temel ağ yapılandırmaları ve donanım arızalarının giderilmesinde görev aldım.",
         "sec-edu": "Eğitim <span class=\"mono text-muted text-sm\">/education</span>",
+        "edu1-date": "Ekim 2024 - Devam Ediyor",
+        "edu1-title": "Yönetim Bilişim Sistemleri",
+        "edu1-school": "İskenderun Teknik Üniversitesi",
+        "edu1-degree": "Lisans Derecesi",
+        "edu2-date": "Ekim 2021 – Haziran 2023",
+        "edu2-title": "Bilgisayar Programcılığı",
+        "edu2-school": "Osmaniye Korkut Ata Üniversitesi",
+        "edu2-degree": "Ön Lisans Derecesi",
         "sec-proj": "Projeler <span class=\"mono text-muted text-sm\">/work</span>",
         "sec-skills": "Yetenekler <span class=\"mono text-muted text-sm\">/skills</span>",
-        "sec-contact": "İletişim <span class=\"mono text-muted text-sm\">/contact</span>",
         "filter-all": "Tümü", "filter-erp": "ERP", "filter-dev": "Yazılım", "filter-tech": "Sistem",
-        "form-name": "Adınız Soyadınız", "form-email": "E-posta Adresiniz", "form-msg": "Mesajınız", "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Mesaj Gönder</span>"
+        "skill-grp-erp": "<i class=\"fas fa-briefcase text-muted\"></i> ERP & İş Süreçleri",
+        "skill-grp-dev": "<i class=\"fas fa-code text-muted\"></i> Yazılım Geliştirme",
+        "skill-grp-tech": "<i class=\"fas fa-tools text-muted\"></i> Teknik Destek & Sistem",
+        "skill-erp-cons": "ERP Danışmanlığı", "skill-erp-inst": "Kurulum & Özelleştirme", "skill-ba": "İş Analizi", "skill-opt": "Süreç Optimizasyonu", "skill-acc": "Ön Muhasebe",
+        "skill-hw-int": "Donanım Entegrasyonu", "skill-ts": "Sorun Giderme", "skill-net": "Ağ Yapılandırması", "skill-srv": "Sunucu Desteği", "skill-rem": "Uzaktan Destek",
+        "sec-contact": "İletişim <span class=\"mono text-muted text-sm\">/contact</span>",
+        "contact-desc": "Bir ERP projesi, yazılım geliştirme ihtiyacı veya teknik danışmanlık için iletişime geçebilirsiniz.",
+        "contact-email": "<i class=\"fas fa-envelope\" style=\"margin-right: 8px;\"></i> huseyinemre.tech@gmail.com",
+        "contact-linkedin": "<i class=\"fab fa-linkedin\" style=\"margin-right: 8px;\"></i> LinkedIn",
+        "contact-github": "<i class=\"fab fa-github\" style=\"margin-right: 8px;\"></i> GitHub",
+        "form-name": "Adınız Soyadınız", "form-name-input-ph": "Adınız Soyadınız",
+        "form-email": "E-posta Adresiniz", "form-email-input-ph": "ornek@mail.com",
+        "form-msg": "Mesajınız", "form-msg-input-ph": "Nasıl yardımcı olabilirim?",
+        "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Mesaj Gönder</span>",
+        "form-sending": "<i class=\"fas fa-spinner fa-spin\" style=\"margin-right: 8px;\"></i> Gönderiliyor...",
+        "form-success": "Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağım!",
+        "form-error": "Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+        "footer-text": "&copy; 2026 Hüseyin Emre. Professional Excellence için tasarlandı ve kodlandı.",
+        "menu-label": "Menu Paneli", "menu-btn-aria": "Menu Paneli", "lang-toggle": "🇬🇧 EN",
+        "project-no-desc": "Açıklama bulunmuyor.",
+        "gis-card-desc": "R dili ile coğrafi veri analizi ve görselleştirme çalışması.",
+        "Sinema-Bilet-Otamasyonu-desc": "C# ve SQL Server kullanılarak geliştirilen, kapsamlı biletleme ve salon yönetim sistemi.",
+        "Teknik-Destek-Sistemi-desc": "Firmaların teknik destek taleplerini organize eden, durum takibi yapılabilen web tabanlı çözüm.",
+        "ERP-Modul-Gelistirme-desc": "Blazor ve .NET kullanılarak hazırlanan, stok ve fatura yönetimi odaklı özel ERP modülleri.",
+        "HuseyinEmreTech-desc": "Şu an incelediğiniz modern portfolyo sitesinin kaynak kodları ve tasarım sistemi.",
+        "gis-nav-back": "Geri Dön",
+        "gis-hero-tag": "Üniversite Projesi / R Dili",
+        "gis-hero-title": "Coğrafi Bilgi Sistemleri <br>& Mekansal Analiz",
+        "gis-hero-desc": "R dili kullanılarak geliştirilen, CBS dersi kapsamında mekansal verilerin analizi, görselleştirilmesi ve haritalandırılması üzerine odaklanan kapsamlı bir çalışma.",
+        "gis-hero-btn": "<i class=\"fab fa-github\" style=\"margin-right: 8px;\"></i> Kodları İncele",
+        "gis-about-title": "Proje Hakkında",
+        "gis-about-desc": "Bu proje, \"Coğrafi Bilgi Sistemleri\" (GIS) dersi için özel olarak hazırlanmıştır. Modern veri bilimi araçları (R, ggplot2, sf) kullanılarak coğrafi katmanların birleştirilmesi ve demografik/ekonomik verilerin harita üzerinde anlamlandırılmasını hedefler.",
+        "gis-step1-title": "1. Veri Hazırlama",
+        "gis-step1-desc": "Shapefile ve GeoJSON formatındaki ham verilerin R ortamına aktarılması, temizlenmesi ve koordinat sistemlerinin (CRS) normalize edilmesi süreçleri.",
+        "gis-step2-title": "2. Mekansal Analiz",
+        "gis-step2-desc": "Öznitelik verilerinin coğrafi katmanlarla birleştirilmesi (join) ve belirli kriterlere göre mekansal filtreleme işlemleri.",
+        "gis-step3-title": "3. Görselleştirme",
+        "gis-step3-desc": "Statik (ggplot2) ve interaktif (leaflet/tmap) haritaların oluşturulması, lejant yönetimi ve renk paletlerinin optimizasyonu.",
+        "gis-code-label": "R Studio / Analiz",
+        "gis-code-comment1": "# Mekansal veri analizi kütüphaneleri",
+        "gis-code-comment2": "# Shapefile verisini oku",
+        "gis-code-comment3": "# Görselleştirme katmanlarını oluştur",
+        "gis-footer": "&copy; 2026 Hüseyin Emre. CBS Projesi Eğitim Materyali."
     },
     en: {
+        "site-title": "Hüseyin Emre | ERP Consultant & Developer",
+        "meta-desc": "Hüseyin Emre - ERP Consultant & Software Developer (.NET)",
+        "meta-keywords": "software, developer, .net, blazor, erp, consultant, c#, technical support",
+        "og-title": "Hüseyin Emre | ERP Consultant & Developer",
+        "og-desc": "Modern and professional portfolio of Hüseyin Emre, specializing in ERP solutions and .NET development.",
+        "tw-title": "Hüseyin Emre | ERP Consultant & Developer",
+        "tw-desc": "Modern and professional portfolio of Hüseyin Emre, specializing in ERP solutions and .NET development.",
         "nav-about": "About", "nav-exp": "Experience", "nav-edu": "Education", "nav-proj": "Projects", "nav-skills": "Skills", "nav-contact": "Contact",
         "hero-title": "ERP Solutions Consultant <br>& Software Developer",
         "hero-desc": "A solution-oriented ERP professional bridging business process analysis, field operations, and modern software development (.NET, Blazor). Delivering end-to-end, efficient, and user-friendly solutions for enterprises.",
         "btn-proj": "View Projects", "btn-contact": "Contact Me", "btn-cv": "<i class=\"fas fa-file-download\" style=\"margin-right: 8px;\"></i> Download CV",
         "sec-exp": "Experience <span class=\"mono text-muted text-sm\">/experience</span>",
+        "exp1-date": "June 2025 – Present",
+        "exp1-title": "ERP Solutions Consultant & Software Developer",
+        "exp1-company": "Hisar Software and Barcode Sales Systems",
+        "exp1-desc": "Managed ERP system installation, customization, and end-user training processes to increase operational efficiency.",
+        "exp1-li1": "Analyzed business processes to develop user-friendly, modern web interfaces and custom modules using Blazor and C#.",
+        "exp1-li2": "Provided hardware integration (printers, POS) and on-site technical support at client locations.",
+        "exp2-date": "June 2023 – June 2023",
+        "exp2-title": "IT Infrastructure and System Support Intern",
+        "exp2-company": "Osmaniye Municipality",
+        "exp2-li1": "Resolved technical issues related to computers, printers, and network connections for institutional staff.",
+        "exp2-li2": "Performed software and hardware installations and system updates.",
+        "exp2-li3": "Assisted in basic network configurations and hardware troubleshooting.",
         "sec-edu": "Education <span class=\"mono text-muted text-sm\">/education</span>",
+        "edu1-date": "October 2024 - Present",
+        "edu1-title": "Management Information Systems",
+        "edu1-school": "İskenderun Technical University",
+        "edu1-degree": "Bachelor's Degree",
+        "edu2-date": "October 2021 – June 2023",
+        "edu2-title": "Computer Programming",
+        "edu2-school": "Osmaniye Korkut Ata University",
+        "edu2-degree": "Associate Degree",
         "sec-proj": "Projects <span class=\"mono text-muted text-sm\">/work</span>",
         "sec-skills": "Skills <span class=\"mono text-muted text-sm\">/skills</span>",
-        "sec-contact": "Contact <span class=\"mono text-muted text-sm\">/contact</span>",
         "filter-all": "All", "filter-erp": "ERP", "filter-dev": "Development", "filter-tech": "Systems",
-        "form-name": "Full Name", "form-email": "Email Address", "form-msg": "Your Message", "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Send Message</span>"
+        "skill-grp-erp": "<i class=\"fas fa-briefcase text-muted\"></i> ERP & Business Processes",
+        "skill-grp-dev": "<i class=\"fas fa-code text-muted\"></i> Software Development",
+        "skill-grp-tech": "<i class=\"fas fa-tools text-muted\"></i> Tech Support & Systems",
+        "skill-erp-cons": "ERP Consulting", "skill-erp-inst": "Installation & Customization", "skill-ba": "Business Analysis", "skill-opt": "Process Optimization", "skill-acc": "Accountancy",
+        "skill-hw-int": "Hardware Integration", "skill-ts": "Troubleshooting", "skill-net": "Network Configuration", "skill-srv": "Server Support", "skill-rem": "Remote Support",
+        "sec-contact": "Contact <span class=\"mono text-muted text-sm\">/contact</span>",
+        "contact-desc": "You can contact me for an ERP project, software development needs, or technical consultancy.",
+        "contact-email": "<i class=\"fas fa-envelope\" style=\"margin-right: 8px;\"></i> huseyinemre.tech@gmail.com",
+        "contact-linkedin": "<i class=\"fab fa-linkedin\" style=\"margin-right: 8px;\"></i> LinkedIn",
+        "contact-github": "<i class=\"fab fa-github\" style=\"margin-right: 8px;\"></i> GitHub",
+        "form-name": "Full Name", "form-name-input-ph": "Your Full Name",
+        "form-email": "Email Address", "form-email-input-ph": "example@mail.com",
+        "form-msg": "Your Message", "form-msg-input-ph": "How can I help you?",
+        "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Send Message</span>",
+        "form-sending": "<i class=\"fas fa-spinner fa-spin\" style=\"margin-right: 8px;\"></i> Sending...",
+        "form-success": "Your message has been sent successfully. I will get back to you as soon as possible!",
+        "form-error": "An error occurred while sending the message. Please try again later.",
+        "footer-text": "&copy; 2026 Hüseyin Emre. Designed & Built for Professional Excellence.",
+        "menu-label": "Menu Panel", "menu-btn-aria": "Menu Panel", "lang-toggle": "🇹🇷 TR",
+        "project-no-desc": "Description not available.",
+        "gis-card-desc": "Geospatial data analysis and visualization study with R language.",
+        "Sinema-Bilet-Otamasyonu-desc": "Comprehensive ticketing and hall management system developed using C# and SQL Server.",
+        "Teknik-Destek-Sistemi-desc": "Web-based solution that organizes technical support requests for companies with status tracking.",
+        "ERP-Modul-Gelistirme-desc": "Custom ERP modules developed with Blazor and .NET, focusing on inventory and invoice management.",
+        "HuseyinEmreTech-desc": "Source codes and design system of this modern portfolio site you are currently reviewing.",
+        "gis-nav-back": "Go Back",
+        "gis-hero-tag": "University Project / R Language",
+        "gis-hero-title": "Geographic Information Systems <br>& Spatial Analysis",
+        "gis-hero-desc": "Developed using the R language, this is a comprehensive study focused on spatial data analysis, visualization, and mapping within the scope of the GIS course.",
+        "gis-hero-btn": "<i class=\"fab fa-github\" style=\"margin-right: 8px;\"></i> Review Codes",
+        "gis-about-title": "About the Project",
+        "gis-about-desc": "This project was specially prepared for the \"Geographic Information Systems\" (GIS) course. It aims to integrate geographic layers and make sense of demographic/economic data on the map using modern data science tools (R, ggplot2, sf).",
+        "gis-step1-title": "1. Data Preparation",
+        "gis-step1-desc": "Processes of importing raw data in Shapefile and GeoJSON formats into the R environment, cleaning them, and normalizing coordinate reference systems (CRS).",
+        "gis-step2-title": "2. Spatial Analysis",
+        "gis-step2-desc": "Joining attribute data with geographic layers and spatial filtering operations according to specific criteria.",
+        "gis-step3-title": "3. Visualization",
+        "gis-step3-desc": "Creation of static (ggplot2) and interactive (leaflet/tmap) maps, legend management, and optimization of color palettes.",
+        "gis-code-label": "R Studio / Analysis",
+        "gis-code-comment1": "# Geospatial data analysis libraries",
+        "gis-code-comment2": "# Read shapefile data",
+        "gis-code-comment3": "# Create visualization layers",
+        "gis-footer": "&copy; 2026 Hüseyin Emre. GIS Project Educational Material."
     }
 };
 
@@ -404,35 +555,65 @@ function initLanguageToggle() {
 
     let currentLang = localStorage.getItem('site_lang') || 'tr';
 
-    if (currentLang === 'en') {
-        applyTranslations('en');
-        langBtn.innerHTML = '🇹🇷 TR';
-    }
+    // Apply initial language
+    applyTranslations(currentLang);
+    updateToggleBtn(langBtn, currentLang);
 
-    langBtn.addEventListener('click', () => {
-        if (currentLang === 'tr') {
-            currentLang = 'en';
-            langBtn.innerHTML = '🇹🇷 TR';
-        } else {
-            currentLang = 'tr';
-            langBtn.innerHTML = '🇬🇧 EN';
-        }
+    langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentLang = currentLang === 'tr' ? 'en' : 'tr';
 
         localStorage.setItem('site_lang', currentLang);
         applyTranslations(currentLang);
+        updateToggleBtn(langBtn, currentLang);
+
+        // Re-render projects to apply language change if they are loaded
+        const projectsGrid = document.getElementById('projects-grid');
+        if (projectsGrid && !projectsGrid.querySelector('.loading-state')) {
+            fetchGitHubProjects();
+        }
     });
+}
+
+function updateToggleBtn(btn, lang) {
+    btn.innerHTML = lang === 'tr' ? '🇬🇧 EN' : '🇹🇷 TR';
 }
 
 function applyTranslations(lang) {
     const dict = translations[lang];
     if (!dict) return;
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
+
+        // Handle content
         if (dict[key]) {
-            el.innerHTML = dict[key];
+            if (el.tagName === 'META') {
+                el.setAttribute('content', dict[key]);
+            } else if (el.tagName === 'TITLE') {
+                document.title = dict[key];
+            } else {
+                el.innerHTML = dict[key];
+            }
+        }
+
+        // Handle placeholders (even if no main content)
+        const phKey = key + '-ph';
+        const inputPhKey = key + '-input-ph'; // Support both styles
+        if (dict[phKey]) {
+            el.setAttribute('placeholder', dict[phKey]);
+        } else if (dict[inputPhKey]) {
+            el.setAttribute('placeholder', dict[inputPhKey]);
+        }
+
+        // Handle aria-labels
+        const ariaKey = key + '-aria';
+        if (dict[ariaKey]) {
+            el.setAttribute('aria-label', dict[ariaKey]);
         }
     });
 
-    document.documentElement.lang = lang === 'tr' ? 'tr' : 'en';
+    document.documentElement.lang = lang;
 }

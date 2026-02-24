@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="tr">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Coğrafi Bilgi Sistemleri (CBS) R Dili Analiz Projesi - Hüseyin Emre">
-    <title>CBS Projesi | Hüseyin Emre</title>
+    <meta name="description" content="Coğrafi Bilgi Sistemleri (CBS) R Dili Analiz Projesi - Hüseyin Emre"
+        data-i18n="meta-desc">
+    <title data-i18n="site-title">CBS Projesi | Hüseyin Emre</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,8 +29,13 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">Hüseyin Emre</a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Geri Dön</a>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 16px;">
+                <button id="lang-toggle" class="btn btn-secondary"
+                    style="padding: 6px 12px; font-size: 0.85rem; border-radius: 6px; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05);"
+                    data-i18n="lang-toggle">🇬🇧 EN</button>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link" data-i18n="gis-nav-back">Geri Dön</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -38,15 +43,17 @@
     <!-- Project Header -->
     <section class="hero" style="min-height: 60vh;">
         <div class="container hero-content">
-            <div class="text-sm mono" style="color: var(--accent-secondary); margin-bottom: 16px;">Üniversite Projesi /
+            <div class="text-sm mono" style="color: var(--accent-secondary); margin-bottom: 16px;"
+                data-i18n="gis-hero-tag">Üniversite Projesi /
                 R Dili</div>
-            <h1 class="text-gradient">Coğrafi Bilgi Sistemleri <br>& Mekansal Analiz</h1>
-            <p>
+            <h1 class="text-gradient" data-i18n="gis-hero-title">Coğrafi Bilgi Sistemleri <br>& Mekansal Analiz</h1>
+            <p data-i18n="gis-hero-desc">
                 R dili kullanılarak geliştirilen, CBS dersi kapsamında mekansal verilerin
                 analizi, görselleştirilmesi ve haritalandırılması üzerine odaklanan kapsamlı bir çalışma.
             </p>
             <div class="cta-group">
-                <a href="https://github.com/huseyinemretech" target="_blank" class="btn btn-primary">
+                <a href="https://github.com/huseyinemretech" target="_blank" class="btn btn-primary"
+                    data-i18n="gis-hero-btn">
                     <i class="fab fa-github" style="margin-right: 8px;"></i> Kodları İncele
                 </a>
             </div>
@@ -59,8 +66,9 @@
             <div style="display: grid; gap: 80px;">
                 <!-- Overview -->
                 <div class="project-card" style="padding: 40px; height: auto;">
-                    <h2 style="margin-bottom: 24px;">Proje Hakkında</h2>
-                    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 24px;">
+                    <h2 style="margin-bottom: 24px;" data-i18n="gis-about-title">Proje Hakkında</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 24px;"
+                        data-i18n="gis-about-desc">
                         Bu proje, "Coğrafi Bilgi Sistemleri" (GIS) dersi için özel olarak hazırlanmıştır.
                         Modern veri bilimi araçları (R, ggplot2, sf) kullanılarak coğrafi katmanların
                         birleştirilmesi ve demografik/ekonomik verilerin harita üzerinde anlamlandırılmasını hedefler.
@@ -77,22 +85,22 @@
                 <!-- Methodology -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                     <div>
-                        <h3 style="margin-bottom: 20px;">1. Veri Hazırlama</h3>
-                        <p style="color: var(--text-muted);">
+                        <h3 style="margin-bottom: 20px;" data-i18n="gis-step1-title">1. Veri Hazırlama</h3>
+                        <p style="color: var(--text-muted);" data-i18n="gis-step1-desc">
                             Shapefile ve GeoJSON formatındaki ham verilerin R ortamına aktarılması,
                             temizlenmesi ve koordinat sistemlerinin (CRS) normalize edilmesi süreçleri.
                         </p>
                     </div>
                     <div>
-                        <h3 style="margin-bottom: 20px;">2. Mekansal Analiz</h3>
-                        <p style="color: var(--text-muted);">
+                        <h3 style="margin-bottom: 20px;" data-i18n="gis-step2-title">2. Mekansal Analiz</h3>
+                        <p style="color: var(--text-muted);" data-i18n="gis-step2-desc">
                             Öznitelik verilerinin coğrafi katmanlarla birleştirilmesi (join) ve
                             belirli kriterlere göre mekansal filtreleme işlemleri.
                         </p>
                     </div>
                     <div>
-                        <h3 style="margin-bottom: 20px;">3. Görselleştirme</h3>
-                        <p style="color: var(--text-muted);">
+                        <h3 style="margin-bottom: 20px;" data-i18n="gis-step3-title">3. Görselleştirme</h3>
+                        <p style="color: var(--text-muted);" data-i18n="gis-step3-desc">
                             Statik (ggplot2) ve interaktif (leaflet/tmap) haritaların oluşturulması,
                             lejant yönetimi ve renk paletlerinin optimizasyonu.
                         </p>
@@ -103,8 +111,8 @@
                 <div class="project-card" style="padding: 0; overflow: hidden; height: auto;">
                     <div
                         style="background: rgba(255,255,255,0.05); padding: 12px 24px; border-bottom: var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
-                        <span class="mono text-sm" style="color: var(--text-secondary);"><i class="fas fa-terminal"
-                                style="margin-right: 8px;"></i> R Studio / Analysis</span>
+                        <span class="mono text-sm" style="color: var(--text-secondary);" data-i18n="gis-code-label"><i
+                                class="fas fa-terminal" style="margin-right: 8px;"></i> R Studio / Analysis</span>
                         <div style="display: flex; gap: 6px;">
                             <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></span>
                             <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></span>
@@ -113,12 +121,12 @@
                     </div>
                     <div style="padding: 32px; background: rgba(0,0,0,0.4);">
                         <code class="mono" style="color: var(--text-primary); font-size: 0.95rem; line-height: 1.8;">
-                            <span style="color: var(--text-muted);"># Mekansal veri analizi kütüphaneleri</span><br>
+                            <span style="color: var(--text-muted);" data-i18n="gis-code-comment1"># Mekansal veri analizi kütüphaneleri</span><br>
                             <span style="color: var(--accent-secondary);">library</span>(sf)<br>
                             <span style="color: var(--accent-secondary);">library</span>(ggplot2)<br><br>
-                            <span style="color: var(--text-muted);"># Shapefile verisini oku</span><br>
+                            <span style="color: var(--text-muted);" data-i18n="gis-code-comment2"># Shapefile verisini oku</span><br>
                             data &lt;- <span style="color: var(--accent-primary);">st_read</span>(<span style="color: var(--success);">"turkiye_iller.shp"</span>)<br><br>
-                            <span style="color: var(--text-muted);"># Görselleştirme katmanlarını oluştur</span><br>
+                            <span style="color: var(--text-muted);" data-i18n="gis-code-comment3"># Görselleştirme katmanlarını oluştur</span><br>
                             <span style="color: var(--accent-primary);">ggplot</span>(data) + <br>
                             &nbsp;&nbsp;<span style="color: var(--accent-primary);">geom_sf</span>(<span style="color: var(--accent-secondary);">aes</span>(fill = nufus)) + <br>
                             &nbsp;&nbsp;<span style="color: var(--accent-primary);">scale_fill_viridis_c</span>(option = <span style="color: var(--success);">"magma"</span>) + <br>
@@ -133,7 +141,7 @@
     <!-- Footer -->
     <footer>
         <div class="container disable-select">
-            <p>&copy; 2026 Hüseyin Emre. CBS Projesi Eğitim Materyali.</p>
+            <p data-i18n="gis-footer">&copy; 2026 Hüseyin Emre. CBS Projesi Eğitim Materyali.</p>
         </div>
     </footer>
 

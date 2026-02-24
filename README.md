@@ -1,5 +1,7 @@
 # 🚀 Hüseyin Emre - Profesyonel Portfolyo & Blog
 
+[**English Version of README**](README_EN.md)
+
 <div align="center">
 
 ![Theme](https://img.shields.io/badge/Theme-Modern_Tech-6366f1?style=for-the-badge)

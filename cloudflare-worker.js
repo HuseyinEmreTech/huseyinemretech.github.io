@@ -1,8 +1,8 @@
 /**
  * Cloudflare Worker - HTTP Security Headers & Contact Form API
  * 
- * Bu Worker script'i sitenize eksik olan tüm HTTP Security Header'larını ekler
- * ve iletişim formundan gelen mesaj isteklerini güvenlikle karşılar.
+ * This Worker script adds all missing HTTP Security Headers to your site
+ * and securely handles contact form message requests.
  */
 
 addEventListener('fetch', event => {
@@ -108,7 +108,7 @@ async function handleContactForm(request) {
         }
 
         if (!isLocalNode && (!origin || !allowedOrigins.includes(origin))) {
-            return new Response(JSON.stringify({ success: false, error: 'Yetkisiz erişim (Unauthorized Origin)' }), {
+            return new Response(JSON.stringify({ success: false, error: 'Unauthorized Origin' }), {
                 status: 403,
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,10 +121,10 @@ async function handleContactForm(request) {
 
         const data = await request.json();
 
-        // Basit XSS/Injection Sanitizasyonu
+        // Basic XSS/Injection Sanitization
         const sanitize = (str) => {
             if (!str) return '';
-            return str.replace(/[<>]/g, '').trim().substring(0, 2000); // Max 2000 karakter, HTML taglarını temizler
+            return str.replace(/[<>]/g, '').trim().substring(0, 2000); // Max 2000 characters, cleans HTML tags
         };
 
         const safeData = {
@@ -133,20 +133,20 @@ async function handleContactForm(request) {
             message: sanitize(data.message)
         };
 
-        // TODO: Mailchannels, SendGrid vs. ile e-posta gönderimi burada yapılacak.
-        // Güvenli veriler kullanılarak gönderim sağlanır: safeData.name, safeData.email vb.
+        // TODO: Implement email sending with Mailchannels, SendGrid, etc.
+        // Sending is ensured using safe data: safeData.name, safeData.email, etc.
 
-        return new Response(JSON.stringify({ success: true, message: "E-posta güvenli şekilde alındı ve işlendi." }), {
+        return new Response(JSON.stringify({ success: true, message: "Email safely received and processed." }), {
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': responseOrigin // Dinamik Origin
+                'Access-Control-Allow-Origin': responseOrigin // Dynamic Origin
             }
         });
 
     } catch (error) {
-        return new Response(JSON.stringify({ success: false, error: 'Sunucu hatası veya geçersiz veri formatı' }), {
-            status: 400, // 500 yerine 400 (Bad Request) dönmek güvenlik açısından bazen daha iyidir
+        return new Response(JSON.stringify({ success: false, error: 'Server error or invalid data format' }), {
+            status: 400, // Returning 400 (Bad Request) is sometimes better than 500 for security
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': request.headers.get('Origin') || 'https://huseyinemre.tech'
