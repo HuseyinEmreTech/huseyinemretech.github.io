@@ -56,8 +56,8 @@ async function fetchGitHubProjects() {
     if (!projectsGrid) return;
 
     const username = 'HuseyinEmreTech';
-    const baseUrl = `https://api.github.com/users/${username}/repos?type=all&sort=stars&per_page=100`;
-    const cacheKey = 'github_repos_v7';
+    const baseUrl = `https://api.github.com/users/${username}/repos?type=all&per_page=100`;
+    const cacheKey = 'github_repos_v8';
     const CACHE_MAX_AGE = 5 * 60 * 1000; // 5 dakika - GitHub ile senkron
 
     const cached = localStorage.getItem(cacheKey);
@@ -164,7 +164,7 @@ function renderProjects(repos, showGitHubError = false) {
 
     const allProjects = [...localProjects, ...repos];
 
-    // En fazla yıldız alan projeler öne - otomatik sıralama
+    // En fazla yıldız alan projeler öne - client-side sıralama (API stars desteklemiyor)
     const getStarValue = (r) => {
         const v = r.stargazers_count;
         if (typeof v === 'number') return v;
