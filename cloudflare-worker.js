@@ -76,11 +76,12 @@ async function handleRequest(request) {
     newResponse.headers.set('Cross-Origin-Resource-Policy', 'cross-origin')
 
     // Content-Security-Policy - Maksimum Güvenlik, Minimum Risk
+    // unpkg.com: Leaflet harita kütüphanesi (makine-ogrenmesi, araba-yikama)
     newResponse.headers.set(
         'Content-Security-Policy',
         "default-src 'none'; " +
-        "script-src 'self' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; " +
-        "style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; " +
+        "script-src 'self' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com 'sha256-VA44YqcGzhS0lUBOrU7OKFrN+MnRXueh64q7hw4TEE4='; " +
+        "style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline'; " +
         "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
         "img-src 'self' data: https:; " +
         "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com; " +
