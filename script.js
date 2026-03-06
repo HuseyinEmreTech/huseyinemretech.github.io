@@ -56,8 +56,8 @@ async function fetchGitHubProjects() {
     if (!projectsGrid) return;
 
     const username = 'HuseyinEmreTech';
-    const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`;
-    const cacheKey = 'github_repos_v5';
+    const baseUrl = `https://api.github.com/users/${username}/repos?type=all&sort=stars&per_page=100`;
+    const cacheKey = 'github_repos_v7';
     const CACHE_MAX_AGE = 5 * 60 * 1000; // 5 dakika - GitHub ile senkron
 
     const cached = localStorage.getItem(cacheKey);
@@ -74,16 +74,19 @@ async function fetchGitHubProjects() {
     }
 
     try {
-        const response = await fetch(apiUrl, {
-            headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'User-Agent': 'Portfolio-Site-1.0'
-            }
-        });
-        if (!response.ok) throw new Error(`GitHub API ${response.status}`);
-
-        const repos = await response.json();
-        const validRepos = filterGitHubRepos(repos);
+        const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'Portfolio-Site-1.0' };
+        const allRepos = [];
+        let page = 1;
+        let hasMore = true;
+        while (hasMore) {
+            const response = await fetch(`${baseUrl}&page=${page}`, { headers });
+            if (!response.ok) throw new Error(`GitHub API ${response.status}`);
+            const pageRepos = await response.json();
+            allRepos.push(...pageRepos);
+            hasMore = pageRepos.length === 100;
+            page++;
+        }
+        const validRepos = filterGitHubRepos(allRepos);
 
         localStorage.setItem(cacheKey, JSON.stringify({
             data: validRepos,
@@ -105,7 +108,7 @@ async function fetchGitHubProjects() {
 }
 
 function filterGitHubRepos(repos) {
-    return repos.filter(r => !r.fork && r.name.toLowerCase() !== 'huseyinemretech.github.io');
+    return repos.filter(r => r.name.toLowerCase() !== 'huseyinemretech.github.io');
 }
 
 function renderProjects(repos, showGitHubError = false) {
@@ -159,6 +162,15 @@ function renderProjects(repos, showGitHubError = false) {
     };
 
     const allProjects = [...localProjects, ...repos];
+
+    // En fazla yıldız alan projeler öne - otomatik sıralama
+    const getStarValue = (r) => {
+        const v = r.stargazers_count;
+        if (typeof v === 'number') return v;
+        if (r.isLocal) return 999; // Öne çıkan yerel projeler üstte
+        return 0;
+    };
+    allProjects.sort((a, b) => getStarValue(b) - getStarValue(a));
 
     if (showGitHubError && repos.length === 0) {
         const errorBanner = document.createElement('div');
