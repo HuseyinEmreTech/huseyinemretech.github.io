@@ -4,12 +4,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 3.79,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-02",
         "avg_precip": 2.42,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -19,12 +23,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.67,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-03",
         "avg_precip": 2.26,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -34,12 +42,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.35,
+    "su_birikme_riski": 0.42,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-04",
         "avg_precip": 4.09,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.42,
         "durum": "Yıkama"
       }
     ]
@@ -49,12 +61,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 8.93,
+    "su_birikme_riski": 0.47,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-05",
         "avg_precip": 4.84,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.47,
         "durum": "Yıkama"
       }
     ]
@@ -64,12 +80,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 9.64,
+    "su_birikme_riski": 0.43,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-06",
         "avg_precip": 4.8,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.43,
         "durum": "Yıkama"
       }
     ]
@@ -79,12 +99,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.45,
+    "kumulatif_2_gun_ort": 9.59,
+    "su_birikme_riski": 0.51,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-07",
         "avg_precip": 4.78,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.51,
         "durum": "Yıkama"
       }
     ]
@@ -94,12 +118,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.4,
+    "kumulatif_2_gun_ort": 10.18,
+    "su_birikme_riski": 0.47,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-08",
         "avg_precip": 5.39,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.47,
         "durum": "Yıkama"
       }
     ]
@@ -109,12 +137,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 7.38,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-09",
         "avg_precip": 1.99,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -124,12 +156,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 4.92,
+    "su_birikme_riski": 0.22,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-10",
         "avg_precip": 2.93,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.22,
         "durum": "Yıkama"
       }
     ]
@@ -139,12 +175,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 5.15,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-11",
         "avg_precip": 2.22,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]
@@ -154,12 +194,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.99,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-12",
         "avg_precip": 1.77,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -169,12 +213,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.36,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-13",
         "avg_precip": 2.58,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -184,12 +232,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 5.73,
+    "su_birikme_riski": 0.3,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-14",
         "avg_precip": 3.14,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.3,
         "durum": "Yıkama"
       }
     ]
@@ -199,12 +251,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.84,
+    "su_birikme_riski": 0.41,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-15",
         "avg_precip": 5.7,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.41,
         "durum": "Yıkama"
       }
     ]
@@ -214,12 +270,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 10.71,
+    "su_birikme_riski": 0.41,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-16",
         "avg_precip": 5.02,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.41,
         "durum": "Yıkama"
       }
     ]
@@ -229,12 +289,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 7.31,
+    "su_birikme_riski": 0.33,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-17",
         "avg_precip": 2.29,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.33,
         "durum": "Yıkama"
       }
     ]
@@ -244,12 +308,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 8.72,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-18",
         "avg_precip": 6.43,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -259,12 +327,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 10.71,
+    "su_birikme_riski": 0.43,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-19",
         "avg_precip": 4.28,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.43,
         "durum": "Yıkama"
       }
     ]
@@ -274,12 +346,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 10.11,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-20",
         "avg_precip": 5.82,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -289,12 +365,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 7.2,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-21",
         "avg_precip": 1.37,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -304,12 +384,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.41,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-22",
         "avg_precip": 2.04,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -319,12 +403,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.7,
+    "su_birikme_riski": 0.46,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-23",
         "avg_precip": 6.66,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.46,
         "durum": "Yıkama"
       }
     ]
@@ -334,12 +422,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.69,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-24",
         "avg_precip": 2.03,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -349,12 +441,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.85,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-25",
         "avg_precip": 2.82,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -364,12 +460,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 9.24,
+    "su_birikme_riski": 0.46,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-26",
         "avg_precip": 6.42,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.46,
         "durum": "Yıkama"
       }
     ]
@@ -379,12 +479,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.4,
+    "kumulatif_2_gun_ort": 10.63,
+    "su_birikme_riski": 0.5,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-27",
         "avg_precip": 4.21,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.5,
         "durum": "Yıkama"
       }
     ]
@@ -394,12 +498,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 7.75,
+    "su_birikme_riski": 0.39,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-28",
         "avg_precip": 3.55,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.39,
         "durum": "Yıkama"
       }
     ]
@@ -409,12 +517,16 @@
     "rain_pct": 0.65,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.4,
+    "kumulatif_2_gun_ort": 9.19,
+    "su_birikme_riski": 0.54,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-29",
         "avg_precip": 5.65,
         "rain_pct": 0.65,
+        "su_birikme_riski": 0.54,
         "durum": "Yıkama"
       }
     ]
@@ -424,12 +536,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.5,
+    "kumulatif_2_gun_ort": 11.45,
+    "su_birikme_riski": 0.57,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-30",
         "avg_precip": 5.8,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.57,
         "durum": "Yıkama"
       }
     ]
@@ -439,12 +555,16 @@
     "rain_pct": 0.65,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.45,
+    "kumulatif_2_gun_ort": 10.22,
+    "su_birikme_riski": 0.54,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-31",
         "avg_precip": 4.42,
         "rain_pct": 0.65,
+        "su_birikme_riski": 0.54,
         "durum": "Yıkama"
       }
     ]
@@ -454,12 +574,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.45,
+    "kumulatif_2_gun_ort": 7.86,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-01",
         "avg_precip": 3.43,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -469,12 +593,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.17,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-02",
         "avg_precip": 0.73,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -484,12 +612,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 2.05,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-03",
         "avg_precip": 1.31,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -499,12 +631,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.63,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-04",
         "avg_precip": 3.32,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -514,12 +650,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.76,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-05",
         "avg_precip": 3.45,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -529,12 +669,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 9.77,
+    "su_birikme_riski": 0.41,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-06",
         "avg_precip": 6.32,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.41,
         "durum": "Yıkama"
       }
     ]
@@ -544,12 +688,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 9.9,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-07",
         "avg_precip": 3.58,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -559,12 +707,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.53,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-08",
         "avg_precip": 2.96,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -574,12 +726,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.98,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-09",
         "avg_precip": 4.02,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -589,12 +745,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.29,
+    "su_birikme_riski": 0.41,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-10",
         "avg_precip": 4.26,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.41,
         "durum": "Yıkama"
       }
     ]
@@ -604,12 +764,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 7.78,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-11",
         "avg_precip": 3.52,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]
@@ -619,12 +783,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.16,
+    "su_birikme_riski": 0.32,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-12",
         "avg_precip": 2.65,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.32,
         "durum": "Yıkama"
       }
     ]
@@ -634,12 +802,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 5.6,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-13",
         "avg_precip": 2.96,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -649,12 +821,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 6.32,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-14",
         "avg_precip": 3.37,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -664,12 +840,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.55,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-15",
         "avg_precip": 5.19,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -679,12 +859,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 11.93,
+    "su_birikme_riski": 0.51,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-16",
         "avg_precip": 6.75,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.51,
         "durum": "Yıkama"
       }
     ]
@@ -694,12 +878,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 12.61,
+    "su_birikme_riski": 0.5,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-17",
         "avg_precip": 5.86,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.5,
         "durum": "Yıkama"
       }
     ]
@@ -709,12 +897,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 9.5,
+    "su_birikme_riski": 0.4,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-18",
         "avg_precip": 3.64,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.4,
         "durum": "Yıkama"
       }
     ]
@@ -724,12 +916,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 6.75,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-19",
         "avg_precip": 3.11,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -739,12 +935,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 5.49,
+    "su_birikme_riski": 0.3,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-20",
         "avg_precip": 2.38,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.3,
         "durum": "Yıkama"
       }
     ]
@@ -754,12 +954,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.46,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-21",
         "avg_precip": 2.08,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -769,12 +973,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.58,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-22",
         "avg_precip": 1.5,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -784,12 +992,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.27,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-23",
         "avg_precip": 0.76,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -799,12 +1011,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.65,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-24",
         "avg_precip": 1.88,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -814,12 +1030,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 5.4,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-25",
         "avg_precip": 3.51,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -829,12 +1049,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 5.81,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-26",
         "avg_precip": 2.3,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -844,12 +1068,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 5.07,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-27",
         "avg_precip": 2.77,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -859,12 +1087,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.87,
+    "su_birikme_riski": 0.39,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-28",
         "avg_precip": 4.1,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.39,
         "durum": "Yıkama"
       }
     ]
@@ -874,12 +1106,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 8.76,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "02-29",
         "avg_precip": 3.53,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -889,12 +1125,16 @@
     "rain_pct": 0.4,
     "n_years": 5,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 7.85,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-01",
         "avg_precip": 2.48,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -904,12 +1144,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.83,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-02",
         "avg_precip": 2.46,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -919,12 +1163,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 7.67,
+    "su_birikme_riski": 0.43,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-03",
         "avg_precip": 5.21,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.43,
         "durum": "Yıkama"
       }
     ]
@@ -934,12 +1182,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 8.62,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-04",
         "avg_precip": 3.42,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -949,12 +1201,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.59,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-05",
         "avg_precip": 3.17,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -964,12 +1220,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.57,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-06",
         "avg_precip": 1.4,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -979,12 +1239,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 2.51,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-07",
         "avg_precip": 1.11,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -994,12 +1258,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.59,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-08",
         "avg_precip": 1.48,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -1009,12 +1277,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 5.52,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-09",
         "avg_precip": 4.04,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -1024,12 +1296,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 8.12,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-10",
         "avg_precip": 4.08,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -1039,12 +1315,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 6.65,
+    "su_birikme_riski": 0.33,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-11",
         "avg_precip": 2.56,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.33,
         "durum": "Yıkama"
       }
     ]
@@ -1054,12 +1334,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.79,
+    "su_birikme_riski": 0.29,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-12",
         "avg_precip": 2.24,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.29,
         "durum": "Yıkama"
       }
     ]
@@ -1069,12 +1353,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 6.29,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-13",
         "avg_precip": 4.05,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -1084,12 +1372,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 9.67,
+    "su_birikme_riski": 0.45,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-14",
         "avg_precip": 5.61,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.45,
         "durum": "Yıkama"
       }
     ]
@@ -1099,12 +1391,16 @@
     "rain_pct": 0.55,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.4,
+    "kumulatif_2_gun_ort": 10.31,
+    "su_birikme_riski": 0.5,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-15",
         "avg_precip": 4.7,
         "rain_pct": 0.55,
+        "su_birikme_riski": 0.5,
         "durum": "Yıkama"
       }
     ]
@@ -1114,12 +1410,16 @@
     "rain_pct": 0.6,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.4,
+    "kumulatif_2_gun_ort": 7.28,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-16",
         "avg_precip": 2.58,
         "rain_pct": 0.6,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -1129,12 +1429,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 6.95,
+    "su_birikme_riski": 0.4,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-17",
         "avg_precip": 4.37,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.4,
         "durum": "Yıkama"
       }
     ]
@@ -1144,12 +1448,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.72,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-18",
         "avg_precip": 2.35,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -1159,12 +1467,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.0,
+    "su_birikme_riski": 0.37,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-19",
         "avg_precip": 3.65,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.37,
         "durum": "Yıkama"
       }
     ]
@@ -1174,12 +1486,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 5.29,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-20",
         "avg_precip": 1.64,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -1189,12 +1505,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.08,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-21",
         "avg_precip": 2.44,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -1204,12 +1524,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.5,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-22",
         "avg_precip": 1.06,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -1219,12 +1543,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.23,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-23",
         "avg_precip": 2.17,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -1234,12 +1562,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.37,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-24",
         "avg_precip": 2.21,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]
@@ -1249,12 +1581,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.99,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-25",
         "avg_precip": 1.78,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -1264,12 +1600,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.95,
+    "su_birikme_riski": 0.29,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-26",
         "avg_precip": 3.17,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.29,
         "durum": "Yıkama"
       }
     ]
@@ -1279,12 +1619,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 4.94,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-27",
         "avg_precip": 1.78,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -1294,12 +1638,16 @@
     "rain_pct": 0.6,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.1,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-28",
         "avg_precip": 2.32,
         "rain_pct": 0.6,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -1309,12 +1657,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 4.91,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-29",
         "avg_precip": 2.59,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -1324,12 +1676,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 6.03,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-30",
         "avg_precip": 3.44,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -1339,12 +1695,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.79,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "03-31",
         "avg_precip": 1.35,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -1354,12 +1714,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 3.14,
+    "su_birikme_riski": 0.32,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-01",
         "avg_precip": 1.78,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.32,
         "durum": "Yıkama"
       }
     ]
@@ -1369,12 +1733,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 4.81,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-02",
         "avg_precip": 3.03,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -1384,12 +1752,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 5.31,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-03",
         "avg_precip": 2.27,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -1399,12 +1771,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.42,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-04",
         "avg_precip": 1.14,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -1414,12 +1790,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.8,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-05",
         "avg_precip": 0.66,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -1429,18 +1809,23 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.02,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "04-06",
         "avg_precip": 0.36,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkala"
       },
       {
         "tarih": "04-07",
         "avg_precip": 1.4,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -1450,12 +1835,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.76,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-07",
         "avg_precip": 1.4,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -1465,12 +1854,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 5.25,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-08",
         "avg_precip": 3.85,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -1480,12 +1873,16 @@
     "rain_pct": 0.65,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 6.74,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-09",
         "avg_precip": 2.89,
         "rain_pct": 0.65,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -1495,12 +1892,16 @@
     "rain_pct": 0.6,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.55,
+    "kumulatif_2_gun_ort": 7.73,
+    "su_birikme_riski": 0.55,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-10",
         "avg_precip": 4.85,
         "rain_pct": 0.6,
+        "su_birikme_riski": 0.55,
         "durum": "Yıkama"
       }
     ]
@@ -1510,12 +1911,16 @@
     "rain_pct": 0.65,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.45,
+    "kumulatif_2_gun_ort": 8.69,
+    "su_birikme_riski": 0.52,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-11",
         "avg_precip": 3.85,
         "rain_pct": 0.65,
+        "su_birikme_riski": 0.52,
         "durum": "Yıkama"
       }
     ]
@@ -1525,12 +1930,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 6.87,
+    "su_birikme_riski": 0.4,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-12",
         "avg_precip": 3.03,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.4,
         "durum": "Yıkama"
       }
     ]
@@ -1540,12 +1949,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.67,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-13",
         "avg_precip": 0.65,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -1555,12 +1968,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.67,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-14",
         "avg_precip": 1.03,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -1570,12 +1987,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 3.69,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-15",
         "avg_precip": 2.67,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -1585,12 +2006,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 5.28,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-16",
         "avg_precip": 2.61,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -1600,12 +2025,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.03,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-17",
         "avg_precip": 1.41,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -1615,12 +2044,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 2.45,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-18",
         "avg_precip": 1.04,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -1630,12 +2063,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.23,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-19",
         "avg_precip": 2.2,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -1645,12 +2082,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.38,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-20",
         "avg_precip": 1.18,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -1660,12 +2101,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.35,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-21",
         "avg_precip": 1.17,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -1675,12 +2120,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.55,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-22",
         "avg_precip": 2.38,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -1690,12 +2139,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 4.13,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-23",
         "avg_precip": 1.76,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -1705,12 +2158,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.64,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-24",
         "avg_precip": 0.89,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -1720,12 +2177,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 2.4,
+    "su_birikme_riski": 0.22,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-25",
         "avg_precip": 1.52,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.22,
         "durum": "Yıkama"
       }
     ]
@@ -1735,12 +2196,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.23,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-26",
         "avg_precip": 0.71,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -1750,18 +2215,23 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 1.04,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "04-27",
         "avg_precip": 0.34,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "04-28",
         "avg_precip": 0.62,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkama"
       }
     ]
@@ -1771,12 +2241,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.96,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-28",
         "avg_precip": 0.62,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkama"
       }
     ]
@@ -1786,12 +2260,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.51,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-29",
         "avg_precip": 0.89,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -1801,12 +2279,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.02,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "04-30",
         "avg_precip": 1.13,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -1816,12 +2298,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.96,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-01",
         "avg_precip": 1.83,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -1831,12 +2317,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 2.9,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-02",
         "avg_precip": 1.06,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -1846,12 +2336,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.01,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-03",
         "avg_precip": 1.94,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -1861,12 +2355,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.1,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-04",
         "avg_precip": 1.16,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -1876,12 +2374,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.78,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-05",
         "avg_precip": 2.62,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -1891,12 +2393,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.66,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-06",
         "avg_precip": 2.04,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -1906,12 +2412,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.76,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-07",
         "avg_precip": 1.73,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -1921,12 +2431,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.76,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-08",
         "avg_precip": 1.03,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -1936,12 +2450,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.92,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-09",
         "avg_precip": 0.89,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -1951,18 +2469,23 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.32,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "05-10",
         "avg_precip": 0.43,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-11",
         "avg_precip": 1.98,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -1972,12 +2495,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.42,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-11",
         "avg_precip": 1.98,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -1987,12 +2514,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.8,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-12",
         "avg_precip": 1.81,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -2002,12 +2533,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 2.93,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-13",
         "avg_precip": 1.12,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]
@@ -2017,12 +2552,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 1.94,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-14",
         "avg_precip": 0.82,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -2032,12 +2571,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 2.14,
+    "su_birikme_riski": 0.22,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-15",
         "avg_precip": 1.32,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.22,
         "durum": "Yıkama"
       }
     ]
@@ -2047,24 +2590,30 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.66,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "05-16",
         "avg_precip": 0.34,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-17",
         "avg_precip": 0.29,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-18",
         "avg_precip": 0.97,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -2074,18 +2623,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.62,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "05-17",
         "avg_precip": 0.29,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-18",
         "avg_precip": 0.97,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -2095,12 +2649,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.25,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-18",
         "avg_precip": 0.97,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -2110,12 +2668,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.58,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-19",
         "avg_precip": 0.61,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -2125,12 +2687,16 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 2.39,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-20",
         "avg_precip": 1.78,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -2140,24 +2706,30 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 2.19,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "05-21",
         "avg_precip": 0.4,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-22",
         "avg_precip": 0.3,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-23",
         "avg_precip": 1.6,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -2167,18 +2739,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.71,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "05-22",
         "avg_precip": 0.3,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-23",
         "avg_precip": 1.6,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -2188,12 +2765,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.9,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-23",
         "avg_precip": 1.6,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -2203,12 +2784,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.65,
+    "su_birikme_riski": 0.22,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-24",
         "avg_precip": 2.05,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.22,
         "durum": "Yıkama"
       }
     ]
@@ -2218,30 +2803,37 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.21,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "05-25",
         "avg_precip": 0.15,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-26",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-27",
         "avg_precip": 0.32,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-28",
         "avg_precip": 1.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -2251,24 +2843,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.28,
+    "su_birikme_riski": 0.05,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "05-26",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-27",
         "avg_precip": 0.32,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-28",
         "avg_precip": 1.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -2278,18 +2876,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.44,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "05-27",
         "avg_precip": 0.32,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "05-28",
         "avg_precip": 1.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -2299,12 +2902,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.78,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-28",
         "avg_precip": 1.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -2314,12 +2921,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.02,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-29",
         "avg_precip": 1.56,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -2329,12 +2940,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 2.25,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "05-30",
         "avg_precip": 0.7,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -2344,18 +2959,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.04,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "05-31",
         "avg_precip": 0.35,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-01",
         "avg_precip": 0.56,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -2365,12 +2985,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.91,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-01",
         "avg_precip": 0.56,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -2380,12 +3004,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.49,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-02",
         "avg_precip": 0.93,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -2395,36 +3023,44 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.21,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 4,
     "ileri_10_gun": [
       {
         "tarih": "06-03",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-04",
         "avg_precip": 0.21,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-05",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-06",
         "avg_precip": 0.03,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-07",
         "avg_precip": 0.55,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkama"
       }
     ]
@@ -2434,30 +3070,37 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.5,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "06-04",
         "avg_precip": 0.21,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-05",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-06",
         "avg_precip": 0.03,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-07",
         "avg_precip": 0.55,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkama"
       }
     ]
@@ -2467,24 +3110,30 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.51,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "06-05",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-06",
         "avg_precip": 0.03,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-07",
         "avg_precip": 0.55,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkama"
       }
     ]
@@ -2494,18 +3143,23 @@
     "rain_pct": 0.0,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.32,
+    "su_birikme_riski": 0.0,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "06-06",
         "avg_precip": 0.03,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-07",
         "avg_precip": 0.55,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkama"
       }
     ]
@@ -2515,12 +3169,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.57,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-07",
         "avg_precip": 0.55,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkama"
       }
     ]
@@ -2530,36 +3188,44 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.81,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 4,
     "ileri_10_gun": [
       {
         "tarih": "06-08",
         "avg_precip": 0.27,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-09",
         "avg_precip": 0.16,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-10",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-11",
         "avg_precip": 0.48,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-12",
         "avg_precip": 0.6,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -2569,30 +3235,37 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.43,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "06-09",
         "avg_precip": 0.16,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-10",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-11",
         "avg_precip": 0.48,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-12",
         "avg_precip": 0.6,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -2602,24 +3275,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.3,
+    "su_birikme_riski": 0.05,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "06-10",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-11",
         "avg_precip": 0.48,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-12",
         "avg_precip": 0.6,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -2629,18 +3308,23 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.62,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "06-11",
         "avg_precip": 0.48,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-12",
         "avg_precip": 0.6,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -2650,12 +3334,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.08,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-12",
         "avg_precip": 0.6,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -2665,12 +3353,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.31,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-13",
         "avg_precip": 1.71,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -2680,12 +3372,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.58,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-14",
         "avg_precip": 1.87,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -2695,12 +3391,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.4,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-15",
         "avg_precip": 0.53,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -2710,24 +3410,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.65,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "06-16",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-17",
         "avg_precip": 0.2,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-18",
         "avg_precip": 0.58,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -2737,18 +3443,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.33,
+    "su_birikme_riski": 0.05,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "06-17",
         "avg_precip": 0.2,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-18",
         "avg_precip": 0.58,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -2758,12 +3469,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.79,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-18",
         "avg_precip": 0.58,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -2773,12 +3488,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.59,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-19",
         "avg_precip": 1.01,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -2788,12 +3507,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 2.17,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-20",
         "avg_precip": 1.16,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -2803,18 +3526,23 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.65,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "06-21",
         "avg_precip": 0.49,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-22",
         "avg_precip": 0.96,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -2824,12 +3552,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.45,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-22",
         "avg_precip": 0.96,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -2839,12 +3571,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 2.32,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-23",
         "avg_precip": 1.37,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -2854,12 +3590,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.01,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-24",
         "avg_precip": 1.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -2869,12 +3609,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 3.2,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "06-25",
         "avg_precip": 1.56,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -2884,66 +3628,79 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.77,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "06-26",
         "avg_precip": 0.21,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-27",
         "avg_precip": 0.13,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-28",
         "avg_precip": 0.43,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-29",
         "avg_precip": 0.37,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-30",
         "avg_precip": 0.32,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-01",
         "avg_precip": 0.18,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       }
     ]
@@ -2953,66 +3710,79 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.34,
+    "su_birikme_riski": 0.05,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "06-27",
         "avg_precip": 0.13,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-28",
         "avg_precip": 0.43,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-29",
         "avg_precip": 0.37,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-30",
         "avg_precip": 0.32,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-01",
         "avg_precip": 0.18,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       }
     ]
@@ -3022,66 +3792,79 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.56,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "06-28",
         "avg_precip": 0.43,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-29",
         "avg_precip": 0.37,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-30",
         "avg_precip": 0.32,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-01",
         "avg_precip": 0.18,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       }
     ]
@@ -3091,66 +3874,79 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.81,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "06-29",
         "avg_precip": 0.37,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkala"
       },
       {
         "tarih": "06-30",
         "avg_precip": 0.32,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-01",
         "avg_precip": 0.18,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       }
     ]
@@ -3160,66 +3956,79 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.69,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "06-30",
         "avg_precip": 0.32,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-01",
         "avg_precip": 0.18,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       }
     ]
@@ -3229,66 +4038,79 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.5,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "07-01",
         "avg_precip": 0.18,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       }
     ]
@@ -3298,66 +4120,79 @@
     "rain_pct": 0.0,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.22,
+    "su_birikme_riski": 0.0,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "07-02",
         "avg_precip": 0.04,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       }
     ]
@@ -3367,66 +4202,79 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.16,
+    "su_birikme_riski": 0.03,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "07-03",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.03,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       }
     ]
@@ -3436,66 +4284,79 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.32,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 9,
     "ileri_10_gun": [
       {
         "tarih": "07-04",
         "avg_precip": 0.19,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3505,60 +4366,72 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.33,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 8,
     "ileri_10_gun": [
       {
         "tarih": "07-05",
         "avg_precip": 0.14,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3568,54 +4441,65 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.53,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 7,
     "ileri_10_gun": [
       {
         "tarih": "07-06",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3625,48 +4509,58 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.64,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 6,
     "ileri_10_gun": [
       {
         "tarih": "07-07",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3676,42 +4570,51 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.49,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 5,
     "ileri_10_gun": [
       {
         "tarih": "07-08",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3721,36 +4624,44 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.71,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 4,
     "ileri_10_gun": [
       {
         "tarih": "07-09",
         "avg_precip": 0.46,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3760,30 +4671,37 @@
     "rain_pct": 0.0,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.48,
+    "su_birikme_riski": 0.01,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "07-10",
         "avg_precip": 0.02,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3793,24 +4711,30 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.43,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "07-11",
         "avg_precip": 0.42,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3820,18 +4744,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.68,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "07-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3841,12 +4770,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.91,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "07-13",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -3856,12 +4789,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.22,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "07-14",
         "avg_precip": 0.58,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -3871,12 +4808,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 1.27,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "07-15",
         "avg_precip": 0.68,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -3886,30 +4827,37 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.06,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "07-16",
         "avg_precip": 0.38,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-17",
         "avg_precip": 0.01,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-18",
         "avg_precip": 0.49,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-19",
         "avg_precip": 0.51,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -3919,24 +4867,30 @@
     "rain_pct": 0.0,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.39,
+    "su_birikme_riski": 0.0,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "07-17",
         "avg_precip": 0.01,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.0,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-18",
         "avg_precip": 0.49,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-19",
         "avg_precip": 0.51,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -3946,18 +4900,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.51,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "07-18",
         "avg_precip": 0.49,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-19",
         "avg_precip": 0.51,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -3967,12 +4926,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.01,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "07-19",
         "avg_precip": 0.51,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -3982,66 +4945,79 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.92,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 10,
     "ileri_10_gun": [
       {
         "tarih": "07-20",
         "avg_precip": 0.41,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-21",
         "avg_precip": 0.37,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-22",
         "avg_precip": 0.49,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-23",
         "avg_precip": 0.27,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-24",
         "avg_precip": 0.06,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-25",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       }
     ]
@@ -4051,66 +5027,79 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.78,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 9,
     "ileri_10_gun": [
       {
         "tarih": "07-21",
         "avg_precip": 0.37,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-22",
         "avg_precip": 0.49,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-23",
         "avg_precip": 0.27,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-24",
         "avg_precip": 0.06,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-25",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4120,60 +5109,72 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.86,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 8,
     "ileri_10_gun": [
       {
         "tarih": "07-22",
         "avg_precip": 0.49,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-23",
         "avg_precip": 0.27,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-24",
         "avg_precip": 0.06,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-25",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4183,54 +5184,65 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.76,
+    "su_birikme_riski": 0.05,
     "temiz_gun_sayisi": 7,
     "ileri_10_gun": [
       {
         "tarih": "07-23",
         "avg_precip": 0.27,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-24",
         "avg_precip": 0.06,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-25",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4240,48 +5252,58 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.33,
+    "su_birikme_riski": 0.02,
     "temiz_gun_sayisi": 6,
     "ileri_10_gun": [
       {
         "tarih": "07-24",
         "avg_precip": 0.06,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-25",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4291,42 +5313,51 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.31,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 5,
     "ileri_10_gun": [
       {
         "tarih": "07-25",
         "avg_precip": 0.25,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4336,36 +5367,44 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.48,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 4,
     "ileri_10_gun": [
       {
         "tarih": "07-26",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4375,30 +5414,37 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.58,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "07-27",
         "avg_precip": 0.35,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4408,24 +5454,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.42,
+    "su_birikme_riski": 0.05,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "07-28",
         "avg_precip": 0.07,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.05,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4435,18 +5487,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.35,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "07-29",
         "avg_precip": 0.28,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4456,12 +5513,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.89,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "07-30",
         "avg_precip": 0.61,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4471,12 +5532,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.18,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "07-31",
         "avg_precip": 0.57,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkama"
       }
     ]
@@ -4486,12 +5551,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.16,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-01",
         "avg_precip": 0.59,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -4501,12 +5570,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.46,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-02",
         "avg_precip": 0.86,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4516,12 +5589,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.83,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-03",
         "avg_precip": 0.96,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -4531,18 +5608,23 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.39,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "08-04",
         "avg_precip": 0.43,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-05",
         "avg_precip": 1.11,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -4552,12 +5634,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.54,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-05",
         "avg_precip": 1.11,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -4567,12 +5653,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.69,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-06",
         "avg_precip": 0.59,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4582,12 +5672,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.44,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-07",
         "avg_precip": 0.85,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -4597,12 +5691,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.79,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-08",
         "avg_precip": 0.95,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -4612,12 +5710,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.77,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-09",
         "avg_precip": 0.82,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -4627,12 +5729,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.49,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-10",
         "avg_precip": 0.66,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -4642,12 +5748,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.72,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-11",
         "avg_precip": 1.06,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -4657,12 +5767,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.67,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-12",
         "avg_precip": 0.61,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -4672,18 +5786,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.93,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "08-13",
         "avg_precip": 0.32,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-14",
         "avg_precip": 0.61,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4693,12 +5812,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.94,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-14",
         "avg_precip": 0.61,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkama"
       }
     ]
@@ -4708,24 +5831,30 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.06,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "08-15",
         "avg_precip": 0.44,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-16",
         "avg_precip": 0.44,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-17",
         "avg_precip": 0.86,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -4735,18 +5864,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.88,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "08-16",
         "avg_precip": 0.44,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-17",
         "avg_precip": 0.86,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -4756,12 +5890,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.3,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-17",
         "avg_precip": 0.86,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -4771,12 +5909,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.98,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-18",
         "avg_precip": 1.12,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -4786,12 +5928,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.67,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-19",
         "avg_precip": 0.55,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4801,12 +5947,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.31,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-20",
         "avg_precip": 0.77,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -4816,12 +5966,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.46,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-21",
         "avg_precip": 0.69,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4831,12 +5985,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.23,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-22",
         "avg_precip": 0.54,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -4846,36 +6004,44 @@
     "rain_pct": 0.0,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.55,
+    "su_birikme_riski": 0.01,
     "temiz_gun_sayisi": 4,
     "ileri_10_gun": [
       {
         "tarih": "08-23",
         "avg_precip": 0.01,
         "rain_pct": 0.0,
+        "su_birikme_riski": 0.01,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-24",
         "avg_precip": 0.4,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-25",
         "avg_precip": 0.19,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-26",
         "avg_precip": 0.23,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-27",
         "avg_precip": 0.95,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4885,30 +6051,37 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.41,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "08-24",
         "avg_precip": 0.4,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-25",
         "avg_precip": 0.19,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-26",
         "avg_precip": 0.23,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-27",
         "avg_precip": 0.95,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4918,24 +6091,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.59,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "08-25",
         "avg_precip": 0.19,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-26",
         "avg_precip": 0.23,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-27",
         "avg_precip": 0.95,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4945,18 +6124,23 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.41,
+    "su_birikme_riski": 0.02,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "08-26",
         "avg_precip": 0.23,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.02,
         "durum": "Yıkala"
       },
       {
         "tarih": "08-27",
         "avg_precip": 0.95,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4966,12 +6150,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.18,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-27",
         "avg_precip": 0.95,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -4981,12 +6169,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.7,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-28",
         "avg_precip": 0.75,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -4996,12 +6188,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.39,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-29",
         "avg_precip": 0.64,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkama"
       }
     ]
@@ -5011,12 +6207,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.21,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "08-30",
         "avg_precip": 0.57,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -5026,24 +6226,30 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.05,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "08-31",
         "avg_precip": 0.47,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-01",
         "avg_precip": 0.27,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-02",
         "avg_precip": 0.66,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5053,18 +6259,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.74,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "09-01",
         "avg_precip": 0.27,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-02",
         "avg_precip": 0.66,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5074,12 +6285,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.93,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-02",
         "avg_precip": 0.66,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5089,12 +6304,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.31,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-03",
         "avg_precip": 0.66,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5104,30 +6323,37 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.13,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "09-04",
         "avg_precip": 0.47,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-05",
         "avg_precip": 0.47,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-06",
         "avg_precip": 0.48,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-07",
         "avg_precip": 0.84,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -5137,24 +6363,30 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.94,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "09-05",
         "avg_precip": 0.47,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-06",
         "avg_precip": 0.48,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-07",
         "avg_precip": 0.84,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -5164,18 +6396,23 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.96,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "09-06",
         "avg_precip": 0.48,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-07",
         "avg_precip": 0.84,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -5185,12 +6422,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.31,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-07",
         "avg_precip": 0.84,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -5200,12 +6441,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.42,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-08",
         "avg_precip": 0.58,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5215,36 +6460,44 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.86,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 4,
     "ileri_10_gun": [
       {
         "tarih": "09-09",
         "avg_precip": 0.28,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-10",
         "avg_precip": 0.3,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-11",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-13",
         "avg_precip": 0.53,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5254,30 +6507,37 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.57,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "09-10",
         "avg_precip": 0.3,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-11",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-13",
         "avg_precip": 0.53,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5287,24 +6547,30 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.58,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "09-11",
         "avg_precip": 0.29,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-13",
         "avg_precip": 0.53,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5314,18 +6580,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.56,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "09-12",
         "avg_precip": 0.27,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-13",
         "avg_precip": 0.53,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5335,12 +6606,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.79,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-13",
         "avg_precip": 0.53,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5350,24 +6625,30 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.91,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "09-14",
         "avg_precip": 0.38,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-15",
         "avg_precip": 0.43,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-16",
         "avg_precip": 0.53,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5377,18 +6658,23 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.81,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "09-15",
         "avg_precip": 0.43,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-16",
         "avg_precip": 0.53,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5398,12 +6684,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 0.96,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-16",
         "avg_precip": 0.53,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5413,12 +6703,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.06,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-17",
         "avg_precip": 0.53,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5428,18 +6722,23 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.01,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "09-18",
         "avg_precip": 0.48,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-19",
         "avg_precip": 0.84,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -5449,12 +6748,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.33,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-19",
         "avg_precip": 0.84,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -5464,12 +6767,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.45,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-20",
         "avg_precip": 0.6,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5479,12 +6786,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.32,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-21",
         "avg_precip": 2.71,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -5494,12 +6805,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 4.83,
+    "su_birikme_riski": 0.32,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-22",
         "avg_precip": 2.12,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.32,
         "durum": "Yıkama"
       }
     ]
@@ -5509,12 +6824,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 5.39,
+    "su_birikme_riski": 0.33,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-23",
         "avg_precip": 3.27,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.33,
         "durum": "Yıkama"
       }
     ]
@@ -5524,12 +6843,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.23,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-24",
         "avg_precip": 0.96,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -5539,12 +6862,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 2.72,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-25",
         "avg_precip": 1.76,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -5554,18 +6881,23 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.21,
+    "su_birikme_riski": 0.14,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "09-26",
         "avg_precip": 0.45,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.14,
         "durum": "Yıkala"
       },
       {
         "tarih": "09-27",
         "avg_precip": 2.92,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -5575,12 +6907,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.36,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-27",
         "avg_precip": 2.92,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -5590,12 +6926,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 5.41,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-28",
         "avg_precip": 2.5,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkama"
       }
     ]
@@ -5605,12 +6945,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.5,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-29",
         "avg_precip": 1.0,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5620,12 +6964,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.89,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "09-30",
         "avg_precip": 2.9,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -5635,12 +6983,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.51,
+    "su_birikme_riski": 0.32,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-01",
         "avg_precip": 1.62,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.32,
         "durum": "Yıkama"
       }
     ]
@@ -5650,12 +7002,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.29,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-02",
         "avg_precip": 0.68,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5665,12 +7021,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.65,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-03",
         "avg_precip": 0.97,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -5680,24 +7040,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.09,
+    "su_birikme_riski": 0.08,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "10-04",
         "avg_precip": 0.12,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.08,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-05",
         "avg_precip": 0.28,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-06",
         "avg_precip": 1.09,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -5707,18 +7073,23 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.4,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "10-05",
         "avg_precip": 0.28,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-06",
         "avg_precip": 1.09,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -5728,12 +7099,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.38,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-06",
         "avg_precip": 1.09,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -5743,12 +7118,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 1.94,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-07",
         "avg_precip": 0.85,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -5758,12 +7137,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.33,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-08",
         "avg_precip": 1.48,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -5773,12 +7156,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.16,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-09",
         "avg_precip": 1.68,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -5788,18 +7175,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 1.91,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "10-10",
         "avg_precip": 0.23,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-11",
         "avg_precip": 1.15,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -5809,12 +7201,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 1.37,
+    "su_birikme_riski": 0.1,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-11",
         "avg_precip": 1.15,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.1,
         "durum": "Yıkama"
       }
     ]
@@ -5824,12 +7220,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 2.12,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-12",
         "avg_precip": 0.97,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5839,24 +7239,30 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.33,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "10-13",
         "avg_precip": 0.37,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-14",
         "avg_precip": 0.49,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-15",
         "avg_precip": 2.2,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -5866,18 +7272,23 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.86,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "10-14",
         "avg_precip": 0.49,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-15",
         "avg_precip": 2.2,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -5887,12 +7298,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 2.7,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-15",
         "avg_precip": 2.2,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -5902,12 +7317,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.8,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-16",
         "avg_precip": 1.6,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]
@@ -5917,12 +7336,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.4,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-17",
         "avg_precip": 2.79,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -5932,12 +7355,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.46,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-18",
         "avg_precip": 3.67,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -5947,12 +7374,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.98,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-19",
         "avg_precip": 1.31,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -5962,12 +7393,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.83,
+    "su_birikme_riski": 0.15,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-20",
         "avg_precip": 1.52,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.15,
         "durum": "Yıkama"
       }
     ]
@@ -5977,12 +7412,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.4,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-21",
         "avg_precip": 0.88,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -5992,30 +7431,37 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 1.29,
+    "su_birikme_riski": 0.07,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "10-22",
         "avg_precip": 0.4,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.07,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-23",
         "avg_precip": 0.03,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-24",
         "avg_precip": 0.3,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-25",
         "avg_precip": 2.42,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6025,24 +7471,30 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.43,
+    "su_birikme_riski": 0.04,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "10-23",
         "avg_precip": 0.03,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.04,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-24",
         "avg_precip": 0.3,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-25",
         "avg_precip": 2.42,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6052,18 +7504,23 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 0.33,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "10-24",
         "avg_precip": 0.3,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "10-25",
         "avg_precip": 2.42,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6073,12 +7530,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.71,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-25",
         "avg_precip": 2.42,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6088,12 +7549,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.14,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-26",
         "avg_precip": 1.73,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -6103,12 +7568,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 5.86,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-27",
         "avg_precip": 4.13,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -6118,12 +7587,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.8,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-28",
         "avg_precip": 0.68,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -6133,12 +7606,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 2.93,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-29",
         "avg_precip": 2.25,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -6148,12 +7625,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.28,
+    "su_birikme_riski": 0.33,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-30",
         "avg_precip": 4.03,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.33,
         "durum": "Yıkama"
       }
     ]
@@ -6163,12 +7644,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.29,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "10-31",
         "avg_precip": 2.26,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -6178,12 +7663,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.65,
+    "su_birikme_riski": 0.33,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-01",
         "avg_precip": 4.39,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.33,
         "durum": "Yıkama"
       }
     ]
@@ -6193,12 +7682,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 6.17,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-02",
         "avg_precip": 1.77,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -6208,12 +7701,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.4,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-03",
         "avg_precip": 1.62,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -6223,12 +7720,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 5.33,
+    "su_birikme_riski": 0.38,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-04",
         "avg_precip": 3.71,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.38,
         "durum": "Yıkama"
       }
     ]
@@ -6238,12 +7739,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 6.18,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-05",
         "avg_precip": 2.48,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -6253,30 +7758,37 @@
     "rain_pct": 0.05,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 2.54,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 3,
     "ileri_10_gun": [
       {
         "tarih": "11-06",
         "avg_precip": 0.06,
         "rain_pct": 0.05,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-07",
         "avg_precip": 0.47,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-08",
         "avg_precip": 0.28,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-09",
         "avg_precip": 2.33,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -6286,24 +7798,30 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 0.53,
+    "su_birikme_riski": 0.06,
     "temiz_gun_sayisi": 2,
     "ileri_10_gun": [
       {
         "tarih": "11-07",
         "avg_precip": 0.47,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.06,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-08",
         "avg_precip": 0.28,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-09",
         "avg_precip": 2.33,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -6313,18 +7831,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 0.75,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "11-08",
         "avg_precip": 0.28,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-09",
         "avg_precip": 2.33,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -6334,12 +7857,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.6,
+    "su_birikme_riski": 0.19,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-09",
         "avg_precip": 2.33,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.19,
         "durum": "Yıkama"
       }
     ]
@@ -6349,12 +7876,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 3.01,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-10",
         "avg_precip": 0.68,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkama"
       }
     ]
@@ -6364,12 +7895,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.3,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-11",
         "avg_precip": 2.62,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -6379,18 +7914,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.8,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "11-12",
         "avg_precip": 0.18,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-13",
         "avg_precip": 1.09,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -6400,12 +7940,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.27,
+    "su_birikme_riski": 0.11,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-13",
         "avg_precip": 1.09,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.11,
         "durum": "Yıkama"
       }
     ]
@@ -6415,12 +7959,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 4.36,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-14",
         "avg_precip": 3.27,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6430,12 +7978,16 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 4.04,
+    "su_birikme_riski": 0.12,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-15",
         "avg_precip": 0.78,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.12,
         "durum": "Yıkama"
       }
     ]
@@ -6445,12 +7997,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.59,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-16",
         "avg_precip": 2.81,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -6460,12 +8016,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.31,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-17",
         "avg_precip": 1.49,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6475,12 +8035,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 2.63,
+    "su_birikme_riski": 0.16,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-18",
         "avg_precip": 1.14,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.16,
         "durum": "Yıkama"
       }
     ]
@@ -6490,12 +8054,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.11,
+    "su_birikme_riski": 0.18,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-19",
         "avg_precip": 1.98,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.18,
         "durum": "Yıkama"
       }
     ]
@@ -6505,12 +8073,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.31,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-20",
         "avg_precip": 1.34,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -6520,12 +8092,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.21,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-21",
         "avg_precip": 1.87,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -6535,12 +8111,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 2.76,
+    "su_birikme_riski": 0.25,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-22",
         "avg_precip": 0.89,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.25,
         "durum": "Yıkama"
       }
     ]
@@ -6550,12 +8130,16 @@
     "rain_pct": 0.1,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 1.53,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-23",
         "avg_precip": 0.64,
         "rain_pct": 0.1,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkama"
       }
     ]
@@ -6565,12 +8149,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.97,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-24",
         "avg_precip": 2.33,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6580,12 +8168,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.29,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-25",
         "avg_precip": 1.96,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -6595,12 +8187,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 5.52,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-26",
         "avg_precip": 3.57,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -6610,18 +8206,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 3.94,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "11-27",
         "avg_precip": 0.38,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkala"
       },
       {
         "tarih": "11-28",
         "avg_precip": 1.69,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -6631,12 +8232,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.0,
+    "kumulatif_2_gun_ort": 2.07,
+    "su_birikme_riski": 0.13,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-28",
         "avg_precip": 1.69,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.13,
         "durum": "Yıkama"
       }
     ]
@@ -6646,12 +8251,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.42,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-29",
         "avg_precip": 1.73,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]
@@ -6661,12 +8270,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.64,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "11-30",
         "avg_precip": 1.91,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -6676,12 +8289,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 4.42,
+    "su_birikme_riski": 0.29,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-01",
         "avg_precip": 2.5,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.29,
         "durum": "Yıkama"
       }
     ]
@@ -6691,12 +8308,16 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.61,
+    "su_birikme_riski": 0.2,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-02",
         "avg_precip": 2.1,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.2,
         "durum": "Yıkama"
       }
     ]
@@ -6706,18 +8327,23 @@
     "rain_pct": 0.15,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.05,
+    "kumulatif_2_gun_ort": 2.29,
+    "su_birikme_riski": 0.09,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "12-03",
         "avg_precip": 0.19,
         "rain_pct": 0.15,
+        "su_birikme_riski": 0.09,
         "durum": "Yıkala"
       },
       {
         "tarih": "12-04",
         "avg_precip": 2.43,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -6727,12 +8353,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 2.62,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-04",
         "avg_precip": 2.43,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -6742,12 +8372,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 5.4,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-05",
         "avg_precip": 2.98,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -6757,12 +8391,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 5.76,
+    "su_birikme_riski": 0.34,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-06",
         "avg_precip": 2.78,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.34,
         "durum": "Yıkama"
       }
     ]
@@ -6772,12 +8410,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 7.14,
+    "su_birikme_riski": 0.37,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-07",
         "avg_precip": 4.35,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.37,
         "durum": "Yıkama"
       }
     ]
@@ -6787,12 +8429,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 9.04,
+    "su_birikme_riski": 0.41,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-08",
         "avg_precip": 4.68,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.41,
         "durum": "Yıkama"
       }
     ]
@@ -6802,12 +8448,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 7.64,
+    "su_birikme_riski": 0.41,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-09",
         "avg_precip": 2.96,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.41,
         "durum": "Yıkama"
       }
     ]
@@ -6817,12 +8467,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 5.37,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-10",
         "avg_precip": 2.4,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -6832,12 +8486,16 @@
     "rain_pct": 0.5,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.33,
+    "su_birikme_riski": 0.46,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-11",
         "avg_precip": 5.92,
         "rain_pct": 0.5,
+        "su_birikme_riski": 0.46,
         "durum": "Yıkama"
       }
     ]
@@ -6847,12 +8505,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 9.44,
+    "su_birikme_riski": 0.39,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-12",
         "avg_precip": 3.51,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.39,
         "durum": "Yıkama"
       }
     ]
@@ -6862,12 +8524,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 6.96,
+    "su_birikme_riski": 0.4,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-13",
         "avg_precip": 3.46,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.4,
         "durum": "Yıkama"
       }
     ]
@@ -6877,12 +8543,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 9.15,
+    "su_birikme_riski": 0.43,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-14",
         "avg_precip": 5.7,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.43,
         "durum": "Yıkama"
       }
     ]
@@ -6892,12 +8562,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 7.38,
+    "su_birikme_riski": 0.27,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-15",
         "avg_precip": 1.68,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.27,
         "durum": "Yıkama"
       }
     ]
@@ -6907,12 +8581,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 3.85,
+    "su_birikme_riski": 0.21,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-16",
         "avg_precip": 2.17,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.21,
         "durum": "Yıkama"
       }
     ]
@@ -6922,12 +8600,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.1,
+    "kumulatif_2_gun_ort": 4.83,
+    "su_birikme_riski": 0.23,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-17",
         "avg_precip": 2.67,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.23,
         "durum": "Yıkama"
       }
     ]
@@ -6937,12 +8619,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 7.72,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-18",
         "avg_precip": 5.05,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -6952,12 +8638,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 11.21,
+    "su_birikme_riski": 0.46,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-19",
         "avg_precip": 6.16,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.46,
         "durum": "Yıkama"
       }
     ]
@@ -6967,12 +8657,16 @@
     "rain_pct": 0.25,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 8.62,
+    "su_birikme_riski": 0.28,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-20",
         "avg_precip": 2.47,
         "rain_pct": 0.25,
+        "su_birikme_riski": 0.28,
         "durum": "Yıkama"
       }
     ]
@@ -6982,12 +8676,16 @@
     "rain_pct": 0.3,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 4.8,
+    "su_birikme_riski": 0.24,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-21",
         "avg_precip": 2.33,
         "rain_pct": 0.3,
+        "su_birikme_riski": 0.24,
         "durum": "Yıkama"
       }
     ]
@@ -6997,12 +8695,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.15,
+    "kumulatif_2_gun_ort": 6.73,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-22",
         "avg_precip": 4.4,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -7012,12 +8714,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 6.73,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-23",
         "avg_precip": 2.33,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -7027,12 +8733,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 8.62,
+    "su_birikme_riski": 0.44,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-24",
         "avg_precip": 6.29,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.44,
         "durum": "Yıkama"
       }
     ]
@@ -7042,12 +8752,16 @@
     "rain_pct": 0.35,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 8.5,
+    "su_birikme_riski": 0.3,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-25",
         "avg_precip": 2.21,
         "rain_pct": 0.35,
+        "su_birikme_riski": 0.3,
         "durum": "Yıkama"
       }
     ]
@@ -7057,12 +8771,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 6.26,
+    "su_birikme_riski": 0.35,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-26",
         "avg_precip": 4.06,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.35,
         "durum": "Yıkama"
       }
     ]
@@ -7072,12 +8790,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.35,
+    "kumulatif_2_gun_ort": 6.74,
+    "su_birikme_riski": 0.36,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-27",
         "avg_precip": 2.69,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.36,
         "durum": "Yıkama"
       }
     ]
@@ -7087,18 +8809,23 @@
     "rain_pct": 0.2,
     "n_years": 20,
     "oneri": "Yıkala",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 3.16,
+    "su_birikme_riski": 0.17,
     "temiz_gun_sayisi": 1,
     "ileri_10_gun": [
       {
         "tarih": "12-28",
         "avg_precip": 0.47,
         "rain_pct": 0.2,
+        "su_birikme_riski": 0.17,
         "durum": "Yıkala"
       },
       {
         "tarih": "12-29",
         "avg_precip": 3.88,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -7108,12 +8835,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.2,
+    "kumulatif_2_gun_ort": 4.35,
+    "su_birikme_riski": 0.31,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-29",
         "avg_precip": 3.88,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.31,
         "durum": "Yıkama"
       }
     ]
@@ -7123,12 +8854,16 @@
     "rain_pct": 0.45,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.3,
+    "kumulatif_2_gun_ort": 7.79,
+    "su_birikme_riski": 0.4,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-30",
         "avg_precip": 3.92,
         "rain_pct": 0.45,
+        "su_birikme_riski": 0.4,
         "durum": "Yıkama"
       }
     ]
@@ -7138,12 +8873,16 @@
     "rain_pct": 0.4,
     "n_years": 20,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.32,
+    "kumulatif_2_gun_ort": 6.06,
+    "su_birikme_riski": 0.37,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "12-31",
         "avg_precip": 3.83,
         "rain_pct": 0.4,
+        "su_birikme_riski": 0.37,
         "durum": "Yıkama"
       }
     ]
@@ -7153,12 +8892,16 @@
     "rain_pct": 0.37,
     "n_years": 19,
     "oneri": "Yıkama",
+    "ardisik_yagis_olasiligi": 0.25,
+    "kumulatif_2_gun_ort": 3.21,
+    "su_birikme_riski": 0.26,
     "temiz_gun_sayisi": 0,
     "ileri_10_gun": [
       {
         "tarih": "01-01",
         "avg_precip": 1.44,
         "rain_pct": 0.37,
+        "su_birikme_riski": 0.26,
         "durum": "Yıkama"
       }
     ]

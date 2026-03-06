@@ -7,6 +7,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 gis: resolve(__dirname, 'gis-project.html'),
+                makine: resolve(__dirname, 'makine-ogrenmesi.html'),
             },
         },
     },
