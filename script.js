@@ -133,6 +133,7 @@ function renderProjects(repos, showGitHubError = false) {
             description: 'İskenderun 20 yıllık hava verisi ile regresyon: Yarın yağmur var mı? Bugün arabamı yıkamalı mıyım?',
             language: 'Python',
             html_url: 'makine-ogrenmesi.html',
+            github: 'https://github.com/HuseyinEmreTech/araba_yikama_tahmin',
             isLocal: true,
             stargazers_count: 'ML'
         }
@@ -201,7 +202,8 @@ function renderProjects(repos, showGitHubError = false) {
             <div class="project-header">
                 <i class="far fa-folder folder-icon"></i>
                 <div class="project-links">
-                    <a href="${repo.html_url}" ${repo.isLocal ? '' : 'target="_blank"'} aria-label="Project Link">
+                    ${repo.github ? `<a href="${repo.github}" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>` : ''}
+                    <a href="${repo.html_url}" ${!repo.isLocal ? 'target="_blank" ' : ''}aria-label="Proje">
                         <i class="${repo.isLocal ? 'fas fa-arrow-right' : 'fab fa-github'}"></i>
                     </a>
                 </div>
