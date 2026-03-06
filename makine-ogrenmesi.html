@@ -185,7 +185,7 @@
                             <h4 style="margin-bottom: 8px;">Adım 4 — Model Eğitimi</h4>
                             <p style="color: var(--text-muted); margin: 0 0 8px 0;">
                                 <strong>Ridge, RandomForest, XGBoost</strong> modelleri %80 train / %20 test ile eğitilir.
-                                GridSearchCV ile hiperparametre seçimi. Sample weight ile "Yıkala" günlerine ağırlık verilir (class dengesizliği).
+                                GridSearchCV ile hiperparametre seçimi. Sample weight ile "Yıka" günlerine ağırlık verilir (class dengesizliği).
                                 En iyi model <strong>F1 (Yıka)</strong> skoruna göre seçilir; RMSE, R², accuracy değerlendirilir.
                             </p>
                         </div>
@@ -197,8 +197,8 @@
                             <p style="color: var(--text-muted); margin: 0;">
                                 Regresyon çıktısı (mm) → sınıflandırma: <strong>tahmin &gt; 0.5 mm veya yağmur olasılığı ≥ %50</strong> →
                                 <span class="result-badge yikama" style="display: inline-block; padding: 2px 8px;">Yıkama</span>
-                                (yıkama); aksi halde →
-                                <span class="result-badge yika" style="display: inline-block; padding: 2px 8px;">Yıkala</span>.
+                                (yıkamayın); aksi halde →
+                                <span class="result-badge yika" style="display: inline-block; padding: 2px 8px;">Yıka</span>.
                                 0.5 mm eşiği hafif damlaları yok sayar.
                             </p>
                         </div>
@@ -218,7 +218,7 @@
                         <h4 style="margin-bottom: 12px; color: var(--text-primary);">Özet</h4>
                         <p style="color: var(--text-secondary); margin: 0 0 16px 0; font-size: 0.95rem;">
                             Ham veri → özellik mühendisliği → regresyon (mm tahmini) → karar kuralı → takvim bazlı istatistikler →
-                            kullanıcıya "Yıkala" veya "Yıkama" + kaç gün temiz kalır bilgisi sunulur.
+                            kullanıcıya "Yıka" veya "Yıkama" + kaç gün temiz kalır bilgisi sunulur.
                         </p>
                         <p style="color: var(--text-muted); margin: 0; font-size: 0.85rem;">
                             <strong>Kod yapısı:</strong> <code>data_fetch.py</code> → <code>preprocess.py</code> → <code>train.py</code> →

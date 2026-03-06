@@ -96,8 +96,8 @@ def get_recommendation(pred_yarin: float, pred_2_gun: float = None, pred_3_gun: 
     if pred_2_gun is not None and pred_2_gun > YAGMUR_ESIK:
         return "Dikkatli ol – 2 gün sonra yağmur (1 gün temiz kalır)."
     if pred_3_gun is not None and pred_3_gun > YAGMUR_ESIK:
-        return "Yıkala – En az 2 gün temiz kalır."
-    return "Yıkala – Önümüzdeki günler yağmur beklenmiyor."
+        return "Yıka – En az 2 gün temiz kalır."
+    return "Yıka – Önümüzdeki günler yağmur beklenmiyor."
 
 
 if __name__ == "__main__":

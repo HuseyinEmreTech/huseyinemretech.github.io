@@ -53,7 +53,7 @@
         const prevStat = predictions[oncekiGun(mmdd)];
         if (prevStat) {
             const yag = prevStat.avg_precip > 0.5 || prevStat.rain_pct >= 0.5;
-            tumGunler.push({ tarih: mmdd, avg_precip: prevStat.avg_precip, rain_pct: prevStat.rain_pct, durum: yag ? 'Yıkama' : 'Yıkala' });
+            tumGunler.push({ tarih: mmdd, avg_precip: prevStat.avg_precip, rain_pct: prevStat.rain_pct, durum: yag ? 'Yıkama' : 'Yıka' });
         }
         let ileri = stat.ileri_10_gun;
         if (!ileri || ileri.length === 0) {
@@ -62,7 +62,7 @@
                 const s = predictions[key];
                 if (!s) break;
                 const yag = s.avg_precip > 0.5 || s.rain_pct >= 0.5;
-                tumGunler.push({ tarih: sonrakiGun(mmdd, i + 1) || key, avg_precip: s.avg_precip, rain_pct: s.rain_pct, durum: yag ? 'Yıkama' : 'Yıkala' });
+                tumGunler.push({ tarih: sonrakiGun(mmdd, i + 1) || key, avg_precip: s.avg_precip, rain_pct: s.rain_pct, durum: yag ? 'Yıkama' : 'Yıka' });
             }
         } else {
             for (let i = 0; i < 9 && i < ileri.length; i++) tumGunler.push(ileri[i]);
@@ -71,18 +71,18 @@
         tumGunler.forEach(function (g) {
             const [gm, gd] = g.tarih.split('-');
             const gStr = parseInt(gd) + ' ' + ayAdlari[parseInt(gm) - 1];
-            const isY = g.durum === 'Yıkala';
+            const isY = g.durum === 'Yıka';
             const yuzde = Math.round((g.rain_pct || 0) * 100);
             const satir = document.createElement('div');
             satir.className = 'rapor-satir';
-            satir.innerHTML = '<span class="tarih">' + gStr + '</span><span class="detay">' + g.avg_precip + ' mm yağış · <strong>%' + yuzde + ' yağmur ihtimali</strong></span><span class="durum result-badge ' + (isY ? 'yika' : 'yikama') + '">' + g.durum + '</span>';
+            satir.innerHTML = '<span class="tarih">' + gStr + '</span><span class="detay">' + g.avg_precip + ' mm yağış · <strong>%' + yuzde + ' yağmur ihtimali</strong></span><span class="durum result-badge ' + (isY ? 'yika' : 'yikama') + '">' + (isY ? 'Yıka' : 'Yıkama') + '</span>';
             raporDiv.appendChild(satir);
         });
 
         const ilkYagmurIdx = tumGunler.findIndex(g => g.durum === 'Yıkama');
         const t = ilkYagmurIdx < 0 ? 10 : ilkYagmurIdx;
         const isYika = ilkYagmurIdx !== 0;
-        oneri.innerHTML = '<span class="result-badge ' + (isYika ? 'yika' : 'yikama') + '">' + (isYika ? 'Yıkala' : 'Yıkama') + '</span>';
+        oneri.innerHTML = '<span class="result-badge ' + (isYika ? 'yika' : 'yikama') + '">' + (isYika ? 'Yıka' : 'Yıkama') + '</span>';
         if (ilkYagmurIdx === 0) {
             oneri.innerHTML += ' Seçtiğiniz gün yağmur ihtimali yüksek, yıkamak mantıklı değil.';
         } else if (ilkYagmurIdx < 0) {

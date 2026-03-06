@@ -173,9 +173,11 @@ function renderProjects(repos, showGitHubError = false) {
     allProjects.sort((a, b) => getStarValue(b) - getStarValue(a));
 
     if (showGitHubError && repos.length === 0) {
+        const currentLang = document.documentElement.lang || 'tr';
+        const t = translations[currentLang] || translations.tr;
         const errorBanner = document.createElement('div');
         errorBanner.style.cssText = 'grid-column: 1/-1; text-align: center; color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;';
-        errorBanner.innerHTML = `<i class="fas fa-exclamation-triangle"></i> GitHub projeleri geçici olarak yüklenemedi. <a href="https://github.com/HuseyinEmreTech" target="_blank" style="color: var(--accent-primary);">GitHub'da Görüntüle</a>`;
+        errorBanner.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${t["github-error"]} <a href="https://github.com/HuseyinEmreTech" target="_blank" style="color: var(--accent-primary);">${t["github-view"]}</a>`;
         projectsGrid.appendChild(errorBanner);
     }
 
@@ -483,7 +485,9 @@ const translations = {
         "contact-linkedin": "<i class=\"fab fa-linkedin\" style=\"margin-right: 8px;\"></i> LinkedIn",
         "contact-github": "<i class=\"fab fa-github\" style=\"margin-right: 8px;\"></i> GitHub",
         "form-name": "Adınız Soyadınız", "form-name-input-ph": "Adınız Soyadınız",
-        "form-email": "E-posta Adresiniz", "form-email-input-ph": "ornek@mail.com",
+        "form-email": "E-posta Adresiniz", "form-email-input-ph": "örnek@mail.com",
+        "github-error": "GitHub projeleri geçici olarak yüklenemedi.",
+        "github-view": "GitHub'da Görüntüle",
         "form-msg": "Mesajınız", "form-msg-input-ph": "Nasıl yardımcı olabilirim?",
         "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Mesaj Gönder</span>",
         "form-sending": "<i class=\"fas fa-spinner fa-spin\" style=\"margin-right: 8px;\"></i> Gönderiliyor...",
@@ -565,6 +569,8 @@ const translations = {
         "contact-github": "<i class=\"fab fa-github\" style=\"margin-right: 8px;\"></i> GitHub",
         "form-name": "Full Name", "form-name-input-ph": "Your Full Name",
         "form-email": "Email Address", "form-email-input-ph": "example@mail.com",
+        "github-error": "GitHub projects could not be loaded temporarily.",
+        "github-view": "View on GitHub",
         "form-msg": "Your Message", "form-msg-input-ph": "How can I help you?",
         "form-btn": "<span><i class=\"fas fa-paper-plane\" style=\"margin-right: 8px;\"></i> Send Message</span>",
         "form-sending": "<i class=\"fas fa-spinner fa-spin\" style=\"margin-right: 8px;\"></i> Sending...",

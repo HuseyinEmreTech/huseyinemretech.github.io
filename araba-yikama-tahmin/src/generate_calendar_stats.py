@@ -40,7 +40,7 @@ def main():
         avg = float(yarins.mean())
         rain_count = (yarins > YAGMUR_ESIK).sum()
         rain_pct = float(rain_count / len(yarins)) if len(yarins) > 0 else 0
-        oneri = "Yıkama" if (avg > YAGMUR_ESIK or rain_pct >= 0.5) else "Yıkala"
+        oneri = "Yıkama" if (avg > YAGMUR_ESIK or rain_pct >= 0.5) else "Yıka"
 
         # Yerde su birikmesi: stats[ay_gun] = ertesi gün (ay_gun+1) hakkında bilgi
         next_day = sonraki_gun(ay_gun, 1)
@@ -88,7 +88,7 @@ def main():
                 "avg_precip": s["avg_precip"],
                 "rain_pct": s["rain_pct"],
                 "su_birikme_riski": s.get("su_birikme_riski", 0),
-                "durum": "Yıkama" if yagmurlu else "Yıkala",
+                "durum": "Yıkama" if yagmurlu else "Yıka",
             })
             if yagmurlu:
                 break

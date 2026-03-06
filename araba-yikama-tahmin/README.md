@@ -51,7 +51,7 @@ jupyter notebook notebooks/araba_yikama_tahmin.ipynb
 |-------------|-------|
 | Yarın > 0.1 mm | Yıkama – Yarın yağmur bekleniyor |
 | 2. gün > 0.1 mm | Dikkatli – 1 gün temiz kalır |
-| 3 gün yağmur yok | Yıkala – En az 2 gün temiz kalır |
+| 3 gün yağmur yok | Yıka – En az 2 gün temiz kalır |
 
 ## Veri Kaynağı
 

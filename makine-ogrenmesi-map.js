@@ -71,7 +71,7 @@
             tumGunler.push({
                 tarih: mmdd, avg_precip: prevStat.avg_precip, rain_pct: prevStat.rain_pct,
                 su_birikme_riski: prevStat.su_birikme_riski,
-                durum: yag ? 'Yıkama' : 'Yıkala'
+                durum: yag ? 'Yıkama' : 'Yıka'
             });
         }
         let ileri = stat.ileri_10_gun;
@@ -84,7 +84,7 @@
                 tumGunler.push({
                     tarih: sonrakiGun(mmdd, i + 1) || key, avg_precip: s.avg_precip, rain_pct: s.rain_pct,
                     su_birikme_riski: s.su_birikme_riski,
-                    durum: yag ? 'Yıkama' : 'Yıkala'
+                    durum: yag ? 'Yıkama' : 'Yıka'
                 });
             }
         } else {
@@ -116,7 +116,7 @@
         tumGunler.forEach(g => {
             const [gm, gd] = g.tarih.split('-');
             const gStr = parseInt(gd) + ' ' + ayAdlari[parseInt(gm) - 1];
-            const isY = g.durum === 'Yıkala';
+            const isY = g.durum === 'Yıka';
             const yuzde = Math.round((g.rain_pct || 0) * 100);
             const gunSkor = gunlukYikalaSkoru(g.avg_precip, g.rain_pct);
             const suPct = g.su_birikme_riski != null ? Math.round(g.su_birikme_riski * 100) : null;
@@ -125,13 +125,13 @@
             satir.className = 'rapor-satir rapor-satir-skorlu';
             satir.innerHTML = '<span class="tarih">' + gStr + '</span>' +
                 '<span class="detay">' + g.avg_precip + ' mm · %' + yuzde + ' yağmur' +
-                (suPct != null ? ' · <i class="fas fa-tint su-mini" title="Yerde su birikme riski %' + suPct + '"></i> %' + suPct + '' : '') + '</span>' +
+                (suPct != null ? ' · su birikme %' + suPct : '') + '</span>' +
                 '<div class="gun-skoru" title="Günlük yıkama uygunluğu: ' + gunSkor + '/100' + suTooltip + '"><div class="gun-skoru-dolum" style="width:' + gunSkor + '%"></div></div>' +
-                '<span class="durum result-badge ' + (isY ? 'yika' : 'yikama') + '">' + g.durum + '</span>';
+                '<span class="durum result-badge ' + (isY ? 'yika' : 'yikama') + '">' + (isY ? 'Yıka' : 'Yıkama') + '</span>';
             raporDiv.appendChild(satir);
         });
 
-        oneri.innerHTML = '<span class="result-badge ' + (isYika ? 'yika' : 'yikama') + '">' + (isYika ? 'Yıkala' : 'Yıkama') + '</span>';
+        oneri.innerHTML = '<span class="result-badge ' + (isYika ? 'yika' : 'yikama') + '">' + (isYika ? 'Yıka' : 'Yıkama') + '</span>';
         if (ilkYagmurIdx === 0) oneri.innerHTML += ' Seçtiğiniz gün yağmur ihtimali yüksek, yıkamak mantıklı değil.';
         else if (ilkYagmurIdx < 0) oneri.innerHTML += ' Seçtiğiniz gün ve sonraki 10 gün içinde yağmur beklemiyoruz, arabanız en az 10 gün temiz kalabilir.';
         else if (ilkYagmurIdx === 1) oneri.innerHTML += ' 1 gün sonra yağmur var, arabanız yaklaşık 1 gün temiz kalabilir.';
