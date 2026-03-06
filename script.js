@@ -55,25 +55,35 @@ async function fetchGitHubProjects() {
     const projectsGrid = document.getElementById('projects-grid');
     if (!projectsGrid) return;
 
-    const username = 'huseyinemretech';
-    const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=6`;
-    const cacheKey = 'github_repos_v3';
+    const username = 'HuseyinEmreTech';
+    const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`;
+    const cacheKey = 'github_repos_v5';
+    const CACHE_MAX_AGE = 5 * 60 * 1000; // 5 dakika - GitHub ile senkron
 
     const cached = localStorage.getItem(cacheKey);
     if (cached) {
-        const { data, timestamp } = JSON.parse(cached);
-        if (Date.now() - timestamp < 3600000) {
-            renderProjects(data);
-            return;
+        try {
+            const { data, timestamp } = JSON.parse(cached);
+            if (Date.now() - timestamp < CACHE_MAX_AGE) {
+                renderProjects(filterGitHubRepos(data));
+                return;
+            }
+        } catch (e) {
+            localStorage.removeItem(cacheKey);
         }
     }
 
     try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error('GitHub API Error');
+        const response = await fetch(apiUrl, {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'Portfolio-Site-1.0'
+            }
+        });
+        if (!response.ok) throw new Error(`GitHub API ${response.status}`);
 
         const repos = await response.json();
-        const validRepos = repos.slice(0, 6);
+        const validRepos = filterGitHubRepos(repos);
 
         localStorage.setItem(cacheKey, JSON.stringify({
             data: validRepos,
@@ -83,16 +93,22 @@ async function fetchGitHubProjects() {
         renderProjects(validRepos);
     } catch (error) {
         console.error('Failed to load projects:', error);
-        projectsGrid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">
-                <i class="fas fa-exclamation-circle"></i> Projeler yüklenemedi. 
-                <a href="https://github.com/${username}" target="_blank" style="color: var(--accent-primary);">GitHub'da Görüntüle</a>
-            </div>
-        `;
+        if (cached) {
+            try {
+                const { data } = JSON.parse(cached);
+                renderProjects(filterGitHubRepos(data), true);
+                return;
+            } catch (e) { /* fallback to local only */ }
+        }
+        renderProjects([], true);
     }
 }
 
-function renderProjects(repos) {
+function filterGitHubRepos(repos) {
+    return repos.filter(r => !r.fork && r.name.toLowerCase() !== 'huseyinemretech.github.io');
+}
+
+function renderProjects(repos, showGitHubError = false) {
     const projectsGrid = document.getElementById('projects-grid');
     if (!projectsGrid) return;
     projectsGrid.innerHTML = '';
@@ -108,10 +124,22 @@ function renderProjects(repos) {
             github: "https://github.com/huseyinemretech",
             isLocal: true,
             stargazers_count: 'Special'
+        },
+        {
+            name: 'Araba Yıkama Tahmin',
+            description: 'İskenderun 20 yıllık hava verisi ile regresyon: Yarın yağmur var mı? Bugün arabamı yıkamalı mıyım?',
+            language: 'Python',
+            html_url: 'makine-ogrenmesi.html',
+            isLocal: true,
+            stargazers_count: 'ML'
         }
     ];
 
     const repoDetails = {
+        'Sinema-Bilet-Otomasyonu': {
+            name: 'Sinema Bilet Otomasyonu',
+            desc: 'C# ve SQL Server kullanılarak geliştirilen, kapsamlı biletleme ve salon yönetim sistemi.'
+        },
         'Sinema-Bilet-Otamasyonu': {
             name: 'Sinema Bilet Otomasyonu',
             desc: 'Sinema-Bilet-Otamasyonu-desc'
@@ -124,10 +152,20 @@ function renderProjects(repos) {
         },
         'HuseyinEmreTech': {
             desc: 'HuseyinEmreTech-desc'
+        },
+        'ServisBir': {
+            desc: 'Servis ve teknik destek yönetim sistemi.'
         }
     };
 
     const allProjects = [...localProjects, ...repos];
+
+    if (showGitHubError && repos.length === 0) {
+        const errorBanner = document.createElement('div');
+        errorBanner.style.cssText = 'grid-column: 1/-1; text-align: center; color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;';
+        errorBanner.innerHTML = `<i class="fas fa-exclamation-triangle"></i> GitHub projeleri geçici olarak yüklenemedi. <a href="https://github.com/HuseyinEmreTech" target="_blank" style="color: var(--accent-primary);">GitHub'da Görüntüle</a>`;
+        projectsGrid.appendChild(errorBanner);
+    }
 
     allProjects.forEach((repo, index) => {
         const card = document.createElement('article');

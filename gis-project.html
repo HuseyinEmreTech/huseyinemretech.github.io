@@ -107,6 +107,24 @@
                     </div>
                 </div>
 
+                <!-- Trafik Kazası Haritaları -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 16px;">Trafik Kazası Choropleth Haritaları (2024)</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 32px;">
+                        İl bazında TÜİK trafik kazası verilerinin GADM il sınırları ile birleştirilerek R (sf, ggplot2) ile üretilen choropleth haritaları.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 32px;">
+                        <figure style="margin: 0;">
+                            <img src="cbs-trafik-projesi/data/processed/harita_olum_2024.png" alt="Türkiye İllere Göre Trafik Kazası Ölüm Sayıları 2024" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                            <figcaption style="color: var(--text-muted); margin-top: 12px; font-size: 0.95rem;">Ölüm sayıları (Magma paleti)</figcaption>
+                        </figure>
+                        <figure style="margin: 0;">
+                            <img src="cbs-trafik-projesi/data/processed/harita_yarali_2024.png" alt="Türkiye İllere Göre Trafik Kazası Yaralı Sayıları 2024" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                            <figcaption style="color: var(--text-muted); margin-top: 12px; font-size: 0.95rem;">Yaralı sayıları (Viridis paleti)</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
                 <!-- Codes Section (Themed) -->
                 <div class="project-card" style="padding: 0; overflow: hidden; height: auto;">
                     <div
