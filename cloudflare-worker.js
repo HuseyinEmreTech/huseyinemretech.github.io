@@ -113,10 +113,10 @@ async function handleRequest(request, env = {}) {
     return newResponse
 }
 
-// ADAPTIVE UI - Claude API ile component seçimi
-// Dashboard: Workers > Settings > Variables > Add variable > ANTHROPIC_API_KEY (Secret)
+// ADAPTIVE UI - Google Gemini API ile component seçimi (ücretsiz tier)
+// Dashboard: Workers > Settings > Variables > GEMINI_API_KEY (Secret)
 async function handleAdaptive(request, env, origin) {
-    const apiKey = env.ANTHROPIC_API_KEY;
+    const apiKey = env.GEMINI_API_KEY;
     if (!apiKey) {
         return new Response(JSON.stringify({ success: false, error: 'Service not configured' }), {
             status: 503,
@@ -149,26 +149,24 @@ MBTI mapping: INTJ→cool+technical+github-cta+minimal, ENTJ→cool+business+cv-
 
 Big Five: Openness>0.7→vibrant, 0.4-0.7→warm, <0.4→cool. Extraversion>0.7→contact-cta+story, <0.4→github-cta+minimal. Conscientiousness>0.6→cv-cta+technical. Neuroticism>0.6→warm+minimal+story.`;
 
-        const userMessage = JSON.stringify(testResult);
+        const userMessage = `Kişilik testi sonucu: ${JSON.stringify(testResult)}`;
 
-        const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
+        const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': apiKey,
-                'anthropic-version': '2023-06-01'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                model: 'claude-3-5-haiku-20241022',
-                max_tokens: 256,
-                system: systemPrompt,
-                messages: [{ role: 'user', content: userMessage }]
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                contents: [{ parts: [{ text: userMessage }] }],
+                generationConfig: {
+                    maxOutputTokens: 256,
+                    temperature: 0.3
+                }
             })
         });
 
-        if (!claudeRes.ok) {
-            const errText = await claudeRes.text();
-            console.error('Claude API error:', claudeRes.status, errText);
+        if (!geminiRes.ok) {
+            const errText = await geminiRes.text();
+            console.error('Gemini API error:', geminiRes.status, errText);
             return new Response(JSON.stringify({
                 success: false,
                 error: 'AI service error',
@@ -179,8 +177,8 @@ Big Five: Openness>0.7→vibrant, 0.4-0.7→warm, <0.4→cool. Extraversion>0.7�
             });
         }
 
-        const claudeData = await claudeRes.json();
-        const rawText = claudeData.content?.[0]?.text || '';
+        const geminiData = await geminiRes.json();
+        const rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
         let selection = parseJsonFromText(rawText);
         if (!selection) {
