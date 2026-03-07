@@ -27,15 +27,38 @@ async function fetchAdaptiveFromAI(testResult) {
 }
 window.fetchAdaptiveFromAI = fetchAdaptiveFromAI;
 
+function showAdaptiveLoading(show) {
+    let el = document.getElementById('adaptive-loading-overlay');
+    if (!el) {
+        const text = document.documentElement.lang === 'en' ? 'Analyzing...' : 'AI analiz ediyor...';
+        el = document.createElement('div');
+        el.id = 'adaptive-loading-overlay';
+        el.className = 'adaptive-loading-overlay';
+        el.innerHTML = `
+            <div class="adaptive-loading-box">
+                <div class="adaptive-loading-spinner"></div>
+                <span class="adaptive-loading-text">${text}</span>
+            </div>
+        `;
+        document.body.appendChild(el);
+    }
+    el.classList.toggle('active', !!show);
+}
+
 window.addEventListener('adaptive-test-complete', async (e) => {
     const result = e.detail;
-    const selection = await fetchAdaptiveFromAI(result);
-    if (selection) {
-        applyAdaptive(selection);
-        console.log('[adaptive] Uygulandı:', selection);
-    } else {
-        applyAdaptive(getFallbackSelection(result));
-        console.log('[adaptive] Fallback uygulandı (AI cevap vermedi)');
+    showAdaptiveLoading(true);
+    try {
+        const selection = await fetchAdaptiveFromAI(result);
+        if (selection) {
+            applyAdaptive(selection);
+            console.log('[adaptive] Uygulandı:', selection);
+        } else {
+            applyAdaptive(getFallbackSelection(result));
+            console.log('[adaptive] Fallback uygulandı (AI cevap vermedi)');
+        }
+    } finally {
+        showAdaptiveLoading(false);
     }
 });
 

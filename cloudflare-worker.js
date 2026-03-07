@@ -113,11 +113,12 @@ async function handleRequest(request, env = {}) {
     return newResponse
 }
 
-// ADAPTIVE UI - Google Gemini API ile component seçimi (ücretsiz tier)
-// Dashboard: Workers > Settings > Variables > GEMINI_API_KEY (Secret)
+// ADAPTIVE UI - OpenRouter (öncelik) veya Gemini ile component seçimi
+// Dashboard: OPENROUTER_API_KEY veya GEMINI_API_KEY (Secret)
 async function handleAdaptive(request, env, origin) {
-    const apiKey = env.GEMINI_API_KEY;
-    if (!apiKey) {
+    const openRouterKey = env.OPENROUTER_API_KEY;
+    const geminiKey = env.GEMINI_API_KEY;
+    if (!openRouterKey && !geminiKey) {
         return new Response(JSON.stringify({ success: false, error: 'Service not configured' }), {
             status: 503,
             headers: getCorsHeaders(origin)
@@ -150,35 +151,69 @@ MBTI mapping: INTJ→cool+technical+github-cta+minimal, ENTJ→cool+business+cv-
 Big Five: Openness>0.7→vibrant, 0.4-0.7→warm, <0.4→cool. Extraversion>0.7→contact-cta+story, <0.4→github-cta+minimal. Conscientiousness>0.6→cv-cta+technical. Neuroticism>0.6→warm+minimal+story.`;
 
         const userMessage = `Kişilik testi sonucu: ${JSON.stringify(testResult)}`;
+        let rawText = '';
 
-        const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-                contents: [{ parts: [{ text: userMessage }] }],
-                generationConfig: {
-                    maxOutputTokens: 256,
+        // 1. OpenRouter (öncelik)
+        if (openRouterKey) {
+            const orRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${openRouterKey}`,
+                    'Content-Type': 'application/json',
+                    'HTTP-Referer': 'https://huseyinemre.tech'
+                },
+                body: JSON.stringify({
+                    model: 'openrouter/free',
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: userMessage }
+                    ],
+                    max_tokens: 256,
                     temperature: 0.3
-                }
-            })
-        });
+                })
+            });
+            if (orRes.ok) {
+                const orData = await orRes.json();
+                rawText = orData.choices?.[0]?.message?.content || '';
+            } else {
+                console.error('OpenRouter error:', orRes.status, await orRes.text());
+            }
+        }
 
-        if (!geminiRes.ok) {
-            const errText = await geminiRes.text();
-            console.error('Gemini API error:', geminiRes.status, errText);
+        // 2. Gemini fallback
+        if (!rawText && geminiKey) {
+            const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    contents: [{ parts: [{ text: userMessage }] }],
+                    generationConfig: {
+                        maxOutputTokens: 256,
+                        temperature: 0.3
+                    }
+                })
+            });
+            if (geminiRes.ok) {
+                const geminiData = await geminiRes.json();
+                rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+            } else {
+                const errText = await geminiRes.text();
+                console.error('Gemini API error:', geminiRes.status, errText);
+            }
+        }
+
+        if (!rawText) {
+            const fallback = getFallbackSelection(testResult);
             return new Response(JSON.stringify({
                 success: false,
                 error: 'AI service error',
-                fallback: getFallbackSelection(testResult)
+                fallback
             }), {
                 status: 200,
                 headers: getCorsHeaders(origin)
             });
         }
-
-        const geminiData = await geminiRes.json();
-        const rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
         let selection = parseJsonFromText(rawText);
         if (!selection) {

@@ -24,14 +24,21 @@ Cloudflare Workers kullanarak tüm header'ları dinamik olarak ekleyebilirsiniz.
    - `cloudflare-worker.js` dosyasındaki kodu kopyalayıp yapıştırın
    - **Save and Deploy** butonuna tıklayın
 
-4. **Worker'ı Domain'e Bağlayın**
+4. **Adaptive UI API için Secret'lar (Opsiyonel)**
+   - Worker sayfasında **Settings** > **Variables and Secrets**
+   - **Add** > **Secret** ile ekleyin:
+     - `OPENROUTER_API_KEY` — https://openrouter.ai/settings/keys adresinden ücretsiz key
+     - `GEMINI_API_KEY` — (yedek) Google AI Studio'dan key
+   - En az biri tanımlı olmalı. OpenRouter önceliklidir.
+
+5. **Worker'ı Domain'e Bağlayın**
    - Worker sayfasında **Triggers** sekmesine gidin
    - **Add Route** butonuna tıklayın
    - Route: `huseyinemre.tech/*`
    - Worker seçin: `security-headers`
    - **Save** butonuna tıklayın
 
-5. **Test Edin**
+6. **Test Edin**
    - https://securityheaders.com/?q=https://huseyinemre.tech/ adresine gidin
    - Tüm header'ların eklendiğini doğrulayın ✅
 
