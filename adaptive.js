@@ -25,6 +25,7 @@ async function fetchAdaptiveFromAI(testResult) {
         return null;
     }
 }
+window.fetchAdaptiveFromAI = fetchAdaptiveFromAI;
 
 window.addEventListener('adaptive-test-complete', async (e) => {
     const result = e.detail;
