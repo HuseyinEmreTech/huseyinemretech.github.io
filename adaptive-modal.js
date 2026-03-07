@@ -354,7 +354,23 @@ if (document.readyState === 'loading') {
     initAdaptiveModal();
 }
 
-// Test tamamlanınca sonucu dinle (FAZ 7 için)
-window.addEventListener('adaptive-test-complete', (e) => {
-    console.log('[adaptive] Test sonucu:', e.detail);
-});
+// Konsoldan fetchAdaptiveFromAI yoksa buraya yedek ekle
+if (typeof window.fetchAdaptiveFromAI !== 'function') {
+    window.fetchAdaptiveFromAI = async function(testResult) {
+        console.log('[adaptive] AI\'a gönderiliyor:', testResult);
+        try {
+            const res = await fetch('/api/adaptive', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testResult)
+            });
+            const data = await res.json();
+            console.log('[adaptive] AI cevabı:', data);
+            if (data.success && data.tema) return { tema: data.tema, layout: data.layout, cta: data.cta, ton: data.ton };
+            return data.fallback || null;
+        } catch (e) {
+            console.error('[adaptive] AI hatası:', e);
+            return null;
+        }
+    };
+}
