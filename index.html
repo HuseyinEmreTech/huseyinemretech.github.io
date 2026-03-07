@@ -41,6 +41,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="adaptive-themes.css">
+    <link rel="stylesheet" href="adaptive-modal.css">
 </head>
 
 <body>
@@ -243,12 +245,12 @@
                     class="mono text-muted text-sm">/contact</span></h2>
 
             <div class="contact-section">
-                <div class="contact-info">
+                <div class="contact-info" style="max-width: 600px; margin: 0 auto;">
                     <p data-i18n="contact-desc">
                         Bir ERP projesi, yazılım geliştirme ihtiyacı veya teknik danışmanlık için iletişime
                         geçebilirsiniz.
                     </p>
-                    <div class="cta-group contact-links">
+                    <div class="cta-group contact-links" style="flex-direction: row; flex-wrap: wrap; justify-content: center;">
                         <a href="mailto:huseyinemre.tech@gmail.com" class="btn btn-primary" data-i18n="contact-email">
                             <i class="fas fa-envelope" style="margin-right: 8px;"></i> huseyinemre.tech@gmail.com
                         </a>
@@ -262,29 +264,6 @@
                         </a>
                     </div>
                 </div>
-
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <label for="name" data-i18n="form-name">Adınız Soyadınız</label>
-                        <input type="text" id="name" name="name" required placeholder="Adınız Soyadınız"
-                            data-i18n="form-name-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" data-i18n="form-email">E-posta Adresiniz</label>
-                        <input type="email" id="email" name="email" required placeholder="örnek@mail.com"
-                            data-i18n="form-email-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="message" data-i18n="form-msg">Mesajınız</label>
-                        <textarea id="message" name="message" rows="4" required placeholder="Nasıl yardımcı olabilirim?"
-                            data-i18n="form-msg-input"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;"
-                        data-i18n="form-btn">
-                        <span><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Mesaj Gönder</span>
-                    </button>
-                    <div id="form-status" class="form-status"></div>
-                </form>
             </div>
         </div>
     </section>
@@ -300,6 +279,10 @@
     <div class="cursor-outline"></div>
 
     <script type="module" src="script.js"></script>
+    <script src="adaptive-layout.js"></script>
+    <script src="adaptive-cta.js"></script>
+    <script src="adaptive-tone.js"></script>
+    <script src="adaptive-modal.js"></script>
 </body>
 
 </html>

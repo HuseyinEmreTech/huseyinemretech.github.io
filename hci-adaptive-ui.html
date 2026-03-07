@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HCI Akademik Projesi - Kişilik Testi ile Adaptif Portfolyo Arayüzü | Hüseyin Emre">
+    <title>Kişilik Tabanlı Adaptif UI | Hüseyin Emre</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="adaptive-themes.css">
+    <link rel="stylesheet" href="adaptive-modal.css">
+</head>
+
+<body>
+    <div class="aurora-bg"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Hüseyin Emre</a>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 16px;">
+                <button id="lang-toggle" class="btn btn-secondary"
+                    style="padding: 6px 12px; font-size: 0.85rem; border-radius: 6px; cursor: pointer;"
+                    data-i18n="lang-toggle">🇬🇧 EN</button>
+                <a href="index.html#projects" class="nav-link" data-i18n="gis-nav-back">Geri Dön</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 55vh;">
+        <div class="container hero-content">
+            <div class="text-sm mono" style="color: var(--accent-secondary); margin-bottom: 16px;">
+                HCI Akademik Projesi / İnsan-Bilgisayar Etkileşimi
+            </div>
+            <h1 class="text-gradient">Kişilik Tabanlı<br>Adaptif Portfolyo Arayüzü</h1>
+            <p style="max-width: 700px; margin: 0 auto 32px;">
+                MBTI veya Big Five kişilik testi sonuçlarına göre yapay zeka ile seçilen tema, layout, CTA ve metin tonu ile
+                site anında kişiye özel görünüme dönüşür. AI kod yazmaz — sadece hazır componentler arasından seçim yapar.
+            </p>
+            <div class="cta-group">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-magic" style="margin-right: 8px;"></i> Canlı Demo Dene
+                </a>
+                <a href="https://github.com/huseyinemretech/huseyinemretech.github.io" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github" style="margin-right: 8px;"></i> Kaynak Kod
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div style="display: grid; gap: 80px; padding-bottom: 80px;">
+
+                <!-- Akış Diyagramı -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 24px;"><i class="fas fa-project-diagram" style="margin-right: 12px; color: var(--accent-primary);"></i> Sistem Akışı</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; text-align: center; margin-top: 32px;">
+                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: 8px;">1</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary);">Floating Buton</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Sağ kenarda "✨ Kişisel" butonu</p>
+                        </div>
+                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: 8px;">2</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary);">Test Seçimi</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">MBTI (16 soru) veya Big Five (10 soru)</p>
+                        </div>
+                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: 8px;">3</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary);">Cloudflare Worker</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Test sonucu Claude API'ye proxy</p>
+                        </div>
+                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: 8px;">4</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary);">AI Kararı</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">JSON: tema, layout, cta, ton</p>
+                        </div>
+                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: 8px;">5</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary);">Anında Dönüşüm</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">0.3sn animasyonla uygulama</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Boyut -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 8px;"><i class="fas fa-cubes" style="margin-right: 12px; color: var(--accent-primary);"></i> 4 Boyutlu Component Sistemi</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 32px;">AI bu 4 boyutta seçim yapar. Toplam 81 kombinasyon mümkün; 12 component dosyası.</p>
+
+                    <div style="display: grid; gap: 28px;">
+                        <div style="padding: 24px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-secondary);">1. TEMA (3 varyant)</h3>
+                            <ul style="color: var(--text-secondary); list-style: none; padding: 0; margin: 0;">
+                                <li><strong>cool</strong> — Mavi/cyan, sakin, teknik</li>
+                                <li><strong>warm</strong> — Turuncu/amber, samimi, insan odaklı</li>
+                                <li><strong>vibrant</strong> — Mor/pembe gradient, enerjik, yaratıcı</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 24px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-secondary);">2. LAYOUT (3 varyant)</h3>
+                            <ul style="color: var(--text-secondary); list-style: none; padding: 0; margin: 0;">
+                                <li><strong>technical</strong> — Projeler önce, GitHub öne çıkar</li>
+                                <li><strong>business</strong> — Deneyim önce, CV öne çıkar</li>
+                                <li><strong>creative</strong> — Görsel ağırlıklı, hikaye akışı</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 24px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-secondary);">3. CTA BUTONU (3 varyant)</h3>
+                            <ul style="color: var(--text-secondary); list-style: none; padding: 0; margin: 0;">
+                                <li><strong>github-cta</strong> — "GitHub'ımı İncele" → teknik ziyaretçi</li>
+                                <li><strong>cv-cta</strong> — "CV İndir" → işveren/HR</li>
+                                <li><strong>contact-cta</strong> — "Proje Konuşalım" → müşteri</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 24px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: var(--accent-secondary);">4. METİN TONU (3 varyant)</h3>
+                            <ul style="color: var(--text-secondary); list-style: none; padding: 0; margin: 0;">
+                                <li><strong>technical</strong> — Kısa, net, sayısal veriler</li>
+                                <li><strong>story</strong> — Hikaye anlatımı, motivasyon</li>
+                                <li><strong>minimal</strong> — Sadece başlıklar, az metin</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MBTI Mapping -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 24px;"><i class="fas fa-brain" style="margin-right: 12px; color: var(--accent-primary);"></i> MBTI → Component Eşlemesi</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">16 MBTI tipinin her biri belirli component kombinasyonuna map edilir:</p>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.15);">
+                                    <th style="text-align: left; padding: 12px; color: var(--accent-secondary);">MBTI</th>
+                                    <th style="text-align: left; padding: 12px;">Tema</th>
+                                    <th style="text-align: left; padding: 12px;">Layout</th>
+                                    <th style="text-align: left; padding: 12px;">CTA</th>
+                                    <th style="text-align: left; padding: 12px;">Ton</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">INTJ</td><td>cool</td><td>technical</td><td>github-cta</td><td>minimal</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ENTJ</td><td>cool</td><td>business</td><td>cv-cta</td><td>technical</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">INFJ</td><td>warm</td><td>creative</td><td>contact-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ENFJ</td><td>vibrant</td><td>creative</td><td>contact-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ISTP</td><td>cool</td><td>technical</td><td>github-cta</td><td>minimal</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ESTP</td><td>vibrant</td><td>technical</td><td>github-cta</td><td>technical</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ISFP</td><td>warm</td><td>creative</td><td>contact-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ESFP</td><td>vibrant</td><td>creative</td><td>contact-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ISTJ</td><td>cool</td><td>business</td><td>cv-cta</td><td>technical</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ESTJ</td><td>warm</td><td>business</td><td>cv-cta</td><td>technical</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ISFJ</td><td>warm</td><td>business</td><td>cv-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ESFJ</td><td>vibrant</td><td>business</td><td>contact-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">INTP</td><td>cool</td><td>technical</td><td>github-cta</td><td>technical</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ENTP</td><td>vibrant</td><td>technical</td><td>github-cta</td><td>technical</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">INFP</td><td>warm</td><td>creative</td><td>contact-cta</td><td>story</td></tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);"><td style="padding: 10px;">ENFP</td><td>vibrant</td><td>creative</td><td>contact-cta</td><td>story</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Big Five Mapping -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 24px;"><i class="fas fa-chart-line" style="margin-right: 12px; color: var(--accent-primary);"></i> Big Five → Component Kuralları</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">O=Openness, C=Conscientiousness, E=Extraversion, A=Agreeableness, N=Neuroticism (0-1 puan)</p>
+                    <div style="display: grid; gap: 16px;">
+                        <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <strong>Openness:</strong> &gt;0.7 → vibrant tema · 0.4-0.7 → warm · &lt;0.4 → cool
+                        </div>
+                        <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <strong>Extraversion:</strong> &gt;0.7 → contact-cta + story ton · &lt;0.4 → github-cta + minimal ton
+                        </div>
+                        <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <strong>Conscientiousness:</strong> &gt;0.6 → cv-cta + technical ton
+                        </div>
+                        <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <strong>Neuroticism:</strong> &gt;0.6 → warm tema + minimal ton + story
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teknik Stack -->
+                <div class="project-card" style="padding: 40px; height: auto;">
+                    <h2 style="margin-bottom: 24px;"><i class="fas fa-code" style="margin-right: 12px; color: var(--accent-primary);"></i> Teknik Mimari</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+                        <div>
+                            <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-secondary);">Frontend</h3>
+                            <ul style="color: var(--text-muted); list-style: none; padding: 0; font-size: 0.95rem;">
+                                <li>• Vanilla JS (ES modules)</li>
+                                <li>• Vite (build)</li>
+                                <li>• CSS değişkenleri (tema)</li>
+                                <li>• Glassmorphism + Aurora BG</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-secondary);">Backend / API</h3>
+                            <ul style="color: var(--text-muted); list-style: none; padding: 0; font-size: 0.95rem;">
+                                <li>• Cloudflare Workers</li>
+                                <li>• Claude API (Anthropic)</li>
+                                <li>• API key Worker Secret'ta</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-secondary);">Hosting</h3>
+                            <ul style="color: var(--text-muted); list-style: none; padding: 0; font-size: 0.95rem;">
+                                <li>• GitHub Pages</li>
+                                <li>• huseyinemre.tech (CNAME)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-secondary);">Dosya Yapısı</h3>
+                            <ul style="color: var(--text-muted); list-style: none; padding: 0; font-size: 0.85rem;">
+                                <li>• adaptive-themes.css</li>
+                                <li>• adaptive-layout.js</li>
+                                <li>• adaptive-cta.js</li>
+                                <li>• adaptive-tone.js</li>
+                                <li>• adaptive-modal.js/css</li>
+                                <li>• adaptive-content.json</li>
+                                <li>• adaptive.js (orchestrator)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Response Örneği -->
+                <div class="project-card" style="padding: 0; overflow: hidden; height: auto;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px 24px; border-bottom: var(--glass-border); display: flex; align-items: center;">
+                        <span class="mono text-sm" style="color: var(--text-secondary);"><i class="fas fa-server" style="margin-right: 8px;"></i> AI Döndürdüğü JSON</span>
+                    </div>
+                    <div style="padding: 32px; background: rgba(0,0,0,0.4);">
+                        <code class="mono" style="color: var(--text-primary); font-size: 0.95rem; line-height: 1.8;">
+                            {<br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-secondary);">"tema"</span>: <span style="color: var(--success);">"cool"</span>,<br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-secondary);">"layout"</span>: <span style="color: var(--success);">"technical"</span>,<br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-secondary);">"cta"</span>: <span style="color: var(--success);">"github-cta"</span>,<br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-secondary);">"ton"</span>: <span style="color: var(--success);">"minimal"</span><br>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container disable-select">
+            <p style="color: var(--text-muted);">&copy; 2026 Hüseyin Emre. HCI Akademik Projesi — Kişilik Tabanlı Adaptif UI.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

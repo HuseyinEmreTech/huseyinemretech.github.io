@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initCustomCursor();
     initSkillsFilter();
-    initContactForm();
     initLanguageToggle();
 });
 
@@ -118,6 +117,15 @@ function renderProjects(repos, showGitHubError = false) {
 
     // Local/Featured Projects
     const localProjects = [
+        {
+            name: "Kişilik Tabanlı Adaptif UI",
+            description: "hci-card-desc",
+            tech: ["Vanilla JS", "Claude API", "Cloudflare Workers"],
+            category: "dev",
+            html_url: "hci-adaptive-ui.html",
+            isLocal: true,
+            stargazers_count: "HCI"
+        },
         {
             name: "GIS Analysis Project",
             description: "gis-card-desc",
@@ -377,65 +385,6 @@ function initSkillsFilter() {
 }
 
 /* =====================================================
-   CONTACT FORM
-   ===================================================== */
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    const statusDiv = document.getElementById('form-status');
-    const submitBtn = document.getElementById('submit-btn');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const currentLang = document.documentElement.lang || 'tr';
-        const dict = translations[currentLang];
-
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = dict["form-sending"];
-        submitBtn.disabled = true;
-        statusDiv.className = 'form-status';
-        statusDiv.textContent = '';
-
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-            // Send to Cloudflare Worker
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                form.reset();
-                statusDiv.textContent = dict["form-success"];
-                statusDiv.classList.add('success');
-            } else {
-                throw new Error('Server error');
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            statusDiv.textContent = dict["form-error"];
-            statusDiv.classList.add('error');
-        } finally {
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-
-            // Clear status after 5 seconds
-            setTimeout(() => {
-                statusDiv.className = 'form-status';
-                statusDiv.textContent = '';
-            }, 5000);
-        }
-    });
-}
-
-/* =====================================================
    MULTI-LANGUAGE SUPPORT
    ===================================================== */
 const translations = {
@@ -498,6 +447,7 @@ const translations = {
         "footer-text": "&copy; 2026 Hüseyin Emre. Professional Excellence için tasarlandı ve kodlandı.",
         "menu-label": "Menu Paneli", "menu-btn-aria": "Menu Paneli", "lang-toggle": "🇬🇧 EN",
         "project-no-desc": "Açıklama bulunmuyor.",
+        "hci-card-desc": "MBTI/Big Five kişilik testi sonucuna göre Claude AI ile seçilen tema, layout, CTA ve metin tonu ile portfolyo arayüzü anında kişiye özel dönüşür. HCI akademik projesi.",
         "gis-card-desc": "R dili ile coğrafi veri analizi ve görselleştirme çalışması.",
         "Sinema-Bilet-Otamasyonu-desc": "C# ve SQL Server kullanılarak geliştirilen, kapsamlı biletleme ve salon yönetim sistemi.",
         "Teknik-Destek-Sistemi-desc": "Firmaların teknik destek taleplerini organize eden, durum takibi yapılabilen web tabanlı çözüm.",
@@ -581,6 +531,7 @@ const translations = {
         "footer-text": "&copy; 2026 Hüseyin Emre. Designed & Built for Professional Excellence.",
         "menu-label": "Menu Panel", "menu-btn-aria": "Menu Panel", "lang-toggle": "🇹🇷 TR",
         "project-no-desc": "Description not available.",
+        "hci-card-desc": "Portfolio interface adapts instantly to each visitor based on MBTI/Big Five personality test results, with AI-selected theme, layout, CTA, and tone. HCI academic project.",
         "gis-card-desc": "Geospatial data analysis and visualization study with R language.",
         "Sinema-Bilet-Otamasyonu-desc": "Comprehensive ticketing and hall management system developed using C# and SQL Server.",
         "Teknik-Destek-Sistemi-desc": "Web-based solution that organizes technical support requests for companies with status tracking.",
