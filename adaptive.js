@@ -148,6 +148,13 @@ function restoreAdaptiveConfig() {
         }
     } catch (_) {}
 }
+
+function hidePageLoadOverlay() {
+    const el = document.getElementById('page-load-overlay');
+    if (!el) return;
+    el.classList.add('hidden');
+    setTimeout(() => { el.remove(); }, 350);
+}
 function createResetButton() {
     let btn = document.getElementById('adaptive-reset-btn');
     if (btn) return btn;
@@ -175,12 +182,19 @@ function updateResetButtonVisibility() {
 
 window.addEventListener('adaptive-test-complete', () => setTimeout(updateResetButtonVisibility, 100));
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        restoreAdaptiveConfig();
-        updateResetButtonVisibility();
-    });
-} else {
+function initPageLoad() {
     restoreAdaptiveConfig();
     updateResetButtonVisibility();
+    setTimeout(hidePageLoadOverlay, 180);
 }
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPageLoad);
+} else {
+    initPageLoad();
+}
+
+// Fallback: sayfa tam yüklendiğinde overlay'i kaldır
+window.addEventListener('load', () => {
+    setTimeout(hidePageLoadOverlay, 50);
+});

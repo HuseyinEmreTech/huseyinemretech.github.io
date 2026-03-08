@@ -3,6 +3,39 @@
    Glassmorphism + mevcut tasarımla uyumlu
    ===================================================== */
 
+/* Sayfa yüklenme - adaptif ayarlar uygulanırken */
+.page-load-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-primary, #05050a);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.page-load-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page-load-overlay .page-load-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary, #6366f1);
+    border-radius: 50%;
+    animation: pageLoadPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes pageLoadPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
 .adaptive-float-btn {
     position: fixed;
     right: 0;
