@@ -113,12 +113,11 @@ async function handleRequest(request, env = {}) {
     return newResponse
 }
 
-// ADAPTIVE UI - OpenRouter (öncelik) veya Gemini ile component seçimi
-// Dashboard: OPENROUTER_API_KEY veya GEMINI_API_KEY (Secret)
+// ADAPTIVE UI - Sadece OpenRouter (Llama, Gemma, openrouter/free)
+// Dashboard: OPENROUTER_API_KEY (Secret)
 async function handleAdaptive(request, env, origin) {
     const openRouterKey = env.OPENROUTER_API_KEY;
-    const geminiKey = env.GEMINI_API_KEY;
-    if (!openRouterKey && !geminiKey) {
+    if (!openRouterKey) {
         return new Response(JSON.stringify({ success: false, error: 'Service not configured' }), {
             status: 503,
             headers: getCorsHeaders(origin)
@@ -160,82 +159,56 @@ Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7
         let rawText = '';
         let lastError = null;
 
-        // Önce ücretli (kredi ile) — $5 ≈ 30.000+ istek. Sonra ücretsiz modeller.
+        // 10 model paralel — hata veren elenir, ilk geçerli cevap kullanılır
         const orModels = [
-            'meta-llama/llama-3.3-70b-instruct',      // ~$0.10/M input, kredi gerekir
-            'meta-llama/llama-3.2-3b-instruct:free',
-            'google/gemma-2-9b-it:free',
+            'stepfun/step-3.5-flash:free',
+            'arcee-ai/trinity-large-preview:free',
+            'arcee-ai/trinity-mini:free',
+            'z-ai/glm-4.5-air:free',
+            'nvidia/nemotron-nano-9b-v2:free',
+            'nvidia/nemotron-3-nano-30b-a3b:free',
+            'meta-llama/llama-3.3-70b-instruct:free',
+            'google/gemma-3-27b-it:free',
+            'qwen/qwen3-next-80b-a3b-instruct:free',
+            'openai/gpt-oss-20b:free',
             'openrouter/free'
         ];
 
-        // 1. OpenRouter (öncelik) - birden fazla model dene
         if (openRouterKey) {
-            for (const model of orModels) {
-                if (rawText) break;
-                try {
-                    const ctrl = new AbortController();
-                    const timeout = setTimeout(() => ctrl.abort(), 25000);
-                    const orRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-                        signal: ctrl.signal,
-                        method: 'POST',
-                        headers: {
-                            'Authorization': `Bearer ${openRouterKey}`,
-                            'Content-Type': 'application/json',
-                            'HTTP-Referer': 'https://huseyinemre.tech',
-                            'X-Title': 'HuseyinEmre Portfolio'
-                        },
-                        body: JSON.stringify({
-                            model,
-                            messages: [
-                                { role: 'system', content: systemPrompt },
-                                { role: 'user', content: userMessage }
-                            ],
-                            max_tokens: 256,
-                            temperature: 0.3
-                        })
-                    });
-                    clearTimeout(timeout);
-                    const orBody = await orRes.text();
-                    if (orRes.ok) {
-                        const orData = JSON.parse(orBody);
-                        rawText = orData.choices?.[0]?.message?.content || '';
-                    } else {
-                        lastError = `OpenRouter(${model}): ${orRes.status} ${orBody.substring(0, 200)}`;
-                        console.error('OpenRouter error:', lastError);
-                    }
-                } catch (e) {
-                    lastError = `OpenRouter(${model}): ${e.name} ${e.message}`;
-                    console.error('OpenRouter fetch error:', e);
-                }
-            }
-        }
-
-        // 2. Gemini fallback
-        if (!rawText && geminiKey) {
-            try {
-                const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
+            const fetchModel = async (model) => {
+                const ctrl = new AbortController();
+                setTimeout(() => ctrl.abort(), 30000);
+                const orRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    signal: ctrl.signal,
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Authorization': `Bearer ${openRouterKey}`,
+                        'Content-Type': 'application/json',
+                        'HTTP-Referer': 'https://huseyinemre.tech',
+                        'X-Title': 'HuseyinEmre Portfolio'
+                    },
                     body: JSON.stringify({
-                        systemInstruction: { parts: [{ text: systemPrompt }] },
-                        contents: [{ parts: [{ text: userMessage }] }],
-                        generationConfig: {
-                            maxOutputTokens: 256,
-                            temperature: 0.3
-                        }
+                        model,
+                        messages: [
+                            { role: 'system', content: systemPrompt },
+                            { role: 'user', content: userMessage }
+                        ],
+                        max_tokens: 256,
+                        temperature: 0.3
                     })
                 });
-                const errText = await geminiRes.text();
-                if (geminiRes.ok) {
-                    const geminiData = JSON.parse(errText);
-                    rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
-                } else {
-                    lastError = `Gemini: ${geminiRes.status} ${errText.substring(0, 200)}`;
-                    console.error('Gemini API error:', lastError);
-                }
+                const orBody = await orRes.text();
+                if (!orRes.ok) throw new Error(`OpenRouter(${model}): ${orRes.status}`);
+                const orData = JSON.parse(orBody);
+                const text = orData.choices?.[0]?.message?.content || '';
+                if (!text) throw new Error('Empty');
+                return text;
+            };
+            try {
+                rawText = await Promise.any(orModels.map(m => fetchModel(m)));
             } catch (e) {
-                lastError = `Gemini: ${e.name} ${e.message}`;
-                console.error('Gemini fetch error:', e);
+                const errs = e.errors || [e];
+                lastError = errs.map(x => x?.message || String(x)).join(' | ') || 'All rejected';
             }
         }
 
@@ -245,7 +218,7 @@ Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7
                 success: false,
                 error: 'AI service error',
                 fallback,
-                debug: lastError || (openRouterKey ? 'OpenRouter failed' : geminiKey ? 'Gemini failed' : 'No API key')
+                debug: lastError || 'OpenRouter failed'
             }), {
                 status: 200,
                 headers: getCorsHeaders(origin)

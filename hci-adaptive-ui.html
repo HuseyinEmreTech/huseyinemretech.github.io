@@ -43,7 +43,7 @@
             </div>
             <h1 class="text-gradient">Kişilik Tabanlı<br>Adaptif Portfolyo Arayüzü</h1>
             <p style="max-width: 720px; margin: 0 auto 32px;">
-                MBTI veya Big Five testi sonucuna göre <strong>Llama 3.3 70B</strong> ile seçilen 8 boyut (tema, layout, CTA, ton, font boyutu, animasyon, buton stili, spacing) ile
+                MBTI veya Big Five testi sonucuna göre <strong>Llama 3.2 3B (ücretsiz)</strong> ile seçilen 8 boyut (tema, layout, CTA, ton, font boyutu, animasyon, buton stili, spacing) ile
                 site anında kişiye özel görünüme dönüşür. Ayarlar localStorage ile hatırlanır, "Siteyi Sıfırla" ile varsayılana dönülür. Tüm proje sayfalarında (GIS, Makine Öğrenmesi, Araba Yıkama, HCI) aynı adaptif deneyim sunulur. Eşleşmeler HCI literatürüyle doğrulanmıştır.
             </p>
             <div class="cta-group">
@@ -63,37 +63,43 @@
 
                 <!-- Akış Diyagramı -->
                 <div class="project-card" style="padding: 40px; height: auto;">
-                    <h2 style="margin-bottom: 24px;"><i class="fas fa-project-diagram" style="margin-right: 12px; color: var(--accent-primary);"></i> Sistem Akışı</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; text-align: center; margin-top: 32px;">
-                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
-                            <div style="font-size: 2rem; margin-bottom: 8px;">1</div>
-                            <div class="mono text-sm" style="color: var(--accent-secondary);">Floating Buton</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Sağ kenarda "✨ Kişisel" butonu</p>
+                    <h2 style="margin-bottom: 8px;"><i class="fas fa-project-diagram" style="margin-right: 12px; color: var(--accent-primary);"></i> Sistem Akışı</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 32px;">Test sonucundan kişiye özel görünüme kadar geçen adımlar:</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; text-align: center;">
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">1</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">Floating Buton</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Sağ kenarda "✨ Kişisel" butonuna tıkla</p>
                         </div>
-                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
-                            <div style="font-size: 2rem; margin-bottom: 8px;">2</div>
-                            <div class="mono text-sm" style="color: var(--accent-secondary);">Test Seçimi</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">MBTI (16 soru) veya Big Five (10 soru)</p>
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">2</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">Test Seçimi</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">MBTI (16 soru, ~2 dk) veya Big Five (10 soru, ~1 dk)</p>
                         </div>
-                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
-                            <div style="font-size: 2rem; margin-bottom: 8px;">3</div>
-                            <div class="mono text-sm" style="color: var(--accent-secondary);">Cloudflare Worker</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Test sonucu OpenRouter (Llama 3.3 70B) → ücretsiz modeller → Gemini fallback</p>
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">3</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">API'ye Gönderim</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Cloudflare Worker test sonucunu OpenRouter API'ye POST ile iletir</p>
                         </div>
-                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
-                            <div style="font-size: 2rem; margin-bottom: 8px;">4</div>
-                            <div class="mono text-sm" style="color: var(--accent-secondary);">AI Kararı</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">8 boyut JSON döner; AI hata verirse hazır MBTI/Big Five map devreye girer</p>
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">4</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">Paralel AI Çağrısı</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">11 ücretsiz model (StepFun, Llama, Gemma, NVIDIA...) aynı anda denenir; ilk geçerli cevap kullanılır. Hepsi hata verirse MBTI/Big Five hazır map devreye girer</p>
                         </div>
-                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
-                            <div style="font-size: 2rem; margin-bottom: 8px;">5</div>
-                            <div class="mono text-sm" style="color: var(--accent-secondary);">Yükleme Göstergesi</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Sayfa yükleme overlay (~180ms) + "AI analiz ediyor..." modal</p>
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">5</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">Bekleme Süreci</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Sayfa yüklenirken overlay (~180ms); test bitince "AI analiz ediyor..." modalı gösterilir</p>
                         </div>
-                        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
-                            <div style="font-size: 2rem; margin-bottom: 8px;">6</div>
-                            <div class="mono text-sm" style="color: var(--accent-secondary);">Anında Dönüşüm</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">8 boyut localStorage'a kaydedilir, 0.3 sn animasyonla uygulanır; "Siteyi Sıfırla" ile geri alınır</p>
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">6</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">Uygulama & Rapor</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">8 boyut 0.3 sn animasyonla uygulanır; localStorage'a kaydedilir; altta "ISTP olarak siz: ..." özet raporu 5 sn görünür</p>
+                        </div>
+                        <div style="padding: 24px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: var(--accent-primary);">7</div>
+                            <div class="mono text-sm" style="color: var(--accent-secondary); margin-bottom: 4px;">Sıfırlama</div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">"Siteyi Sıfırla" ile varsayılana dön; localStorage temizlenir, sayfa yeniden yüklenir</p>
                         </div>
                     </div>
                 </div>
@@ -265,7 +271,7 @@
                             <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-secondary);">Backend / API</h3>
                             <ul style="color: var(--text-muted); list-style: none; padding: 0; font-size: 0.95rem;">
                                 <li>• Cloudflare Workers</li>
-                                <li>• OpenRouter: Llama 3.3 70B (kredi ile) → 3B/Gemma (ücretsiz) → fallback</li>
+                                <li>• OpenRouter: Llama 3.2 3B, Gemma (ücretsiz) → Gemini fallback</li>
                                 <li>• Gemini API (son yedek)</li>
                                 <li>• MBTI/Big Five → hazır map (AI hata verirse)</li>
                                 <li>• localStorage ile ayar kalıcılığı</li>

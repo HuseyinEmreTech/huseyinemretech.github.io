@@ -37,6 +37,63 @@ async function fetchAdaptiveFromAI(testResult) {
 }
 window.fetchAdaptiveFromAI = fetchAdaptiveFromAI;
 
+// Kişisel rapor etiketleri
+const RAPOR_LABELS = {
+    tr: {
+        tema: { cool: 'Sakin/Mavi', warm: 'Sıcak/Turuncu', vibrant: 'Enerjik/Mor' },
+        layout: { technical: 'Teknik', business: 'İş odaklı', creative: 'Yaratıcı' },
+        cta: { 'github-cta': 'GitHub öne çıkar', 'cv-cta': 'CV indir', 'contact-cta': 'İletişim öne çıkar' },
+        ton: { technical: 'Kısa ve net', story: 'Hikaye anlatımı', minimal: 'Minimal' },
+        fontSize: { small: 'Küçük font', medium: 'Orta font', large: 'Büyük font' },
+        animation: { subtle: 'Hafif animasyon', normal: 'Standart', dynamic: 'Enerjik animasyon' },
+        buttonStyle: { rounded: 'Yuvarlak', square: 'Köşeli', pill: 'Pil' },
+        spacing: { compact: 'Sıkı', comfortable: 'Dengeli', spacious: 'Ferah' }
+    },
+    en: {
+        tema: { cool: 'Cool/Blue', warm: 'Warm/Amber', vibrant: 'Vibrant/Purple' },
+        layout: { technical: 'Technical', business: 'Business', creative: 'Creative' },
+        cta: { 'github-cta': 'GitHub', 'cv-cta': 'CV', 'contact-cta': 'Contact' },
+        ton: { technical: 'Short & clear', story: 'Storytelling', minimal: 'Minimal' },
+        fontSize: { small: 'Small', medium: 'Medium', large: 'Large' },
+        animation: { subtle: 'Subtle', normal: 'Standard', dynamic: 'Dynamic' },
+        buttonStyle: { rounded: 'Rounded', square: 'Square', pill: 'Pill' },
+        spacing: { compact: 'Compact', comfortable: 'Comfortable', spacious: 'Spacious' }
+    }
+};
+
+function buildAdaptiveReport(testResult, selection) {
+    const lang = (document.documentElement.lang || 'tr').startsWith('en') ? 'en' : 'tr';
+    const L = RAPOR_LABELS[lang];
+    if (!L || !selection) return '';
+    const items = [];
+    ['tema', 'layout', 'cta', 'ton', 'fontSize', 'animation', 'buttonStyle', 'spacing'].forEach(k => {
+        const v = selection[k];
+        if (v && L[k] && L[k][v]) items.push(L[k][v]);
+    });
+    if (items.length === 0) return '';
+    const prefix = testResult?.type === 'mbti' && testResult?.mbti
+        ? (lang === 'tr' ? `${testResult.mbti} olarak siz: ` : `As ${testResult.mbti}: `)
+        : (lang === 'tr' ? 'Profilinize göre: ' : 'Based on your profile: ');
+    return prefix + items.join(' · ');
+}
+
+function showAdaptiveReport(testResult, selection) {
+    const text = buildAdaptiveReport(testResult, selection);
+    if (!text) return;
+    let toast = document.getElementById('adaptive-report-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'adaptive-report-toast';
+        toast.className = 'adaptive-report-toast';
+        const closeLabel = (document.documentElement.lang || 'tr').startsWith('en') ? 'Close' : 'Kapat';
+        toast.innerHTML = `<span class="adaptive-report-text"></span><button class="adaptive-report-close" aria-label="${closeLabel}">&times;</button>`;
+        toast.querySelector('.adaptive-report-close').addEventListener('click', () => toast.classList.remove('active'));
+        document.body.appendChild(toast);
+    }
+    toast.querySelector('.adaptive-report-text').textContent = text;
+    toast.classList.add('active');
+}
+
 function showAdaptiveLoading(show) {
     let el = document.getElementById('adaptive-loading-overlay');
     if (!el) {
@@ -59,14 +116,16 @@ window.addEventListener('adaptive-test-complete', async (e) => {
     const result = e.detail;
     showAdaptiveLoading(true);
     try {
-        const selection = await fetchAdaptiveFromAI(result);
-        if (selection) {
+        let selection = await fetchAdaptiveFromAI(result);
+        if (!selection) {
+            selection = getFallbackSelection(result);
+            applyAdaptive(selection);
+            console.log('[adaptive] Fallback uygulandı (AI cevap vermedi)');
+        } else {
             applyAdaptive(selection);
             console.log('[adaptive] Uygulandı:', selection);
-        } else {
-            applyAdaptive(getFallbackSelection(result));
-            console.log('[adaptive] Fallback uygulandı (AI cevap vermedi)');
         }
+        showAdaptiveReport(result, selection);
     } finally {
         showAdaptiveLoading(false);
     }
