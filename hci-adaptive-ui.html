@@ -42,9 +42,9 @@
                 HCI Akademik Projesi / İnsan-Bilgisayar Etkileşimi
             </div>
             <h1 class="text-gradient">Kişilik Tabanlı<br>Adaptif Portfolyo Arayüzü</h1>
-            <p style="max-width: 700px; margin: 0 auto 32px;">
-                MBTI veya Big Five kişilik testi sonuçlarına göre yapay zeka ile seçilen 8 boyut (tema, layout, CTA, ton, font, animasyon, buton stili, spacing) ile
-                site anında kişiye özel görünüme dönüşür. Eşleşmeler HCI literatürüyle doğrulanmıştır. AI kod yazmaz — sadece hazır componentler arasından seçim yapar.
+            <p style="max-width: 720px; margin: 0 auto 32px;">
+                MBTI veya Big Five testi sonucuna göre <strong>Llama 3.3 70B</strong> ile seçilen 8 boyut (tema, layout, CTA, ton, font boyutu, animasyon, buton stili, spacing) ile
+                site anında kişiye özel görünüme dönüşür. Ayarlar localStorage ile hatırlanır, "Siteyi Sıfırla" ile varsayılana dönülür. Tüm proje sayfalarında (GIS, Makine Öğrenmesi, Araba Yıkama, HCI) aynı adaptif deneyim sunulur. Eşleşmeler HCI literatürüyle doğrulanmıştır.
             </p>
             <div class="cta-group">
                 <a href="index.html" class="btn btn-primary">
@@ -78,22 +78,22 @@
                         <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
                             <div style="font-size: 2rem; margin-bottom: 8px;">3</div>
                             <div class="mono text-sm" style="color: var(--accent-secondary);">Cloudflare Worker</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Test sonucu OpenRouter / Gemini API'ye proxy</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Test sonucu OpenRouter (Llama 3.3 70B) → ücretsiz modeller → Gemini fallback</p>
                         </div>
                         <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
                             <div style="font-size: 2rem; margin-bottom: 8px;">4</div>
                             <div class="mono text-sm" style="color: var(--accent-secondary);">AI Kararı</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">JSON: tema, layout, cta, ton — AI hata verirse fallback map devreye girer</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">8 boyut JSON döner; AI hata verirse hazır MBTI/Big Five map devreye girer</p>
                         </div>
                         <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
                             <div style="font-size: 2rem; margin-bottom: 8px;">5</div>
                             <div class="mono text-sm" style="color: var(--accent-secondary);">Yükleme Göstergesi</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">"AI analiz ediyor..." overlay (1–3 sn)</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Sayfa yükleme overlay (~180ms) + "AI analiz ediyor..." modal</p>
                         </div>
                         <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px;">
                             <div style="font-size: 2rem; margin-bottom: 8px;">6</div>
                             <div class="mono text-sm" style="color: var(--accent-secondary);">Anında Dönüşüm</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Tema, layout, CTA, ton 0.3 sn animasyonla uygulanır</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">8 boyut localStorage'a kaydedilir, 0.3 sn animasyonla uygulanır; "Siteyi Sıfırla" ile geri alınır</p>
                         </div>
                     </div>
                 </div>
@@ -265,10 +265,10 @@
                             <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--accent-secondary);">Backend / API</h3>
                             <ul style="color: var(--text-muted); list-style: none; padding: 0; font-size: 0.95rem;">
                                 <li>• Cloudflare Workers</li>
-                                <li>• OpenRouter (openrouter/free, öncelik)</li>
-                                <li>• Gemini API (yedek, fallback)</li>
+                                <li>• OpenRouter: Llama 3.3 70B (kredi ile) → 3B/Gemma (ücretsiz) → fallback</li>
+                                <li>• Gemini API (son yedek)</li>
                                 <li>• MBTI/Big Five → hazır map (AI hata verirse)</li>
-                                <li>• API key’ler Worker Secret’ta</li>
+                                <li>• localStorage ile ayar kalıcılığı</li>
                             </ul>
                         </div>
                         <div>

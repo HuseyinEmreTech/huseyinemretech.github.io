@@ -15,6 +15,7 @@ async function fetchAdaptiveFromAI(testResult) {
         });
         const data = await res.json();
         console.log('[adaptive] AI cevabı:', data);
+        if (data.debug) console.warn('[adaptive] AI hata detayı:', data.debug);
         if (data.success && data.tema) {
             return {
                 tema: data.tema,

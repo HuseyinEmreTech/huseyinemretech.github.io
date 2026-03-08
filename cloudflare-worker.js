@@ -158,54 +158,84 @@ Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7
 
         const userMessage = `Kişilik testi sonucu: ${JSON.stringify(testResult)}`;
         let rawText = '';
+        let lastError = null;
 
-        // 1. OpenRouter (öncelik)
+        // Önce ücretli (kredi ile) — $5 ≈ 30.000+ istek. Sonra ücretsiz modeller.
+        const orModels = [
+            'meta-llama/llama-3.3-70b-instruct',      // ~$0.10/M input, kredi gerekir
+            'meta-llama/llama-3.2-3b-instruct:free',
+            'google/gemma-2-9b-it:free',
+            'openrouter/free'
+        ];
+
+        // 1. OpenRouter (öncelik) - birden fazla model dene
         if (openRouterKey) {
-            const orRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${openRouterKey}`,
-                    'Content-Type': 'application/json',
-                    'HTTP-Referer': 'https://huseyinemre.tech'
-                },
-                body: JSON.stringify({
-                    model: 'openrouter/free',
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        { role: 'user', content: userMessage }
-                    ],
-                    max_tokens: 256,
-                    temperature: 0.3
-                })
-            });
-            if (orRes.ok) {
-                const orData = await orRes.json();
-                rawText = orData.choices?.[0]?.message?.content || '';
-            } else {
-                console.error('OpenRouter error:', orRes.status, await orRes.text());
+            for (const model of orModels) {
+                if (rawText) break;
+                try {
+                    const ctrl = new AbortController();
+                    const timeout = setTimeout(() => ctrl.abort(), 25000);
+                    const orRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                        signal: ctrl.signal,
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${openRouterKey}`,
+                            'Content-Type': 'application/json',
+                            'HTTP-Referer': 'https://huseyinemre.tech',
+                            'X-Title': 'HuseyinEmre Portfolio'
+                        },
+                        body: JSON.stringify({
+                            model,
+                            messages: [
+                                { role: 'system', content: systemPrompt },
+                                { role: 'user', content: userMessage }
+                            ],
+                            max_tokens: 256,
+                            temperature: 0.3
+                        })
+                    });
+                    clearTimeout(timeout);
+                    const orBody = await orRes.text();
+                    if (orRes.ok) {
+                        const orData = JSON.parse(orBody);
+                        rawText = orData.choices?.[0]?.message?.content || '';
+                    } else {
+                        lastError = `OpenRouter(${model}): ${orRes.status} ${orBody.substring(0, 200)}`;
+                        console.error('OpenRouter error:', lastError);
+                    }
+                } catch (e) {
+                    lastError = `OpenRouter(${model}): ${e.name} ${e.message}`;
+                    console.error('OpenRouter fetch error:', e);
+                }
             }
         }
 
         // 2. Gemini fallback
         if (!rawText && geminiKey) {
-            const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    systemInstruction: { parts: [{ text: systemPrompt }] },
-                    contents: [{ parts: [{ text: userMessage }] }],
-                    generationConfig: {
-                        maxOutputTokens: 256,
-                        temperature: 0.3
-                    }
-                })
-            });
-            if (geminiRes.ok) {
-                const geminiData = await geminiRes.json();
-                rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
-            } else {
+            try {
+                const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        systemInstruction: { parts: [{ text: systemPrompt }] },
+                        contents: [{ parts: [{ text: userMessage }] }],
+                        generationConfig: {
+                            maxOutputTokens: 256,
+                            temperature: 0.3
+                        }
+                    })
+                });
                 const errText = await geminiRes.text();
-                console.error('Gemini API error:', geminiRes.status, errText);
+                if (geminiRes.ok) {
+                    const geminiData = JSON.parse(errText);
+                    rawText = geminiData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                } else {
+                    lastError = `Gemini: ${geminiRes.status} ${errText.substring(0, 200)}`;
+                    console.error('Gemini API error:', lastError);
+                }
+            } catch (e) {
+                lastError = `Gemini: ${e.name} ${e.message}`;
+                console.error('Gemini fetch error:', e);
             }
         }
 
@@ -214,7 +244,8 @@ Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7
             return new Response(JSON.stringify({
                 success: false,
                 error: 'AI service error',
-                fallback
+                fallback,
+                debug: lastError || (openRouterKey ? 'OpenRouter failed' : geminiKey ? 'Gemini failed' : 'No API key')
             }), {
                 status: 200,
                 headers: getCorsHeaders(origin)
