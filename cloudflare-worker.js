@@ -138,17 +138,23 @@ async function handleAdaptive(request, env, origin) {
     try {
         const testResult = await request.json();
 
-        const systemPrompt = `Sen bir UI karar motorusun. Kullanıcının kişilik testi sonucuna göre şu 4 boyutta seçim yap ve SADECE JSON döndür, başka hiçbir şey yazma. Markdown kullanma, sadece ham JSON:
+        const systemPrompt = `Sen bir UI karar motorusun. Kullanıcının kişilik testi sonucuna göre şu 8 boyutta seçim yap ve SADECE JSON döndür, başka hiçbir şey yazma. Markdown kullanma, sadece ham JSON:
 {
   "tema": "cool" | "warm" | "vibrant",
   "layout": "technical" | "business" | "creative",
   "cta": "github-cta" | "cv-cta" | "contact-cta",
-  "ton": "technical" | "story" | "minimal"
+  "ton": "technical" | "story" | "minimal",
+  "fontSize": "small" | "medium" | "large",
+  "animation": "subtle" | "normal" | "dynamic",
+  "buttonStyle": "rounded" | "square" | "pill",
+  "spacing": "compact" | "comfortable" | "spacious"
 }
 
-MBTI mapping: INTJ→cool+technical+github-cta+minimal, ENTJ→cool+business+cv-cta+technical, INFJ→warm+creative+contact-cta+story, ENFJ→vibrant+creative+contact-cta+story, ISTP→cool+technical+github-cta+minimal, ESTP→vibrant+technical+github-cta+technical, ISFP→warm+creative+contact-cta+story, ESFP→vibrant+creative+contact-cta+story, ISTJ→cool+business+cv-cta+technical, ESTJ→warm+business+cv-cta+technical, ISFJ→warm+business+cv-cta+story, ESFJ→vibrant+business+contact-cta+story, INTP→cool+technical+github-cta+technical, ENTP→vibrant+technical+github-cta+technical, INFP→warm+creative+contact-cta+story, ENFP→vibrant+creative+contact-cta+story.
+MBTI mapping (tema,layout,cta,ton): INTJ→cool+technical+github-cta+minimal, ENTJ→cool+business+cv-cta+technical, INFJ→warm+creative+contact-cta+story, ENFJ→vibrant+creative+contact-cta+story, ISTP→cool+technical+github-cta+minimal, ESTP→vibrant+technical+github-cta+technical, ISFP→warm+creative+contact-cta+story, ESFP→vibrant+creative+contact-cta+story, ISTJ→cool+business+cv-cta+technical, ESTJ→warm+business+cv-cta+technical, ISFJ→warm+business+cv-cta+story, ESFJ→vibrant+business+contact-cta+story, INTP→cool+technical+github-cta+technical, ENTP→vibrant+technical+github-cta+technical, INFP→warm+creative+contact-cta+story, ENFP→vibrant+creative+contact-cta+story.
 
-Big Five: Openness>0.7→vibrant, 0.4-0.7→warm, <0.4→cool. Extraversion>0.7→contact-cta+story, <0.4→github-cta+minimal. Conscientiousness>0.6→cv-cta+technical. Neuroticism>0.6→warm+minimal+story.`;
+fontSize: large (erişilebilirlik), small/medium (teknik). animation: subtle (minimal/neurotic), dynamic (vibrant/story), normal. buttonStyle: square (teknik/INTJ), pill (yaratıcı/dostane), rounded (genel). spacing: compact (teknik/yoğun), spacious (yaratıcı/ferah), comfortable (varsayılan). Varsayılanlar: fontSize=medium, animation=normal, buttonStyle=rounded, spacing=comfortable.
+
+Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7→contact-cta+story+pill. Neuroticism>0.6→subtle+compact.`;
 
         const userMessage = `Kişilik testi sonucu: ${JSON.stringify(testResult)}`;
         let rawText = '';
@@ -229,7 +235,7 @@ Big Five: Openness>0.7→vibrant, 0.4-0.7→warm, <0.4→cool. Extraversion>0.7�
         return new Response(JSON.stringify({
             success: false,
             error: 'Server error',
-            fallback: { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical' }
+            fallback: { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical', fontSize: 'medium', animation: 'normal', buttonStyle: 'rounded', spacing: 'comfortable' }
         }), {
             status: 200,
             headers: getCorsHeaders(origin)
@@ -246,44 +252,49 @@ function parseJsonFromText(text) {
             ['technical', 'business', 'creative'].includes(obj.layout) &&
             ['github-cta', 'cv-cta', 'contact-cta'].includes(obj.cta) &&
             ['technical', 'story', 'minimal'].includes(obj.ton);
-        return valid ? obj : null;
+        if (!valid) return null;
+        obj.fontSize = ['small', 'medium', 'large'].includes(obj.fontSize) ? obj.fontSize : 'medium';
+        obj.animation = ['subtle', 'normal', 'dynamic'].includes(obj.animation) ? obj.animation : 'normal';
+        obj.buttonStyle = ['rounded', 'square', 'pill'].includes(obj.buttonStyle) ? obj.buttonStyle : 'rounded';
+        obj.spacing = ['compact', 'comfortable', 'spacious'].includes(obj.spacing) ? obj.spacing : 'comfortable';
+        return obj;
     } catch (_) {
         return null;
     }
 }
 
 function getFallbackSelection(testResult) {
+    const base = { fontSize: 'medium', animation: 'normal', buttonStyle: 'rounded', spacing: 'comfortable' };
     if (testResult?.type === 'mbti' && testResult?.mbti) {
         const map = {
-            INTJ: { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'minimal' },
-            ENTJ: { tema: 'cool', layout: 'business', cta: 'cv-cta', ton: 'technical' },
-            INFJ: { tema: 'warm', layout: 'creative', cta: 'contact-cta', ton: 'story' },
-            ENFJ: { tema: 'vibrant', layout: 'creative', cta: 'contact-cta', ton: 'story' },
-            ISTP: { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'minimal' },
-            ESTP: { tema: 'vibrant', layout: 'technical', cta: 'github-cta', ton: 'technical' },
-            ISFP: { tema: 'warm', layout: 'creative', cta: 'contact-cta', ton: 'story' },
-            ESFP: { tema: 'vibrant', layout: 'creative', cta: 'contact-cta', ton: 'story' },
-            ISTJ: { tema: 'cool', layout: 'business', cta: 'cv-cta', ton: 'technical' },
-            ESTJ: { tema: 'warm', layout: 'business', cta: 'cv-cta', ton: 'technical' },
-            ISFJ: { tema: 'warm', layout: 'business', cta: 'cv-cta', ton: 'story' },
-            ESFJ: { tema: 'vibrant', layout: 'business', cta: 'contact-cta', ton: 'story' },
-            INTP: { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical' },
-            ENTP: { tema: 'vibrant', layout: 'technical', cta: 'github-cta', ton: 'technical' },
-            INFP: { tema: 'warm', layout: 'creative', cta: 'contact-cta', ton: 'story' },
-            ENFP: { tema: 'vibrant', layout: 'creative', cta: 'contact-cta', ton: 'story' }
+            INTJ: { ...base, tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'minimal', animation: 'subtle', buttonStyle: 'square', spacing: 'compact' },
+            ENTJ: { ...base, tema: 'cool', layout: 'business', cta: 'cv-cta', ton: 'technical' },
+            INFJ: { ...base, tema: 'warm', layout: 'creative', cta: 'contact-cta', ton: 'story', buttonStyle: 'pill' },
+            ENFJ: { ...base, tema: 'vibrant', layout: 'creative', cta: 'contact-cta', ton: 'story', animation: 'dynamic', buttonStyle: 'pill', spacing: 'spacious' },
+            ISTP: { ...base, tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'minimal', animation: 'subtle', buttonStyle: 'square', spacing: 'compact' },
+            ESTP: { ...base, tema: 'vibrant', layout: 'technical', cta: 'github-cta', ton: 'technical', animation: 'dynamic', buttonStyle: 'pill' },
+            ISFP: { ...base, tema: 'warm', layout: 'creative', cta: 'contact-cta', ton: 'story', spacing: 'spacious' },
+            ESFP: { ...base, tema: 'vibrant', layout: 'creative', cta: 'contact-cta', ton: 'story', animation: 'dynamic', buttonStyle: 'pill', spacing: 'spacious' },
+            ISTJ: { ...base, tema: 'cool', layout: 'business', cta: 'cv-cta', ton: 'technical', buttonStyle: 'square', spacing: 'compact' },
+            ESTJ: { ...base, tema: 'warm', layout: 'business', cta: 'cv-cta', ton: 'technical' },
+            ISFJ: { ...base, tema: 'warm', layout: 'business', cta: 'cv-cta', ton: 'story' },
+            ESFJ: { ...base, tema: 'vibrant', layout: 'business', cta: 'contact-cta', ton: 'story', animation: 'dynamic' },
+            INTP: { ...base, tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical', animation: 'subtle', buttonStyle: 'square', spacing: 'compact' },
+            ENTP: { ...base, tema: 'vibrant', layout: 'technical', cta: 'github-cta', ton: 'technical', animation: 'dynamic', buttonStyle: 'pill' },
+            INFP: { ...base, tema: 'warm', layout: 'creative', cta: 'contact-cta', ton: 'story', spacing: 'spacious' },
+            ENFP: { ...base, tema: 'vibrant', layout: 'creative', cta: 'contact-cta', ton: 'story', animation: 'dynamic', buttonStyle: 'pill', spacing: 'spacious' }
         };
-        return map[testResult.mbti] || { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical' };
+        return map[testResult.mbti] || { ...base, tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical' };
     }
     if (testResult?.type === 'bigfive') {
-        const o = testResult.O ?? 0.5, e = testResult.E ?? 0.5, c = testResult.C ?? 0.5, n = testResult.N ?? 0.5;
-        let tema = 'cool', cta = 'github-cta', ton = 'technical';
-        if (o > 0.7) tema = 'vibrant'; else if (o >= 0.4) tema = 'warm';
-        if (n > 0.6) { tema = 'warm'; ton = 'minimal'; }
-        if (e > 0.7) { cta = 'contact-cta'; ton = 'story'; } else if (e < 0.4) { cta = 'github-cta'; ton = 'minimal'; }
-        if (c > 0.6) { cta = 'cv-cta'; ton = 'technical'; }
-        return { tema, layout: 'technical', cta, ton };
+        const o = testResult.O ?? 0.5, e = testResult.E ?? 0.5, n = testResult.N ?? 0.5;
+        let tema = 'cool', cta = 'github-cta', ton = 'technical', animation = 'normal', fontSize = 'medium', buttonStyle = 'rounded', spacing = 'comfortable';
+        if (o > 0.7) { tema = 'vibrant'; spacing = 'spacious'; } else if (o < 0.4) { tema = 'cool'; spacing = 'compact'; }
+        if (n > 0.6) { tema = 'warm'; ton = 'minimal'; animation = 'subtle'; spacing = 'compact'; fontSize = 'large'; }
+        if (e > 0.7) { cta = 'contact-cta'; ton = 'story'; animation = 'dynamic'; buttonStyle = 'pill'; spacing = 'spacious'; } else if (e < 0.4) { cta = 'github-cta'; ton = 'minimal'; animation = 'subtle'; buttonStyle = 'square'; }
+        return { tema, layout: 'technical', cta, ton, fontSize, animation, buttonStyle, spacing };
     }
-    return { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical' };
+    return { ...base, tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical' };
 }
 
 // İLETİŞİM FORMU İŞLEYİCİSİ

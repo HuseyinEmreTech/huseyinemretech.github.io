@@ -366,7 +366,7 @@ if (typeof window.fetchAdaptiveFromAI !== 'function') {
             });
             const data = await res.json();
             console.log('[adaptive] AI cevabı:', data);
-            if (data.success && data.tema) return { tema: data.tema, layout: data.layout, cta: data.cta, ton: data.ton };
+            if (data.success && data.tema) return { tema: data.tema, layout: data.layout, cta: data.cta, ton: data.ton, fontSize: data.fontSize, animation: data.animation, buttonStyle: data.buttonStyle, spacing: data.spacing };
             return data.fallback || null;
         } catch (e) {
             console.error('[adaptive] AI hatası:', e);

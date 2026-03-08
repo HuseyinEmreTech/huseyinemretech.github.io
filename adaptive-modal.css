@@ -30,6 +30,30 @@
     padding-right: 20px;
 }
 
+/* Siteyi sıfırla butonu - kayıtlı ayar varsa görünür */
+.adaptive-reset-btn {
+    position: fixed;
+    right: 0;
+    top: calc(50% + 50px);
+    transform: translateY(-50%);
+    z-index: 9997;
+    padding: 8px 14px;
+    background: rgba(20, 20, 30, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.adaptive-reset-btn:hover {
+    color: var(--text-primary);
+    background: rgba(40, 40, 55, 0.85);
+}
+
 .adaptive-modal-overlay {
     position: fixed;
     inset: 0;
