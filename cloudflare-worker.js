@@ -94,14 +94,15 @@ async function handleRequest(request, env = {}) {
 
     // Content-Security-Policy - Maksimum Güvenlik, Minimum Risk
     // unpkg.com: Leaflet harita kütüphanesi (makine-ogrenmesi, araba-yikama)
+    // api.qrserver.com: Sunumdaki QR kodlar için
     newResponse.headers.set(
         'Content-Security-Policy',
         "default-src 'none'; " +
-        "script-src 'self' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com; " +
-        "style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline'; " +
+        "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com; " +
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; " +
         "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
-        "img-src 'self' data: https:; " +
-        "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com; " +
+        "img-src 'self' data: https: https://api.qrserver.com; " +
+        "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com https://openrouter.ai; " +
         "frame-src 'none'; " +
         "object-src 'none'; " +
         "base-uri 'self'; " +
