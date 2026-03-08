@@ -27,20 +27,30 @@ Bu proje, geleneksel tasarımların ötesine geçerek tamamen **Modern Professio
 - **⚡ Performance First:** Vite altyapısı ile yıldırım hızında derleme (build) ve optimize edilmiş kaynak yönetimi.
 - **📱 Uçtan Uca Responsive:** Masaüstü, tablet ve mobil cihazlar için kusursuz UX tasarımı.
 - **🔄 Dinamik GitHub Entegrasyonu:** `script.js` içerisindeki GitHub API bağlantısı sayesinde projeler doğrudan repolardan çekilerek otomatik olarak listelenir.
-- **🌐 Cloudflare Workers Entegrasyonu:** `cloudflare-worker.js` ile uç noktada (edge computing) serverless fonksiyonlar çalıştırabilme altyapısı (Header yönetimi, iletişim formları veya API proxy işlemleri için).
+- **🌐 Cloudflare Workers Entegrasyonu:** `workers/cloudflare-worker.js` ile uç noktada (edge computing) serverless fonksiyonlar çalıştırabilme altyapısı (Header yönetimi, iletişim formları veya API proxy işlemleri için).
 - **🗺️ GIS Proje Vitrini:** Özel olarak tasarlanmış `gis-project.html` sayfasında, R Studio kullanarak geliştirilen CBS (GIS) tabanlı mekansal analiz projelerinin modern bir sunumu.
 
 ## 📂 Mimari Yapı
 
 ```text
 huseyinemretech.github.io/
-├── index.html           # Ana portfolyo sayfası (Semantic HTML5)
-├── gis-project.html     # Özel CBS/GIS analiz sunum sayfası
-├── styles.css           # Gelişmiş CSS tasarım sistemi (Animasyon, Glassmorphism)
-├── script.js            # GitHub API entegrasyonu, Intersection Observer ve mikro etkileşimler
-├── vite.config.js       # Çoklu sayfa ve assets optimizasyonu için Vite konfigürasyonu
-├── cloudflare-worker.js # Serverless arka plan işlemleri (Edge computing)
-└── package.json         # Proje bağımlılıkları ve Vite build scriptleri
+├── index.html              # Ana portfolyo sayfası (Semantic HTML5)
+├── gis-project.html        # CBS/GIS analiz sunum sayfası
+├── makine-ogrenmesi.html   # Makine öğrenmesi proje sayfası
+├── hci-adaptive-ui.html    # HCI adaptif UI proje sayfası
+├── assets/
+│   ├── css/                # styles.css, adaptive-*.css
+│   ├── js/                 # script.js, adaptive-*.js
+│   ├── img/                # favicon, social preview
+│   └── data/               # adaptive-content.json
+├── workers/
+│   └── cloudflare-worker.js # Serverless Edge computing
+├── docs/                   # CLOUDFLARE_SETUP.md
+├── sunum/                  # Dijital dönüşüm sunumu
+├── araba-yikama-tahmin/    # Araba yıkama ML projesi
+├── cbs-trafik-projesi/     # CBS trafik analizi
+├── vite.config.js
+└── package.json
 ```
 
 ## 🛠️ Kurulum & Geliştirme

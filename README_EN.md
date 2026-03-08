@@ -25,7 +25,7 @@ This project is a high-performance digital identity and portfolio platform with 
 - **⚡ Performance First:** Lightning-fast builds and optimized resource management with the Vite infrastructure.
 - **📱 End-to-End Responsive:** Flawless UX design for desktop, tablet, and mobile devices.
 - **🔄 Dynamic GitHub Integration:** Projects are fetched directly from repositories and listed automatically via the GitHub API connection in `script.js`.
-- **🌐 Cloudflare Workers Integration:** Infrastructure for running serverless functions at the edge (edge computing) via `cloudflare-worker.js` (for header management, contact forms, or API proxy operations).
+- **🌐 Cloudflare Workers Integration:** Infrastructure for running serverless functions at the edge via `workers/cloudflare-worker.js` (header management, contact forms, API proxy).
 - **🗺️ GIS Project Showcase:** A modern presentation of geospatial analysis projects developed using R Studio on the specially designed `gis-project.html` page.
 - **🌐 Full Multilingual Support:** Comprehensive Turkish and English support across the entire platform.
 
@@ -38,7 +38,7 @@ huseyinemretech.github.io/
 ├── styles.css           # Advanced CSS design system (Animations, Glassmorphism)
 ├── script.js            # GitHub API integration, Intersection Observer, and micro-interactions
 ├── vite.config.js       # Vite configuration for multi-page and assets optimization
-├── cloudflare-worker.js # Serverless background processes (Edge computing)
+├── workers/cloudflare-worker.js # Serverless Edge computing
 └── package.json         # Project dependencies and Vite build scripts
 ```
 

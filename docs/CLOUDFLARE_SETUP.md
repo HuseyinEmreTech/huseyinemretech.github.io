@@ -21,7 +21,7 @@ Cloudflare Workers kullanarak tüm header'ları dinamik olarak ekleyebilirsiniz.
 
 3. **Worker Kodunu Ekleyin**
    - **Edit Code** butonuna tıklayın
-   - `cloudflare-worker.js` dosyasındaki kodu kopyalayıp yapıştırın
+   - `workers/cloudflare-worker.js` dosyasındaki kodu kopyalayıp yapıştırın
    - **Save and Deploy** butonuna tıklayın
 
 4. **Adaptive UI API için Secret'lar (Opsiyonel)**

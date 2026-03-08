@@ -9,7 +9,7 @@ let _activeTone = null;
 async function getContent() {
     if (_contentCache) return _contentCache;
     try {
-        const res = await fetch(new URL('adaptive-content.json', window.location.href).href);
+        const res = await fetch(new URL('assets/data/adaptive-content.json', window.location.href).href);
         _contentCache = await res.json();
         return _contentCache;
     } catch (e) {

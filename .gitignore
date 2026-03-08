@@ -3,4 +3,20 @@ dist/
 venv/
 .DS_Store
 .env
+.env.*
+.env.local
 Rplots.pdf
+
+# Hassas / özel dosyalar (açık repo için)
+*.key
+*.pem
+secrets/
+adaptive-content.json
+assets/data/adaptive-content.json
+
+# Sunum — iç notlar, raporlar (opsiyonel: kalacaksa kaldır)
+sunum/GORSEL_HATA_RAPORU.md
+sunum/SUNUM_DEGISIKLIKLER.md
+
+# Makale PDF — telif; repoda paylaşmak istemezsen aç
+# sunum/makale.pdf

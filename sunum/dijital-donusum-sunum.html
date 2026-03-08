@@ -5,24 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Transformation & Change Management | Presentation</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=JetBrains+Mono:wght@300;400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-<!-- GSAP FOR PREMIUM ANIMATIONS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
 
 <style>
 :root {
   --gold: #FFD700;
-  --gold-vibrant: #FFED4A; /* Daha parlak, projektör dostu altın */
-  --gold-dim: rgba(255, 230, 0, 0.35);
-  --gold-line: rgba(255, 215, 0, 1);
-  --bank-blue: #3B8AFF;
+  --gold-dim: rgba(255, 215, 0, 0.2);
+  --gold-line: rgba(255, 215, 0, 0.85);
+  --bank-blue: #2B7FFF;
   --white: #ffffff;
-  --dim: #ffffff; 
-  --dimmer: rgba(255, 255, 255, 0.95);
-  --bg: #050508; /* Daha koyu siyah, kontrast için */
-  --glass: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --text-shadow: 0 4px 16px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,0.9);
+  --dim: #ffffff; /* Tam beyaz — aydınlık sınıf / projektör için */
+  --dimmer: rgba(255, 255, 255, 0.85);
+  --bg: #0a0a0f;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -136,6 +133,7 @@ html, body {
   pointer-events: none;
   transition: opacity 0.15s ease;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 .slide.center { align-items: center; text-align: center; }
@@ -154,11 +152,10 @@ html, body {
 
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(64px, 10vw, 140px);
+  font-size: clamp(56px, 9vw, 130px);
   line-height: 0.9;
   letter-spacing: 2px;
   text-shadow: var(--text-shadow);
-  font-weight: 700;
 }
 
 .overline {
@@ -172,11 +169,11 @@ html, body {
 }
 
 .body-text {
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 500; /* Daha kalın */
-  line-height: 1.5;
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 400;
+  line-height: 1.55;
   color: var(--white);
-  max-width: 1120px;
+  max-width: 920px;
   text-shadow: var(--text-shadow);
 }
 
@@ -188,13 +185,12 @@ html, body {
   text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
 .big-stat-label {
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--dimmer);
   margin-top: 10px;
   text-shadow: var(--text-shadow);
-  font-weight: 600;
 }
 
 /* ── GOLD LINE ── */
@@ -209,8 +205,8 @@ html, body {
 /* ── STAGGER ANIM ── */
 .anim {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .slide.active .anim { opacity: 1; transform: translateY(0); }
 .slide.active .anim:nth-child(1) { transition-delay: 0.05s; }
@@ -239,7 +235,7 @@ html, body {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1100px;
 }
 .card {
   border: 2px solid rgba(201,168,76,0.3);
@@ -271,18 +267,18 @@ html, body {
 }
 .card-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   letter-spacing: 1px;
   margin-bottom: 10px;
-  font-weight: 700;
 }
 .card-text {
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--white);
   text-shadow: var(--text-shadow);
 }
+.card-text small { display: block; margin-top: 6px; line-height: 1.4; }
 
 /* ── TWO COL ── */
 .two-col {
@@ -290,7 +286,7 @@ html, body {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1000px;
   align-items: center;
 }
 
@@ -336,16 +332,15 @@ html, body {
   line-height: 1;
 }
 .stat-desc {
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--dimmer);
   margin-top: 4px;
-  font-weight: 600;
 }
 
 /* ── TIMELINE ── */
-.timeline { width: 100%; max-width: 1120px; }
+.timeline { width: 100%; max-width: 920px; }
 .timeline-item {
   display: grid;
   grid-template-columns: 80px 1fr;
@@ -369,22 +364,22 @@ html, body {
   margin-bottom: 4px;
 }
 .t-text {
-  font-size: 22px;
-  font-weight: 500; /* Bolder */
+  font-size: 20px;
+  font-weight: 400; /* Bolder */
   color: var(--dim);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ── LIST ── */
-.check-list { list-style: none; max-width: 780px; }
+.check-list { list-style: none; max-width: 680px; }
 .check-list li {
   display: flex;
   gap: 16px;
   align-items: flex-start;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  font-size: 24px;
-  font-weight: 500;
+  border-bottom: 1px solid rgba(240,237,232,0.2);
+  font-size: 22px;
+  font-weight: 400;
   color: var(--white);
   line-height: 1.5;
 }
@@ -433,6 +428,9 @@ html, body {
   transform-origin: center;
   white-space: nowrap;
 }
+@media (max-width: 768px) {
+  .vert-text { display: none; }
+}
 
 /* ── TRANSITION FLASH ── */
 .flash {
@@ -445,87 +443,6 @@ html, body {
   transition: opacity 0.15s ease;
 }
 .flash.show { opacity: 1; }
-
-/* ── SAFE MODE (High Contrast for Daylight) ── */
-body.safe-mode {
-  background: #ffffff !important;
-  color: #000000 !important;
-}
-body.safe-mode .grain { display: none; }
-body.safe-mode #bg-canvas { display: none; }
-body.safe-mode .slide { 
-  transition-duration: 0.05s; 
-  background: #ffffff !important; 
-}
-body.safe-mode .display-title,
-body.safe-mode .section-title,
-body.safe-mode .body-text,
-body.safe-mode .card-title,
-body.safe-mode .card-text,
-body.safe-mode .t-title,
-body.safe-mode .t-text,
-body.safe-mode .check-list li,
-body.safe-mode .blockquote p,
-body.safe-mode .lewin-desc,
-body.safe-mode .bar-label,
-body.safe-mode .fail-table td {
-  color: #000000 !important;
-  text-shadow: none !important;
-  font-weight: 700 !important;
-}
-body.safe-mode .overline,
-body.safe-mode .big-stat,
-body.safe-mode .card-num,
-body.safe-mode .t-year,
-body.safe-mode .theory-name,
-body.safe-mode .lewin-label,
-body.safe-mode .bar-value,
-body.safe-mode .fail-table th,
-body.safe-mode .accent,
-body.safe-mode .slide-counter {
-  color: #c49a2a !important; /* Daha koyu altın baskınlığı */
-  text-shadow: none !important;
-}
-body.safe-mode .gold-line {
-  background: #c49a2a !important;
-  box-shadow: none !important;
-}
-body.safe-mode .card,
-body.safe-mode .lewin-step,
-body.safe-mode .theory-block {
-  border-color: #000000 !important;
-  background: transparent !important;
-}
-body.safe-mode .anim,
-body.safe-mode .title-inner { transition-duration: 0.2s !important; }
-body.safe-mode .lewin-3d-wrap { display: none; }
-
-.safe-badge {
-  position: fixed;
-  top: 30px;
-  right: 40px;
-  z-index: 120;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  border: 1px solid var(--gold-line);
-  padding: 6px 10px;
-  background: #ff0000; /* Kırmızı uyarı rengi - projektörde belli olur */
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  padding: 8px 14px;
-  font-weight: 800;
-  box-shadow: 0 0 20px rgba(255,0,0,0.5);
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-body.safe-mode .safe-badge {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* ── SLIDE SPECIFIC DECORATIONS ── */
 .deco-circle {
@@ -577,52 +494,10 @@ body.safe-mode .safe-badge {
 }
 .lewin-desc { font-size: 16px; color: var(--white); line-height: 1.4; text-shadow: var(--text-shadow); }
 
-/* ── LEWIN 3D SCENE ── */
-.lewin-3d-wrap {
-  width: 100%;
-  max-width: 1240px;
-  border: 1px solid rgba(201,168,76,0.28);
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border-radius: 14px;
-  padding: 16px;
-  margin: 14px 0 18px;
-  box-shadow: inset 0 0 24px rgba(255,215,0,0.04);
-}
-.lewin-3d-scene {
-  width: 100%;
-  height: 280px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: radial-gradient(circle at 20% 20%, rgba(90,140,255,0.12), rgba(4,8,18,0.85));
-}
-.lewin-phase-row {
-  margin-top: 12px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.phase-pill {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  border: 1px solid rgba(255,255,255,0.26);
-  border-radius: 999px;
-  color: var(--dimmer);
-  transition: all 0.28s ease;
-}
-.phase-pill.active {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(255,215,0,0.12);
-  box-shadow: 0 0 18px rgba(255,215,0,0.16);
-}
-
 /* ── BAR CHART ── */
 .bar-chart { display: flex; flex-direction: column; gap: 20px; max-width: 500px; flex-shrink: 0; }
 .bar-row { display: flex; align-items: center; gap: 16px; flex-wrap: nowrap; }
-.bar-label { font-size: 17px; color: var(--white); min-width: 120px; flex-shrink: 0; text-shadow: var(--text-shadow); }
+.bar-label { font-size: 17px; color: var(--white); min-width: 140px; flex-shrink: 0; text-shadow: var(--text-shadow); word-break: break-word; }
 .bar-track {
   flex: 1;
   height: 32px;
@@ -641,7 +516,7 @@ body.safe-mode .safe-badge {
 /* ── FAILURE TABLE ── */
 .fail-table {
   width: 100%;
-  max-width: 1180px;
+  max-width: 860px;
   border-collapse: collapse;
   font-size: 18px;
 }
@@ -661,15 +536,8 @@ body.safe-mode .safe-badge {
 .fail-table tr:hover { background: rgba(255,255,255,0.04); }
 
 /* ── BIBLIO ── */
-.biblio-list { list-style: none; font-size: 15px; color: var(--white); line-height: 1.8; max-height: 380px; overflow-y: auto; text-shadow: var(--text-shadow); }
+.biblio-list { list-style: none; font-size: 15px; color: var(--white); line-height: 1.8; max-height: min(380px, 55vh); overflow-y: auto; text-shadow: var(--text-shadow); }
 .biblio-list li { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-
-/* Utility classes used to widen previously narrow inline-constrained blocks */
-.widescreen-quote,
-.widescreen-diagram,
-.widescreen-keywords,
-.widescreen-stats-grid,
-.widescreen-discussion { width: 100%; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -679,63 +547,8 @@ body.safe-mode .safe-badge {
   .lewin-step::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -18px; transform: translate(-50%, 0); }
   .lewin-step:last-child::after { content: none; }
   .slide { padding: 60px 6vw; }
-}
-
-/* Widescreen projector tuning: use horizontal real estate more efficiently */
-@media (min-width: 1360px) and (min-height: 760px) {
-  .slide { padding: 34px 4.8vw 72px; }
-  .slide:not(.center) { justify-content: flex-start; }
-  .display-title { font-size: clamp(72px, 11vw, 164px); }
-  .section-title { font-size: clamp(48px, 7.2vw, 104px); }
-  .overline { margin-bottom: 14px; }
-  .gold-line { margin: 18px 0; }
-  .body-text { max-width: 1220px; }
-  .cards-grid { max-width: 1360px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .two-col { max-width: 1360px; grid-template-columns: 1.05fr 0.95fr; gap: 44px; }
-  .timeline { max-width: 1220px; }
-  .check-list { max-width: 860px; }
-  .fail-table { max-width: 1260px; }
-  .bar-chart { max-width: 760px; }
-  .bar-label { min-width: 220px; }
-  .widescreen-quote { max-width: 1120px !important; }
-  .widescreen-diagram { max-width: 620px !important; }
-  .widescreen-diagram svg { max-width: 620px !important; }
-  .widescreen-keywords { max-width: 1220px !important; }
-  .widescreen-stats-grid {
-    max-width: 1220px !important;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) !important;
-    gap: 20px !important;
-  }
-  .widescreen-discussion { max-width: 1120px !important; }
-  .biblio-list { max-height: 54vh; }
-}
-
-@media (min-width: 1600px) and (min-height: 860px) {
-  .slide { padding: 34px 4.2vw 74px; }
-  .body-text { max-width: 1320px; }
-  .cards-grid { max-width: 1480px; }
-  .two-col { max-width: 1480px; gap: 54px; }
-  .timeline { max-width: 1320px; }
-  .bar-chart { max-width: 860px; }
-  .widescreen-quote { max-width: 1240px !important; }
-  .widescreen-keywords { max-width: 1360px !important; }
-  .widescreen-stats-grid { max-width: 1360px !important; }
-  .widescreen-diagram svg { max-width: 700px !important; }
-}
-
-/* Projector-safe mode for short-height displays (e.g., 1366x768) */
-@media (max-height: 820px) {
-  .slide { padding: 46px 6vw 78px; }
-  .section-label { top: 18px; left: 24px; }
-  .slide-counter { bottom: 18px; right: 24px; font-size: 14px; }
-  .nav-hint { left: 24px; bottom: 14px; font-size: 12px; }
-  .nav-dots { bottom: 18px !important; }
-}
-
-@media (max-height: 720px) {
-  .nav-hint { display: none; }
-  .overline { margin-bottom: 14px; }
-  .gold-line { margin: 16px 0; }
+  .fail-table { font-size: 16px; }
+  .fail-table th, .fail-table td { padding: 10px 12px; }
 }
 
 /* COVER diagonal accent */
@@ -764,11 +577,10 @@ body.safe-mode .safe-badge {
 </div>
 <div class="nav-dots" id="nav-dots" style="position:fixed; bottom:40px; left:50%; transform:translateX(-50%); z-index:100; display:flex; gap:12px;"></div>
 <div class="section-label" id="section-label">AÇILIŞ</div>
-<div class="safe-badge" id="safe-badge">SAFE MODE</div>
 <div class="slide-counter" id="counter">01 / 22</div>
 <div class="nav-hint">
   <span class="key">←</span><span class="key">→</span>
-  <span style="margin-left:4px">SPACE ilerle · S güvenli mod</span>
+  <span style="margin-left:4px">veya SPACE ile ilerle</span>
 </div>
 
 <div class="slides-wrapper">
@@ -793,7 +605,7 @@ body.safe-mode .safe-badge {
   ══════════════════════════════════════════ -->
   <div class="slide" data-section="GİRİŞ">
     <div class="anim overline">Proje Ekibi</div>
-    <h2 class="section-title anim">EKİP &<br><span style="color:var(--gold)">ROLLER</span></h2>
+    <h2 class="section-title anim">EKİP &amp;<br><span style="color:var(--gold)">ROLLER</span></h2>
     <div class="gold-line anim"></div>
     <div class="cards-grid anim" style="margin-top:20px">
       <div class="card">
@@ -819,7 +631,7 @@ body.safe-mode .safe-badge {
   ══════════════════════════════════════════ -->
   <div class="slide" data-section="STRATEJİK BAKIŞ">
     <div class="anim overline">Global Pazar Analizi</div>
-    <div class="big-stat anim" data-countup>$2.8T</div>
+    <div class="big-stat anim">$2.8T</div>
     <div class="big-stat-label anim">2025 Küresel Dijital Dönüşüm Harcaması Öngörüsü (IDC)</div>
     <div class="gold-line anim"></div>
     <p class="body-text anim">
@@ -830,7 +642,7 @@ body.safe-mode .safe-badge {
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="85" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" data-countup>70%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)">70%</text>
         </svg>
         <div class="card-num">BAŞARISIZLIK</div>
       </div>
@@ -838,7 +650,7 @@ body.safe-mode .safe-badge {
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--bank-blue)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="198" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" data-countup>30%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)">30%</text>
         </svg>
         <div class="card-num">TEKNOLOJİ ODAĞI</div>
       </div>
@@ -846,7 +658,7 @@ body.safe-mode .safe-badge {
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="28" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" data-countup>90%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)">90%</text>
         </svg>
         <div class="card-num">İNSAN FAKTÖRÜ</div>
       </div>
@@ -867,17 +679,17 @@ body.safe-mode .safe-badge {
           <div class="bar-row">
             <span class="bar-label">DT önemli olacak (12 ay)</span>
             <div class="bar-track"><div class="bar-fill chart-bar" style="width: 92%;"></div></div>
-            <span class="bar-value" data-countup>92%</span>
+            <span class="bar-value">92%</span>
           </div>
           <div class="bar-row">
             <span class="bar-label">Kültürel değişime lider taahhüdü</span>
             <div class="bar-track"><div class="bar-fill chart-bar" style="width: 27%;"></div></div>
-            <span class="bar-value" data-countup>27%</span>
+            <span class="bar-value">27%</span>
           </div>
           <div class="bar-row">
             <span class="bar-label">Diğer örneklem</span>
             <div class="bar-track"><div class="bar-fill chart-bar" style="width: 14%; background: var(--bank-blue);"></div></div>
-            <span class="bar-value" data-countup>14%</span>
+            <span class="bar-value">14%</span>
           </div>
         </div>
         <p style="font-size: 16px; color: var(--dimmer); margin-top: 16px; text-shadow: var(--text-shadow);">Fig. 2 & Fig. 3 — HBR Analytic Services, 2022</p>
@@ -897,7 +709,7 @@ body.safe-mode .safe-badge {
   ══════════════════════════════════════════ -->
   <div class="slide center" data-section="STRATEJİK BAKIŞ">
     <div class="anim overline">Siemens (2019) — Değişim Yönetimi Whitepaper</div>
-    <div class="blockquote anim widescreen-quote" style="max-width: 800px; margin: 0 auto;">
+    <div class="blockquote anim" style="max-width: 800px; margin: 0 auto;">
       <p>"Değişim yönetimine odaklanmadan dijital dönüşüme başlamak, <strong style="color:var(--gold)">fırtınalı denizde nasıl yelken açılacağını bilmeden güvenli limandan ayrılmak</strong> gibidir."</p>
       <cite>Siemens IoT Services · Successful Digital Transformation</cite>
     </div>
@@ -912,7 +724,7 @@ body.safe-mode .safe-badge {
     <h2 class="section-title anim">SÜRDÜRÜLEBİLİR<br><span style="color:var(--gold)">DEĞİŞİM</span> YÖNETİMİ</h2>
     <div class="gold-line anim"></div>
     <!-- Pacolli Üçgeni (Fig 5) -->
-    <div class="anim widescreen-diagram" style="margin-bottom: 28px;">
+    <div class="anim" style="margin-bottom: 28px;">
       <svg viewBox="0 0 300 140" style="width: 100%; max-width: 400px; height: auto;">
         <defs>
           <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -924,7 +736,7 @@ body.safe-mode .safe-badge {
         <text x="150" y="35" text-anchor="middle" font-family="Bebas Neue" font-size="18" fill="var(--gold)">LİDERLİK</text>
         <text x="75" y="115" text-anchor="middle" font-family="Bebas Neue" font-size="18" fill="var(--gold)">İLETİŞİM</text>
         <text x="225" y="115" text-anchor="middle" font-family="Bebas Neue" font-size="18" fill="var(--gold)">KAPSAYICILIK</text>
-        <text x="150" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--dimmer)">SÜRDÜRÜLEBİLİR DİJİTAL DÖNÜŞÜM</text>
+        <text x="150" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="var(--dimmer)">SÜRDÜRÜLEBİLİR DİJİTAL DÖNÜŞÜM</text>
       </svg>
     </div>
     <div class="cards-grid anim">
@@ -949,30 +761,25 @@ body.safe-mode .safe-badge {
   <!-- ══════════════════════════════════════════
        SLIDE 4B — LEWIN BUZ KALIBI (Fig 4)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="AKADEMİK TEMEL" id="lewin-slide">
+  <div class="slide" data-section="AKADEMİK TEMEL">
     <div class="anim overline">Kurt Lewin (1940'lar) — Fig. 4</div>
     <h2 class="section-title anim">UNFREEZE →<br><span style="color:var(--gold)">CHANGE</span> → REFREEZE</h2>
     <p class="body-text anim" style="margin-bottom: 16px;">Fizikçi ve sosyal bilimci Lewin, örgütsel değişimi <strong>buz kalıbı</strong> metaforuyla açıklar:</p>
-    <div class="lewin-3d-wrap anim">
-      <div class="lewin-3d-scene" id="lewin-3d-scene" aria-label="Lewin 3D buz dönüşüm animasyonu"></div>
-      <div class="lewin-phase-row">
-        <span class="phase-pill active" data-phase="0">UNFREEZE · BUZ ERİYOR</span>
-        <span class="phase-pill" data-phase="1">CHANGE · SIVI KALIBA AKIYOR</span>
-        <span class="phase-pill" data-phase="2">REFREEZE · YENİ FORM DONUYOR</span>
-      </div>
-    </div>
     <div class="lewin-flow anim">
       <div class="lewin-step">
+        <div class="lewin-icon">🧊</div>
         <div class="lewin-label">UNFREEZE</div>
-        <div class="lewin-desc">Buzu erit: mevcut durumu çöz, değişime hazırla.</div>
+        <div class="lewin-desc">Buzu erit — mevcut durumu çöz, değişime hazırla</div>
       </div>
       <div class="lewin-step">
+        <div class="lewin-icon">🔄</div>
         <div class="lewin-label">CHANGE</div>
-        <div class="lewin-desc">Suyu yeni kalıba yönlendir: dönüşümü gerçekleştir.</div>
+        <div class="lewin-desc">Suyu yeni forma dök — dönüşümü gerçekleştir</div>
       </div>
       <div class="lewin-step">
+        <div class="lewin-icon">❄️</div>
         <div class="lewin-label">REFREEZE</div>
-        <div class="lewin-desc">Yeni formu dondur: davranışı kalıcı hale getir.</div>
+        <div class="lewin-desc">Dondur — yeni davranışı kalıcı kıl</div>
       </div>
     </div>
     <p style="font-size: 18px; color: var(--white); margin-top: 24px; text-shadow: var(--text-shadow);">"Büyük bir buz küpü istediğin koniye dönüşmeli mi? Önce erit, sonra kalıba dök, sonra dondur." — Schein (2004)</p>
@@ -1084,7 +891,7 @@ body.safe-mode .safe-badge {
     <h2 class="section-title anim">TÜRKİYE'DE<br><span style="color:var(--gold)">DİJİTAL LİDERLİK</span></h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim">
-      <div style="background:rgba(0,51,160,0.1); padding:30px; border:1px solid var(--bank-blue)">
+      <div style="background:rgba(43,127,255,0.1); padding:30px; border:1px solid var(--bank-blue)">
         <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--white); margin-bottom:15px">Bankacılık Veri Analizi</div>
         <table style="width:100%; border-collapse: collapse; font-size:18px; color:var(--white); text-shadow: var(--text-shadow);">
           <tr style="border-bottom: 1px solid var(--bank-blue); text-align:left">
@@ -1214,8 +1021,8 @@ body.safe-mode .safe-badge {
     <div class="gold-line anim"></div>
     <div class="two-col anim">
       <ul class="check-list">
-        <li>Dijital dönüşüm bir varış noktası değil, bir **hayatta kalma biçimidir**.</li>
-        <li>Pacolli'nin belirttiği gibi; sürdürülebilirlik ancak **insan odağıyla** mümkündür.</li>
+        <li>Dijital dönüşüm bir varış noktası değil, bir <strong>hayatta kalma biçimidir</strong>.</li>
+        <li>Pacolli'nin belirttiği gibi; sürdürülebilirlik ancak <strong>insan odağıyla</strong> mümkündür.</li>
         <li>Bankacılıkta güven, gelenekselden dijital şeffaflığa evrilmektedir.</li>
         <li>İSTE YBS vizyonu: Teknolojiyi yöneten, değişimi tasarlayan liderler.</li>
       </ul>
@@ -1278,7 +1085,7 @@ body.safe-mode .safe-badge {
     <div class="anim overline">Pacolli (2022) — Makale Anahtar Kelimeleri</div>
     <h2 class="section-title anim">KEYWORDS</h2>
     <div class="gold-line anim"></div>
-    <div class="anim widescreen-keywords" style="display: flex; flex-wrap: wrap; gap: 12px; max-width: 700px;">
+    <div class="anim" style="display: flex; flex-wrap: wrap; gap: 12px; max-width: 700px;">
       <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Digital Transformation</span>
       <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Change Management</span>
       <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Resistance</span>
@@ -1289,7 +1096,7 @@ body.safe-mode .safe-badge {
       <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Success Factors</span>
       <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Barriers</span>
     </div>
-    <div class="anim widescreen-stats-grid" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 700px;">
+    <div class="anim" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 700px;">
       <div style="border: 1px solid var(--bank-blue); padding: 20px; background: rgba(0,68,204,0.08);">
         <div style="font-family:'JetBrains Mono'; font-size: 14px; color: var(--gold); margin-bottom: 8px;">PwC (2017)</div>
         <p style="font-size: 20px; color: var(--white); text-shadow: var(--text-shadow);">AI/ML, 2030'a kadar küresel GSYİH'ye <strong style="color:var(--gold)">%14</strong> ekleyebilir.</p>
@@ -1308,7 +1115,7 @@ body.safe-mode .safe-badge {
     <div class="anim overline">Sınıf Tartışması</div>
     <h2 class="section-title anim">TARTIŞMA<br><span style="color:var(--gold)">SORULARI</span></h2>
     <div class="gold-line anim"></div>
-    <ul class="check-list anim widescreen-discussion" style="max-width: 700px;">
+    <ul class="check-list anim" style="max-width: 700px;">
       <li>Bankacılıkta "Competency Trap" nasıl aşılır? Geçmiş başarılar dijital vizyonun önünde nasıl engel oluyor?</li>
       <li>Üst yönetimin dijital araçları bizzat kullanması çalışan direncini %40 azaltıyor. Sizce neden?</li>
       <li>Lewin'in "Refreeze" aşaması günümüz "Permanent Beta" kültürüyle çelişir mi?</li>
@@ -1346,8 +1153,6 @@ body.safe-mode .safe-badge {
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
-let canvasRafId = null;
-let backgroundPaused = false;
 
 function resize() {
   W = canvas.width = window.innerWidth;
@@ -1384,11 +1189,6 @@ class Particle {
 for (let i = 0; i < 120; i++) particles.push(new Particle());
 
 function animCanvas() {
-  if (backgroundPaused) {
-    canvasRafId = null;
-    return;
-  }
-
   ctx.clearRect(0, 0, W, H);
 
   // subtle grid lines
@@ -1402,291 +1202,15 @@ function animCanvas() {
   }
 
   particles.forEach(p => { p.update(); p.draw(); });
-  canvasRafId = requestAnimationFrame(animCanvas);
+  requestAnimationFrame(animCanvas);
 }
-
-function setBackgroundPaused(paused) {
-  if (backgroundPaused === paused) return;
-  backgroundPaused = paused;
-
-  if (paused && canvasRafId !== null) {
-    cancelAnimationFrame(canvasRafId);
-    canvasRafId = null;
-    return;
-  }
-
-  if (!paused && canvasRafId === null) {
-    canvasRafId = requestAnimationFrame(animCanvas);
-  }
-}
-
-canvasRafId = requestAnimationFrame(animCanvas);
-
-// ── LEWIN 3D ICE TRANSITION SCENE ───────────────────────────
-let lewinViz = null;
-
-class LewinIceScene {
-  constructor(container) {
-    this.container = container;
-    this.active = false;
-    this.phase = -1;
-    this.rafId = null;
-
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.container.appendChild(this.renderer.domElement);
-
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-    this.camera.position.set(0, 1.8, 8.2);
-
-    this.phasePills = document.querySelectorAll('.phase-pill[data-phase]');
-
-    const ambient = new THREE.AmbientLight(0x9dbbff, 0.55);
-    const key = new THREE.DirectionalLight(0xc5dcff, 1.15);
-    key.position.set(2.5, 4, 3.5);
-    const rim = new THREE.DirectionalLight(0xffd86a, 0.5);
-    rim.position.set(-3, 1.8, -2.8);
-    this.scene.add(ambient, key, rim);
-
-    const baseMat = new THREE.MeshStandardMaterial({
-      color: 0x1e2c42,
-      metalness: 0.15,
-      roughness: 0.8
-    });
-    this.base = new THREE.Mesh(new THREE.BoxGeometry(10, 0.25, 4.5), baseMat);
-    this.base.position.set(0, -1.42, 0);
-    this.scene.add(this.base);
-
-    this.iceMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x9cd6ff,
-      transmission: 0.8,
-      roughness: 0.13,
-      thickness: 0.7,
-      transparent: true,
-      opacity: 0.96
-    });
-    this.iceCube = new THREE.Mesh(new THREE.BoxGeometry(1.85, 1.85, 1.85), this.iceMaterial);
-    this.iceCube.position.set(-2.55, -0.2, 0);
-    this.scene.add(this.iceCube);
-
-    this.poolMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x4cb4ff,
-      transmission: 0.85,
-      roughness: 0.2,
-      transparent: true,
-      opacity: 0.62
-    });
-    this.meltPool = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.08, 48), this.poolMaterial);
-    this.meltPool.position.set(-2.55, -1.18, 0);
-    this.meltPool.scale.set(0.4, 1, 0.4);
-    this.scene.add(this.meltPool);
-
-    this.heatRingMaterial = new THREE.MeshStandardMaterial({
-      color: 0xff7b2d,
-      emissive: 0xff4e00,
-      emissiveIntensity: 0.5,
-      roughness: 0.45
-    });
-    this.heatRing = new THREE.Mesh(new THREE.TorusGeometry(0.75, 0.08, 20, 60), this.heatRingMaterial);
-    this.heatRing.rotation.x = Math.PI / 2;
-    this.heatRing.position.set(-2.55, -1.3, 0);
-    this.scene.add(this.heatRing);
-
-    this.streamMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x51c1ff,
-      transmission: 0.9,
-      roughness: 0.22,
-      transparent: true,
-      opacity: 0
-    });
-    this.streamBlob = new THREE.Mesh(new THREE.SphereGeometry(0.42, 28, 28), this.streamMaterial);
-    this.streamBlob.position.set(-2.55, -0.92, 0);
-    this.scene.add(this.streamBlob);
-
-    const moldGeo = new THREE.ConeGeometry(1.08, 2.15, 44, 1, true);
-    const moldEdges = new THREE.EdgesGeometry(moldGeo);
-    this.mold = new THREE.LineSegments(
-      moldEdges,
-      new THREE.LineBasicMaterial({ color: 0xffd76e, transparent: true, opacity: 0.7 })
-    );
-    this.mold.position.set(2.45, -0.3, 0);
-    this.scene.add(this.mold);
-
-    this.newIceMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x77cfff,
-      transmission: 0.72,
-      roughness: 0.18,
-      thickness: 1.0,
-      transparent: true,
-      opacity: 0.22
-    });
-    this.newIce = new THREE.Mesh(new THREE.OctahedronGeometry(0.88, 1), this.newIceMaterial);
-    this.newIce.position.set(2.45, -0.42, 0);
-    this.newIce.scale.set(0.22, 0.22, 0.22);
-    this.scene.add(this.newIce);
-
-    this.droplets = [];
-    const dropGeo = new THREE.SphereGeometry(0.06, 14, 14);
-    for (let i = 0; i < 11; i++) {
-      const drop = new THREE.Mesh(
-        dropGeo,
-        new THREE.MeshPhysicalMaterial({
-          color: 0x8ad2ff,
-          transmission: 0.9,
-          roughness: 0.16,
-          transparent: true,
-          opacity: 0.82
-        })
-      );
-      drop.visible = false;
-      this.droplets.push(drop);
-      this.scene.add(drop);
-    }
-
-    this.resize = this.resize.bind(this);
-    this.tick = this.tick.bind(this);
-    this.resize();
-    window.addEventListener('resize', this.resize);
-    this.renderer.render(this.scene, this.camera);
-  }
-
-  resize() {
-    const w = this.container.clientWidth || 760;
-    const h = this.container.clientHeight || 280;
-    this.camera.aspect = w / h;
-    this.camera.updateProjectionMatrix();
-    this.renderer.setSize(w, h);
-  }
-
-  setActive(isActive) {
-    if (this.active === isActive) return;
-    this.active = isActive;
-    this.container.style.opacity = isActive ? '1' : '0.52';
-
-    if (isActive) this.start();
-    else this.stop();
-  }
-
-  start() {
-    if (this.rafId !== null) return;
-    this.rafId = requestAnimationFrame(this.tick);
-  }
-
-  stop() {
-    if (this.rafId !== null) {
-      cancelAnimationFrame(this.rafId);
-      this.rafId = null;
-    }
-    this.renderer.render(this.scene, this.camera);
-  }
-
-  setPhase(phase) {
-    if (phase === this.phase) return;
-    this.phase = phase;
-    this.phasePills.forEach(pill => {
-      const target = Number(pill.getAttribute('data-phase'));
-      pill.classList.toggle('active', target === phase);
-    });
-  }
-
-  tick(ts) {
-    if (!this.active) {
-      this.rafId = null;
-      return;
-    }
-
-    const t = (ts * 0.001) % 12;
-    const heaterPulse = 0.4 + Math.sin(ts * 0.007) * 0.18;
-    this.heatRingMaterial.emissiveIntensity = heaterPulse;
-
-    if (t < 4) {
-      const k = t / 4;
-      this.setPhase(0);
-
-      this.iceCube.scale.set(1 - k * 0.08, 1 - k * 0.45, 1 - k * 0.08);
-      this.iceCube.position.y = -0.2 - k * 0.2;
-      this.iceMaterial.opacity = 0.96 - k * 0.52;
-
-      this.meltPool.scale.set(0.4 + k * 1.0, 1, 0.4 + k * 1.0);
-      this.poolMaterial.opacity = 0.36 + k * 0.26;
-
-      this.streamMaterial.opacity = 0;
-      this.streamBlob.position.set(-2.55, -0.92, 0);
-      this.newIce.scale.set(0.22, 0.22, 0.22);
-      this.newIceMaterial.opacity = 0.22;
-
-      this.droplets.forEach((drop, i) => {
-        const phase = (t * 1.5 + i * 0.18) % 1;
-        const xJitter = ((i % 3) - 1) * 0.16;
-        const zJitter = ((i % 4) - 1.5) * 0.11;
-        drop.visible = phase < 0.96;
-        drop.position.set(-2.55 + xJitter, 0.32 - phase * 1.38, zJitter);
-      });
-    } else if (t < 8) {
-      const k = (t - 4) / 4;
-      this.setPhase(1);
-
-      this.droplets.forEach(drop => { drop.visible = false; });
-      this.iceMaterial.opacity = 0.44 - k * 0.3;
-      this.iceCube.scale.set(0.92, 0.56, 0.92);
-      this.iceCube.position.y = -0.4;
-
-      const arc = Math.sin(k * Math.PI) * 0.92;
-      this.streamMaterial.opacity = 0.68;
-      this.streamBlob.position.set(-2.55 + k * 5.0, -0.9 + arc, 0);
-      this.streamBlob.scale.set(0.9 + Math.sin(k * Math.PI * 2) * 0.12, 0.9, 0.9);
-
-      this.meltPool.scale.set(1.35 - k * 0.5, 1, 1.35 - k * 0.5);
-      this.poolMaterial.opacity = 0.62 - k * 0.12;
-
-      const grow = 0.22 + k * 0.34;
-      this.newIce.scale.set(grow, grow, grow);
-      this.newIceMaterial.opacity = 0.24 + k * 0.2;
-    } else {
-      const k = (t - 8) / 4;
-      this.setPhase(2);
-
-      this.droplets.forEach(drop => { drop.visible = false; });
-      this.iceMaterial.opacity = 0.14 + k * 0.28;
-      this.iceCube.scale.set(0.93, 0.57, 0.93);
-      this.iceCube.position.y = -0.4;
-
-      this.streamMaterial.opacity = 0.68 - k * 0.68;
-      this.streamBlob.position.set(2.45, -0.1 - k * 0.7, 0);
-
-      const freezeScale = 0.56 + k * 0.52;
-      this.newIce.scale.set(freezeScale * 0.92, freezeScale * 1.06, freezeScale * 0.92);
-      this.newIce.rotation.y += 0.018;
-      this.newIceMaterial.opacity = 0.44 + k * 0.46;
-      this.newIceMaterial.color.setHSL(0.56, 0.67 - k * 0.2, 0.62 + k * 0.18);
-
-      this.poolMaterial.opacity = 0.5 - k * 0.2;
-      this.meltPool.scale.set(0.85 - k * 0.22, 1, 0.85 - k * 0.22);
-    }
-
-    this.mold.rotation.y = Math.sin(ts * 0.0008) * 0.18;
-    this.renderer.render(this.scene, this.camera);
-    this.rafId = requestAnimationFrame(this.tick);
-  }
-}
-
-const lewinContainer = document.getElementById('lewin-3d-scene');
-if (lewinContainer && window.THREE) {
-  try {
-    lewinViz = new LewinIceScene(lewinContainer);
-  } catch (err) {
-    console.error('Lewin 3D scene failed:', err);
-  }
-}
+animCanvas();
 
 // ── SLIDE ENGINE (GSAP POWERED) ───────────────────────────────
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
 let current = 0;
 let transitioning = false;
-let presentationSafeMode = false;
 
 const progressBar = document.getElementById('progress');
 const counter = document.getElementById('counter');
@@ -1711,10 +1235,6 @@ function updateUI() {
   sectionLabel.textContent = section || '';
   gsap.fromTo(sectionLabel, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5 });
 
-  if (lewinViz && typeof lewinViz.setActive === 'function') {
-    lewinViz.setActive(!presentationSafeMode && currentSlide.id === 'lewin-slide');
-  }
-
   // Update Dots
   const dots = navDots.querySelectorAll('div');
   dots.forEach((d, i) => {
@@ -1722,116 +1242,27 @@ function updateUI() {
     d.style.transform = i === current ? 'scale(1.4)' : 'scale(1)';
   });
 
-  animateNumericContent(currentSlide);
-
   // ANIMATE BAR CHARTS
   const bars = currentSlide.querySelectorAll('.chart-bar');
   if (bars.length > 0) {
-    bars.forEach((bar, i) => {
+    bars.forEach(bar => {
       const w = bar.style.width || '0%';
       bar.style.width = '0%';
-      gsap.to(bar, { width: w, duration: 1.2, delay: 0.35 + (i * 0.14), ease: "power2.out" });
+      gsap.to(bar, { width: w, duration: 1.2, delay: 0.4, ease: "power2.out" });
     });
   }
 
   // ANIMATE CHART CIRCLES IF PRESENT
   const circles = currentSlide.querySelectorAll('.chart-circle');
   if(circles.length > 0) {
-    circles.forEach((circle, i) => {
+    circles.forEach(circle => {
       const targetOffset = circle.getAttribute('stroke-dashoffset');
       gsap.fromTo(circle, 
         { strokeDashoffset: 283 }, 
-        { strokeDashoffset: targetOffset, duration: 1.5, delay: 0.45 + (i * 0.14), ease: "power2.out" }
+        { strokeDashoffset: targetOffset, duration: 1.5, delay: 0.5, ease: "power2.out" }
       );
     });
   }
-
-  // ANIMATE TABLE ROWS WITH STAGGERED ENTRY
-  const tableRows = currentSlide.querySelectorAll('table tbody tr');
-  if (tableRows.length > 0) {
-    gsap.fromTo(tableRows,
-      { opacity: 0, y: 26, scaleX: 0.96, transformOrigin: 'left center' },
-      { opacity: 1, y: 0, scaleX: 1, duration: 0.62, ease: 'power3.out', stagger: 0.09, delay: 0.25 }
-    );
-  }
-}
-
-function setPresentationSafeMode(enabled) {
-  presentationSafeMode = enabled;
-  document.body.classList.toggle('safe-mode', enabled);
-
-  setBackgroundPaused(enabled || document.hidden);
-
-  if (lewinViz) {
-    if (enabled) lewinViz.stop();
-    else if (slides[current] && slides[current].id === 'lewin-slide') lewinViz.start();
-  }
-}
-
-function animateNumericContent(slide) {
-  const numberRegex = /\d+(?:[.,]\d+)?/;
-  const targets = slide.querySelectorAll('[data-countup]');
-
-  targets.forEach(el => {
-    const rawText = (el.dataset.countSource || el.textContent || '').trim();
-    if (!rawText || !numberRegex.test(rawText)) return;
-
-    if (!el.dataset.countSource) {
-      el.dataset.countSource = rawText;
-    }
-
-    const source = el.dataset.countSource;
-    const matches = [...source.matchAll(/\d+(?:[.,]\d+)?/g)];
-    if (!matches.length) return;
-
-    const parts = [];
-    const tokens = [];
-    let cursor = 0;
-
-    matches.forEach(match => {
-      const token = match[0];
-      const idx = match.index || 0;
-      parts.push(source.slice(cursor, idx));
-
-      const decimals = token.includes(',') ? token.split(',')[1].length : (token.includes('.') ? token.split('.')[1].length : 0);
-      const leadZeros = token.length > 1 && token.startsWith('0') && !token.includes('.') && !token.includes(',') ? token.length : 0;
-      const target = Number(token.replace(',', '.'));
-      tokens.push({ target, decimals, comma: token.includes(','), leadZeros });
-      cursor = idx + token.length;
-    });
-
-    parts.push(source.slice(cursor));
-
-    const state = { progress: 0 };
-    gsap.fromTo(state,
-      { progress: 0 },
-      {
-        progress: 1,
-        duration: 1.25,
-        delay: 0.22,
-        ease: 'power2.out',
-        onUpdate: () => {
-          const rendered = tokens.map(t => {
-            const value = t.target * state.progress;
-            let str = value.toFixed(t.decimals);
-            if (t.comma) str = str.replace('.', ',');
-            if (t.leadZeros > 0) str = String(Math.round(value)).padStart(t.leadZeros, '0');
-            return str;
-          });
-
-          let out = '';
-          for (let i = 0; i < rendered.length; i++) {
-            out += parts[i] + rendered[i];
-          }
-          out += parts[parts.length - 1];
-          el.textContent = out;
-        },
-        onComplete: () => {
-          el.textContent = source;
-        }
-      }
-    );
-  });
 }
 
 function goTo(idx) {
@@ -1840,7 +1271,6 @@ function goTo(idx) {
 
   const oldSlide = slides[current];
   const newSlide = slides[idx];
-  oldSlide.classList.remove('active');
 
   // CINEMATIC TRANSITION
   const tl = gsap.timeline({
@@ -1850,7 +1280,7 @@ function goTo(idx) {
   });
 
   tl.to(oldSlide, { opacity: 0, scale: 0.95, filter: "blur(10px)", duration: 0.4, ease: "power2.inOut" })
-    .set(oldSlide, { display: 'none' })
+    .set(oldSlide, { display: 'none', className: 'slide' })
     .set(newSlide, { display: 'flex', opacity: 0, scale: 1.05, filter: "blur(10px)" })
     .to(newSlide, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power4.out" })
     .add(() => {
@@ -1880,29 +1310,11 @@ document.addEventListener('keydown', e => {
     if (!document.fullscreenElement) document.documentElement.requestFullscreen();
     else if (document.exitFullscreen) document.exitFullscreen();
   }
-  if (e.key === 's' || e.key === 'S') {
-    e.preventDefault();
-    setPresentationSafeMode(!presentationSafeMode);
-  }
-});
-
-document.addEventListener('visibilitychange', () => {
-  setBackgroundPaused(document.hidden || presentationSafeMode);
-  if (!lewinViz) return;
-  if (document.hidden) lewinViz.stop();
-  else if (!presentationSafeMode && slides[current] && slides[current].id === 'lewin-slide') lewinViz.start();
 });
 
 // Click support
 document.addEventListener('click', e => {
-  // Ignore clicks from interactive and content-heavy elements to prevent accidental slide jumps.
-  if (
-    e.target.closest('a, button, input, textarea, select, label') ||
-    e.target.closest('table, .card, .key, .nav-dots, #lewin-3d-scene, .biblio-list, svg')
-  ) return;
-
-  if (window.getSelection && String(window.getSelection()).length > 0) return;
-
+  if (e.target.closest('.card') || e.target.closest('.key') || e.target.closest('.nav-dots') || e.target.closest('table') || e.target.closest('a') || e.target.closest('.biblio-list')) return;
   if (e.clientX > window.innerWidth * 0.45) next(); else prev();
 });
 
