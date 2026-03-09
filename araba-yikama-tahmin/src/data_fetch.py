@@ -35,6 +35,7 @@ def fetch_year(start_date: str, end_date: str) -> pd.DataFrame | None:
             "temperature_2m_max",
             "temperature_2m_min",
             "wind_speed_10m_max",
+            "relative_humidity_2m_mean",
         ],
     }
     try:
