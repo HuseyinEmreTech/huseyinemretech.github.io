@@ -232,10 +232,15 @@ html, body {
 /* ── GRID CARDS ── */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   width: 100%;
   max-width: 1100px;
+}
+@media (max-width: 650px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .card {
   border: 2px solid rgba(201,168,76,0.3);
@@ -544,6 +549,9 @@ html, body {
   .two-col { grid-template-columns: 1fr; }
   .cards-grid { grid-template-columns: 1fr; }
   .lewin-flow { flex-direction: column; }
+  /* slide 6 pacolli grid */
+  .pacolli-layout { grid-template-columns: 1fr !important; }
+  .pacolli-layout > div:first-child { display: none; } /* SVG gizle küçük ekranda */
   .lewin-step::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -18px; transform: translate(-50%, 0); }
   .lewin-step:last-child::after { content: none; }
   .slide { padding: 60px 6vw; }
@@ -562,6 +570,199 @@ html, body {
   transform: skewX(-8deg);
   pointer-events: none;
 }
+
+/* ── FAIL GRID (başarısızlık faktörleri) ── */
+.fail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.08);
+  opacity: 0;
+  transform: translateX(-28px);
+}
+.fi-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 4vw, 52px);
+  color: var(--gold);
+  line-height: 1;
+  min-width: 54px;
+  text-align: right;
+  flex-shrink: 0;
+  text-shadow: 0 0 20px rgba(255,215,0,0.25);
+}
+.fi-text {
+  font-size: clamp(15px, 1.6vw, 19px);
+  color: var(--white);
+  line-height: 1.5;
+  padding-top: 6px;
+  text-shadow: var(--text-shadow);
+}
+body.light .fail-item { border-color: rgba(184,134,11,0.15); }
+
+/* ── SLIDE INNER (auto-scaler wrapper) ── */
+.slide-inner {
+  width: 100%;
+  max-height: 85vh; /* 16:9 Projection Safe Zone */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+  transform-origin: top center;
+}
+.slide.center .slide-inner {
+  align-items: center;
+  text-align: center;
+}
+
+/* ── TOGGLE CONTROLS ── */
+.ctrl-bar {
+  position: fixed;
+  top: 100px; right: 40px;
+  z-index: 110;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .ctrl-bar {
+    top: auto;
+    bottom: 80px;
+    right: 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ctrl-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+.ctrl-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255,215,0,0.35);
+  background: rgba(10,10,15,0.7);
+  color: var(--gold);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.25s;
+  user-select: none;
+  backdrop-filter: blur(8px);
+}
+.ctrl-btn:hover { background: rgba(255,215,0,0.12); border-color: var(--gold); }
+.ctrl-btn.active { background: var(--gold); color: #0a0a0f; }
+
+/* ── BRANDING ── */
+.header-brand {
+  position: fixed;
+  top: 32px; right: 40px;
+  z-index: 100;
+  text-align: right;
+  transition: opacity 0.3s;
+}
+@media (max-width: 768px) {
+  .header-brand { opacity: 0; pointer-events: none; }
+  .nav-hint { display: none !important; }
+  .slide-counter { bottom: 20px; right: 20px; font-size: 14px; }
+}
+
+/* ── ADDITIONAL MOBILE FIXES ── */
+@media (max-width: 650px) {
+  .section-title {
+    font-size: clamp(34px, 9vw, 60px) !important;
+    line-height: 1.1 !important;
+    margin-top: 15px !important;
+  }
+  .overline {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 16px !important;
+    line-height: 1 !important;
+  }
+  .slide {
+    padding: 90px 7vw 60px 7vw !important;
+  }
+  .body-text {
+    font-size: 19px !important;
+    line-height: 1.4 !important;
+  }
+  .display-title {
+    font-size: clamp(36px, 11vw, 70px) !important;
+  }
+  .display-title span[style*="font-size: 0.55em"] {
+    font-size: 0.38em !important;
+    letter-spacing: 3px !important;
+    display: block !important;
+    margin-top: 10px !important;
+  }
+  .stat-num {
+    font-size: 50px !important;
+  }
+  .stat-row {
+    gap: 20px !important;
+  }
+  .big-stat {
+    font-size: 70px !important;
+  }
+  .gold-line {
+    margin: 16px 0 !important;
+  }
+}
+
+/* ── LIGHT MODE ── */
+body.light {
+  --gold: #b8860b;
+  --gold-dim: rgba(184,134,11,0.15);
+  --gold-line: rgba(184,134,11,0.7);
+  --bank-blue: #1a5fd4;
+  --white: #0a0a0f;
+  --dim: #0a0a0f;
+  --dimmer: rgba(10,10,15,0.75);
+  --bg: #f5f2eb;
+  --glass: rgba(0,0,0,0.04);
+  --glass-border: rgba(0,0,0,0.15);
+  --text-shadow: 0 1px 4px rgba(255,255,255,0.6);
+}
+body.light #bg-canvas { opacity: 0.15; }
+body.light .grain { opacity: 0.02; }
+body.light .card {
+  background: rgba(184,134,11,0.05);
+  border-color: rgba(184,134,11,0.25);
+}
+body.light .card:hover { background: rgba(184,134,11,0.1); }
+body.light .ctrl-btn {
+  background: rgba(245,242,235,0.85);
+  color: var(--gold);
+  border-color: rgba(184,134,11,0.4);
+}
+body.light .ctrl-btn:hover { background: rgba(184,134,11,0.12); }
+body.light .ctrl-btn.active { background: var(--gold); color: #f5f2eb; }
+body.light .flash { background: #fff; }
+body.light .lewin-step { background: rgba(184,134,11,0.06); }
+body.light .blockquote p, body.light .t-text, body.light .card-text,
+body.light .body-text, body.light .check-list li, body.light .fail-table td,
+body.light .biblio-list { color: var(--white); }
+
+/* ── COMPACT HEIGHT (küçük ekranlar) ── */
+@media (max-height: 750px) {
+  .slide { padding: 40px 7vw; }
+  .section-title { font-size: clamp(40px, 7vw, 90px); }
+  .body-text { font-size: clamp(20px, 2.5vw, 28px); }
+  .card { padding: 22px 20px; }
+  .gold-line { margin: 16px 0; }
+  .cards-grid { gap: 14px; }
+  .two-col { gap: 36px; }
+  .timeline-item { padding: 12px 0; }
+  .lewin-step { padding: 16px 14px; }
+  .lewin-icon { font-size: 34px; margin-bottom: 8px; }
+}
+@media (max-height: 600px) {
+  .display-title { font-size: clamp(60px, 10vw, 130px); }
+  .section-title { font-size: clamp(32px, 6vw, 72px); }
+  .big-stat { font-size: clamp(70px, 11vw, 150px); }
+}
 </style>
 </head>
 <body>
@@ -571,9 +772,15 @@ html, body {
 <div class="flash" id="flash"></div>
 
 <div class="progress-bar" id="progress"></div>
-<div class="header-brand" style="position:fixed; top:32px; right:40px; z-index:100; text-align:right;">
-  <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:var(--white); text-shadow: var(--text-shadow)">İSKENDERUN TEKNİK ÜNİVERSİTESİ</div>
-  <div style="font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--gold); letter-spacing:2px; text-shadow: var(--text-shadow)">YÖNETİM BİLİŞİM SİSTEMLERİ (YBS)</div>
+<div class="header-brand">
+  <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:var(--white); text-shadow: var(--text-shadow)">T.C. İSKENDERUN TEKNİK ÜNİVERSİTESİ</div>
+  <div style="font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--gold); letter-spacing:2px; text-shadow: var(--text-shadow)">YÖNETİM BİLİŞİM SİSTEMLERİ BÖLÜMÜ</div>
+</div>
+<div class="ctrl-bar">
+  <button class="ctrl-btn active" id="btn-tr" onclick="setLang('tr')">TR</button>
+  <button class="ctrl-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  <span style="width:1px; height:20px; background:rgba(255,215,0,0.2); display:inline-block; margin:0 4px;"></span>
+  <button class="ctrl-btn" id="btn-theme" onclick="toggleTheme()">☀</button>
 </div>
 <div class="nav-dots" id="nav-dots" style="position:fixed; bottom:40px; left:50%; transform:translateX(-50%); z-index:100; display:flex; gap:12px;"></div>
 <div class="section-label" id="section-label">AÇILIŞ</div>
@@ -581,6 +788,9 @@ html, body {
 <div class="nav-hint">
   <span class="key">←</span><span class="key">→</span>
   <span style="margin-left:4px">veya SPACE ile ilerle</span>
+  <span style="margin-left:16px; opacity:0.5;">·</span>
+  <span class="key" style="margin-left:8px">F</span>
+  <span style="margin-left:4px">tam ekran</span>
 </div>
 
 <div class="slides-wrapper">
@@ -588,40 +798,47 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 1 — COVER
   ══════════════════════════════════════════ -->
-  <div class="slide slide-1 active" data-section="AÇILIŞ">
-    <div class="anim overline">Akademik Sunum · 2024</div>
-    <h1 class="display-title">
-      <span class="title-mask"><span class="title-inner">DİJİTAL</span></span>
-      <span class="title-mask"><span class="title-inner accent">DÖNÜŞÜM</span></span>
-      <span class="title-mask"><span class="title-inner" style="color:var(--dimmer)">VE SÜRDÜRÜLEBİLİRLİK</span></span>
+  <div class="slide slide-1 active" data-section="AÇILIŞ" data-section-en="OPENING">
+    <div class="anim overline" data-i18n="s1-overline">Akademik Sunum · 2026</div>
+    <h1 class="display-title" style="font-size:clamp(44px,6.2vw,92px); line-height:0.92;">
+      <span class="title-mask"><span class="title-inner">IMPORTANCE OF</span></span>
+      <span class="title-mask"><span class="title-inner accent">CHANGE MANAGEMENT</span></span>
+      <span class="title-mask"><span class="title-inner" style="color:var(--dimmer);">IN DIGITAL TRANSFORMATION</span></span>
+      <span class="title-mask"><span class="title-inner" style="color:var(--white); font-size:0.7em; letter-spacing:4px;">SUSTAINABILITY</span></span>
     </h1>
     <div class="gold-line anim"></div>
-    <p class="body-text anim">Bankacılık Sektöründe Değişim Yönetimi ve Gelecek Stratejileri — (Pacolli, 2022 Analizi)</p>
+    <p class="anim" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:3px; color:var(--gold); margin-top:4px;">
+      PACOLLI · IFAC PAPERSONLINE 55-39 · 2022
+    </p>
     <div class="vert-text" style="color:var(--gold)">HÜSEYİN EMRE · BERKAY BEREKET · ALPEREN GÜNGÖR</div>
   </div>
 
   <!-- ══════════════════════════════════════════
-       NEW SLIDE: EKİP & ROLLER
+       SLIDE 2 — KEYWORDS (makale anahtar kelimeleri)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="GİRİŞ">
-    <div class="anim overline">Proje Ekibi</div>
-    <h2 class="section-title anim">EKİP &amp;<br><span style="color:var(--gold)">ROLLER</span></h2>
+  <div class="slide" data-section="GİRİŞ" data-section-en="INTRO">
+    <div class="anim overline" data-i18n="s12d-overline">Pacolli (2022) — Makale Anahtar Kelimeleri</div>
+    <h2 class="section-title anim" data-i18n="s12d-title">KEYWORDS</h2>
     <div class="gold-line anim"></div>
-    <div class="cards-grid anim" style="margin-top:20px">
-      <div class="card">
-        <div class="card-num">01</div>
-        <div class="card-title">Hüseyin Emre</div>
-        <div class="card-text">Web Sitesi Geliştirme & Kodlama<br><small style="color:var(--gold)">Proje Mimarı</small></div>
+    <div class="anim" style="display:flex; flex-wrap:wrap; gap:14px; max-width:800px; margin-top:8px;">
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Digital Transformation</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Change Management</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Resistance</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Technology</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Digitalization</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Sustainability</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Challenges</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Success Factors</span>
+      <span class="step-pill" style="font-size:17px; padding:11px 22px;">Barriers</span>
+    </div>
+    <div class="anim" style="margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:800px;">
+      <div style="border:1px solid var(--bank-blue); padding:20px; background:rgba(0,68,204,0.08);">
+        <div style="font-family:'JetBrains Mono'; font-size:13px; color:var(--gold); margin-bottom:8px;" data-i18n="s12d-box1-title">PwC (2017)</div>
+        <p style="font-size:19px; color:var(--white); text-shadow:var(--text-shadow);" data-i18n="s12d-box1-text">AI/ML, 2030'a kadar küresel GSYİH'ye <strong style="color:var(--gold)">%14</strong> ekleyebilir.</p>
       </div>
-      <div class="card">
-        <div class="card-num">02</div>
-        <div class="card-title">Berkay Bereket</div>
-        <div class="card-text">Sunum & Anlatım<br><small style="color:var(--gold)">Speaker</small></div>
-      </div>
-      <div class="card">
-        <div class="card-num">03</div>
-        <div class="card-title">Alperen Hazma Güngör</div>
-        <div class="card-text">Araştırma & Rapor Hazırlığı<br><small style="color:var(--gold)">Akademik Altyapı</small></div>
+      <div style="border:1px solid var(--gold-line); padding:20px; background:rgba(201,168,76,0.05);">
+        <div style="font-family:'JetBrains Mono'; font-size:13px; color:var(--gold); margin-bottom:8px;" data-i18n="s12d-box2-title">Bankacılık Trendi</div>
+        <p style="font-size:19px; color:var(--white); text-shadow:var(--text-shadow);" data-i18n="s12d-box2-text">Bankalar dijitalleşme için <strong>Chief Digital Officer (CDO)</strong> pozisyonu istihdam ediyor.</p>
       </div>
     </div>
   </div>
@@ -629,12 +846,12 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 3 — GLOBAL PERSPEKTİF (IDC VERİLERİ)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="STRATEJİK BAKIŞ">
-    <div class="anim overline">Global Pazar Analizi</div>
+  <div class="slide" data-section="STRATEJİK BAKIŞ" data-section-en="STRATEGIC VIEW">
+    <div class="anim overline" data-i18n="s3-overline">Global Pazar Analizi</div>
     <div class="big-stat anim">$2.8T</div>
-    <div class="big-stat-label anim">2025 Küresel Dijital Dönüşüm Harcaması Öngörüsü (IDC)</div>
+    <div class="big-stat-label anim" data-i18n="s3-stat-label">2026 Küresel Dijital Dönüşüm Harcaması Öngörüsü (IDC)</div>
     <div class="gold-line anim"></div>
-    <p class="body-text anim">
+    <p class="body-text anim" data-i18n="s3-body">
       Dijital yatırımlar artık bir "lüks" değil, <strong style="color:var(--gold)">stratejik bir zorunluluktur</strong>. 2020'den bu yana harcamalar iki katına çıkmış olsa da, başarısızlık oranları insan odaklı strateji eksikliği nedeniyle hala %70 seviyelerindedir.
     </p>
     <div class="cards-grid anim" style="margin-top: 32px;">
@@ -642,25 +859,25 @@ html, body {
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="85" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)">70%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter">70%</text>
         </svg>
-        <div class="card-num">BAŞARISIZLIK</div>
+        <div class="card-num" data-i18n="s3-c1-num">BAŞARISIZLIK</div>
       </div>
       <div class="card" style="text-align:center; padding: 24px;">
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--bank-blue)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="198" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)">30%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter">30%</text>
         </svg>
-        <div class="card-num">TEKNOLOJİ ODAĞI</div>
+        <div class="card-num" data-i18n="s3-c2-num">TEKNOLOJİ ODAĞI</div>
       </div>
       <div class="card" style="text-align:center; padding: 24px;">
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="28" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)">90%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter">90%</text>
         </svg>
-        <div class="card-num">İNSAN FAKTÖRÜ</div>
+        <div class="card-num" data-i18n="s3-c3-num">İNSAN FAKTÖRÜ</div>
       </div>
     </div>
   </div>
@@ -668,26 +885,26 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 3B — HBR VERİLERİ (Fig 2, Fig 3)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="VERİLER">
-    <div class="anim overline">Harvard Business Review (2022)</div>
-    <h2 class="section-title anim">DİJİTAL DÖNÜŞÜM<br><span style="color:var(--gold)">İŞ BAŞARISI</span> İÇİN KRİTİK</h2>
+  <div class="slide center" data-section="VERİLER" data-section-en="DATA">
+    <div class="anim overline" data-i18n="s3b-overline">Harvard Business Review (2022)</div>
+    <h2 class="section-title anim" data-i18n="s3b-title">DİJİTAL DÖNÜŞÜM<br><span style="color:var(--gold)">İŞ BAŞARISI</span> İÇİN KRİTİK</h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim" style="gap: 50px;">
       <div>
-        <p class="body-text" style="margin-bottom: 24px;">727 yöneticiyle yapılan anket sonuçları:</p>
+        <p class="body-text" style="margin-bottom: 24px;" data-i18n="s3b-subtitle">727 yöneticiyle yapılan anket sonuçları:</p>
         <div class="bar-chart">
           <div class="bar-row">
-            <span class="bar-label">DT önemli olacak (12 ay)</span>
+            <span class="bar-label" data-i18n="s3b-bar1">DT önemli olacak (12 ay)</span>
             <div class="bar-track"><div class="bar-fill chart-bar" style="width: 92%;"></div></div>
             <span class="bar-value">92%</span>
           </div>
           <div class="bar-row">
-            <span class="bar-label">Kültürel değişime lider taahhüdü</span>
+            <span class="bar-label" data-i18n="s3b-bar2">Kültürel değişime lider taahhüdü</span>
             <div class="bar-track"><div class="bar-fill chart-bar" style="width: 27%;"></div></div>
             <span class="bar-value">27%</span>
           </div>
           <div class="bar-row">
-            <span class="bar-label">Diğer örneklem</span>
+            <span class="bar-label" data-i18n="s3b-bar3">Diğer örneklem</span>
             <div class="bar-track"><div class="bar-fill chart-bar" style="width: 14%; background: var(--bank-blue);"></div></div>
             <span class="bar-value">14%</span>
           </div>
@@ -696,10 +913,10 @@ html, body {
       </div>
       <div>
         <div class="blockquote">
-          <p>"Dijital dönüşüm bir lüks değil, örgütün hayatta kalması için <strong style="color:var(--gold)">zorunluluktur</strong>."</p>
-          <cite>2020 sonrası paradigma kayması</cite>
+          <p data-i18n="s3b-quote">"Dijital dönüşüm bir lüks değil, örgütün hayatta kalması için <strong style="color:var(--gold)">zorunluluktur</strong>."</p>
+          <cite data-i18n="s3b-cite">2020 sonrası paradigma kayması</cite>
         </div>
-        <p style="font-size: 20px; color: var(--white); margin-top: 20px; text-shadow: var(--text-shadow);">Liderlerin sadece %27'si kültürel değişime güçlü taahhüt gösteriyor — bu uçurum başarısızlık riskini artırıyor.</p>
+        <p style="font-size: 20px; color: var(--white); margin-top: 20px; text-shadow: var(--text-shadow);" data-i18n="s3b-body">Liderlerin sadece %27'si kültürel değişime güçlü taahhüt gösteriyor — bu uçurum başarısızlık riskini artırıyor.</p>
       </div>
     </div>
   </div>
@@ -707,104 +924,214 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 3C — SİEMENS METAFOR
   ══════════════════════════════════════════ -->
-  <div class="slide center" data-section="STRATEJİK BAKIŞ">
-    <div class="anim overline">Siemens (2019) — Değişim Yönetimi Whitepaper</div>
+  <div class="slide center" data-section="STRATEJİK BAKIŞ" data-section-en="STRATEGIC VIEW">
+    <div class="anim overline" data-i18n="s3c-overline">Siemens (2019) — Değişim Yönetimi Whitepaper</div>
     <div class="blockquote anim" style="max-width: 800px; margin: 0 auto;">
-      <p>"Değişim yönetimine odaklanmadan dijital dönüşüme başlamak, <strong style="color:var(--gold)">fırtınalı denizde nasıl yelken açılacağını bilmeden güvenli limandan ayrılmak</strong> gibidir."</p>
+      <p data-i18n="s3c-quote">"Değişim yönetimine odaklanmadan dijital dönüşüme başlamak, <strong style="color:var(--gold)">fırtınalı denizde nasıl yelken açılacağını bilmeden güvenli limandan ayrılmak</strong> gibidir."</p>
       <cite>Siemens IoT Services · Successful Digital Transformation</cite>
     </div>
-    <p class="body-text anim" style="margin-top: 32px; text-align: center;">Değişim yönetimi, yöneticilerin dijital dönüşüm projelerinde en çok endişe duyduğu ilk 3 konudan biridir.</p>
+    <p class="body-text anim" style="margin-top: 32px; text-align: center;" data-i18n="s3c-body">Değişim yönetimi, yöneticilerin dijital dönüşüm projelerinde en çok endişe duyduğu ilk 3 konudan biridir.</p>
   </div>
 
   <!-- ══════════════════════════════════════════
        SLIDE 4 — PACOLLI ÇERÇEVESİ (Fig 5)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="AKADEMİK TEMEL">
-    <div class="anim overline">Melinda Pacolli (2022) — Fig. 5 Change Management Framework</div>
-    <h2 class="section-title anim">SÜRDÜRÜLEBİLİR<br><span style="color:var(--gold)">DEĞİŞİM</span> YÖNETİMİ</h2>
+  <div class="slide" data-section="AKADEMİK TEMEL" data-section-en="ACADEMIC BASE">
+    <div class="anim overline" data-i18n="s4-overline">Melinda Pacolli (2022) — Fig. 5 Change Management Framework</div>
+    <h2 class="section-title anim" data-i18n="s4-title">SÜRDÜRÜLEBİLİR<br><span style="color:var(--gold)">DEĞİŞİM</span> YÖNETİMİ</h2>
     <div class="gold-line anim"></div>
-    <!-- Pacolli Üçgeni (Fig 5) -->
-    <div class="anim" style="margin-bottom: 28px;">
-      <svg viewBox="0 0 300 140" style="width: 100%; max-width: 400px; height: auto;">
-        <defs>
-          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:var(--gold);stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:var(--gold);stop-opacity:0.2" />
-          </linearGradient>
-        </defs>
-        <polygon points="150,10 280,120 20,120" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="4 4"/>
-        <text x="150" y="35" text-anchor="middle" font-family="Bebas Neue" font-size="18" fill="var(--gold)">LİDERLİK</text>
-        <text x="75" y="115" text-anchor="middle" font-family="Bebas Neue" font-size="18" fill="var(--gold)">İLETİŞİM</text>
-        <text x="225" y="115" text-anchor="middle" font-family="Bebas Neue" font-size="18" fill="var(--gold)">KAPSAYICILIK</text>
-        <text x="150" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="var(--dimmer)">SÜRDÜRÜLEBİLİR DİJİTAL DÖNÜŞÜM</text>
-      </svg>
+    <!-- Pacolli: Kartlar tam genişlik -->
+    <div class="anim cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; width:100%; max-width:1100px;">
+      <div class="card" style="border-top:4px solid var(--bank-blue); padding:20px 22px;">
+        <div class="card-num" data-i18n="s4-c1-num">MODÜL 01</div>
+        <div class="card-title" data-i18n="s4-c1-title">LİDERLİK</div>
+        <div class="card-text" data-i18n="s4-c1-text">Vizyonun üst yönetim tarafından sadece onaylanması değil, bizzat temsil edilmesi (Transformational Leadership).</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--gold); padding:20px 22px;">
+        <div class="card-num" data-i18n="s4-c2-num">MODÜL 02</div>
+        <div class="card-title" data-i18n="s4-c2-title">İLETİŞİM</div>
+        <div class="card-text" data-i18n="s4-c2-text">Bürokratik engellerin ötesinde, şeffaf ve çift taraflı bilgi akışının sağlanması.</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--bank-blue); padding:20px 22px;">
+        <div class="card-num" data-i18n="s4-c3-num">MODÜL 03</div>
+        <div class="card-title" data-i18n="s4-c3-title">KAPSAYICILIK</div>
+        <div class="card-text" data-i18n="s4-c3-text">Çalışanların sürecin bir "nesnesi" değil, "mimarı" olarak konumlandırılması (Inclusion).</div>
+      </div>
     </div>
-    <div class="cards-grid anim">
-      <div class="card" style="border-top: 4px solid var(--bank-blue)">
-        <div class="card-num">MODÜL 01</div>
-        <div class="card-title">LİDERLİK</div>
-        <div class="card-text">Vizyonun üst yönetim tarafından sadece onaylanması değil, bizzat temsil edilmesi (Transformational Leadership).</div>
-      </div>
-      <div class="card" style="border-top: 4px solid var(--gold)">
-        <div class="card-num">MODÜL 02</div>
-        <div class="card-title">İLETİŞİM</div>
-        <div class="card-text">Bürokratik engellerin ötesinde, şeffaf ve çift taraflı bilgi akışının sağlanması.</div>
-      </div>
-      <div class="card" style="border-top: 4px solid var(--bank-blue)">
-        <div class="card-num">MODÜL 03</div>
-        <div class="card-title">KAPSAYICILIK</div>
-        <div class="card-text">Çalışanların sürecin bir "nesnesi" değil, "mimarı" olarak konumlandırılması (Inclusion).</div>
-      </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 4-DIAGRAM — PACOLLI FRAMEWORK (TAM SAYFA)
+  ══════════════════════════════════════════ -->
+  <div class="slide center" data-section="AKADEMİK TEMEL" data-section-en="ACADEMIC BASE">
+    <div class="anim overline" data-i18n="s4-overline" style="margin-bottom:0;">Melinda Pacolli (2022) — Fig. 5</div>
+    <div class="gold-line anim" style="margin:20px auto 36px;"></div>
+    <div class="anim" style="display:flex; flex-direction:column; align-items:center; width:100%;">
+      <svg viewBox="0 0 420 220" style="width:100%; max-width:min(520px,72vh); height:auto;">
+        <defs>
+          <linearGradient id="goldGradFull" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:var(--gold);stop-opacity:0.9" />
+            <stop offset="100%" style="stop-color:var(--gold);stop-opacity:0.25" />
+          </linearGradient>
+          <!-- Glow filter -->
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Faint fill glow -->
+        <polygon points="210,14 396,192 24,192" fill="rgba(255,215,0,0.05)" stroke="none"/>
+        <!-- Animated outline -->
+        <polygon id="pacolli-poly" points="210,14 396,192 24,192"
+          fill="none"
+          stroke="url(#goldGradFull)"
+          stroke-width="1.8"
+          stroke-dasharray="906"
+          stroke-dashoffset="906"
+          filter="url(#glow)"/>
+        <!-- Labels -->
+        <text x="210" y="44" text-anchor="middle" font-family="Bebas Neue" font-size="26" fill="var(--gold)" data-i18n="s4-svg-t1">LİDERLİK</text>
+        <text x="88"  y="184" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--gold)" data-i18n="s4-svg-t2">İLETİŞİM</text>
+        <text x="332" y="184" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--gold)" data-i18n="s4-svg-t3">KAPSAYICILIK</text>
+        <!-- Center label -->
+        <text x="210" y="112" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="var(--dimmer)" opacity="0.7" data-i18n="s4-svg-t4">SÜRDÜRÜLEBİLİR</text>
+        <text x="210" y="130" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="var(--dimmer)" opacity="0.7" data-i18n="s4-svg-t5">DİJİTAL DÖNÜŞÜM</text>
+      </svg>
+      <p class="anim" style="font-size:13px; letter-spacing:4px; color:var(--gold); text-align:center; margin-top:20px; font-family:'JetBrains Mono',monospace; opacity:0.65;" data-i18n="s4-svg-cap">PACOLLI FRAMEWORK · STRATEGIC CORE</p>
     </div>
   </div>
 
   <!-- ══════════════════════════════════════════
        SLIDE 4B — LEWIN BUZ KALIBI (Fig 4)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="AKADEMİK TEMEL">
-    <div class="anim overline">Kurt Lewin (1940'lar) — Fig. 4</div>
+  <div class="slide" id="lewin-slide" data-section="AKADEMİK TEMEL" data-section-en="ACADEMIC BASE">
+    <div class="anim overline" data-i18n="s4b-overline">Kurt Lewin (1940'lar) — Fig. 4</div>
     <h2 class="section-title anim">UNFREEZE →<br><span style="color:var(--gold)">CHANGE</span> → REFREEZE</h2>
-    <p class="body-text anim" style="margin-bottom: 16px;">Fizikçi ve sosyal bilimci Lewin, örgütsel değişimi <strong>buz kalıbı</strong> metaforuyla açıklar:</p>
+    <p class="body-text anim" style="margin-bottom: 16px;" data-i18n="s4b-body">Fizikçi ve sosyal bilimci Lewin, örgütsel değişimi <strong>buz kalıbı</strong> metaforuyla açıklar:</p>
     <div class="lewin-flow anim">
+
+      <!-- UNFREEZE: buz erir -->
       <div class="lewin-step">
-        <div class="lewin-icon">🧊</div>
-        <div class="lewin-label">UNFREEZE</div>
-        <div class="lewin-desc">Buzu erit — mevcut durumu çöz, değişime hazırla</div>
+        <div class="lewin-icon" style="font-size:0; line-height:0;">
+          <svg id="svg-melt" viewBox="0 0 80 80" width="72" height="72" style="overflow:visible">
+            <defs>
+              <linearGradient id="ice-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c8eeff" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#7ec8f5" stop-opacity="0.25"/>
+              </linearGradient>
+            </defs>
+            <!-- buz küpü -->
+            <rect id="ice-body" x="14" y="6" width="52" height="48" rx="5"
+              fill="url(#ice-grad)" stroke="#93d9f7" stroke-width="1.8"/>
+            <!-- parlaklık çizgisi -->
+            <line x1="22" y1="14" x2="36" y2="26" stroke="rgba(255,255,255,0.55)"
+              stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="22" y1="24" x2="30" y2="16" stroke="rgba(255,255,255,0.3)"
+              stroke-width="1" stroke-linecap="round"/>
+            <!-- damla 1 -->
+            <path id="drip-a" d="M30,54 Q27,63 30,68 Q33,73 36,68 Q39,63 36,54 Z"
+              fill="#7ec8f5" opacity="0"/>
+            <!-- damla 2 -->
+            <path id="drip-b" d="M50,54 Q47,61 50,65 Q53,69 56,65 Q59,61 56,54 Z"
+              fill="#7ec8f5" opacity="0"/>
+            <!-- göl -->
+            <ellipse id="melt-puddle" cx="40" cy="76" rx="0" ry="0"
+              fill="rgba(100,195,245,0.35)" stroke="rgba(100,195,245,0.5)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="lewin-label" data-i18n="s4b-label1">UNFREEZE</div>
+        <div class="lewin-desc" data-i18n="s4b-l1">Buzu erit — mevcut durumu çöz, değişime hazırla</div>
       </div>
+
+      <!-- CHANGE: su akışı -->
       <div class="lewin-step">
-        <div class="lewin-icon">🔄</div>
-        <div class="lewin-label">CHANGE</div>
-        <div class="lewin-desc">Suyu yeni forma dök — dönüşümü gerçekleştir</div>
+        <div class="lewin-icon" style="font-size:0; line-height:0;">
+          <svg id="svg-flow" viewBox="0 0 80 80" width="72" height="72"
+            style="overflow:hidden; border-radius:4px;">
+            <!-- arka plan dalgası (dolgu) -->
+            <path id="wave-fill" d="M-40,48 C-20,32 0,64 20,48 C40,32 60,64 80,48 C100,32 120,64 140,48 L140,80 L-40,80 Z"
+              fill="rgba(100,195,245,0.18)"/>
+            <!-- dalga 1 -->
+            <path id="wave1" d="M-40,42 C-20,28 0,56 20,42 C40,28 60,56 80,42 C100,28 120,56 140,42"
+              fill="none" stroke="#7ec8f5" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- dalga 2 (geride, soluk) -->
+            <path id="wave2" d="M-40,52 C-20,40 0,64 20,52 C40,40 60,64 80,52 C100,40 120,64 140,52"
+              fill="none" stroke="rgba(126,200,245,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- su damlaları -->
+            <circle class="wdrop" cx="15" cy="36" r="2.8" fill="rgba(147,217,255,0.85)"/>
+            <circle class="wdrop" cx="40" cy="50" r="2.2" fill="rgba(147,217,255,0.7)"/>
+            <circle class="wdrop" cx="65" cy="39" r="2.5" fill="rgba(147,217,255,0.85)"/>
+          </svg>
+        </div>
+        <div class="lewin-label" data-i18n="s4b-label2">CHANGE</div>
+        <div class="lewin-desc" data-i18n="s4b-l2">Suyu yeni forma dök — dönüşümü gerçekleştir</div>
       </div>
+
+      <!-- REFREEZE: kar tanesi çizilir -->
       <div class="lewin-step">
-        <div class="lewin-icon">❄️</div>
-        <div class="lewin-label">REFREEZE</div>
-        <div class="lewin-desc">Dondur — yeni davranışı kalıcı kıl</div>
+        <div class="lewin-icon" style="font-size:0; line-height:0;">
+          <svg id="svg-freeze" viewBox="0 0 80 80" width="72" height="72"
+            style="overflow:visible;">
+            <g id="snowflake" stroke="#93d9f7" stroke-linecap="round" fill="none">
+              <!-- 6 ana kol -->
+              <line class="sf-arm" x1="40" y1="40" x2="40" y2="10"/>
+              <line class="sf-arm" x1="40" y1="40" x2="40" y2="70"/>
+              <line class="sf-arm" x1="40" y1="40" x2="66" y2="55"/>
+              <line class="sf-arm" x1="40" y1="40" x2="14" y2="25"/>
+              <line class="sf-arm" x1="40" y1="40" x2="66" y2="25"/>
+              <line class="sf-arm" x1="40" y1="40" x2="14" y2="55"/>
+              <!-- dal çentikleri — üst kol -->
+              <line class="sf-branch" x1="40" y1="21" x2="33" y2="15"/>
+              <line class="sf-branch" x1="40" y1="21" x2="47" y2="15"/>
+              <!-- alt kol -->
+              <line class="sf-branch" x1="40" y1="59" x2="33" y2="65"/>
+              <line class="sf-branch" x1="40" y1="59" x2="47" y2="65"/>
+              <!-- sağ-alt kol -->
+              <line class="sf-branch" x1="57" y1="50" x2="60" y2="43"/>
+              <line class="sf-branch" x1="57" y1="50" x2="63" y2="56"/>
+              <!-- sol-üst kol -->
+              <line class="sf-branch" x1="23" y1="30" x2="20" y2="23"/>
+              <line class="sf-branch" x1="23" y1="30" x2="17" y2="34"/>
+              <!-- sağ-üst kol -->
+              <line class="sf-branch" x1="57" y1="30" x2="60" y2="23"/>
+              <line class="sf-branch" x1="57" y1="30" x2="63" y2="34"/>
+              <!-- sol-alt kol -->
+              <line class="sf-branch" x1="23" y1="50" x2="20" y2="57"/>
+              <line class="sf-branch" x1="23" y1="50" x2="17" y2="44"/>
+            </g>
+            <!-- merkez nokta -->
+            <circle id="sf-center" cx="40" cy="40" r="0"
+              fill="#c8eeff" stroke="#93d9f7" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="lewin-label" data-i18n="s4b-label3">REFREEZE</div>
+        <div class="lewin-desc" data-i18n="s4b-l3">Dondur — yeni davranışı kalıcı kıl</div>
       </div>
+
     </div>
-    <p style="font-size: 18px; color: var(--white); margin-top: 24px; text-shadow: var(--text-shadow);">"Büyük bir buz küpü istediğin koniye dönüşmeli mi? Önce erit, sonra kalıba dök, sonra dondur." — Schein (2004)</p>
+    <p style="font-size: 18px; color: var(--white); margin-top: 24px; text-shadow: var(--text-shadow);" data-i18n="s4b-schein">"Büyük bir buz küpü istediğin şekle dönüşmeli mi? Önce erit, sonra kalıba dök, sonra dondur." — Schein (2004)</p>
   </div>
 
   <!-- ══════════════════════════════════════════
        SLIDE 4C — SCHEIN GRUP DİNAMİKLERİ
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="AKADEMİK TEMEL">
-    <div class="anim overline">Edgar Schein (2004) — Organizational Culture & Leadership</div>
-    <h2 class="section-title anim">GRUP DİNAMİKLERİ<br><span style="color:var(--gold)">VE DİRENÇ</span></h2>
-    <div class="gold-line anim"></div>
-    <div class="blockquote anim">
-      <p>"Gruba ait olma ve kabul edilme ihtiyacı bilinçdışıdır ve bu yüzden güçlüdür. İçten farklı düşünsek bile, gruptan sapmak üyelik kaybı veya kimliğimizi ihlal riski taşır — bu yüzden sapmak istemeyiz."</p>
-      <cite>Schein, 2004, s. 321</cite>
+  <div class="slide" data-section="AKADEMİK TEMEL" data-section-en="ACADEMIC BASE">
+    <div class="anim overline" data-i18n="s4c-overline">Edgar Schein (2004) — Organizational Culture &amp; Leadership</div>
+    <h2 class="section-title anim" data-i18n="s4c-title">GRUP DİNAMİKLERİ<br><span style="color:var(--gold)">VE DİRENÇ</span></h2>
+    <div class="gold-line anim" style="margin:16px 0;"></div>
+    <div class="blockquote anim" style="padding:14px 0 14px 26px; max-width:760px;">
+      <p style="font-size:clamp(18px,2.2vw,26px); line-height:1.5;" data-i18n="s4c-quote">"Gruba ait olma ve kabul edilme ihtiyacı bilinçdışıdır ve bu yüzden güçlüdür. İçten farklı düşünsek bile, gruptan sapmak üyelik kaybı veya kimliğimizi ihlal riski taşır — bu yüzden sapmak istemeyiz."</p>
+      <cite data-i18n="s4c-cite">Schein, 2004, s. 321</cite>
     </div>
-    <div class="two-col anim" style="margin-top: 28px;">
-      <ul class="check-list">
-        <li>Yerleşik davranış, <strong>grubun öğrettiği</strong> üzerine kuruludur</li>
-        <li>Değişim, grup üyeliğini veya kimliği tehdit ederse <strong>direnç</strong> doğar</li>
-        <li>Çalışanları "dinleyip saygı göstermek" antagonistleşmeyi önler (HBR, 2017)</li>
+    <div class="two-col anim" style="margin-top:18px; gap:40px;">
+      <ul class="check-list" style="max-width:none;">
+        <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li1">Yerleşik davranış, <strong>grubun öğrettiği</strong> üzerine kuruludur</li>
+        <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li2">Değişim, grup üyeliğini veya kimliği tehdit ederse <strong>direnç</strong> doğar</li>
+        <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li3">Çalışanları "dinleyip saygı göstermek" antagonistleşmeyi önler (HBR, 2017)</li>
       </ul>
-      <div style="border: 1px solid var(--gold-line); padding: 20px; background: rgba(201,168,76,0.05);">
-        <div style="font-family:'JetBrains Mono'; font-size: 14px; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px;">BANKACILIK İPUCU</div>
-        <p style="font-size: 18px; color: var(--white); line-height: 1.6; text-shadow: var(--text-shadow);">Uzun süredir çalışan veya geçmişte etkili olan kişileri dinlemezsen, kendilerini "ihmal edilmiş" hissedip dönüşümün <strong>karşıtı</strong> haline gelebilir.</p>
+      <div style="border:1px solid var(--gold-line); padding:18px 20px; background:rgba(201,168,76,0.05);">
+        <div style="font-family:'JetBrains Mono'; font-size:13px; letter-spacing:2px; color:var(--gold); margin-bottom:8px;" data-i18n="s4c-tip-title">BANKACILIK İPUCU</div>
+        <p style="font-size:17px; color:var(--white); line-height:1.55; text-shadow:var(--text-shadow);" data-i18n="s4c-tip-body">Uzun süredir çalışan veya geçmişte etkili olan kişileri dinlemezsen, kendilerini "ihmal edilmiş" hissedip dönüşümün <strong>karşıtı</strong> haline gelebilir.</p>
       </div>
     </div>
   </div>
@@ -812,25 +1139,25 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 5 — META-DEĞİŞİM: DEĞİŞİMİN EVRİMİ
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="METAMORFOZ">
-    <div class="anim overline">Yeni Paradigma</div>
-    <h2 class="section-title anim">DEĞİŞİMİN<br><span style="color:var(--bank-blue)">DEĞİŞİMİ</span></h2>
+  <div class="slide" data-section="METAMORFOZ" data-section-en="METAMORPHOSIS">
+    <div class="anim overline" data-i18n="s5-overline">Yeni Paradigma</div>
+    <h2 class="section-title anim" data-i18n="s5-title">DEĞİŞİMİN<br><span style="color:var(--bank-blue)">DEĞİŞİMİ</span></h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim">
       <div class="theory-block" style="border-left-color: var(--dimmer)">
-        <div class="theory-name" style="color:var(--dim)">GELENEKSEL (STATİK)</div>
-        <p style="font-size:18px; color:var(--white); text-shadow: var(--text-shadow);">Lewin'in "Buz Kalıbı" Modeli: Çöz - Değiştir - Dondur. Bankacılıkta periyodik, ağır ve riskten kaçınan yapı.</p>
+        <div class="theory-name" style="color:var(--dim)" data-i18n="s5-c1-title">GELENEKSEL (STATİK)</div>
+        <p style="font-size:18px; color:var(--white); text-shadow: var(--text-shadow);" data-i18n="s5-c1-text">Lewin'in "Buz Kalıbı" Modeli: Çöz - Değiştir - Dondur. Bankacılıkta periyodik, ağır ve riskten kaçınan yapı.</p>
         <div class="theory-steps">
-          <span class="step-pill" style="opacity:0.5">Statik Plan</span>
-          <span class="step-pill" style="opacity:0.5">Bürokrasi</span>
+          <span class="step-pill" style="opacity:0.5" data-i18n="s5-c1-s1">Statik Plan</span>
+          <span class="step-pill" style="opacity:0.5" data-i18n="s5-c1-s2">Bürokrasi</span>
         </div>
       </div>
       <div class="theory-block" style="border-left-color: var(--gold)">
-        <div class="theory-name" style="color:var(--gold)">DİNAMİK (PERMANENT BETA)</div>
-        <p style="font-size:18px; color:var(--white); text-shadow: var(--text-shadow);">Çevik ve Sürekli Dönüşüm: Veri odaklı, esnek ve "Yaşayan" sistemler. Dijital çağın gerekliliği.</p>
+        <div class="theory-name" style="color:var(--gold)" data-i18n="s5-c2-title">DİNAMİK (PERMANENT BETA)</div>
+        <p style="font-size:18px; color:var(--white); text-shadow: var(--text-shadow);" data-i18n="s5-c2-text">Çevik ve Sürekli Dönüşüm: Veri odaklı, esnek ve "Yaşayan" sistemler. Dijital çağın gerekliliği.</p>
         <div class="theory-steps">
-          <span class="step-pill">Agile</span>
-          <span class="step-pill">Real-Time Data</span>
+          <span class="step-pill" data-i18n="s5-c2-s1">Agile</span>
+          <span class="step-pill" data-i18n="s5-c2-s2">Real-Time Data</span>
         </div>
       </div>
     </div>
@@ -839,21 +1166,21 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 6 — BANKACILIKTA YETENEK TUZAĞI
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="SEKTÖREL ANALİZ">
-    <div class="anim overline">Banking Insights</div>
-    <h2 class="section-title anim">COMPETENCY TRAP<br><span style="color:var(--gold)">YETENEK TUZAĞI</span></h2>
+  <div class="slide" data-section="SEKTÖREL ANALİZ" data-section-en="SECTOR ANALYSIS">
+    <div class="anim overline" data-i18n="s6-overline">Banking Insights</div>
+    <h2 class="section-title anim" data-i18n="s6-title">COMPETENCY TRAP<br><span style="color:var(--gold)">YETENEK TUZAĞI</span></h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim">
       <div>
         <div class="blockquote">
-          <p>"Eski başarılar, yeni dijital vizyonun en büyük düşmanıdır."</p>
-          <cite>Kane et al. (2018) / Bankacılık Vakası</cite>
+          <p data-i18n="s6-quote">"Eski başarılar, yeni dijital vizyonun en büyük düşmanıdır."</p>
+          <cite data-i18n="s6-cite">Kane et al. (2018) / Bankacılık Vakası</cite>
         </div>
       </div>
       <ul class="check-list">
-        <li>Geleneksel bankacılık alışkanlıklarına takılı kalma riski.</li>
-        <li>"Zaten kâr ediyoruz" yanılgısının dijitalleşme direncine dönüşmesi.</li>
-        <li>Yeteneklerin (Skills) dijital çağa göre her gün güncellenme zorunluluğu (Upskilling).</li>
+        <li data-i18n="s6-li1">Geleneksel bankacılık alışkanlıklarına takılı kalma riski.</li>
+        <li data-i18n="s6-li2">"Zaten kâr ediyoruz" yanılgısının dijitalleşme direncine dönüşmesi.</li>
+        <li data-i18n="s6-li3">Yeteneklerin (Skills) dijital çağa göre her gün güncellenme zorunluluğu (Upskilling).</li>
       </ul>
     </div>
   </div>
@@ -861,65 +1188,59 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 6B — HAT BAŞARISIZLIK FAKTÖRLERİ (2017)
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="SEKTÖREL ANALİZ">
-    <div class="anim overline">Health Metrics Advisory Team / HAT (2017)</div>
-    <h2 class="section-title anim">DEĞİŞİM<br><span style="color:var(--gold)">BAŞARISIZLIK</span> NEDENLERİ</h2>
+  <div class="slide" data-section="SEKTÖREL ANALİZ" data-section-en="SECTOR ANALYSIS">
+    <div class="anim overline" data-i18n="s6b-overline">Health Metrics Advisory Team / HAT (2017)</div>
+    <h2 class="section-title anim" data-i18n="s6b-title">DEĞİŞİM<br><span style="color:var(--gold)">BAŞARISIZLIK</span> NEDENLERİ</h2>
     <div class="gold-line anim"></div>
-    <p class="body-text anim" style="margin-bottom: 20px;">Değişim uygulamalarında başarısızlığa yol açan 8 ana faktör:</p>
-    <table class="fail-table anim">
-      <thead>
-        <tr><th>#</th><th>FAKTÖR</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>Başlangıçta ve sürekli <strong>zayıf iletişim</strong></td></tr>
-        <tr><td>2</td><td>Çalışanlar <strong>neden değişim</strong> olduğunu anlamıyor</td></tr>
-        <tr><td>3</td><td>Önerilen değişimden önce <strong>yetersiz eğitim</strong></td></tr>
-        <tr><td>4</td><td>Değişimle ilgili <strong>potansiyel riskleri</strong> tespit edememe</td></tr>
-        <tr><td>5</td><td>Değişimin <strong>etki ve sonuçlarını</strong> anlamama</td></tr>
-        <tr><td>6</td><td>Değişimi uygulamak için <strong>hatalı strateji</strong></td></tr>
-        <tr><td>7</td><td>Değişimi destekleyecek <strong>kaynakları</strong> belirleyememe</td></tr>
-        <tr><td>8</td><td><strong>Gerçekçi olmayan zaman çizelgesi</strong> — çalışanlar yüklenmiş hissediyor</td></tr>
-      </tbody>
-    </table>
+    <div class="fail-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px 40px; width:100%; max-width:1060px; margin-top:8px;">
+      <div class="fail-item"><span class="fi-num">01</span><p class="fi-text" data-i18n="s6b-tr1">Başlangıçta ve sürekli <strong>zayıf iletişim</strong></p></div>
+      <div class="fail-item"><span class="fi-num">02</span><p class="fi-text" data-i18n="s6b-tr2">Çalışanlar <strong>neden değişim</strong> olduğunu anlamıyor</p></div>
+      <div class="fail-item"><span class="fi-num">03</span><p class="fi-text" data-i18n="s6b-tr3">Önerilen değişimden önce <strong>yetersiz eğitim</strong></p></div>
+      <div class="fail-item"><span class="fi-num">04</span><p class="fi-text" data-i18n="s6b-tr4">Değişimle ilgili <strong>potansiyel riskleri</strong> tespit edememe</p></div>
+      <div class="fail-item"><span class="fi-num">05</span><p class="fi-text" data-i18n="s6b-tr5">Değişimin <strong>etki ve sonuçlarını</strong> anlamama</p></div>
+      <div class="fail-item"><span class="fi-num">06</span><p class="fi-text" data-i18n="s6b-tr6">Değişimi uygulamak için <strong>hatalı strateji</strong></p></div>
+      <div class="fail-item"><span class="fi-num">07</span><p class="fi-text" data-i18n="s6b-tr7">Değişimi destekleyecek <strong>kaynakları</strong> belirleyememe</p></div>
+      <div class="fail-item"><span class="fi-num">08</span><p class="fi-text" data-i18n="s6b-tr8"><strong>Gerçekçi olmayan zaman çizelgesi</strong> — çalışanlar yüklenmiş hissediyor</p></div>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════
        SLIDE 7 — TÜRKİYE BANKACILIK ÖRNEĞİ: İŞ BANKASI
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="VAKA ANALİZİ">
-    <div class="anim overline">Yerel Vizyon</div>
-    <h2 class="section-title anim">TÜRKİYE'DE<br><span style="color:var(--gold)">DİJİTAL LİDERLİK</span></h2>
+  <div class="slide" data-section="VAKA ANALİZİ" data-section-en="CASE STUDY">
+    <div class="anim overline" data-i18n="s7-overline">Yerel Vizyon</div>
+    <h2 class="section-title anim" data-i18n="s7-title">TÜRKİYE'DE<br><span style="color:var(--gold)">DİJİTAL LİDERLİK</span></h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim">
       <div style="background:rgba(43,127,255,0.1); padding:30px; border:1px solid var(--bank-blue)">
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--white); margin-bottom:15px">Bankacılık Veri Analizi</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--white); margin-bottom:15px" data-i18n="s7-tab-title">Bankacılık Veri Analizi</div>
         <table style="width:100%; border-collapse: collapse; font-size:18px; color:var(--white); text-shadow: var(--text-shadow);">
           <tr style="border-bottom: 1px solid var(--bank-blue); text-align:left">
-            <th style="padding:10px 5px; color:var(--gold)">FAKTÖR</th>
-            <th style="padding:10px 5px; color:var(--gold)">ESKİ (FORMAL)</th>
-            <th style="padding:10px 5px; color:var(--gold)">YENİ (DİJİTAL)</th>
+            <th style="padding:10px 5px; color:var(--gold)" data-i18n="s7-th1">FAKTÖR</th>
+            <th style="padding:10px 5px; color:var(--gold)" data-i18n="s7-th2">ESKİ (FORMAL)</th>
+            <th style="padding:10px 5px; color:var(--gold)" data-i18n="s7-th3">YENİ (DİJİTAL)</th>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05)">
-            <td style="padding:10px 5px">Müşteri</td>
-            <td style="padding:10px 5px">Şube / Cüzdan</td>
-            <td style="padding:10px 5px">Mobil / Veri Seti</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr1-c1">Müşteri</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr1-c2">Şube / Cüzdan</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr1-c3">Mobil / Veri Seti</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05)">
-            <td style="padding:10px 5px">Hız</td>
-            <td style="padding:10px 5px">Valörlü İşlem</td>
-            <td style="padding:10px 5px">Real-Time (FAST)</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr2-c1">Hız</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr2-c2">Valörlü İşlem</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr2-c3">Real-Time (FAST)</td>
           </tr>
           <tr>
-            <td style="padding:10px 5px">Güven</td>
-            <td style="padding:10px 5px">İmza / Kaşe</td>
-            <td style="padding:10px 5px">Biometrik / AI</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr3-c1">Güven</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr3-c2">İmza / Kaşe</td>
+            <td style="padding:10px 5px" data-i18n="s7-tr3-c3">Biometrik / AI</td>
           </tr>
         </table>
       </div>
       <ul class="check-list">
-        <li>Müşteri deneyiminde "Hyper-Personalization".</li>
-        <li>Şube bankacılığından "Platform Bankacılığına" geçiş.</li>
-        <li>Çalışanların dijital elçilere dönüşümü.</li>
+        <li data-i18n="s7-li1">Müşteri deneyiminde "Hyper-Personalization".</li>
+        <li data-i18n="s7-li2">Şube bankacılığından "Platform Bankacılığına" geçiş.</li>
+        <li data-i18n="s7-li3">Çalışanların dijital elçilere dönüşümü.</li>
       </ul>
     </div>
   </div>
@@ -927,30 +1248,30 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 8 — BANKACILIKTA DİJİTAL TRENDLER
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="SEKTÖREL GELECEK">
-    <div class="anim overline">2024 – 2026 Projeksiyonu</div>
-    <h2 class="section-title anim">BANKACILIKTA<br><span style="color:var(--gold)">DİJİTAL</span> EVRİM</h2>
+  <div class="slide" data-section="SEKTÖREL GELECEK" data-section-en="SECTOR FUTURE">
+    <div class="anim overline" data-i18n="s8-overline">2025 – 2026 Projeksiyonu</div>
+    <h2 class="section-title anim" data-i18n="s8-title">BANKACILIKTA<br><span style="color:var(--gold)">DİJİTAL</span> EVRİM</h2>
     <div class="gold-line anim"></div>
     <div class="timeline anim">
       <div class="timeline-item">
-        <div class="t-year">TREND 01</div>
+        <div class="t-year" data-i18n="s8-item1-year">TREND 01</div>
         <div>
-          <div class="t-title">Open Banking & API Ekonomisi</div>
-          <div class="t-text">Finansal ekosistemlerin entegrasyonu; bankaların birer teknoloji platformuna dönüşmesi.</div>
+          <div class="t-title" data-i18n="s8-item1-title">Open Banking & API Ekonomisi</div>
+          <div class="t-text" data-i18n="s8-item1-text">Finansal ekosistemlerin entegrasyonu; bankaların birer teknoloji platformuna dönüşmesi.</div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="t-year">TREND 02</div>
+        <div class="t-year" data-i18n="s8-item2-year">TREND 02</div>
         <div>
-          <div class="t-title">Hyper-Personalization (AI)</div>
-          <div class="t-text">Yapay zeka ile kişiye özel finansal danışmanlık ve gerçek zamanlı risk yönetimi.</div>
+          <div class="t-title" data-i18n="s8-item2-title">Hyper-Personalization (AI)</div>
+          <div class="t-text" data-i18n="s8-item2-text">Yapay zeka ile kişiye özel finansal danışmanlık ve gerçek zamanlı risk yönetimi.</div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="t-year">TREND 03</div>
+        <div class="t-year" data-i18n="s8-item3-year">TREND 03</div>
         <div>
-          <div class="t-title">Dijital Sürdürülebilirlik</div>
-          <div class="t-text">Kağıtsız bankacılık ve ESG (Çevresel, Sosyal, Yönetişim) kriterlerinin dijitalleşme ile uyumu.</div>
+          <div class="t-title" data-i18n="s8-item3-title">Dijital Sürdürülebilirlik</div>
+          <div class="t-text" data-i18n="s8-item3-text">Kağıtsız bankacılık ve ESG (Çevresel, Sosyal, Yönetişim) kriterlerinin dijitalleşme ile uyumu.</div>
         </div>
       </div>
     </div>
@@ -959,29 +1280,31 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 9 — YÖNETİM ÇERÇEVESİ BAŞLIĞI
   ══════════════════════════════════════════ -->
-  <div class="slide center" data-section="STRATEJİK YÖNETİM">
-    <div class="anim overline">Bölüm III</div>
-    <h2 class="display-title anim">BÜTÜNSEL<br><span class="accent">YÖNETİM</span><br><span style="color:var(--dimmer)">YAKLAŞIMI</span></h2>
+  <div class="slide center" data-section="STRATEJİK YÖNETİM" data-section-en="STRATEGIC MGMT">
+    <div class="anim overline" data-i18n="s9-overline">Bölüm III</div>
+    <h2 class="display-title anim">
+      <span data-i18n="s9-t1">BÜTÜNSEL</span><br><span class="accent" data-i18n="s9-t2">YÖNETİM</span><br><span style="color:var(--dimmer)" data-i18n="s9-t3">YAKLAŞIMI</span>
+    </h2>
     <div class="gold-line anim" style="margin:28px auto"></div>
-    <p class="body-text anim" style="margin:0 auto">Liderlik Boyutu · İnsan Kaynağı · Adaptasyon</p>
+    <p class="body-text anim" style="margin:0 auto" data-i18n="s9-body">Liderlik Boyutu · İnsan Kaynağı · Adaptasyon</p>
   </div>
 
   <!-- ══════════════════════════════════════════
        SLIDE 10 — LİDERLİK & ÜST YÖNETİM
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="STRATEJİK YÖNETİM">
-    <div class="anim overline">Liderlik Paradigması</div>
-    <h2 class="section-title anim">YÖNETİM KURULU<br><span style="color:var(--gold)">VİZYONU</span></h2>
+  <div class="slide" data-section="STRATEJİK YÖNETİM" data-section-en="STRATEGIC MGMT">
+    <div class="anim overline" data-i18n="s10-overline">Liderlik Paradigması</div>
+    <h2 class="section-title anim" data-i18n="s10-title">YÖNETİM KURULU<br><span style="color:var(--gold)">VİZYONU</span></h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim">
       <ul class="check-list">
-        <li><strong>Stratejik Sahiplik:</strong> Dönüşümün bir BT projesi değil, bir "iş modeli" olarak görülmesi.</li>
-        <li><strong>Kültürel Dönüşüm:</strong> "Hata yapmaktan korkmayan" (Safe to fail) bir dijital kültür inşa etmek.</li>
-        <li><strong>Kaynak Tahsisi:</strong> Teknolojik altyapı kadar, insan kaynağı gelişimine (Upskilling) bütçe ayırmak.</li>
+        <li data-i18n="s10-li1"><strong>Stratejik Sahiplik:</strong> Dönüşümün bir BT projesi değil, bir "iş modeli" olarak görülmesi.</li>
+        <li data-i18n="s10-li2"><strong>Kültürel Dönüşüm:</strong> "Hata yapmaktan korkmayan" (Safe to fail) bir dijital kültür inşa etmek.</li>
+        <li data-i18n="s10-li3"><strong>Kaynak Tahsisi:</strong> Teknolojik altyapı kadar, insan kaynağı gelişimine (Upskilling) bütçe ayırmak.</li>
       </ul>
       <div style="border:1px solid var(--bank-blue); padding:24px; background:rgba(0,51,160,0.05)">
-        <div style="font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:3px; color:var(--gold); margin-bottom:12px">KRİTİK BAŞARI FAKTÖRÜ</div>
-        <p style="font-size:20px; font-weight:400; color:var(--white); line-height:1.6; text-shadow: var(--text-shadow);">Üst yönetimin dijital araçları bizzat kullanması ve süreci "sahada" takip etmesi, çalışan direncini %40 oranında azaltmaktadır.</p>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:3px; color:var(--gold); margin-bottom:12px" data-i18n="s10-tip-title">KRİTİK BAŞARI FAKTÖRÜ</div>
+        <p style="font-size:20px; font-weight:400; color:var(--white); line-height:1.6; text-shadow: var(--text-shadow);" data-i18n="s10-tip-body">Üst yönetimin dijital araçları bizzat kullanması ve süreci "sahada" takip etmesi, çalışan direncini %40 oranında azaltmaktadır.</p>
       </div>
     </div>
   </div>
@@ -989,25 +1312,25 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 11 — DİRENÇ YÖNETİMİ
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="İNSAN ODAKLI DÖNÜŞÜM">
-    <div class="anim overline">Psikolojik Baryerler</div>
-    <h2 class="section-title anim">DİRENÇTEN<br><span style="color:var(--gold)">ADAPTASYONA</span></h2>
+  <div class="slide" data-section="İNSAN ODAKLI DÖNÜŞÜM" data-section-en="HUMAN-CENTERED">
+    <div class="anim overline" data-i18n="s11-overline">Psikolojik Baryerler</div>
+    <h2 class="section-title anim" data-i18n="s11-title">DİRENÇTEN<br><span style="color:var(--gold)">ADAPTASYONA</span></h2>
     <div class="gold-line anim"></div>
     <div class="cards-grid anim">
       <div class="card">
-        <div class="card-num">ADIM 01</div>
-        <div class="card-title">KAYGIYI ANLAMAK</div>
-        <div class="card-text">"Yapay zeka işimi elimden mi alacak?" korkusunu, "AI seni daha değerli yapacak" vizyonuna çevirmek.</div>
+        <div class="card-num" data-i18n="s11-c1-num">ADIM 01</div>
+        <div class="card-title" data-i18n="s11-c1-title">KAYGIYI ANLAMAK</div>
+        <div class="card-text" data-i18n="s11-c1-text">"Yapay zeka işimi elimden mi alacak?" korkusunu, "AI seni daha değerli yapacak" vizyonuna çevirmek.</div>
       </div>
       <div class="card">
-        <div class="card-num">ADIM 02</div>
-        <div class="card-title">ŞEFFAF İLETİŞİM</div>
-        <div class="card-text">Bilinmezlik direnç doğurur. Her adımın veriye dayalı ve açık şekilde paylaşılması.</div>
+        <div class="card-num" data-i18n="s11-c2-num">ADIM 02</div>
+        <div class="card-title" data-i18n="s11-c2-title">ŞEFFAF İLETİŞİM</div>
+        <div class="card-text" data-i18n="s11-c2-text">Bilinmezlik direnç doğurur. Her adımın veriye dayalı ve açık şekilde paylaşılması.</div>
       </div>
       <div class="card">
-        <div class="card-num">ADIM 03</div>
-        <div class="card-title">KAZANIMLAR (QUICK WINS)</div>
-        <div class="card-text">Küçük başarı hikayeleri yaratarak dönüşümün faydalarını somutlaştırmak.</div>
+        <div class="card-num" data-i18n="s11-c3-num">ADIM 03</div>
+        <div class="card-title" data-i18n="s11-c3-title">KAZANIMLAR (QUICK WINS)</div>
+        <div class="card-text" data-i18n="s11-c3-text">Küçük başarı hikayeleri yaratarak dönüşümün faydalarını somutlaştırmak.</div>
       </div>
     </div>
   </div>
@@ -1015,20 +1338,20 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 12 — SONUÇ
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="FİNAL">
-    <div class="anim overline">Sentez & Projeksiyon</div>
-    <h2 class="section-title anim">GELECEĞİN<br><span style="color:var(--gold)">BANKACILIĞI</span></h2>
+  <div class="slide" data-section="FİNAL" data-section-en="FINAL">
+    <div class="anim overline" data-i18n="s12-overline">Sentez &amp; Projeksiyon</div>
+    <h2 class="section-title anim" data-i18n="s12-title">GELECEĞİN<br><span style="color:var(--gold)">BANKACILIĞI</span></h2>
     <div class="gold-line anim"></div>
     <div class="two-col anim">
       <ul class="check-list">
-        <li>Dijital dönüşüm bir varış noktası değil, bir <strong>hayatta kalma biçimidir</strong>.</li>
-        <li>Pacolli'nin belirttiği gibi; sürdürülebilirlik ancak <strong>insan odağıyla</strong> mümkündür.</li>
-        <li>Bankacılıkta güven, gelenekselden dijital şeffaflığa evrilmektedir.</li>
-        <li>İSTE YBS vizyonu: Teknolojiyi yöneten, değişimi tasarlayan liderler.</li>
+        <li data-i18n="s12-li1">Dijital dönüşüm bir varış noktası değil, bir <strong>hayatta kalma biçimidir</strong>.</li>
+        <li data-i18n="s12-li2">Pacolli'nin belirttiği gibi; sürdürülebilirlik ancak <strong>insan odağıyla</strong> mümkündür.</li>
+        <li data-i18n="s12-li3">Bankacılıkta güven, gelenekselden dijital şeffaflığa evrilmektedir.</li>
+        <li data-i18n="s12-li4">İSTE YBS vizyonu: Teknolojiyi yöneten, değişimi tasarlayan liderler.</li>
       </ul>
       <div class="blockquote">
-        <p>"Geleceği tahmin etmenin en iyi yolu, onu inşa etmektir."</p>
-        <cite>Peter Drucker / Dijital Çağ Uyarlaması</cite>
+        <p data-i18n="s12-quote">"Geleceği tahmin etmenin en iyi yolu, onu inşa etmektir."</p>
+        <cite data-i18n="s12-cite">Peter Drucker / Dijital Çağ Uyarlaması</cite>
       </div>
     </div>
   </div>
@@ -1036,25 +1359,53 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 12B — ÖZET: NE ÖĞRENDİK?
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="FİNAL">
-    <div class="anim overline">Sentez</div>
-    <h2 class="section-title anim">NE<br><span style="color:var(--gold)">ÖĞRENDİK</span>?</h2>
+  <div class="slide" data-section="FİNAL" data-section-en="FINAL">
+    <div class="anim overline" data-i18n="s12b-overline">Sentez</div>
+    <h2 class="section-title anim" data-i18n="s12b-title">NE<br><span style="color:var(--gold)">ÖĞRENDİK</span>?</h2>
     <div class="gold-line anim"></div>
     <div class="cards-grid anim">
       <div class="card" style="border-top: 3px solid var(--gold)">
-        <div class="card-num">01</div>
-        <div class="card-title">ÖLÇEK</div>
-        <div class="card-text">$2.8T harcama, %92 DT önemi — ama %70 başarısızlık. İnsan faktörü kritik.</div>
+        <div class="card-num" data-i18n="s12b-c1-num">01</div>
+        <div class="card-title" data-i18n="s12b-c1-title">ÖLÇEK</div>
+        <div class="card-text" data-i18n="s12b-c1-text">$2.8T harcama, %92 DT önemi — ama %70 başarısızlık. İnsan faktörü kritik.</div>
       </div>
       <div class="card" style="border-top: 3px solid var(--bank-blue)">
-        <div class="card-num">02</div>
-        <div class="card-title">TEORİ</div>
-        <div class="card-text">Lewin (Unfreeze-Change-Refreeze), Schein (grup dinamikleri), Pacolli (Liderlik-İletişim-Kapsayıcılık).</div>
+        <div class="card-num" data-i18n="s12b-c2-num">02</div>
+        <div class="card-title" data-i18n="s12b-c2-title">TEORİ</div>
+        <div class="card-text" data-i18n="s12b-c2-text">Lewin (Unfreeze-Change-Refreeze), Schein (grup dinamikleri), Pacolli (Liderlik-İletişim-Kapsayıcılık).</div>
       </div>
       <div class="card" style="border-top: 3px solid var(--gold)">
+        <div class="card-num" data-i18n="s12b-c3-num">03</div>
+        <div class="card-title" data-i18n="s12b-c3-title">UYGULAMA</div>
+        <div class="card-text" data-i18n="s12b-c3-text">Üst yönetim sahada; şeffaf iletişim; çalışanları dinlemek; Quick Wins. Direnç %40 azalır.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       EKİP & ROLLER
+  ══════════════════════════════════════════ -->
+  <div class="slide" data-section="EKİP" data-section-en="TEAM">
+    <div class="anim overline" data-i18n="s2-overline">Proje Ekibi</div>
+    <h2 class="section-title anim">
+      <span data-i18n="s2-title1">EKİP</span> &amp;<br><span style="color:var(--gold)" data-i18n="s2-title2">ROLLER</span>
+    </h2>
+    <div class="gold-line anim"></div>
+    <div class="cards-grid anim" style="margin-top:20px">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Hüseyin Emre</div>
+        <div class="card-text" data-i18n="s2-c1">Web Sitesi Geliştirme &amp; Kodlama<br><small style="color:var(--gold)">Proje Mimarı</small></div>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Berkay Bereket</div>
+        <div class="card-text" data-i18n="s2-c2">Sunum &amp; Anlatım<br><small style="color:var(--gold)">Speaker</small></div>
+      </div>
+      <div class="card">
         <div class="card-num">03</div>
-        <div class="card-title">UYGULAMA</div>
-        <div class="card-text">Üst yönetim sahada; şeffaf iletişim; çalışanları dinlemek; Quick Wins. Direnç %40 azalır.</div>
+        <div class="card-title">Alperen Hamza Güngör</div>
+        <div class="card-text" data-i18n="s2-c3">Araştırma &amp; Rapor Hazırlığı<br><small style="color:var(--gold)">Akademik Altyapı</small></div>
       </div>
     </div>
   </div>
@@ -1062,93 +1413,47 @@ html, body {
   <!-- ══════════════════════════════════════════
        SLIDE 12C — KAYNAKÇA
   ══════════════════════════════════════════ -->
-  <div class="slide" data-section="FİNAL">
-    <div class="anim overline">Referanslar</div>
-    <h2 class="section-title anim">KAYNAKÇA</h2>
+  <div class="slide" data-section="FİNAL" data-section-en="FINAL">
+    <div class="anim overline" data-i18n="s12c-overline">Referanslar</div>
+    <h2 class="section-title anim" data-i18n="s12c-title">KAYNAKÇA</h2>
     <div class="gold-line anim"></div>
     <ul class="biblio-list anim">
       <li>Pacolli, M. (2022). Importance of Change Management in Digital Transformation Sustainability. IFAC PapersOnLine 55-39, 276–280.</li>
       <li>Schein, E.H. (2004). Organizational Culture and Leadership. Jossey-Bass. p. 321.</li>
-      <li>Kane et al. (2018). Coming of age digitally. MIT Sloan Management Review & Deloitte Insights.</li>
+      <li>Kane et al. (2018). Coming of age digitally. MIT Sloan Management Review &amp; Deloitte Insights.</li>
       <li>Harvard Business Review (2022). Digital Transformation Refocused. HBR Analytic Services.</li>
       <li>IDC (2021). Worldwide Digital Transformation Spending Guide.</li>
       <li>Siemens IoT Services (2019). Successful Digital Transformation — How Change Management helps.</li>
       <li>Florek-Paszkowska et al. (2021). Business innovation and critical success factors. JEMI.</li>
-      <li>Diener & Špaček (2021). Digital Transformation in Banking: Barriers to Change. Sustainability.</li>
+      <li>Diener &amp; Špaček (2021). Digital Transformation in Banking: Barriers to Change. Sustainability.</li>
     </ul>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 12C2 — ANAHTAR KELİMELER
-  ══════════════════════════════════════════ -->
-  <div class="slide" data-section="FİNAL">
-    <div class="anim overline">Pacolli (2022) — Makale Anahtar Kelimeleri</div>
-    <h2 class="section-title anim">KEYWORDS</h2>
-    <div class="gold-line anim"></div>
-    <div class="anim" style="display: flex; flex-wrap: wrap; gap: 12px; max-width: 700px;">
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Digital Transformation</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Change Management</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Resistance</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Technology</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Digitalization</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Sustainability</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Challenges</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Success Factors</span>
-      <span class="step-pill" style="font-size: 16px; padding: 10px 20px;">Barriers</span>
-    </div>
-    <div class="anim" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 700px;">
-      <div style="border: 1px solid var(--bank-blue); padding: 20px; background: rgba(0,68,204,0.08);">
-        <div style="font-family:'JetBrains Mono'; font-size: 14px; color: var(--gold); margin-bottom: 8px;">PwC (2017)</div>
-        <p style="font-size: 20px; color: var(--white); text-shadow: var(--text-shadow);">AI/ML, 2030'a kadar küresel GSYİH'ye <strong style="color:var(--gold)">%14</strong> ekleyebilir.</p>
-      </div>
-      <div style="border: 1px solid var(--gold-line); padding: 20px; background: rgba(201,168,76,0.05);">
-        <div style="font-family:'JetBrains Mono'; font-size: 14px; color: var(--gold); margin-bottom: 8px;">Bankacılık Trendi</div>
-        <p style="font-size: 20px; color: var(--white); text-shadow: var(--text-shadow);">Bankalar dijitalleşme için <strong>Chief Digital Officer (CDO)</strong> pozisyonu istihdam ediyor.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       SLIDE 12D — TARTIŞMA SORULARI
-  ══════════════════════════════════════════ -->
-  <div class="slide" data-section="TARTIŞMA">
-    <div class="anim overline">Sınıf Tartışması</div>
-    <h2 class="section-title anim">TARTIŞMA<br><span style="color:var(--gold)">SORULARI</span></h2>
-    <div class="gold-line anim"></div>
-    <ul class="check-list anim" style="max-width: 700px;">
-      <li>Bankacılıkta "Competency Trap" nasıl aşılır? Geçmiş başarılar dijital vizyonun önünde nasıl engel oluyor?</li>
-      <li>Üst yönetimin dijital araçları bizzat kullanması çalışan direncini %40 azaltıyor. Sizce neden?</li>
-      <li>Lewin'in "Refreeze" aşaması günümüz "Permanent Beta" kültürüyle çelişir mi?</li>
-      <li>Şube bankacılığından platform bankacılığına geçişte en büyük insan kaynaklı risk nedir?</li>
-    </ul>
-    <p style="font-size: 20px; color: var(--white); margin-top: 32px; text-shadow: var(--text-shadow);">Bu sorular üzerine 5–10 dakika tartışma yapılabilir.</p>
   </div>
 
   <!-- ══════════════════════════════════════════
        SLIDE 13 — KAPANIŞ & SORULAR
   ══════════════════════════════════════════ -->
-  <div class="slide center" data-section="KAPANIŞ">
-    <div class="anim overline">Teşekkürler</div>
-    <h1 class="display-title anim">SORULAR<br><span class="accent">?</span></h1>
+  <div class="slide center" data-section="KAPANIŞ" data-section-en="CLOSING">
+    <div class="anim overline" data-i18n="s13-overline">Teşekkürler</div>
+    <h1 class="display-title anim" data-i18n="s13-title">SORULAR<br><span class="accent">?</span></h1>
     <div class="gold-line anim" style="margin:28px auto"></div>
-    <p class="body-text anim" style="margin:0 auto; font-size:20px; letter-spacing:2px">ÜST YÖNETİME SUNUM · İSTE YBS · 2024</p>
+    <p class="body-text anim" style="margin:0 auto; font-size:20px; letter-spacing:2px" data-i18n="s13-sub">ÜST YÖNETİME SUNUM · İSTE YBS · 2026</p>
     <div class="anim" style="margin-top: 32px; display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap;">
       <a href="../index.html" style="color:var(--gold); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:16px; border:2px solid var(--gold-line); padding:12px 28px; transition:all 0.3s">HÜSEYİN EMRE PORTFOLYO'YA DÖN</a>
       <div style="text-align: center;">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://huseyinemre.tech&bgcolor=0a0a0f&color=FFD700" alt="QR Portfolio" width="100" height="100" style="border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; margin-bottom: 8px;">
-        <div style="font-size: 14px; color: var(--dimmer);">Portfolio</div>
+        <div style="font-size: 14px; color: var(--dimmer);" data-i18n="s13-qr1">Portfolio</div>
       </div>
       <div style="text-align: center;">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https%3A%2F%2Fhuseyinemre.tech%2Fsunum%2Fmakale.pdf&bgcolor=0a0a0f&color=FFD700" alt="QR Makale" width="100" height="100" style="border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; margin-bottom: 8px;">
-        <div style="font-size: 14px; color: var(--dimmer);">Makale</div>
+        <div style="font-size: 14px; color: var(--dimmer);" data-i18n="s13-qr2">Makale</div>
       </div>
     </div>
-    <p class="anim" style="margin-top: 24px; font-size: 16px; color: var(--dimmer); text-shadow: var(--text-shadow);">F = Tam ekran · ← → veya SPACE = Geçiş</p>
   </div>
 
 </div><!-- /slides-wrapper -->
 
 <script>
+let currentLang = 'tr';
 // ── PARTICLE CANVAS ──────────────────────────────────────────
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
@@ -1231,7 +1536,9 @@ function updateUI() {
   counter.textContent = String(current + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
   
   const currentSlide = slides[current];
-  const section = currentSlide.getAttribute('data-section');
+  const section = (currentLang === 'en' && currentSlide.getAttribute('data-section-en'))
+    ? currentSlide.getAttribute('data-section-en')
+    : currentSlide.getAttribute('data-section');
   sectionLabel.textContent = section || '';
   gsap.fromTo(sectionLabel, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5 });
 
@@ -1280,13 +1587,18 @@ function goTo(idx) {
   });
 
   tl.to(oldSlide, { opacity: 0, scale: 0.95, filter: "blur(10px)", duration: 0.4, ease: "power2.inOut" })
-    .set(oldSlide, { display: 'none', className: 'slide' })
+    .add(() => {
+      oldSlide.classList.remove('active');
+      gsap.set(oldSlide, { display: 'none' });
+    })
     .set(newSlide, { display: 'flex', opacity: 0, scale: 1.05, filter: "blur(10px)" })
     .to(newSlide, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power4.out" })
     .add(() => {
        current = idx;
        newSlide.classList.add('active');
        updateUI();
+       setTimeout(() => fitSlide(newSlide), 100);
+       runSlideAnimations(newSlide);
     }, "-=0.3");
 
   // Animate elements inside new slide
@@ -1314,14 +1626,687 @@ document.addEventListener('keydown', e => {
 
 // Click support
 document.addEventListener('click', e => {
-  if (e.target.closest('.card') || e.target.closest('.key') || e.target.closest('.nav-dots') || e.target.closest('table') || e.target.closest('a') || e.target.closest('.biblio-list')) return;
+  if (e.target.closest('.card') || e.target.closest('.key') || e.target.closest('.nav-dots') || e.target.closest('table') || e.target.closest('a') || e.target.closest('.biblio-list') || e.target.closest('.ctrl-bar')) return;
   if (e.clientX > window.innerWidth * 0.45) next(); else prev();
 });
+
+// Touch / Swipe support
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].clientX;
+  touchStartY = e.changedTouches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+  if (dx < 0) next(); else prev();
+}, { passive: true });
 
 // Initial Load
 gsap.set('.slide', { display: 'none', opacity: 0 });
 gsap.set(slides[0], { display: 'flex', opacity: 1 });
 updateUI();
+setTimeout(() => runSlideAnimations(slides[0]), 300);
+
+// ── ENTRANCE ANIMATIONS ───────────────────────────────────────
+
+// --- Number counter ---
+function parseCountVal(text) {
+  const t = text.trim();
+  const m = t.match(/^([^0-9]*)(\d+\.?\d*)([^0-9]*)$/);
+  if (!m) return null;
+  return { prefix: m[1], value: parseFloat(m[2]), suffix: m[3], original: t };
+}
+
+function runCounter(el, delay) {
+  const src = el.dataset.counterSrc || el.textContent.trim();
+  el.dataset.counterSrc = src;
+  const p = parseCountVal(src);
+  if (!p) return;
+  const duration = 1300;
+  const startTime = performance.now() + (delay || 0);
+  const isDecimal = p.value !== Math.floor(p.value);
+  const tick = now => {
+    if (now < startTime) { requestAnimationFrame(tick); return; }
+    const t = Math.min((now - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 4);
+    const cur = isDecimal ? (ease * p.value).toFixed(1) : Math.round(ease * p.value);
+    el.textContent = p.prefix + cur + p.suffix;
+    if (t < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = p.original;
+      // glow pulse at finish
+      el.style.transition = 'text-shadow 0.15s ease';
+      el.style.textShadow = '0 0 40px rgba(255,215,0,0.9), 0 0 80px rgba(255,215,0,0.5)';
+      setTimeout(() => { el.style.textShadow = ''; }, 450);
+    }
+  };
+  requestAnimationFrame(tick);
+}
+
+// --- Typewriter ---
+function runTypewriter(el, delay) {
+  const src = el.dataset.twSrc || el.textContent.trim();
+  el.dataset.twSrc = src;
+  el.textContent = '';
+  const speed = Math.max(22, Math.min(55, 1800 / src.length));
+  let i = 0;
+  setTimeout(() => {
+    // blinking cursor
+    el.style.borderRight = '2px solid var(--gold)';
+    const id = setInterval(() => {
+      if (i < src.length) {
+        el.textContent += src[i++];
+      } else {
+        clearInterval(id);
+        // cursor fades out
+        el.style.transition = 'border-color 0.4s ease 0.3s';
+        el.style.borderRight = '2px solid transparent';
+        setTimeout(() => { el.style.borderRight = ''; el.style.transition = ''; }, 800);
+      }
+    }, speed);
+  }, delay || 0);
+}
+
+// --- SVG polygon draw ---
+function runPolyDraw(polyEl, delay) {
+  if (!polyEl) return;
+  gsap.to(polyEl, {
+    strokeDashoffset: 0,
+    duration: 1.4,
+    delay: (delay || 0) / 1000,
+    ease: 'power3.inOut'
+  });
+}
+
+// --- Trigger per slide ---
+function runSlideAnimations(slideEl) {
+  // Sayaç: big-stat, stat-num, bar-value
+  slideEl.querySelectorAll('.big-stat').forEach((el, i) =>
+    runCounter(el, 350 + i * 80));
+  slideEl.querySelectorAll('.stat-num').forEach((el, i) =>
+    runCounter(el, 500 + i * 120));
+  slideEl.querySelectorAll('.bar-value').forEach((el, i) =>
+    runCounter(el, 700 + i * 150));
+
+  // SVG text sayaçları (daire içi %)
+  slideEl.querySelectorAll('.svg-counter').forEach((el, i) =>
+    runCounter(el, 600 + i * 200));
+
+  // Başarısızlık faktörleri — soldan kayarak sıralı giriş
+  const failItems = slideEl.querySelectorAll('.fail-item');
+  if (failItems.length) {
+    gsap.fromTo(failItems,
+      { opacity: 0, x: -32 },
+      { opacity: 1, x: 0, duration: 0.55, stagger: 0.11,
+        ease: 'power3.out', delay: 0.35 }
+    );
+  }
+
+  // Typewriter: overline
+  slideEl.querySelectorAll('.overline').forEach(el =>
+    runTypewriter(el, 120));
+
+  // SVG üçgen çizimi (güncel viewBox'a göre 906 çevre)
+  const poly = slideEl.querySelector('#pacolli-poly');
+  if (poly) runPolyDraw(poly, 500);
+
+  // Lewin buz animasyonları
+  if (slideEl.id === 'lewin-slide') runLewinAnims();
+}
+
+// ── LEWIN BUZ ANİMASYONLARI ──────────────────────────────────
+let lewinTLs = [];
+
+function runLewinAnims() {
+  // Önceki döngüleri durdur
+  lewinTLs.forEach(t => t.kill());
+  lewinTLs = [];
+
+  // ── 1. UNFREEZE: buz erir ──────────────────────
+  const meltTL = gsap.timeline({ repeat: -1, repeatDelay: 1.2, defaults: { ease: 'power2.inOut' } });
+
+  // Buz küpü yavaş erir (yüksekliği azalır)
+  meltTL.to('#ice-body', { scaleY: 0.55, y: 22, transformOrigin: 'top center', duration: 2.2, ease: 'power1.inOut' }, 0)
+  // Damla 1 — belirir ve düşer
+        .to('#drip-a', { opacity: 1, duration: 0.3 }, 0.6)
+        .to('#drip-a', { y: 14, duration: 1.4, ease: 'power1.in' }, 0.9)
+  // Damla 2 — biraz geç
+        .to('#drip-b', { opacity: 1, duration: 0.3 }, 1.0)
+        .to('#drip-b', { y: 10, duration: 1.1, ease: 'power1.in' }, 1.3)
+  // Göl genişler
+        .to('#melt-puddle', { rx: 26, ry: 6, duration: 1.5, ease: 'power2.out' }, 1.0)
+  // Sıfırla
+        .set('#ice-body',    { scaleY: 1, y: 0 })
+        .set('#drip-a',      { opacity: 0, y: 0 })
+        .set('#drip-b',      { opacity: 0, y: 0 })
+        .set('#melt-puddle', { rx: 0, ry: 0 });
+
+  lewinTLs.push(meltTL);
+
+  // ── 2. CHANGE: su akışı ───────────────────────
+  // Dalgalar sola kayar (sonsuz)
+  lewinTLs.push(
+    gsap.to(['#wave1', '#wave-fill'], { x: -40, duration: 1.6, repeat: -1, ease: 'none' })
+  );
+  lewinTLs.push(
+    gsap.to('#wave2', { x: -40, duration: 2.2, repeat: -1, ease: 'none' })
+  );
+  // Su damlaları yukarı-aşağı zıplar
+  lewinTLs.push(
+    gsap.to('.wdrop', { y: -7, duration: 0.9, repeat: -1, yoyo: true, stagger: 0.28, ease: 'sine.inOut' })
+  );
+
+  // ── 3. REFREEZE: kar tanesi çizilir ──────────
+  // Tüm kolları dasharray ile hazırla
+  const arms    = document.querySelectorAll('.sf-arm');
+  const branches = document.querySelectorAll('.sf-branch');
+
+  arms.forEach(l => {
+    gsap.set(l, { strokeWidth: 2.2, strokeDasharray: 32, strokeDashoffset: 32, opacity: 1 });
+  });
+  branches.forEach(l => {
+    gsap.set(l, { strokeWidth: 1.5, strokeDasharray: 14, strokeDashoffset: 14, opacity: 1 });
+  });
+  gsap.set('#sf-center', { r: 0 });
+
+  const freezeTL = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+
+  // Ana kollar çizilir
+  freezeTL.to(arms, { strokeDashoffset: 0, duration: 0.6, stagger: 0.07, ease: 'power2.out' }, 0)
+  // Dallar çizilir
+          .to(branches, { strokeDashoffset: 0, duration: 0.4, stagger: 0.04, ease: 'power2.out' }, 0.5)
+  // Merkez noktası büyür
+          .to('#sf-center', { r: 5, duration: 0.35, ease: 'back.out(2)' }, 0.7)
+  // Parlaklık: opasite pulse
+          .to('#snowflake', { opacity: 0.45, duration: 0.4, ease: 'power1.in' }, 1.1)
+          .to('#snowflake', { opacity: 1, duration: 0.5, ease: 'power1.out' }, 1.5)
+  // Sıfırla
+          .to(arms,    { strokeDashoffset: 32, duration: 0.25, stagger: 0.03 }, 2.2)
+          .to(branches,{ strokeDashoffset: 14, duration: 0.2,  stagger: 0.02 }, 2.2)
+          .to('#sf-center', { r: 0, duration: 0.2 }, 2.2);
+
+  lewinTLs.push(freezeTL);
+}
+
+// ── SLIDE INNER WRAPPER (auto-scaler) ─────────────────────────
+slides.forEach(slide => {
+  const inner = document.createElement('div');
+  inner.className = 'slide-inner';
+  const children = [...slide.children];
+  children.forEach(child => {
+    if (!child.classList.contains('vert-text') && !child.classList.contains('deco-circle')) {
+      inner.appendChild(child);
+    }
+  });
+  slide.appendChild(inner);
+});
+
+function fitSlide(slideEl) {
+  const inner = slideEl.querySelector('.slide-inner');
+  if (!inner) return;
+  inner.style.transform = 'none';
+  inner.style.marginTop = '0';
+  const isCenter = slideEl.classList.contains('center');
+  inner.style.transformOrigin = isCenter ? 'top center' : 'top left';
+  
+  requestAnimationFrame(() => {
+    const availH = slideEl.clientHeight - 100;
+    const contentH = inner.scrollHeight;
+    let scale = 1;
+    if (contentH > availH) {
+      scale = Math.max(availH / contentH, 0.60);
+      inner.style.transform = `scale(${scale})`;
+    }
+    
+    // Vertical centering for projection screens
+    const scaledH = contentH * scale;
+    if (scaledH < availH) {
+      inner.style.marginTop = ((availH - scaledH) / 2) + "px";
+    }
+  });
+}
+
+function fitAll() { slides.forEach(fitSlide); }
+window.addEventListener('resize', fitAll);
+// Run after fonts loaded
+if (document.fonts) {
+  document.fonts.ready.then(() => { setTimeout(fitAll, 100); });
+} else {
+  setTimeout(fitAll, 400);
+}
+
+// ── DARK / LIGHT THEME ────────────────────────────────────────
+let isDark = true;
+function toggleTheme() {
+  isDark = !isDark;
+  document.body.classList.toggle('light', !isDark);
+  document.getElementById('btn-theme').textContent = isDark ? '☀' : '🌙';
+}
+
+// ── TRANSLATIONS ──────────────────────────────────────────────
+const i18n = {
+  tr: {
+    's1-overline': 'Akademik Sunum · 2026',
+    's1-t1': 'DİJİTAL',
+    's1-t2': 'DÖNÜŞÜM',
+    's1-t3': 'VE SÜRDÜRÜLEBİLİRLİK',
+    's1-body': 'Bankacılık Sektöründe Değişim Yönetimi ve Gelecek Stratejileri — (Pacolli, 2022 Analizi)',
+    's2-overline': 'Proje Ekibi',
+    's2-title1': 'EKİP',
+    's2-title2': 'ROLLER',
+    's2-c1': 'Web Sitesi Geliştirme &amp; Kodlama<br><small style="color:var(--gold)">Proje Mimarı</small>',
+    's2-c2': 'Sunum &amp; Anlatım<br><small style="color:var(--gold)">Speaker</small>',
+    's2-c3': 'Araştırma &amp; Rapor Hazırlığı<br><small style="color:var(--gold)">Akademik Altyapı</small>',
+    's3-overline': 'Global Pazar Analizi',
+    's3-stat-label': '2026 Küresel Dijital Dönüşüm Harcaması Öngörüsü (IDC)',
+    's3-body': 'Dijital yatırımlar artık bir "lüks" değil, <strong style="color:var(--gold)">stratejik bir zorunluluktur</strong>. 2020\'den bu yana harcamalar iki katına çıkmış olsa da, başarısızlık oranları insan odaklı strateji eksikliği nedeniyle hala %70 seviyelerindedir.',
+    's3-c1-num': 'BAŞARISIZLIK',
+    's3-c2-num': 'TEKNOLOJİ ODAĞI',
+    's3-c3-num': 'İNSAN FAKTÖRÜ',
+    's3b-overline': 'Harvard Business Review (2022)',
+    's3b-title': 'DİJİTAL DÖNÜŞÜM<br><span style="color:var(--gold)">İŞ BAŞARISI</span> İÇİN KRİTİK',
+    's3b-subtitle': '727 yöneticiyle yapılan anket sonuçları:',
+    's3b-bar1': 'DT önemli olacak (12 ay)',
+    's3b-bar2': 'Kültürel değişime lider taahhüdü',
+    's3b-bar3': 'Diğer örneklem',
+    's3b-quote': '"Dijital dönüşüm bir lüks değil, örgütün hayatta kalması için <strong style="color:var(--gold)">zorunluluktur</strong>."',
+    's3b-cite': '2020 sonrası paradigma kayması',
+    's3b-body': 'Liderlerin sadece %27\'si kültürel değişime güçlü taahhüt gösteriyor — bu uçurum başarısızlık riskini artırıyor.',
+    's3c-overline': 'Siemens (2019) — Değişim Yönetimi Whitepaper',
+    's3c-quote': '"Değişim yönetimine odaklanmadan dijital dönüşüme başlamak, <strong style="color:var(--gold)">fırtınalı denizde nasıl yelken açılacağını bilmeden güvenli limandan ayrılmak</strong> gibidir."',
+    's3c-body': 'Değişim yönetimi, yöneticilerin dijital dönüşüm projelerinde en çok endişe duyduğu ilk 3 konudan biridir.',
+    's4-overline': 'Melinda Pacolli (2022) — Fig. 5 Change Management Framework',
+    's4-title': 'SÜRDÜRÜLEBİLİR<br><span style="color:var(--gold)">DEĞİŞİM</span> YÖNETİMİ',
+    's4-svg-t1': 'LİDERLİK',
+    's4-svg-t2': 'İLETİŞİM',
+    's4-svg-t3': 'KAPSAYICILIK',
+    's4-svg-t4': 'SÜRDÜRÜLEBİLİR',
+    's4-svg-t5': 'DİJİTAL DÖNÜŞÜM',
+    's4-svg-cap': 'FIG. 5 · PACOLLI',
+    's4-c1-num': 'MODÜL 01',
+    's4-c1-title': 'LİDERLİK',
+    's4-c1-text': 'Vizyonun üst yönetim tarafından sadece onaylanması değil, bizzat temsil edilmesi (Transformational Leadership).',
+    's4-c2-num': 'MODÜL 02',
+    's4-c2-title': 'İLETİŞİM',
+    's4-c2-text': 'Bürokratik engellerin ötesinde, şeffaf ve çift taraflı bilgi akışının sağlanması.',
+    's4-c3-num': 'MODÜL 03',
+    's4-c3-title': 'KAPSAYICILIK',
+    's4-c3-text': 'Çalışanların sürecin bir "nesnesi" değil, "mimarı" olarak konumlandırılması (Inclusion).',
+    's4b-overline': 'Kurt Lewin (1940\'lar) — Fig. 4',
+    's4b-body': 'Fizikçi ve sosyal bilimci Lewin, örgütsel değişimi <strong>buz kalıbı</strong> metaforuyla açıklar:',
+    's4b-label1': 'UNFREEZE',
+    's4b-label2': 'CHANGE',
+    's4b-label3': 'REFREEZE',
+    's4b-l1': 'Buzu erit — mevcut durumu çöz, değişime hazırla',
+    's4b-l2': 'Suyu yeni forma dök — dönüşümü gerçekleştir',
+    's4b-l3': 'Dondur — yeni davranışı kalıcı kıl',
+    's4b-schein': '"Büyük bir buz küpü istediğin şekle dönüşmeli mi? Önce erit, sonra kalıba dök, sonra dondur." — Schein (2004)',
+    's4c-overline': 'Edgar Schein (2004) — Organizational Culture &amp; Leadership',
+    's4c-title': 'GRUP DİNAMİKLERİ<br><span style="color:var(--gold)">VE DİRENÇ</span>',
+    's4c-quote': '"Gruba ait olma ve kabul edilme ihtiyacı bilinçdışıdır ve bu yüzden güçlüdür. İçten farklı düşünsek bile, gruptan sapmak üyelik kaybı veya kimliğimizi ihlal riski taşır — bu yüzden sapmak istemeyiz."',
+    's4c-cite': 'Schein, 2004, s. 321',
+    's4c-li1': 'Yerleşik davranış, <strong>grubun öğrettiği</strong> üzerine kuruludur.',
+    's4c-li2': 'Değişim, grup üyeliğini veya kimliği tehdit ederse <strong>direnç</strong> doğar.',
+    's4c-li3': 'Çalışanları "dinleyip saygı göstermek" antagonistleşmeyi önler (HBR, 2017).',
+    's4c-tip-title': 'BANKACILIK İPUCU',
+    's4c-tip-body': 'Uzun süredir çalışan veya geçmişte etkili olan kişileri dinlemezsen, kendilerini "ihmal edilmiş" hissedip dönüşümün karşıtı haline gelebilir.',
+    's5-overline': 'Yeni Paradigma',
+    's5-title': 'DEĞİŞİMİN<br><span style="color:var(--bank-blue)">DEĞİŞİMİ</span>',
+    's5-c1-title': 'GELENEKSEL (STATİK)',
+    's5-c1-text': 'Lewin\'in "Buz Kalıbı" Modeli: Çöz - Değiştir - Dondur. Bankacılıkta periyodik, ağır ve riskten kaçınan yapı.',
+    's5-c1-s1': 'Statik Plan',
+    's5-c1-s2': 'Bürokrasi',
+    's5-c2-title': 'DİNAMİK (PERMANENT BETA)',
+    's5-c2-text': 'Çevik ve Sürekli Dönüşüm: Veri odaklı, esnek ve "Yaşayan" sistemler. Dijital çağın gerekliliği.',
+    's5-c2-s1': 'Agile',
+    's5-c2-s2': 'Gerçek Zamanlı Veri',
+    's6-overline': 'Bankacılık Analizi',
+    's6-title': 'COMPETENCY TRAP<br><span style="color:var(--gold)">YETENEK TUZAĞI</span>',
+    's6-quote': '"Eski başarılar, yeni dijital vizyonun en büyük düşmanıdır."',
+    's6-cite': 'Kane et al. (2018) / Bankacılık Vakası',
+    's6-li1': 'Geleneksel bankacılık alışkanlıklarına takılı kalma riski.',
+    's6-li2': '"Zaten kâr ediyoruz" yanılgısının dijitalleşme direncine dönüşmesi.',
+    's6-li3': 'Yeteneklerin (Skills) dijital çağa göre her gün güncellenme zorunluluğu (Upskilling).',
+    's6b-overline': 'Health Metrics Advisory Team / HAT (2017)',
+    's6b-title': 'DEĞİŞİM<br><span style="color:var(--gold)">BAŞARISIZLIK</span> NEDENLERİ',
+    's6b-body': 'Değişim uygulamalarında başarısızlığa yol açan 8 ana faktör:',
+    's6b-th1': '#',
+    's6b-th2': 'FAKTÖR',
+    's6b-tr1': 'Başlangıçta ve sürekli <strong>zayıf iletişim</strong>.',
+    's6b-tr2': 'Çalışanlar <strong>neden değişim</strong> olduğunu anlamıyor.',
+    's6b-tr3': 'Önerilen değişimden önce <strong>yetersiz eğitim</strong>.',
+    's6b-tr4': 'Değişimle ilgili <strong>potansiyel riskleri</strong> tespit edememe.',
+    's6b-tr5': 'Değişimin <strong>etki ve sonuçlarını</strong> anlamama.',
+    's6b-tr6': 'Değişimi uygulamak için <strong>hatalı strateji</strong>.',
+    's6b-tr7': 'Değişimi destekleyecek <strong>kaynakları</strong> belirleyememe.',
+    's6b-tr8': '<strong>Gerçekçi olmayan zaman çizelgesi</strong> — çalışanlar yüklenmiş hissediyor.',
+    's7-overline': 'Yerel Vizyon',
+    's7-title': 'TÜRKİYE\'DE<br><span style="color:var(--gold)">DİJİTAL LİDERLİK</span>',
+    's7-tab-title': 'Bankacılık Veri Analizi',
+    's7-th1': 'FAKTÖR',
+    's7-th2': 'ESKİ (FORMAL)',
+    's7-th3': 'YENİ (DİJİTAL)',
+    's7-tr1-c1': 'Müşteri',
+    's7-tr1-c2': 'Şube / Cüzdan',
+    's7-tr1-c3': 'Mobil / Veri Seti',
+    's7-tr2-c1': 'Hız',
+    's7-tr2-c2': 'Valörlü İşlem',
+    's7-tr2-c3': 'Real-Time (FAST)',
+    's7-tr3-c1': 'Güven',
+    's7-tr3-c2': 'İmza / Kaşe',
+    's7-tr3-c3': 'Biometrik / AI',
+    's7-li1': 'Müşteri deneyiminde "Hyper-Personalization".',
+    's7-li2': 'Şube bankacılığından "Platform Bankacılığına" geçiş.',
+    's7-li3': 'Çalışanların dijital elçilere dönüşümü.',
+    's8-overline': '2025 – 2026 Projeksiyonu',
+    's8-title': 'BANKACILIKTA<br><span style="color:var(--gold)">DİJİTAL</span> EVRİM',
+    's8-item1-year': 'TREND 01',
+    's8-item1-title': 'Açık Bankacılık & API Ekonomisi',
+    's8-item1-text': 'Finansal ekosistemlerin entegrasyonu; bankaların birer teknoloji platformuna dönüşmesi.',
+    's8-item2-year': 'TREND 02',
+    's8-item2-title': 'Hiper-Kişiselleştirme (AI)',
+    's8-item2-text': 'Yapay zeka ile kişiye özel finansal danışmanlık ve gerçek zamanlı risk yönetimi.',
+    's8-item3-year': 'TREND 03',
+    's8-item3-title': 'Dijital Sürdürülebilirlik',
+    's8-item3-text': 'Kağıtsız bankacılık ve ESG (Çevresel, Sosyal, Yönetişim) kriterlerinin dijitalleşme ile uyumu.',
+    's9-overline': 'Bölüm III',
+    's9-t1': 'BÜTÜNSEL',
+    's9-t2': 'YÖNETİM',
+    's9-t3': 'YAKLAŞIMI',
+    's9-body': 'Liderlik Boyutu · İnsan Kaynağı · Adaptasyon',
+    's10-overline': 'Liderlik Paradigması',
+    's10-title': 'YÖNETİM KURULU<br><span style="color:var(--gold)">VİZYONU</span>',
+    's10-li1': '<strong>Stratejik Sahiplik:</strong> Dönüşümün bir BT projesi değil, bir "iş modeli" olarak görülmesi.',
+    's10-li2': '<strong>Kültürel Dönüşüm:</strong> "Hata yapmaktan korkmayan" (Safe to fail) bir dijital kültür inşa etmek.',
+    's10-li3': '<strong>Kaynak Tahsisi:</strong> Teknolojik altyapı kadar, insan kaynağı gelişimine (Upskilling) bütçe ayırmak.',
+    's10-tip-title': 'KRİTİK BAŞARI FAKTÖRÜ',
+    's10-tip-body': 'Üst yönetimin dijital araçları bizzat kullanması ve süreci "sahada" takip etmesi, çalışan direncini %40 oranında azaltmaktadır.',
+    's11-overline': 'Psikolojik Baryerler',
+    's11-title': 'DİRENÇTEN<br><span style="color:var(--gold)">ADAPTASYONA</span>',
+    's11-c1-num': 'ADIM 01',
+    's11-c1-title': 'KAYGIYI ANLAMAK',
+    's11-c1-text': '"Yapay zeka işimi elimden mi alacak?" korkusunu, "AI seni daha değerli yapacak" vizyonuna çevirmek.',
+    's11-c2-num': 'ADIM 02',
+    's11-c2-title': 'ŞEFFAF İLETİŞİM',
+    's11-c2-text': 'Bilinmezlik direnç doğurur. Her adımın veriye dayalı ve açık şekilde paylaşılması.',
+    's11-c3-num': 'ADIM 03',
+    's11-c3-title': 'KAZANIMLAR (QUICK WINS)',
+    's11-c3-text': 'Küçük başarı hikayeleri yaratarak dönüşümün faydalarını somutlaştırmak.',
+    's12-overline': 'Sentez &amp; Projeksiyon',
+    's12-title': 'GELECEĞİN<br><span style="color:var(--gold)">BANKACILIĞI</span>',
+    's12-li1': 'Dijital dönüşüm bir varış noktası değil, bir <strong>hayatta kalma biçimidir</strong>.',
+    's12-li2': 'Pacolli\'nin belirttiği gibi; sürdürülebilirlik ancak <strong>insan odağıyla</strong> mümkündür.',
+    's12-li3': 'Bankacılıkta güven, gelenekselden dijital şeffaflığa evrilmektedir.',
+    's12-li4': 'İSTE YBS vizyonu: Teknolojiyi yöneten, değişimi tasarlayan liderler.',
+    's12-quote': '"Geleceği tahmin etmenin en iyi yolu, onu inşa etmektir."',
+    's12-cite': 'Peter Drucker / Dijital Çağ Uyarlaması',
+    's12b-overline': 'Sentez',
+    's12b-title': 'NE<br><span style="color:var(--gold)">ÖĞRENDİK</span>?',
+    's12b-c1-num': '01',
+    's12b-c1-title': 'ÖLÇEK',
+    's12b-c1-text': '$2.8T harcama, %92 DT önemi — ama %70 başarısızlık. İnsan faktörü kritik.',
+    's12b-c2-num': '02',
+    's12b-c2-title': 'TEORİ',
+    's12b-c2-text': 'Lewin (Unfreeze-Change-Refreeze), Schein (grup dinamikleri), Pacolli (Liderlik-İletişim-Kapsayıcılık).',
+    's12b-c3-num': '03',
+    's12b-c3-title': 'UYGULAMA',
+    's12b-c3-text': 'Üst yönetim sahada; şeffaf iletişim; çalışanları dinlemek; Quick Wins. Direnç %40 azalır.',
+    's12c-overline': 'Referanslar',
+    's12c-title': 'KAYNAKÇA',
+    's12d-overline': 'Pacolli (2022) — Makale Anahtar Kelimeleri',
+    's12d-title': 'キーワード (ANAHTAR KELİMELER)',
+    'kw1': 'Dijital Dönüşüm',
+    'kw2': 'Değişim Yönetimi',
+    'kw3': 'Direnç',
+    'kw4': 'Teknoloji',
+    'kw5': 'Dijitalleşme',
+    'kw6': 'Sürdürülebilirlik',
+    'kw7': 'Zorluklar',
+    'kw8': 'Başarı Faktörleri',
+    'kw9': 'Engeller',
+    's12d-box1-title': 'PwC (2017)',
+    's12d-box1-text': 'AI/ML, 2030\'a kadar küresel GSYİH\'ye <strong style="color:var(--gold)">%14</strong> ekleyebilir.',
+    's12d-box2-title': 'Bankacılık Trendi',
+    's12d-box2-text': 'Bankalar dijitalleşme için <strong>Chief Digital Officer (CDO)</strong> pozisyonu istihdam ediyor.',
+    's12e-overline': 'Sınıf Tartışması',
+    's12e-title': 'TARTIŞMA<br><span style="color:var(--gold)">SORULARI</span>',
+    's12e-q1': 'Bankacılıkta "Competency Trap" nasıl aşılır? Geçmiş başarılar dijital vizyonun önünde nasıl engel oluyor?',
+    's12e-q2': 'Üst yönetimin dijital araçları bizzat kullanması çalışan direncini %40 azaltıyor. Sizce neden?',
+    's12e-q3': 'Lewin\'in "Refreeze" aşaması günümüz "Permanent Beta" kültürüyle çelişir mi?',
+    's12e-q4': 'Şube bankacılığından platform bankacılığına geçişte en büyük insan kaynaklı risk nedir?',
+    's12e-body': 'Bu sorular üzerine 5–10 dakika tartışma yapılabilir.',
+    's13-overline': 'Teşekkürler',
+    's13-title': 'SORULAR<br><span class="accent">?</span>',
+    's13-sub': 'ÜST YÖNETİME SUNUM · İSTE YBS · 2026',
+    's13-qr1': 'Portfolyo',
+    's13-qr2': 'Makale',
+  },
+  en: {
+    's1-overline': 'Academic Presentation · 2026',
+    's1-t1': 'DIGITAL',
+    's1-t2': 'TRANSFORMATION',
+    's1-t3': 'AND SUSTAINABILITY',
+    's1-body': 'Change Management and Future Strategies in the Banking Sector — (Pacolli, 2022 Analysis)',
+    's2-overline': 'Project Team',
+    's2-title1': 'TEAM',
+    's2-title2': 'ROLES',
+    's2-c1': 'Website Development &amp; Coding<br><small style="color:var(--gold)">Project Architect</small>',
+    's2-c2': 'Presentation &amp; Narration<br><small style="color:var(--gold)">Speaker</small>',
+    's2-c3': 'Research &amp; Report Writing<br><small style="color:var(--gold)">Academic Foundation</small>',
+    's3-overline': 'Global Market Analysis',
+    's3-stat-label': '2026 Global Digital Transformation Spending Forecast (IDC)',
+    's3-body': 'Digital investments are no longer a "luxury" — they are a <strong style="color:var(--gold)">strategic necessity</strong>. While spending has doubled since 2020, failure rates remain at 70% due to a lack of human-centered strategy.',
+    's3-c1-num': 'FAILURE',
+    's3-c2-num': 'TECH FOCUS',
+    's3-c3-num': 'HUMAN FACTOR',
+    's3b-overline': 'Harvard Business Review (2022)',
+    's3b-title': 'DIGITAL TRANSFORMATION<br><span style="color:var(--gold)">CRITICAL FOR BUSINESS</span> SUCCESS',
+    's3b-subtitle': 'Survey results from 727 executives:',
+    's3b-bar1': 'DT will be critical (12 months)',
+    's3b-bar2': 'Leader commitment to culture change',
+    's3b-bar3': 'Other sample',
+    's3b-quote': '"Digital transformation is not a luxury, it is a <strong style="color:var(--gold)">necessity</strong> for organizational survival."',
+    's3b-cite': 'Post-2020 Paradigm Shift',
+    's3b-body': 'Only 27% of leaders show strong commitment to cultural change — this gap increases failure risk.',
+    's3c-overline': 'Siemens (2019) — Change Management Whitepaper',
+    's3c-quote': '"Embarking on digital transformation without focusing on change management is like <strong style="color:var(--gold)">leaving a safe harbor without knowing how to sail in stormy seas</strong>."',
+    's3c-body': 'Change management is among the top 3 concerns for executives in digital transformation projects.',
+    's4-overline': 'Melinda Pacolli (2022) — Fig. 5 Change Management Framework',
+    's4-title': 'SUSTAINABLE<br><span style="color:var(--gold)">CHANGE</span> MANAGEMENT',
+    's4-svg-t1': 'LEADERSHIP',
+    's4-svg-t2': 'COMMUNICATION',
+    's4-svg-t3': 'INCLUSIVITY',
+    's4-svg-t4': 'SUSTAINABLE',
+    's4-svg-t5': 'DIGITAL TRANSFORMATION',
+    's4-svg-cap': 'FIG. 5 · PACOLLI',
+    's4-c1-num': 'MODULE 01',
+    's4-c1-title': 'LEADERSHIP',
+    's4-c1-text': 'Vision must be personally represented by senior management, not just approved (Transformational Leadership).',
+    's4-c2-num': 'MODULE 02',
+    's4-c2-title': 'COMMUNICATION',
+    's4-c2-text': 'Ensuring transparent and two-way information flow beyond bureaucratic hurdles.',
+    's4-c3-num': 'MODULE 03',
+    's4-c3-title': 'INCLUSIVITY',
+    's4-c3-text': 'Positioning employees as the "architects" of the process, not just its "objects" (Inclusion).',
+    's4b-overline': 'Kurt Lewin (1940s) — Fig. 4',
+    's4b-body': 'Physicist and social scientist Lewin describes organizational change through the <strong>ice mold</strong> metaphor:',
+    's4b-label1': 'UNFREEZE',
+    's4b-label2': 'CHANGE',
+    's4b-label3': 'REFREEZE',
+    's4b-l1': 'Melt the ice — dissolve the current state, prepare for change.',
+    's4b-l2': 'Pour into a new mold — execute the transformation.',
+    's4b-l3': 'Refreeze — make the new behavior permanent.',
+    's4b-schein': '"Should a large block of ice transform into the shape you want? First melt it, then pour it into a mold, then freeze it." — Schein (2004)',
+    's4c-overline': 'Edgar Schein (2004) — Organizational Culture &amp; Leadership',
+    's4c-title': 'GROUP DYNAMICS<br><span style="color:var(--gold)">AND RESISTANCE</span>',
+    's4c-quote': '"The need to belong and be accepted by the group is unconscious and therefore powerful. Avoiding group deviation protects against membership loss or identity violation."',
+    's4c-cite': 'Schein, 2004, p. 321',
+    's4c-li1': 'Established behavior is built upon what the <strong>group has taught</strong>.',
+    's4c-li2': 'If change threatens group membership or identity, <strong>resistance</strong> arises.',
+    's4c-li3': 'Listening to and respecting employees prevents antagonization (HBR, 2017).',
+    's4c-tip-title': 'BANKING TIP',
+    's4c-tip-body': 'If you don\'t listen to long-term or formerly influential staff, they may feel "neglected" and become <strong>opponents</strong> of the transformation.',
+    's5-overline': 'New Paradigm',
+    's5-title': 'THE CHANGE<br><span style="color:var(--bank-blue)">OF CHANGE</span>',
+    's5-c1-title': 'TRADITIONAL (STATIC)',
+    's5-c1-text': 'Lewin\'s "Ice Mold" Model: Unfreeze - Change - Refreeze. Periodic, heavy, and risk-averse structures in banking.',
+    's5-c1-s1': 'Static Plan',
+    's5-c1-s2': 'Bureaucracy',
+    's5-c2-title': 'DYNAMIC (PERMANENT BETA)',
+    's5-c2-text': 'Agile and Continuous Transformation: Data-driven, flexible, and "Living" systems. A digital age necessity.',
+    's5-c2-s1': 'Agile',
+    's5-c2-s2': 'Real-Time Data',
+    's6-overline': 'Banking Insights',
+    's6-title': 'COMPETENCY TRAP<br><span style="color:var(--gold)">THE CAPABILITY TRAP</span>',
+    's6-quote': '"Past successes are the biggest enemies of the new digital vision."',
+    's6-cite': 'Kane et al. (2018) / Banking Case',
+    's6-li1': 'The risk of getting stuck in traditional banking habits.',
+    's6-li2': 'The misconception of "we are already profitable" turning into digitalization resistance.',
+    's6-li3': 'The necessity of updating skills daily for the digital age (Upskilling).',
+    's6b-overline': 'Health Metrics Advisory Team / HAT (2017)',
+    's6b-title': 'CHANGE<br><span style="color:var(--gold)">FAILURE</span> CAUSES',
+    's6b-body': '8 key factors that lead to failure in change implementations:',
+    's6b-th1': '#',
+    's6b-th2': 'FACTOR',
+    's6b-tr1': 'Start with and continue <strong>weak communication</strong>.',
+    's6b-tr2': 'Employees do not understand <strong>why change</strong> is happening.',
+    's6b-tr3': '<strong>Inadequate training</strong> before the proposed change.',
+    's6b-tr4': 'Failure to identify <strong>potential risks</strong> associated with change.',
+    's6b-tr5': 'Not understanding the <strong>impact and results</strong> of change.',
+    's6b-tr6': 'Using the <strong>wrong strategy</strong> to implement change.',
+    's6b-tr7': 'Failure to determine the <strong>resources</strong> to support change.',
+    's6b-tr8': '<strong>Unrealistic timelines</strong> — employees feel overloaded.',
+    's7-overline': 'Local Vision',
+    's7-title': 'DIGITAL LEADERSHIP<br><span style="color:var(--gold)">IN TURKEY</span>',
+    's7-tab-title': 'Banking Data Analysis',
+    's7-th1': 'FACTOR',
+    's7-th2': 'OLD (FORMAL)',
+    's7-th3': 'NEW (DIGITAL)',
+    's7-tr1-c1': 'Customer',
+    's7-tr1-c2': 'Branch / Wallet',
+    's7-tr1-c3': 'Mobile / Dataset',
+    's7-tr2-c1': 'Speed',
+    's7-tr2-c2': 'Value-Dated Transaction',
+    's7-tr2-c3': 'Real-Time (FAST)',
+    's7-tr3-c1': 'Trust',
+    's7-tr3-c2': 'Signature / Stamp',
+    's7-tr3-c3': 'Biometric / AI',
+    's7-li1': 'Hyper-Personalization in customer experience.',
+    's7-li2': 'Transition from branch banking to "Platform Banking".',
+    's7-li3': 'Transformation of employees into digital ambassadors.',
+    's8-overline': '2025 – 2026 Projection',
+    's8-title': 'DIGITAL EVOLUTION<br><span style="color:var(--gold)">IN BANKING</span>',
+    's8-item1-year': 'TREND 01',
+    's8-item1-title': 'Open Banking & API Economy',
+    's8-item1-text': 'Integration of financial ecosystems; banks turning into technology platforms.',
+    's8-item2-year': 'TREND 02',
+    's8-item2-title': 'Hyper-Personalization (AI)',
+    's8-item2-text': 'AI-driven personalized financial advice and real-time risk management.',
+    's8-item3-year': 'TREND 03',
+    's8-item3-title': 'Digital Sustainability',
+    's8-item3-text': 'Paperless banking and alignment of ESG (Environmental, Social, Governance) criteria with digitalization.',
+    's9-overline': 'Part III',
+    's9-t1': 'HOLISTIC',
+    's9-t2': 'MANAGEMENT',
+    's9-t3': 'APPROACH',
+    's9-body': 'Leadership Dimension · Human Resources · Adaptation',
+    's10-overline': 'Leadership Paradigm',
+    's10-title': 'BOARD OF DIRECTORS<br><span style="color:var(--gold)">VISION</span>',
+    's10-li1': '<strong>Strategic Ownership:</strong> Viewing transformation as a "business model", not an IT project.',
+    's10-li2': '<strong>Cultural Transformation:</strong> Building a digital culture that is "safe to fail".',
+    's10-li3': '<strong>Resource Allocation:</strong> Budgeting for human resource development (Upskilling) as much as for tech infra.',
+    's10-tip-title': 'CRITICAL SUCCESS FACTOR',
+    's10-tip-body': 'Senior management personally using digital tools and monitoring the process "on the ground" reduces employee resistance by 40%.',
+    's11-overline': 'Psychological Barriers',
+    's11-title': 'FROM RESISTANCE<br><span style="color:var(--gold)">TO ADAPTATION</span>',
+    's11-c1-num': 'STEP 01',
+    's11-c1-title': 'UNDERSTANDING ANXIETY',
+    's11-c1-text': 'Turning the "Will AI take my job?" fear into a "AI will make you more valuable" vision.',
+    's11-c2-num': 'STEP 02',
+    's11-c2-title': 'TRANSPARENT COMMUNICATION',
+    's11-c2-text': 'Uncertainty breeds resistance. Sharing every step in a data-driven and open manner.',
+    's11-c3-num': 'STEP 03',
+    's11-c3-title': 'QUICK WINS',
+    's11-c3-text': 'Materializing the benefits of transformation by creating small success stories.',
+    's12-overline': 'Synthesis &amp; Projection',
+    's12-title': 'THE FUTURE OF<br><span style="color:var(--gold)">BANKING</span>',
+    's12-li1': 'Digital transformation is not a destination, it is a <strong>way of survival</strong>.',
+    's12-li2': 'As Pacolli noted, sustainability is only possible with a <strong>human focus</strong>.',
+    's12-li3': 'Trust in banking is evolving from traditional to digital transparency.',
+    's12-li4': 'ISTE MIS Vision: Leaders who manage technology and design change.',
+    's12-quote': '"The best way to predict the future is to create it."',
+    's12-cite': 'Peter Drucker / Digital Age Adaptation',
+    's12b-overline': 'Synthesis',
+    's12b-title': 'WHAT DID<br><span style="color:var(--gold)">WE LEARN</span>?',
+    's12b-c1-num': '01',
+    's12b-c1-title': 'SCALE',
+    's12b-c1-text': '$2.8T spending, 92% DT importance — but 70% failure. Human factor is critical.',
+    's12b-c2-num': '02',
+    's12b-c2-title': 'THEORY',
+    's12b-c2-text': 'Lewin (Unfreeze-Change-Refreeze), Schein (group dynamics), Pacolli (Leadership-Communication-Inclusivity).',
+    's12b-c3-num': '03',
+    's12b-c3-title': 'APPLICATION',
+    's12b-c3-text': 'Senior management on the ground; transparent communication; listening to employees; Quick Wins. Resistance drops by 40%.',
+    's12c-overline': 'References',
+    's12c-title': 'BIBLIOGRAPHY',
+    's12d-overline': 'Pacolli (2022) — Article Keywords',
+    's12d-title': 'KEYWORDS',
+    'kw1': 'Digital Transformation',
+    'kw2': 'Change Management',
+    'kw3': 'Resistance',
+    'kw4': 'Technology',
+    'kw5': 'Digitalization',
+    'kw6': 'Sustainability',
+    'kw7': 'Challenges',
+    'kw8': 'Success Factors',
+    'kw9': 'Barriers',
+    's12d-box1-title': 'PwC (2017)',
+    's12d-box1-text': 'AI/ML could add <strong style="color:var(--gold)">14%</strong> to global GDP by 2030.',
+    's12d-box2-title': 'Banking Trend',
+    's12d-box2-text': 'Banks are employing <strong>Chief Digital Officer (CDO)</strong> positions for digitalization.',
+    's12e-overline': 'Class Discussion',
+    's12e-title': 'DISCUSSION<br><span style="color:var(--gold)">QUESTIONS</span>',
+    's12e-q1': 'How to overcome the "Competency Trap" in banking? How do past successes hinder the digital vision?',
+    's12e-q2': 'Management\'s direct use of digital tools reduces employee resistance by 40%. Why do you think?',
+    's12e-q3': 'Does Lewin\'s "Refreeze" phase conflict with today\'s "Permanent Beta" culture?',
+    's12e-q4': 'What is the biggest human-related risk in the transition from branch to platform banking?',
+    's12e-body': 'A discussion of 5–10 minutes can be held on these questions.',
+    's13-overline': 'Thank You',
+    's13-title': 'QUESTIONS<br><span class="accent">?</span>',
+    's13-sub': 'EXECUTIVE PRESENTATION · ISTE MIS · 2026',
+    's13-qr1': 'Portfolio',
+    's13-qr2': 'Article',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = i18n[lang] && i18n[lang][key];
+    if (val !== undefined) {
+      el.innerHTML = val;
+      // Typewriter / counter source sıfırla ki yeni dilde yeniden oynasın
+      delete el.dataset.twSrc;
+      delete el.dataset.counterSrc;
+    }
+  });
+
+  // Update section labels (data-section vs data-section-en)
+  const sectionAttr = lang === 'en' ? 'data-section-en' : 'data-section';
+  const curSlide = slides[current];
+  const sec = curSlide.getAttribute(lang === 'en' ? 'data-section-en' : 'data-section') || curSlide.getAttribute('data-section');
+  sectionLabel.textContent = sec || '';
+
+  // Refit after text changes
+  setTimeout(() => fitAll(), 50);
+}
 </script>
 </body>
 </html>
