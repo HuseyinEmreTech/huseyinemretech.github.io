@@ -13,19 +13,6 @@ export function HeroSection() {
   const { lang, t } = useTranslation()
   const prefersReducedMotion = useReducedMotion()
   const [showIntro, setShowIntro] = useState(false)
-  const [enableHeroSpline, setEnableHeroSpline] = useState(false)
-
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    if (typeof window === 'undefined') return
-
-    const enable = () => setEnableHeroSpline(true)
-
-    const timeoutId = window.setTimeout(enable, 1000)
-    return () => {
-      window.clearTimeout(timeoutId)
-    }
-  }, [prefersReducedMotion])
 
   useEffect(() => {
     if (prefersReducedMotion) return
@@ -118,14 +105,10 @@ export function HeroSection() {
           }}
           className="relative mb-8 h-[350px] w-full md:h-[500px]"
         >
-          {enableHeroSpline ? (
-            <SplineScene
-              scene={HERO_SCENE_URL}
-              className="w-full h-full relative z-10"
-            />
-          ) : (
-            <div className="w-full h-full relative z-10 rounded-[2rem] bg-[radial-gradient(circle_at_20%_0%,rgba(56,189,248,0.4),transparent_55%),radial-gradient(circle_at_80%_100%,rgba(129,140,248,0.5),transparent_55%)]" />
-          )}
+          <SplineScene
+            scene={HERO_SCENE_URL}
+            className="w-full h-full relative z-10"
+          />
         </motion.div>
 
         {/* ── 2. Centered Content ── */}
