@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Araba Yıkama Tahmin - İskenderun hava verisiyle regresyon projesi">
+    <title>Araba Yıkama Tahmin | Makine Öğrenmesi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+        integrity="sha256-tXCrvaljxgtN5LT/Syb5Mm9T+yzPFGH98JVcoJT7JTk=" crossorigin="">
+    <link rel="stylesheet" href="/assets/coursework-theme.css">
+</head>
+
+<body class="cw-page">
+    <div id="page-load-overlay" class="page-load-overlay" aria-busy="true">
+        <div class="page-load-dot" role="status" aria-label="Yükleniyor"></div>
+    </div>
+    <div class="cw-ambient" aria-hidden="true"></div>
+
+    <div class="cw-nav-mount">
+        <nav class="cw-nav-pill" aria-label="Site">
+            <a href="/index.html" class="cw-nav-logo">Hüseyin Emre</a>
+            <span class="cw-nav-dot" aria-hidden="true"></span>
+            <div class="cw-nav-links">
+                <a href="/index.html">Ana sayfa</a>
+                <a href="/index.html#coursework">Ders projeleri</a>
+                <a href="https://github.com/huseyinemretech" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="cw-main">
+        <section class="demo-hero">
+            <div>
+                <p class="demo-hero-kicker">Makine öğrenmesi · Regresyon</p>
+                <h1 class="demo-hero-title">Araba yıkama tahmin</h1>
+                <p class="demo-hero-lead">
+                    2026 veya 2027'den bir tarih seçin — geçmiş 20 yılın verisine göre o gün ve sonrasındaki 10 gün için
+                    yağmur olasılığı tahmin edilir. <strong>Arabamı yıkamalı mıyım?</strong> sorusuna
+                    veriye dayalı cevap veren bir regresyon projesidir.
+                </p>
+            </div>
+        </section>
+
+        <div class="demo-container">
+            <div class="demo-stack">
+
+                <article class="demo-card demo-card--accent">
+                    <h2><i class="fas fa-info-circle icon-accent" aria-hidden="true"></i>Başlangıç – Herkes için</h2>
+                    <h4>Ne yapar?</h4>
+                    <p>
+                        Yarın yağmur olup olmayacağını tahmin eder: <strong>Bugün arabamı yıkamalı mıyım?</strong>
+                        İskenderun'daki 20 yıllık hava verisiyle makine öğrenmesi kullanılıyor.
+                    </p>
+                    <h4>Nasıl kullanırım?</h4>
+                    <p>
+                        Aşağıdan tarih seç, tahmin al.
+                        <span class="result-badge yika">Yıka</span> = Arabayı yıkayabilirsin.
+                        <span class="result-badge yikama">Yıkama</span> = Yıkama, yarın yağmur bekleniyor.
+                    </p>
+                    <h4>Karar tablosu</h4>
+                    <table class="demo-table">
+                        <tr>
+                            <td>Yarın yağmur bekleniyor</td>
+                            <td>Yıkama</td>
+                        </tr>
+                        <tr>
+                            <td>2 gün sonra yağmur</td>
+                            <td>Dikkatli ol – 1 gün temiz kalır</td>
+                        </tr>
+                        <tr>
+                            <td>Önümüzdeki günler yağmur yok</td>
+                            <td>Yıka</td>
+                        </tr>
+                    </table>
+                </article>
+
+                <article class="demo-card">
+                    <h2><i class="fas fa-map-marker-alt icon-accent-secondary" aria-hidden="true"></i>Proje bölgesi: İskenderun</h2>
+                    <p>
+                        Hatay ili, Akdeniz kıyısı. Koordinat: 36.59°K, 36.17°D. Open-Meteo Archive API ile
+                        <strong>ERA5 reanalysis</strong> verisi kullanılmıştır (2004–2024, günlük çözünürlük).
+                    </p>
+                    <div id="map" class="map-container"></div>
+                </article>
+
+                <article class="demo-card">
+                    <h2><i class="fas fa-calendar-check icon-accent" aria-hidden="true"></i>Tarih seç – Tahmin al</h2>
+                    <p>
+                        2026 veya 2027'den bir tarih seçin. Geçmiş 20 yıla göre <strong>seçtiğiniz gün ve sonrası 10 gün</strong>
+                        için yağmur tahmini, yağmur olasılığı (%) ve "Yıka / Yıkama" önerisi ile arabanızın yaklaşık kaç gün temiz kalabileceği gösterilir.
+                    </p>
+                    <div class="demo-form-row">
+                        <label class="demo-label">
+                            <span>Tarih</span>
+                            <input type="date" id="tarihSec" class="demo-date-input" min="2026-01-01" max="2027-12-31"
+                                value="2026-06-15">
+                        </label>
+                        <button type="button" id="tahminBtn" class="btn btn-primary">
+                            <i class="fas fa-cloud-sun-rain" style="margin-right: 8px;" aria-hidden="true"></i>Tahmin et
+                        </button>
+                    </div>
+                    <div id="tahminSonuc" class="date-info">
+                        <h3 id="sonucBaslik"></h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.25rem;" id="sonucOzet"></p>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h4>Seçtiğiniz gün ve sonrası 10 gün hava raporu</h4>
+                            <div id="rapor10Gun" style="display: grid; gap: 0.5rem;"></div>
+                        </div>
+                        <p style="margin: 0; font-size: 1.1rem;" id="sonucOneri"></p>
+                    </div>
+                </article>
+
+                <article class="demo-card">
+                    <h2><i class="fas fa-code icon-accent-secondary" aria-hidden="true"></i>Teknik detaylar – Geliştiriciler için</h2>
+                    <p>
+                        Makine öğrenmesi ile regresyon tabanlı yağış tahmini. Adım adım metodoloji:
+                    </p>
+
+                    <div class="flow-card">
+                        <i class="fas fa-database" aria-hidden="true"></i>
+                        <div>
+                            <h4>Adım 1 — Veri toplama</h4>
+                            <p>
+                                <strong>Open-Meteo Archive API</strong> kullanılarak İskenderun (36.59°K, 36.17°D) için
+                                <strong>2004–2024 arası 20 yıllık</strong> günlük hava verisi çekilir. Değişkenler:
+                                yağış (mm), sıcaklık, rüzgâr, weather_code, nem. Ham veri CSV olarak saklanır.
+                            </p>
+                            <code>data/raw/iskenderun_hava_ham.csv</code>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <i class="fas fa-project-diagram" aria-hidden="true"></i>
+                        <div>
+                            <h4>Adım 2 — Hedef değişken</h4>
+                            <p>
+                                <strong>Regresyon hedefi:</strong> Her gün için <em>ertesi günün yağış miktarı (mm)</em> tahmin edilir.
+                                <code>yagmur_yarin = precipitation_sum.shift(-1)</code> ile oluşturulur.
+                                Çok adımlı kullanım için 2. ve 3. gün yağışları da türetilir.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <i class="fas fa-cogs" aria-hidden="true"></i>
+                        <div>
+                            <h4>Adım 3 — Özellik mühendisliği</h4>
+                            <p>
+                                Zamansal ve meteorolojik özellikler eklenir: <strong>gun, ay, mevsim, hafta_ici</strong>;
+                                lag değişkenleri <strong>yagmur_dun, yagmur_2_gun_once, yagmur_7_gun_once</strong>;
+                                hareketli ortalamalar <strong>yagmur_7_gun_ort, sicaklik_7_gun_ort</strong>;
+                                <strong>weather_rain_like</strong> (61–67, 80–82 yağış kodları). StandardScaler ile ölçekleme.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <i class="fas fa-brain" aria-hidden="true"></i>
+                        <div>
+                            <h4>Adım 4 — Model eğitimi</h4>
+                            <p>
+                                <strong>Ridge, RandomForest, XGBoost</strong> modelleri %80 train / %20 test ile eğitilir.
+                                GridSearchCV ile hiperparametre seçimi. Sample weight ile "Yıka" günlerine ağırlık verilir (class dengesizliği).
+                                En iyi model <strong>F1 (Yıka)</strong> skoruna göre seçilir; RMSE, R², accuracy değerlendirilir.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <i class="fas fa-cut" aria-hidden="true"></i>
+                        <div>
+                            <h4>Adım 5 — Karar kuralı</h4>
+                            <p>
+                                Regresyon çıktısı (mm) → sınıflandırma: <strong>tahmin &gt; 0.5 mm veya yağmur olasılığı ≥ %50</strong> →
+                                <span class="result-badge yikama">Yıkama</span>
+                                (yıkamayın); aksi halde →
+                                <span class="result-badge yika">Yıka</span>.
+                                0.5 mm eşiği hafif damlaları yok sayar.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-card">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        <div>
+                            <h4>Adım 6 — Takvim istatistikleri (predictions.json)</h4>
+                            <p>
+                                Her (ay, gün) kombinasyonu için geçmiş 20 yıldaki ertesi gün yağış ortalaması ve yağmur olasılığı hesaplanır.
+                                Seçilen günden itibaren 10 günlük pencere oluşturulur; ilk yağmurlu güne kadar “temiz kalma süresi” tahmin edilir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="demo-summary-box">
+                        <h4>Özet</h4>
+                        <p>
+                            Ham veri → özellik mühendisliği → regresyon (mm tahmini) → karar kuralı → takvim bazlı istatistikler →
+                            kullanıcıya "Yıka" veya "Yıkama" + kaç gün temiz kalır bilgisi sunulur.
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                            <strong>Kod yapısı:</strong> <code>data_fetch.py</code> → <code>preprocess.py</code> → <code>train.py</code> →
+                            <code>generate_calendar_stats.py</code> → <code>predictions.json</code> → <code>index.html</code>.
+                        </p>
+                    </div>
+                </article>
+
+                <div class="demo-cta-row">
+                    <a href="https://github.com/HuseyinEmreTech/araba_yikama_tahmin" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary">
+                        <i class="fab fa-github" style="margin-right: 8px;" aria-hidden="true"></i>Kodu incele
+                    </a>
+                    <a href="/index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;" aria-hidden="true"></i>Ana sayfa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="demo-footer">
+        <p>&copy; 2026 Hüseyin Emre. Makine öğrenmesi dersi — Araba yıkama tahmin projesi.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+        integrity="sha256-XJrs/DDkVkUZ29zdzFOkGCJ9zHVo5hnpdi3c7HYJ7Uc=" crossorigin=""></script>
+    <script src="map.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            var el = document.getElementById('page-load-overlay');
+            if (!el) return;
+            el.classList.add('is-hidden');
+            el.setAttribute('aria-busy', 'false');
+            window.setTimeout(function () { el.remove(); }, 400);
+        });
+    </script>
+</body>
+
+</html>

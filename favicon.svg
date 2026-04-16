@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="256" fill="#0a0a0f"/>
+  <circle cx="256" cy="256" r="250" fill="none" stroke="#6366f1" stroke-width="20"/>
+  <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial, sans-serif" font-weight="bold" font-size="200" fill="#f8fafc">HE</text>
+</svg>
