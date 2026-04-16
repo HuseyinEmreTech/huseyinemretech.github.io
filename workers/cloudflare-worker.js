@@ -28,6 +28,13 @@ async function handleRequest(request, env = {}) {
     const url = new URL(request.url)
     const origin = request.headers.get('Origin');
 
+    // 0. URL CANONICALIZATION (Redirect /index.html to /)
+    if (url.pathname.endsWith('/index.html')) {
+        const canonicalUrl = new URL(request.url)
+        canonicalUrl.pathname = canonicalUrl.pathname.replace(/\/index\.html$/, '/')
+        return Response.redirect(canonicalUrl.toString(), 301)
+    }
+
     // 1. ADAPTIVE UI API (CORS + POST)
     if (url.pathname === '/api/adaptive') {
         if (request.method === 'OPTIONS') {
@@ -100,12 +107,13 @@ async function handleRequest(request, env = {}) {
         "default-src 'none'; " +
         // 'wasm-unsafe-eval': Spline physics/navmesh WebAssembly modülleri için gerekli
         // blob:: Spline'ın inline Web Worker'ları için gerekli
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com; " +
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; " +
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net; " +
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; " +
         "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
-        "img-src 'self' data: https: https://api.qrserver.com; " +
+        "img-src 'self' data: blob: https: https://api.qrserver.com https://cdn.jsdelivr.net; " +
+        "media-src 'self' data: blob:; " +
         // prod.spline.design: Spline 3D sahnesi yüklemek için gerekli
-        "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com https://openrouter.ai https://prod.spline.design https://unpkg.com; " +
+        "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com https://openrouter.ai https://prod.spline.design https://unpkg.com https://cdn.jsdelivr.net; " +
         // worker-src: Spline'ın blob: Worker'ları için
         "worker-src blob:; " +
         "frame-src 'none'; " +

@@ -12,17 +12,19 @@ const HERO_INTRO_DURATION = 2
 export function HeroSection() {
   const { lang, t } = useTranslation()
   const prefersReducedMotion = useReducedMotion()
-  const [showIntro, setShowIntro] = useState(false)
+  const [introStatus, setIntroStatus] = useState<'none' | 'playing' | 'completed'>('none')
 
   useEffect(() => {
     if (prefersReducedMotion) return
     if (typeof window === 'undefined') return
     if (window.innerWidth < 1024) return
-    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1') return
+    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1') {
+      setIntroStatus('completed')
+      return
+    }
 
-    window.sessionStorage.setItem(HERO_INTRO_KEY, '1')
     const frame = window.requestAnimationFrame(() => {
-      setShowIntro(true)
+      setIntroStatus('playing')
     })
 
     return () => {
@@ -31,85 +33,68 @@ export function HeroSection() {
   }, [prefersReducedMotion])
 
   useEffect(() => {
-    if (!showIntro) return
+    if (introStatus !== 'playing') return
 
+    window.sessionStorage.setItem(HERO_INTRO_KEY, '1')
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
     return () => {
       document.body.style.overflow = previousOverflow
     }
-  }, [showIntro])
+  }, [introStatus])
 
   return (
     <div id="about" className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center pt-20">
-      {showIntro ? (
-        <motion.div
-          initial={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            borderRadius: '0rem',
-            opacity: 1,
-          }}
-          animate={{
-            top: '6rem',
-            left: '50%',
-            x: '-50%',
-            width: 'min(100vw - 3rem, 80rem)',
-            height: 'clamp(22rem, 54vh, 34rem)',
-            borderRadius: '2rem',
-            opacity: 1,
-          }}
-          transition={{
-            duration: HERO_INTRO_DURATION,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          onAnimationComplete={() => setShowIntro(false)}
-          className="pointer-events-none z-[1300] overflow-hidden bg-[#020205] shadow-[0_40px_120px_rgba(0,0,0,0.65)]"
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
-          <SplineScene scene={HERO_SCENE_URL} className="relative z-10 h-full w-full" />
-        </motion.div>
-      ) : null}
+      {/* ── 1. The Global Robot Transition ── */}
+      <motion.div
+        layout
+        initial={false}
+        animate={
+          introStatus === 'playing'
+            ? {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                borderRadius: '0rem',
+                opacity: 1,
+                zIndex: 1300,
+                backgroundColor: '#020205',
+              }
+            : {
+                position: 'relative',
+                top: '0rem',
+                left: '0%',
+                x: '0%',
+                width: '100%',
+                height: 'clamp(22rem, 54vh, 34rem)',
+                maxWidth: 'min(100vw - 3rem, 80rem)',
+                borderRadius: '2rem',
+                opacity: 1,
+                zIndex: 10,
+                backgroundColor: 'transparent',
+              }
+        }
+        transition={{
+          duration: introStatus === 'playing' ? 0 : HERO_INTRO_DURATION,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        onAnimationComplete={() => {
+          if (introStatus === 'playing') {
+            setIntroStatus('completed')
+          }
+        }}
+        className={cn(
+          "overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.65)] mx-auto mb-8",
+          introStatus === 'playing' && "pointer-events-none"
+        )}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none" />
+        <SplineScene scene={HERO_SCENE_URL} className="relative z-10 h-full w-full" />
+      </motion.div>
 
-      {/* Background Spotlight */}
-      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
-
-      {/* ── Vertical Name Sidebar (Desktop Only) ── */}
-      <div className="hidden lg:block fixed right-8 top-1/2 -translate-y-1/2 z-[50]">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-px h-24 bg-gradient-to-b from-transparent to-white/20" />
-          <span 
-            className="text-[10px] font-mono tracking-[0.5em] uppercase text-white/20 hover:text-white/60 transition-colors cursor-default"
-            style={{ writingMode: 'vertical-rl' }}
-          >
-            Hüseyin Emre
-          </span>
-          <div className="w-px h-24 bg-gradient-to-t from-transparent to-white/20" />
-        </div>
-      </div>
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
-        
-        {/* ── 1. The Focal Robot (Spline) ── */}
-        <motion.div
-          initial={{ opacity: showIntro ? 0 : 0, scale: showIntro ? 0.92 : 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 1.2,
-            ease: 'easeOut',
-            delay: showIntro ? 0.15 : 0,
-          }}
-          className="relative mb-8 h-[350px] w-full md:h-[500px]"
-        >
-          <SplineScene
-            scene={HERO_SCENE_URL}
-            className="w-full h-full relative z-10"
-          />
-        </motion.div>
 
         {/* ── 2. Centered Content ── */}
         <div className="flex flex-col items-center text-center max-w-3xl">
@@ -117,7 +102,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: showIntro ? 1.45 : 0.5 }}
+            transition={{ delay: introStatus === 'playing' ? 1.45 : 0.5 }}
             className="inline-flex items-center gap-2 mb-6"
           >
             <span
@@ -131,7 +116,7 @@ export function HeroSection() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: showIntro ? 1.6 : 0.7 }}
+            transition={{ delay: introStatus === 'playing' ? 1.6 : 0.7 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent tracking-tighter"
           >
             {t('hero-title').split('<br>').map((line: string, i: number) => (
@@ -145,7 +130,7 @@ export function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: showIntro ? 1.75 : 0.9 }}
+            transition={{ delay: introStatus === 'playing' ? 1.75 : 0.9 }}
             className="text-white/50 text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light"
           >
             {t('hero-desc')}
@@ -155,7 +140,8 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: showIntro ? 1.9 : 1.1 }}
+            transition={{ delay: introStatus === 'playing' ? 1.9 : 1.1 }}
+            transition={{ delay: introStatus === 'playing' ? 1.9 : 1.1 }}
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
             <a href="#projects" className="btn btn-primary px-10 py-4 text-sm uppercase tracking-widest font-bold">
@@ -169,7 +155,7 @@ export function HeroSection() {
           <motion.a
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: showIntro ? 2 : 1.2 }}
+            transition={{ delay: introStatus === 'playing' ? 2 : 1.2 }}
             href="#coursework"
             className="text-sm text-cyan-400/70 hover:text-cyan-300 underline-offset-4 hover:underline mb-4"
           >
@@ -180,7 +166,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: showIntro ? 2.05 : 1.3 }}
+            transition={{ delay: introStatus === 'playing' ? 2.05 : 1.3 }}
             className="flex gap-12 md:gap-20 border-t border-white/5 pt-10"
           >
             {[
@@ -201,7 +187,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: showIntro ? 2.2 : 2, duration: 1 }}
+        transition={{ delay: introStatus === 'playing' ? 2.2 : 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-[10px] uppercase tracking-[0.4em] text-white/20 font-mono">

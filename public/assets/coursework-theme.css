@@ -1022,7 +1022,8 @@ body.cw-page--gis-fullscreen {
     border-radius: 0 0 20px 20px;
   }
 }
-.gis-field label {
+.gis-field label,
+.gis-field-label {
   display: block;
   font-size: 0.72rem;
   font-family: var(--font-mono);

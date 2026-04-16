@@ -3,6 +3,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence, type Variants 
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/shared/lib/utils'
 import { useTranslation } from '@/features/localization/LanguageContext'
+import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutContext'
 
 const EXPAND_SCROLL_THRESHOLD = 80
 
@@ -58,21 +59,29 @@ const langVariants = {
 
 export function PortfolioNavigationBar() {
   const { lang, t, setLanguage } = useTranslation()
+  const { sectionOrder } = useAdaptive()
   const [isExpanded, setExpanded] = React.useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const { scrollY } = useScroll()
   const lastScrollY = React.useRef(0)
   const scrollPositionOnCollapse = React.useRef(0)
 
-  const navItems = React.useMemo(() => [
-    { name: t('nav-about'), href: '#about' },
-    { name: t('nav-exp'), href: '#experience' },
-    { name: t('nav-edu'), href: '#education' },
-    { name: t('nav-proj'), href: '#projects' },
-    { name: t('nav-coursework'), href: '#coursework' },
-    { name: t('nav-skills'), href: '#skills' },
-    { name: t('nav-contact'), href: '#contact' },
-  ], [t])
+  const navItems = React.useMemo(() => {
+    const keyMap: Record<string, string> = {
+      about: 'nav-about',
+      experience: 'nav-exp',
+      education: 'nav-edu',
+      projects: 'nav-proj',
+      coursework: 'nav-coursework',
+      skills: 'nav-skills',
+      contact: 'nav-contact',
+    }
+
+    return sectionOrder.map((id) => ({
+      name: t(keyMap[id] || `nav-${id}`),
+      href: `#${id}`,
+    }))
+  }, [sectionOrder, t])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = lastScrollY.current
