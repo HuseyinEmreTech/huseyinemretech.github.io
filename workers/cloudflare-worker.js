@@ -98,11 +98,16 @@ async function handleRequest(request, env = {}) {
     newResponse.headers.set(
         'Content-Security-Policy',
         "default-src 'none'; " +
-        "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com; " +
+        // 'wasm-unsafe-eval': Spline physics/navmesh WebAssembly modülleri için gerekli
+        // blob:: Spline'ın inline Web Worker'ları için gerekli
+        "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; " +
         "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
         "img-src 'self' data: https: https://api.qrserver.com; " +
-        "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com https://openrouter.ai; " +
+        // prod.spline.design: Spline 3D sahnesi yüklemek için gerekli
+        "connect-src 'self' https://api.github.com https://static.cloudflareinsights.com https://openrouter.ai https://prod.spline.design https://unpkg.com; " +
+        // worker-src: Spline'ın blob: Worker'ları için
+        "worker-src blob:; " +
         "frame-src 'none'; " +
         "object-src 'none'; " +
         "base-uri 'self'; " +
