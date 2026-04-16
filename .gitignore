@@ -6,6 +6,11 @@ venv/
 .env.*
 .env.local
 Rplots.pdf
+.cursor/
+.cursorignore
+
+# Yerel AI / IDE ayarlari (repo disi kalsin)
+.github/copilot-instructions.md
 
 # Hassas / özel dosyalar (açık repo için)
 *.key

@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from '@/features/localization/LanguageContext'
 import { useGithubPortfolioProjects } from '@hooks/useGithubPortfolioProjects'
 import { useCookieConsent } from '@/features/compliance/CookieConsentContext'
+import { ProjectWaveDemo } from '@/shared/components/ui/project-wave-demo'
+import { WavePixelControls } from '@/shared/components/ui/wave-pixel-controls'
 import { Github, ExternalLink, Star, Code2 } from 'lucide-react'
 
 export function ProjectsSection() {
   const { t } = useTranslation()
   const { status } = useCookieConsent()
   const { repositories, isLoading, loadError } = useGithubPortfolioProjects()
+  const [wavePxSize, setWavePxSize] = useState(3)
 
   return (
     <section id="projects" className="py-32">
@@ -15,6 +19,36 @@ export function ProjectsSection() {
         <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-20 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
           {t('sec-proj')}
         </h2>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 grid gap-10 lg:grid-cols-[1.2fr_0.8fr]"
+        >
+          <div className="rounded-[2rem] border border-white/[0.06] bg-white/[0.02] p-3">
+            <ProjectWaveDemo pxSize={wavePxSize} waveLabel={t('projects-wave-label')} />
+          </div>
+          <div className="flex flex-col justify-center gap-6 rounded-[2rem] border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm">
+            <div className="mb-1 inline-flex max-w-fit items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.25em] text-cyan-300">
+              {t('projects-wave-badge')}
+            </div>
+            <div>
+              <h3 className="mb-4 text-2xl font-bold tracking-tight text-white md:text-3xl">
+                {t('projects-wave-title')}
+              </h3>
+              <p className="max-w-lg text-sm leading-relaxed text-white/55 md:text-base">
+                {t('projects-wave-desc')}
+              </p>
+            </div>
+            <WavePixelControls
+              value={wavePxSize}
+              onChange={setWavePxSize}
+              label={t('projects-wave-pixel-label')}
+            />
+          </div>
+        </motion.div>
 
         {status === 'pending' ? (
           <p className="mb-10 max-w-xl text-sm leading-relaxed text-white/45">{t('projects-consent-hint')}</p>

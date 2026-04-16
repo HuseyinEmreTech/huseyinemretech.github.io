@@ -1,12 +1,19 @@
+import { Suspense, lazy, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutContext'
-import { Background } from '@/features/portfolio-page/ui/Background'
 import { PortfolioNavigationBar } from '@/features/portfolio-page/ui/PortfolioNavigationBar'
 import { portfolioSectionComponents } from '@/features/portfolio-page/sectionRegistry'
 import { CookieConsentBanner } from '@/features/compliance/CookieConsentBanner'
 import { LegalDialogs } from '@/features/compliance/LegalDialogs'
 import { GoogleFontLoader } from '@/features/compliance/GoogleFontLoader'
-import { CinematicFooter } from '@/components/ui/motion-footer'
+
+const Background = lazy(() =>
+  import('@/features/portfolio-page/ui/Background').then((m) => ({ default: m.Background })),
+)
+
+const CinematicFooter = lazy(() =>
+  import('@/shared/components/ui/motion-footer').then((m) => ({ default: m.CinematicFooter })),
+)
 
 const SECTION_REVEAL_TRANSITION = {
   duration: 0.8,
@@ -16,6 +23,22 @@ const SECTION_REVEAL_TRANSITION = {
 export function PortfolioPage() {
   const { sectionOrder } = useAdaptive()
 
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration
+
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+
+    return () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = previousScrollRestoration
+      }
+    }
+  }, [])
+
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <GoogleFontLoader />
@@ -23,7 +46,7 @@ export function PortfolioPage() {
       <CookieConsentBanner />
       <LegalDialogs />
 
-      <div className="relative z-10 min-h-[100vh] rounded-b-[2rem] border-b border-white/10 bg-[#020205] shadow-[0_28px_100px_rgba(0,0,0,0.55)]">
+      <div className="relative min-h-[100vh] rounded-b-[2rem] border-b border-white/10 bg-[#020205] shadow-[0_28px_100px_rgba(0,0,0,0.55)]">
         <main>
           {sectionOrder.map((sectionId) => {
             const Section = portfolioSectionComponents[sectionId]
@@ -42,10 +65,14 @@ export function PortfolioPage() {
           })}
         </main>
 
-        <Background />
+        <Suspense fallback={null}>
+          <Background />
+        </Suspense>
       </div>
 
-      <CinematicFooter />
+      <Suspense fallback={null}>
+        <CinematicFooter />
+      </Suspense>
     </div>
   )
 }

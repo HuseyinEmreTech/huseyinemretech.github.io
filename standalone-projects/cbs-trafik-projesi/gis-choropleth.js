@@ -1,29 +1,41 @@
 /**
- * CBS trafik — çok yıllı, menülü choropleth (dairesel yoğunluk).
- * Veri: trafik_multiyear.json + il_centroids.json (aynı klasör data/processed).
+ * Kuresel yol guvenligi atlasi.
+ * Veri: World Bank / WHO yol trafik olum orani + dunya ulke GeoJSON.
  */
 ;(function () {
   const script = document.querySelector('script[src*="gis-choropleth"]')
   const ROOT = script ? script.src.replace(/gis-choropleth\.js.*$/, '') : '/standalone-projects/cbs-trafik-projesi/'
 
-  const DATA_MULTI = ROOT + 'data/processed/trafik_multiyear.json'
-  const DATA_IL_GEO = ROOT + 'data/processed/turkiye_iller_gadm41.json'
+  const DATA_SERIES = ROOT + 'data/processed/world_road_safety.json'
+  const DATA_COUNTRIES = ROOT + 'data/processed/world_countries_110m.geojson'
+  const GLOBE_SCRIPT = 'https://cdn.jsdelivr.net/npm/globe.gl@2.32.1/dist/globe.gl.min.js'
+  const GLOBE_TEXTURE = 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg'
+  const GLOBE_BUMP = 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png'
 
-  /** Magma benzeri renk (düşük → yüksek) */
+  const WORLD_CENTER = [20, 0]
+  const WORLD_ZOOM = 2.2
+  const GLOBE_VIEW = { lat: 20, lng: 10, altitude: 2.2 }
+
+  let map
+  let layerGroup
+  let geoJsonLayer = null
+  let seriesData = null
+  let countriesGeoJson = null
+  let currentYear = 2019
+  let fillOpacity = 0.82
+  let globeInstance = null
+  let globeBundlePromise = null
+  let viewMode = '2d'
+  let mapFullscreen = false
+  let selectedIso3 = null
+
   function colorRamp(t) {
     const x = Math.max(0, Math.min(1, t))
     const a = [15, 23, 42]
     const b = [251, 113, 133]
     const c = [252, 211, 77]
-    let lo, hi
-    if (x < 0.55) {
-      lo = a
-      hi = b
-      return lerpColor(lo, hi, x / 0.55)
-    }
-    lo = b
-    hi = c
-    return lerpColor(lo, hi, (x - 0.55) / 0.45)
+    if (x < 0.55) return lerpColor(a, b, x / 0.55)
+    return lerpColor(b, c, (x - 0.55) / 0.45)
   }
 
   function lerpColor(a, b, t) {
@@ -38,224 +50,188 @@
     return 'rgb(' + arr[0] + ',' + arr[1] + ',' + arr[2] + ')'
   }
 
-  let map
-  let layerGroup
-  let multiData
-  let rawIlGeoJson = null
-  let geoJsonLayer = null
-  let currentYear = 2024
-  let currentMetric = 'olum'
-  let fillOpacity = 0.82
-
-  let globeInstance = null
-  let globeBundlePromise = null
-  let viewMode = '2d'
-  let mapFullscreen = false
-
-  const GLOBE_SCRIPT = 'https://cdn.jsdelivr.net/npm/globe.gl@2.32.1/dist/globe.gl.min.js'
-  const GLOBE_TEXTURE = 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg'
-  const GLOBE_BUMP = 'https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png'
-
-  function valueFor(il, year, metric) {
-    const y = multiData.byYear[String(year)]
-    if (!y || !y[il]) return 0
-    return metric === 'olum' ? y[il].olum : y[il].yarali
+  function valueFor(iso3, year) {
+    const y = seriesData && seriesData.byYear ? seriesData.byYear[String(year)] : null
+    if (!y) return null
+    return typeof y[iso3] === 'number' ? y[iso3] : null
   }
 
-  function extentForYear(year, metric) {
-    const y = multiData.byYear[String(year)]
+  function computeYearStats(year) {
+    const y = seriesData && seriesData.byYear ? seriesData.byYear[String(year)] : null
+    if (!y) return { avg: null, rankByIso: new Map(), n: 0 }
+    const entries = Object.keys(y)
+      .map(function (iso3) {
+        return [iso3, y[iso3]]
+      })
+      .filter(function (e) {
+        return typeof e[1] === 'number'
+      })
+    const n = entries.length
+    if (!n) return { avg: null, rankByIso: new Map(), n: 0 }
+    let sum = 0
+    entries.forEach(function (e) {
+      sum += e[1]
+    })
+    const avg = sum / n
+    entries.sort(function (a, b) {
+      return b[1] - a[1]
+    })
+    const rankByIso = new Map()
+    let r = 1
+    entries.forEach(function (e, i) {
+      if (i > 0 && e[1] !== entries[i - 1][1]) r = i + 1
+      rankByIso.set(e[0], r)
+    })
+    return { avg, rankByIso, n }
+  }
+
+  function extentForYear(year) {
+    const y = seriesData && seriesData.byYear ? seriesData.byYear[String(year)] : null
+    if (!y) return { lo: 0, hi: 0 }
     let lo = Infinity
     let hi = -Infinity
-    for (const il of Object.keys(y)) {
-      const v = metric === 'olum' ? y[il].olum : y[il].yarali
+    Object.keys(y).forEach(function (iso3) {
+      const v = y[iso3]
+      if (typeof v !== 'number') return
       if (v < lo) lo = v
       if (v > hi) hi = v
-    }
+    })
+    if (!Number.isFinite(lo) || !Number.isFinite(hi)) return { lo: 0, hi: 0 }
     return { lo, hi }
   }
 
-  /** TÜİK / GADM il adlarını tek anahtarda birleştirir (İstanbul ↔ Istanbul vb.) */
-  function normalizeForMatch(s) {
-    return String(s)
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/ı/g, 'i')
-      .replace(/İ/g, 'i')
-      .replace(/I/g, 'i')
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, '')
+  function displayNameFor(feature) {
+    const iso3 = feature && feature.properties ? feature.properties.iso3 : null
+    if (!iso3) return 'Bilinmiyor'
+    return (
+      (seriesData && seriesData.countryNames && seriesData.countryNames[iso3]) ||
+      feature.properties.name ||
+      iso3
+    )
   }
 
-  function augmentIlKeys() {
-    if (!rawIlGeoJson || !rawIlGeoJson.features || !multiData || !multiData.byYear) return
-    const y0 = multiData.years && multiData.years.length ? String(multiData.years[multiData.years.length - 1]) : '2024'
-    const yk = Object.keys(multiData.byYear[y0] || {})
-    const idx = {}
-    yk.forEach(function (k) {
-      idx[normalizeForMatch(k)] = k
-    })
-    rawIlGeoJson.features.forEach(function (f) {
-      f.properties = f.properties || {}
-      const name = f.properties.name
-      f.properties.ilKey = name ? idx[normalizeForMatch(name)] || null : null
-    })
-  }
-
-  function leafletGeoFeatureCollection() {
-    if (!rawIlGeoJson) return { type: 'FeatureCollection', features: [] }
-    return {
-      type: 'FeatureCollection',
-      features: rawIlGeoJson.features.filter(function (f) {
-        return f.properties && f.properties.ilKey
-      }),
+  function styleForCountry(feature) {
+    const iso3 = feature && feature.properties ? feature.properties.iso3 : null
+    const value = iso3 ? valueFor(iso3, currentYear) : null
+    if (value == null) {
+      return {
+        fillColor: 'rgba(148,163,184,0.18)',
+        fillOpacity: 0.25,
+        color: 'rgba(255,255,255,0.12)',
+        weight: 0.6,
+        lineJoin: 'round',
+      }
     }
-  }
-
-  function styleForIl(il) {
-    if (!multiData || !il) {
-      return { fillOpacity: 0, weight: 0 }
-    }
-    const v = valueFor(il, currentYear, currentMetric)
-    const ex = extentForYear(currentYear, currentMetric)
-    const lo = ex.lo
-    const hi = ex.hi
+    const { lo, hi } = extentForYear(currentYear)
     const span = hi - lo || 1
-    const t = (v - lo) / span
+    const t = (value - lo) / span
     const tt = Math.pow(Math.max(0, Math.min(1, t)), 0.85)
     const col = colorRamp(tt)
-    const strokeW = 0.55 + tt * 2.35
     return {
       fillColor: rgb(col),
       fillOpacity: fillOpacity,
-      color: 'rgba(255,255,255,0.42)',
-      weight: strokeW,
+      color: 'rgba(255,255,255,0.32)',
+      weight: 0.55 + tt * 1.95,
       lineJoin: 'round',
     }
   }
 
-  function popupHtmlForIl(il) {
-    if (!il || !multiData) return ''
-    const v = valueFor(il, currentYear, currentMetric)
-    const label = currentMetric === 'olum' ? 'Ölüm' : 'Yaralı'
+  function popupHtmlForFeature(feature) {
+    const iso3 = feature && feature.properties ? feature.properties.iso3 : null
+    const name = displayNameFor(feature)
+    const value = iso3 ? valueFor(iso3, currentYear) : null
     return (
-      '<div style="font-family:Inter,system-ui,sans-serif;min-width:140px">' +
+      '<div style="font-family:Inter,system-ui,sans-serif;min-width:160px">' +
       '<strong style="font-size:15px">' +
-      il +
+      name +
       '</strong><br><span style="opacity:.75">' +
+      (iso3 || '---') +
+      ' · ' +
       currentYear +
       '</span><hr style="border:none;border-top:1px solid rgba(255,255,255,.12);margin:8px 0">' +
-      '<span style="color:#a5b4fc">' +
-      label +
-      ': </span><strong>' +
-      v.toLocaleString('tr-TR') +
+      '<span style="color:#a5b4fc">Olum / 100k: </span><strong>' +
+      (value == null ? 'Veri yok' : value.toFixed(1).replace('.', ',')) +
       '</strong></div>'
     )
   }
 
-  function renderMarkers() {
-    if (!layerGroup || !multiData) return
-
-    if (rawIlGeoJson) {
-      if (!geoJsonLayer) {
-        const fc = leafletGeoFeatureCollection()
-        geoJsonLayer = L.geoJSON(fc, {
-          style: function (feature) {
-            return styleForIl(feature.properties.ilKey)
-          },
-          onEachFeature: function (feature, lyr) {
-            const il = feature.properties.ilKey
-            lyr.on('mouseover', function () {
-              lyr.setStyle({ weight: 3.2, color: '#22d3ee' })
-              if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                lyr.bringToFront()
-              }
-            })
-            lyr.on('mouseout', function () {
-              lyr.setStyle(styleForIl(il))
-            })
-            lyr.bindPopup(popupHtmlForIl(il))
-          },
-        }).addTo(layerGroup)
-      } else {
-        geoJsonLayer.eachLayer(function (lyr) {
-          const il = lyr.feature.properties.ilKey
-          lyr.setStyle(styleForIl(il))
-          lyr.setPopupContent(popupHtmlForIl(il))
-        })
-      }
+  function renderMapPolygons() {
+    if (!layerGroup || !countriesGeoJson) return
+    if (!geoJsonLayer) {
+      geoJsonLayer = L.geoJSON(countriesGeoJson, {
+        style: function (feature) {
+          return styleForCountry(feature)
+        },
+        onEachFeature: function (feature, layer) {
+          layer.on('mouseover', function () {
+            layer.setStyle({ weight: 2.7, color: '#22d3ee' })
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront()
+          })
+          layer.on('mouseout', function () {
+            layer.setStyle(styleForCountry(feature))
+          })
+          layer.bindPopup(popupHtmlForFeature(feature))
+          layer.on('click', function () {
+            const iso = feature && feature.properties ? feature.properties.iso3 : null
+            selectedIso3 = iso || null
+            updateSelectionPanel()
+          })
+        },
+      }).addTo(layerGroup)
+    } else {
+      geoJsonLayer.eachLayer(function (layer) {
+        layer.setStyle(styleForCountry(layer.feature))
+        layer.setPopupContent(popupHtmlForFeature(layer.feature))
+      })
     }
-
-    const ex = extentForYear(currentYear, currentMetric)
-    updateLegend(ex.lo, ex.hi)
-    updateHud(ex.lo, ex.hi)
-    syncGlobePolygons()
-  }
-
-  function loadGlobeBundle() {
-    if (typeof Globe !== 'undefined') return Promise.resolve()
-    if (globeBundlePromise) return globeBundlePromise
-    globeBundlePromise = new Promise(function (resolve, reject) {
-      var s = document.createElement('script')
-      s.src = GLOBE_SCRIPT
-      s.async = true
-      s.onload = function () {
-        resolve()
-      }
-      s.onerror = function () {
-        globeBundlePromise = null
-        reject(new Error('globe.gl yüklenemedi'))
-      }
-      document.head.appendChild(s)
-    })
-    return globeBundlePromise
   }
 
   function buildGlobePolygons() {
-    if (!multiData || !rawIlGeoJson || !rawIlGeoJson.features) return []
-    const ex = extentForYear(currentYear, currentMetric)
-    const lo = ex.lo
-    const hi = ex.hi
+    if (!countriesGeoJson || !seriesData) return []
+    const { lo, hi } = extentForYear(currentYear)
     const span = hi - lo || 1
-    const list = []
-    rawIlGeoJson.features.forEach(function (f) {
-      const il = f.properties && f.properties.ilKey
-      if (!il || !f.geometry) return
-      const v = valueFor(il, currentYear, currentMetric)
-      const t = (v - lo) / span
+    return countriesGeoJson.features.map(function (feature) {
+      const iso3 = feature.properties.iso3
+      const name = displayNameFor(feature)
+      const value = valueFor(iso3, currentYear)
+      if (value == null) {
+        return {
+          geometry: feature.geometry,
+          iso3,
+          name,
+          valueText: 'Veri yok',
+          year: currentYear,
+          alt: 0.0012,
+          cap: 'rgba(148,163,184,0.16)',
+          side: 'rgb(48,56,69)',
+        }
+      }
+      const t = (value - lo) / span
       const tt = Math.pow(Math.max(0, Math.min(1, t)), 0.85)
       const colArr = colorRamp(tt)
-      const lab = currentMetric === 'olum' ? 'Ölüm' : 'Yaralı'
-      const cap =
-        'rgba(' + colArr[0] + ',' + colArr[1] + ',' + colArr[2] + ',' + fillOpacity + ')'
-      const side =
-        'rgb(' +
-        Math.round(colArr[0] * 0.45) +
-        ',' +
-        Math.round(colArr[1] * 0.45) +
-        ',' +
-        Math.round(colArr[2] * 0.5) +
-        ')'
-      list.push({
-        geometry: f.geometry,
-        il: il,
-        v: v,
-        lab: lab,
-        y: currentYear,
-        alt: 0.0035 + tt * 0.055,
-        cap: cap,
-        side: side,
-      })
+      return {
+        geometry: feature.geometry,
+        iso3,
+        name,
+        valueText: value.toFixed(1).replace('.', ','),
+        year: currentYear,
+        alt: 0.003 + tt * 0.095,
+        cap: 'rgba(' + colArr[0] + ',' + colArr[1] + ',' + colArr[2] + ',' + fillOpacity + ')',
+        side:
+          'rgb(' +
+          Math.round(colArr[0] * 0.45) +
+          ',' +
+          Math.round(colArr[1] * 0.45) +
+          ',' +
+          Math.round(colArr[2] * 0.5) +
+          ')',
+      }
     })
-    return list
   }
 
   function syncGlobePolygons() {
     if (!globeInstance || viewMode !== '3d') return
-    try {
-      globeInstance.polygonsData(buildGlobePolygons())
-    } catch (e) {
-      console.error(e)
-    }
+    globeInstance.polygonsData(buildGlobePolygons())
   }
 
   function sizeGlobeToMount() {
@@ -265,11 +241,30 @@
     let w = mount.clientWidth
     let h = mount.clientHeight
     if (w < 2 || h < 2) {
-      const p = mount.parentElement
-      w = p ? p.clientWidth : 640
-      h = p ? p.clientHeight : 520
+      const parent = mount.parentElement
+      w = parent ? parent.clientWidth : 960
+      h = parent ? parent.clientHeight : 520
     }
     globeInstance.width(w).height(h)
+  }
+
+  function loadGlobeBundle() {
+    if (typeof Globe !== 'undefined') return Promise.resolve()
+    if (globeBundlePromise) return globeBundlePromise
+    globeBundlePromise = new Promise(function (resolve, reject) {
+      const s = document.createElement('script')
+      s.src = GLOBE_SCRIPT
+      s.async = true
+      s.onload = function () {
+        resolve()
+      }
+      s.onerror = function () {
+        globeBundlePromise = null
+        reject(new Error('globe.gl yuklenemedi'))
+      }
+      document.head.appendChild(s)
+    })
+    return globeBundlePromise
   }
 
   function initGlobeIfNeeded(done) {
@@ -287,7 +282,6 @@
               if (typeof done === 'function') done()
               return
             }
-            /** globe.gl UMD: Globe()(DOM) — new Globe(DOM) çalışmaz */
             const globeFn = Globe()
             if (typeof globeFn !== 'function') throw new Error('Globe()')
             globeInstance = globeFn(mount)
@@ -304,40 +298,184 @@
               .polygonCapColor('cap')
               .polygonSideColor('side')
               .polygonStrokeColor(function () {
-                return 'rgba(255,255,255,0.2)'
+                return 'rgba(255,255,255,0.18)'
               })
               .polygonLabel(function (d) {
                 return (
                   '<div style="font-family:Inter,system-ui,sans-serif;padding:6px 10px;line-height:1.45">' +
                   '<strong style="font-size:14px">' +
-                  d.il +
+                  d.name +
                   '</strong><br><span style="opacity:.75">' +
-                  d.y +
+                  d.iso3 +
+                  ' · ' +
+                  d.year +
                   '</span><hr style="border:none;border-top:1px solid rgba(255,255,255,.15);margin:6px 0">' +
-                  '<span style="color:#a5b4fc">' +
-                  d.lab +
-                  ': </span><strong>' +
-                  d.v.toLocaleString('tr-TR') +
+                  '<span style="color:#a5b4fc">Olum / 100k: </span><strong>' +
+                  d.valueText +
                   '</strong></div>'
                 )
               })
               .polygonsData(buildGlobePolygons())
+            if (typeof globeInstance.onPolygonClick === 'function') {
+              globeInstance.onPolygonClick(function (d) {
+                if (d && d.iso3) {
+                  selectedIso3 = d.iso3
+                  updateSelectionPanel()
+                }
+              })
+            }
             sizeGlobeToMount()
-            globeInstance.pointOfView({ lat: 39.2, lng: 35.5, altitude: 1.95 }, 0)
+            globeInstance.pointOfView(GLOBE_VIEW, 0)
             if (typeof done === 'function') done()
           })
         })
       })
-      .catch(function (e) {
-        console.error(e)
-        const err = document.getElementById('gis-map-error')
-        if (err) {
-          err.style.display = 'block'
-          err.textContent =
-            '3D küre yüklenemedi (ağ veya tarayıcı engeli). 2D harita kullanılmaya devam edebilir.'
+      .catch(function (err) {
+        console.error(err)
+        const errorBox = document.getElementById('gis-map-error')
+        if (errorBox) {
+          errorBox.style.display = 'block'
+          errorBox.textContent =
+            '3D kure yuklenemedi (ag veya tarayici engeli). 2D harita kullanilmaya devam edebilir.'
         }
         if (typeof done === 'function') done()
       })
+  }
+
+  function updateLegend(lo, hi) {
+    const gradient = document.getElementById('gis-legend-gradient')
+    if (!gradient) return
+    const steps = 24
+    let css = 'linear-gradient(90deg'
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps
+      css += ', ' + rgb(colorRamp(Math.pow(t, 0.85)))
+    }
+    css += ')'
+    gradient.style.background = css
+    const loEl = document.getElementById('gis-legend-lo')
+    const hiEl = document.getElementById('gis-legend-hi')
+    if (loEl) loEl.textContent = lo.toFixed(1).replace('.', ',')
+    if (hiEl) hiEl.textContent = hi.toFixed(1).replace('.', ',')
+  }
+
+  function updateSelectionPanel() {
+    const countryEl = document.getElementById('gis-sel-country')
+    const valueEl = document.getElementById('gis-sel-value')
+    const avgEl = document.getElementById('gis-sel-avg')
+    const rankEl = document.getElementById('gis-sel-rank')
+    const clearBtn = document.getElementById('gis-sel-clear')
+    const hintEl = document.getElementById('gis-sel-hint')
+    if (!countryEl || !seriesData) return
+    const fmt = function (x) {
+      return x.toFixed(1).replace('.', ',')
+    }
+    const stats = computeYearStats(currentYear)
+    if (avgEl) {
+      avgEl.textContent = stats.avg == null ? '—' : fmt(stats.avg)
+    }
+    if (!selectedIso3) {
+      countryEl.textContent = 'Haritadan secin'
+      if (valueEl) valueEl.textContent = '—'
+      if (rankEl) rankEl.textContent = '—'
+      if (clearBtn) clearBtn.hidden = true
+      if (hintEl) hintEl.hidden = false
+      return
+    }
+    if (hintEl) hintEl.hidden = true
+    if (clearBtn) clearBtn.hidden = false
+    const name =
+      (seriesData.countryNames && seriesData.countryNames[selectedIso3]) || selectedIso3
+    const v = valueFor(selectedIso3, currentYear)
+    countryEl.textContent = name + ' (' + selectedIso3 + ')'
+    if (valueEl) valueEl.textContent = v == null ? 'Veri yok' : fmt(v)
+    if (rankEl) {
+      if (v == null) {
+        rankEl.textContent = '—'
+      } else {
+        const rank = stats.rankByIso.get(selectedIso3)
+        rankEl.textContent =
+          rank != null && stats.n ? rank + ' / ' + stats.n + ' ulke' : '—'
+      }
+    }
+  }
+
+  function updateTopCountries() {
+    const list = document.getElementById('gis-top-countries')
+    if (!list || !seriesData) return
+    const yearData = seriesData.byYear[String(currentYear)] || {}
+    const top = Object.entries(yearData)
+      .filter(function (entry) {
+        return typeof entry[1] === 'number'
+      })
+      .sort(function (a, b) {
+        return b[1] - a[1]
+      })
+      .slice(0, 5)
+
+    list.innerHTML = top
+      .map(function (entry) {
+        const iso3 = entry[0]
+        const value = entry[1]
+        const name = seriesData.countryNames[iso3] || iso3
+        return '<li><strong>' + name + '</strong> <span>(' + iso3 + ')</span> · ' + value.toFixed(1).replace('.', ',') + '</li>'
+      })
+      .join('')
+  }
+
+  function updateHud(lo, hi) {
+    const title = document.getElementById('gis-map-title')
+    if (title) title.textContent = currentYear + ' — Ulke bazli yol trafik olum orani'
+    const stat = document.getElementById('gis-stat-range')
+    if (stat) {
+      const coverage =
+        seriesData && seriesData.coverageByYear ? seriesData.coverageByYear[String(currentYear)] || 0 : 0
+      stat.textContent =
+        'Min ' +
+        lo.toFixed(1).replace('.', ',') +
+        ' — Max ' +
+        hi.toFixed(1).replace('.', ',') +
+        ' · Kapsam ' +
+        coverage +
+        ' ulke'
+    }
+  }
+
+  function renderAll() {
+    if (!seriesData || !countriesGeoJson) return
+    renderMapPolygons()
+    const { lo, hi } = extentForYear(currentYear)
+    updateLegend(lo, hi)
+    updateHud(lo, hi)
+    updateSelectionPanel()
+    updateTopCountries()
+    syncGlobePolygons()
+  }
+
+  function initMap() {
+    const el = document.getElementById('gis-leaflet-map')
+    if (!el || typeof L === 'undefined') return
+    map = L.map(el, {
+      zoomControl: true,
+      scrollWheelZoom: true,
+      attributionControl: true,
+      worldCopyJump: true,
+    }).setView(WORLD_CENTER, WORLD_ZOOM)
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; OSM &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 18,
+    }).addTo(map)
+
+    layerGroup = L.layerGroup().addTo(map)
+    requestAnimationFrame(function () {
+      map.invalidateSize()
+    })
+    window.addEventListener('resize', function () {
+      map.invalidateSize()
+      sizeGlobeToMount()
+    })
   }
 
   function setViewMode(mode) {
@@ -357,19 +495,9 @@
         t3.classList.add('is-active')
         t3.setAttribute('aria-selected', 'true')
       }
-      if (map) {
-        requestAnimationFrame(function () {
-          map.invalidateSize()
-        })
-      }
       initGlobeIfNeeded(function () {
         sizeGlobeToMount()
         syncGlobePolygons()
-        if (mapFullscreen) {
-          window.setTimeout(function () {
-            sizeGlobeToMount()
-          }, 80)
-        }
       })
     } else {
       viewMode = '2d'
@@ -384,11 +512,7 @@
         t3.classList.remove('is-active')
         t3.setAttribute('aria-selected', 'false')
       }
-      if (map) {
-        requestAnimationFrame(function () {
-          map.invalidateSize()
-        })
-      }
+      if (map) requestAnimationFrame(function () { map.invalidateSize() })
     }
     updateFullscreenButton()
   }
@@ -399,19 +523,19 @@
     if (mapFullscreen) {
       btn.disabled = false
       btn.removeAttribute('aria-disabled')
-      btn.textContent = 'Tam ekrandan çık'
-      btn.title = 'Tam ekrandan çık (Esc)'
+      btn.textContent = 'Tam ekrandan cik'
+      btn.title = 'Tam ekrandan cik (Esc)'
       return
     }
     btn.textContent = 'Tam sayfa'
     if (viewMode === '3d') {
       btn.disabled = false
       btn.removeAttribute('aria-disabled')
-      btn.title = 'Küre ve menüleri tam ekran göster'
+      btn.title = 'Kure ve menuleri tam ekran goster'
     } else {
       btn.disabled = true
       btn.setAttribute('aria-disabled', 'true')
-      btn.title = 'Önce 3D küre sekmesini seçin'
+      btn.title = 'Once 3D kure sekmesini secin'
     }
   }
 
@@ -431,14 +555,17 @@
     updateFullscreenButton()
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        sizeGlobeToMount()
         if (map) map.invalidateSize()
-        window.setTimeout(function () {
-          sizeGlobeToMount()
-          if (map) map.invalidateSize()
-        }, 120)
+        sizeGlobeToMount()
       })
     })
+  }
+
+  function wireViewTabs() {
+    const t2 = document.getElementById('gis-view-2d')
+    const t3 = document.getElementById('gis-view-3d')
+    if (t2) t2.addEventListener('click', function () { setViewMode('2d') })
+    if (t3) t3.addEventListener('click', function () { setViewMode('3d') })
   }
 
   function wireFullscreenButton() {
@@ -453,88 +580,7 @@
       }
     })
     document.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Escape' && mapFullscreen) {
-        applyMapFullscreen(false)
-      }
-    })
-  }
-
-  function wireViewTabs() {
-    const t2 = document.getElementById('gis-view-2d')
-    const t3 = document.getElementById('gis-view-3d')
-    if (t2) {
-      t2.addEventListener('click', function () {
-        setViewMode('2d')
-      })
-    }
-    if (t3) {
-      t3.addEventListener('click', function () {
-        setViewMode('3d')
-      })
-    }
-  }
-
-  function updateLegend(lo, hi) {
-    const el = document.getElementById('gis-legend-gradient')
-    if (!el) return
-    const steps = 24
-    let grad = 'linear-gradient(90deg'
-    for (let i = 0; i <= steps; i++) {
-      const t = i / steps
-      grad += ', ' + rgb(colorRamp(Math.pow(t, 0.85)))
-    }
-    grad += ')'
-    el.style.background = grad
-    const loEl = document.getElementById('gis-legend-lo')
-    const hiEl = document.getElementById('gis-legend-hi')
-    if (loEl) loEl.textContent = Math.round(lo).toLocaleString('tr-TR')
-    if (hiEl) hiEl.textContent = Math.round(hi).toLocaleString('tr-TR')
-  }
-
-  function updateHud(lo, hi) {
-    const title = document.getElementById('gis-map-title')
-    if (title) {
-      title.textContent =
-        currentYear +
-        ' — İl bazında trafik ' +
-        (currentMetric === 'olum' ? 'ölüm' : 'yaralı') +
-        ' yoğunluğu'
-    }
-    const stat = document.getElementById('gis-stat-range')
-    if (stat) {
-      stat.textContent =
-        'Min ' +
-        Math.round(lo).toLocaleString('tr-TR') +
-        ' — Max ' +
-        Math.round(hi).toLocaleString('tr-TR')
-    }
-  }
-
-  function initMap() {
-    const el = document.getElementById('gis-leaflet-map')
-    if (!el || typeof L === 'undefined') return
-
-    map = L.map(el, {
-      zoomControl: true,
-      scrollWheelZoom: true,
-      attributionControl: true,
-    }).setView([39.2, 35.5], 6.2)
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; OSM &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 18,
-    }).addTo(map)
-
-    layerGroup = L.layerGroup().addTo(map)
-
-    requestAnimationFrame(function () {
-      map.invalidateSize()
-    })
-    window.addEventListener('resize', function () {
-      map.invalidateSize()
-      sizeGlobeToMount()
+      if (ev.key === 'Escape' && mapFullscreen) applyMapFullscreen(false)
     })
   }
 
@@ -544,50 +590,56 @@
     const opacityVal = document.getElementById('gis-opacity-val')
     const resetBtn = document.getElementById('gis-reset-view')
 
-    function applyYearFromSelect(sel) {
-      const y = parseInt(sel.value, 10)
-      if (!Number.isFinite(y) || !multiData || !multiData.byYear[String(y)]) return
-      currentYear = y
-      renderMarkers()
-      if (map) {
-        requestAnimationFrame(function () {
-          map.invalidateSize()
-        })
-      }
-    }
-
     if (yearSel) {
       yearSel.addEventListener('change', function () {
-        applyYearFromSelect(this)
-      })
-      yearSel.addEventListener('input', function () {
-        applyYearFromSelect(this)
+        const year = parseInt(this.value, 10)
+        if (!Number.isFinite(year)) return
+        currentYear = year
+        renderAll()
       })
     }
-    document.querySelectorAll('input[name="gis-metric"]').forEach(function (radio) {
-      radio.addEventListener('change', function () {
-        if (this.checked) {
-          currentMetric = this.value
-          renderMarkers()
-        }
-      })
-    })
     if (opacityRange) {
       opacityRange.addEventListener('input', function () {
         fillOpacity = parseInt(this.value, 10) / 100
         if (opacityVal) opacityVal.textContent = this.value + '%'
-        renderMarkers()
+        renderAll()
       })
     }
     if (resetBtn) {
       resetBtn.addEventListener('click', function () {
+        selectedIso3 = null
+        updateSelectionPanel()
         if (viewMode === '3d' && globeInstance) {
-          globeInstance.pointOfView({ lat: 39.2, lng: 35.5, altitude: 1.95 }, 900)
+          globeInstance.pointOfView(GLOBE_VIEW, 900)
         } else if (map) {
-          map.setView([39.2, 35.5], 6.2)
+          map.setView(WORLD_CENTER, WORLD_ZOOM)
         }
       })
     }
+    const clearSel = document.getElementById('gis-sel-clear')
+    if (clearSel) {
+      clearSel.addEventListener('click', function () {
+        selectedIso3 = null
+        updateSelectionPanel()
+      })
+    }
+  }
+
+  function populateYearSelect() {
+    const yearSel = document.getElementById('gis-year')
+    if (!yearSel || !seriesData || !seriesData.years) return
+    yearSel.innerHTML = ''
+    seriesData.years
+      .slice()
+      .sort(function (a, b) { return b - a })
+      .forEach(function (year, index) {
+        const option = document.createElement('option')
+        option.value = String(year)
+        option.textContent = String(year)
+        if (index === 0) option.selected = true
+        yearSel.appendChild(option)
+      })
+    currentYear = parseInt(yearSel.value, 10)
   }
 
   function boot() {
@@ -597,35 +649,23 @@
     wireFullscreenButton()
     updateFullscreenButton()
 
-    Promise.all([fetch(DATA_MULTI).then((r) => r.json()), fetch(DATA_IL_GEO).then((r) => r.json())])
+    Promise.all([
+      fetch(DATA_SERIES).then(function (r) { return r.json() }),
+      fetch(DATA_COUNTRIES).then(function (r) { return r.json() }),
+    ])
       .then(function (results) {
-        multiData = results[0]
-        rawIlGeoJson = results[1]
-        augmentIlKeys()
-        const yearSel = document.getElementById('gis-year')
-        if (yearSel && multiData.years) {
-          yearSel.innerHTML = ''
-          multiData.years.forEach(function (y) {
-            const o = document.createElement('option')
-            o.value = String(y)
-            o.textContent = String(y)
-            if (y === 2024) o.selected = true
-            yearSel.appendChild(o)
-          })
-          const parsed = parseInt(yearSel.value, 10)
-          currentYear = Number.isFinite(parsed) ? parsed : 2024
-        }
-        const mChecked = document.querySelector('input[name="gis-metric"]:checked')
-        if (mChecked) currentMetric = mChecked.value
-        renderMarkers()
+        seriesData = results[0]
+        countriesGeoJson = results[1]
+        populateYearSelect()
+        renderAll()
       })
-      .catch(function (e) {
-        console.error(e)
-        const err = document.getElementById('gis-map-error')
-        if (err) {
-          err.style.display = 'block'
-          err.textContent =
-            'Harita verisi veya il sınırları (GeoJSON) yüklenemedi. Sayfayı sunucu üzerinden açtığınızdan emin olun (yerel dosya yolu CORS kısıtlayabilir).'
+      .catch(function (err) {
+        console.error(err)
+        const errorBox = document.getElementById('gis-map-error')
+        if (errorBox) {
+          errorBox.style.display = 'block'
+          errorBox.textContent =
+            'Harita verisi veya ulke sinirlari yuklenemedi. Sayfayi sunucu uzerinden actiginizdan emin olun.'
         }
       })
   }

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Github, Linkedin, Mail } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { useTranslation } from '@/features/localization/LanguageContext'
 import { useLegalNotice } from '@/features/compliance/LegalNoticeContext'
 
@@ -15,6 +15,13 @@ const STYLES = `
 .cinematic-footer-wrapper {
   font-family: inherit;
   -webkit-font-smoothing: antialiased;
+  /* Portföy koyu teması: global shadcn token’larından bağımsız (Nova açık tema ile çakışmayı önler) */
+  --background: #020205;
+  --foreground: #f4f4f5;
+  --primary: #6366f1;
+  --secondary: #22d3ee;
+  --destructive: #f87171;
+  --muted-foreground: #a1a1aa;
 
   --pill-bg-1: color-mix(in oklch, var(--foreground) 3%, transparent);
   --pill-bg-2: color-mix(in oklch, var(--foreground) 1%, transparent);
@@ -40,22 +47,12 @@ const STYLES = `
   to { transform: translateX(-50%); }
 }
 
-@keyframes footer-heartbeat {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px color-mix(in oklch, var(--destructive) 50%, transparent)); }
-  15%, 45% { transform: scale(1.2); filter: drop-shadow(0 0 10px color-mix(in oklch, var(--destructive) 80%, transparent)); }
-  30% { transform: scale(1); }
-}
-
 .animate-footer-breathe {
   animation: footer-breathe 8s ease-in-out infinite alternate;
 }
 
 .animate-footer-scroll-marquee {
   animation: footer-scroll-marquee 40s linear infinite;
-}
-
-.animate-footer-heartbeat {
-  animation: footer-heartbeat 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
 .footer-bg-grid {
@@ -123,7 +120,7 @@ type MagneticProps = {
   children: React.ReactNode
 } & (
   | { tag: 'a'; href: string; target?: string; rel?: string }
-  | { tag: 'button'; onClick?: () => void; type?: 'button' | 'submit' }
+  | { tag: 'button'; onClick?: () => void; type?: 'button' | 'submit'; 'aria-label'?: string }
 )
 
 function FooterMarqueeRow({ items, rowKey }: { items: readonly string[]; rowKey: string }) {
@@ -201,9 +198,13 @@ function Magnetic({ className, children, tag, ...rest }: MagneticProps) {
     )
   }
 
-  const { onClick, type = 'button' } = rest as { onClick?: () => void; type?: 'button' | 'submit' }
+  const { onClick, type = 'button', 'aria-label': ariaLabel } = rest as {
+    onClick?: () => void
+    type?: 'button' | 'submit'
+    'aria-label'?: string
+  }
   return (
-    <button ref={localRef} type={type} onClick={onClick} className={cls}>
+    <button ref={localRef} type={type} onClick={onClick} className={cls} aria-label={ariaLabel}>
       {children}
     </button>
   )
@@ -268,6 +269,18 @@ export function CinematicFooter() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    const refresh = () => {
+      ScrollTrigger.refresh()
+    }
+    const raf = window.requestAnimationFrame(refresh)
+    window.addEventListener('resize', refresh)
+    return () => {
+      window.cancelAnimationFrame(raf)
+      window.removeEventListener('resize', refresh)
+    }
+  }, [])
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -282,10 +295,10 @@ export function CinematicFooter() {
 
       <div
         ref={wrapperRef}
-        className="relative h-screen w-full"
+        className="relative z-[1] isolate h-screen w-full"
         style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
       >
-        <footer className="cinematic-footer-wrapper fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-background text-foreground">
+        <footer className="cinematic-footer-wrapper fixed bottom-0 left-0 z-[20] flex h-screen w-full flex-col justify-between overflow-hidden bg-[#020205] text-zinc-100">
           <div className="footer-aurora pointer-events-none absolute left-1/2 top-1/2 z-0 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px]" />
           <div className="footer-bg-grid pointer-events-none absolute inset-0 z-0" />
 
@@ -357,23 +370,16 @@ export function CinematicFooter() {
             </div>
           </div>
 
-          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-6 px-6 pb-8 md:flex-row md:px-12">
-            <div className="order-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground md:order-1 md:text-xs">
+          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-6 px-6 pb-8 md:flex-row md:items-center md:px-12">
+            <div className="text-center text-[10px] font-semibold uppercase tracking-widest text-muted-foreground md:text-left md:text-xs">
               {t('footer-text')}
-            </div>
-
-            <div className="footer-glass-pill order-1 flex cursor-default items-center gap-2 rounded-full border-border/50 px-6 py-3 md:order-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground md:text-xs">
-                {t('footer-crafted-line')}
-              </span>
-              <span className="animate-footer-heartbeat text-sm text-destructive md:text-base">❤</span>
-              <span className="text-xs font-black tracking-normal text-foreground md:text-sm">Hüseyin Emre</span>
             </div>
 
             <Magnetic
               tag="button"
               onClick={scrollToTop}
-              className="footer-glass-pill group order-3 flex h-12 w-12 items-center justify-center rounded-full text-muted-foreground hover:text-foreground"
+              aria-label={t('footer-scroll-to-top')}
+              className="footer-glass-pill group flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-muted-foreground hover:text-foreground"
             >
               <svg
                 className="h-5 w-5 transform transition-transform duration-300 group-hover:-translate-y-1.5"

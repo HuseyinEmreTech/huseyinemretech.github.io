@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { BarChart3, ExternalLink, Map } from 'lucide-react'
+import { BarChart3, ExternalLink, Map, Presentation } from 'lucide-react'
 import { useTranslation } from '@/features/localization/LanguageContext'
 import { COURSEWORK_PAGE_PATHS } from '@core/constants/courseworkPages'
 
@@ -21,6 +21,13 @@ export function CourseworkSection() {
       description: t('coursework-ml-desc'),
       cta: t('coursework-ml-cta'),
     },
+    {
+      href: COURSEWORK_PAGE_PATHS.digitalTransformationPresentation,
+      Icon: Presentation,
+      title: t('coursework-presentation-title'),
+      description: t('coursework-presentation-desc'),
+      cta: t('coursework-presentation-cta'),
+    },
   ] as const
 
   return (
@@ -33,7 +40,7 @@ export function CourseworkSection() {
           {t('coursework-intro')}
         </p>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
           {cards.map((card, idx) => (
             <motion.article
               key={card.href}

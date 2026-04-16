@@ -1097,6 +1097,114 @@ body.cw-page--gis-fullscreen {
   min-width: 2.5rem;
   text-align: right;
 }
+.gis-metric-box {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+.gis-metric-box strong {
+  display: block;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+.gis-metric-box span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.gis-top-box {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+.gis-top-box-title {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(165, 180, 252, 0.9);
+  margin-bottom: 10px;
+}
+.gis-top-countries {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.gis-top-countries li {
+  margin-bottom: 6px;
+}
+.gis-top-countries strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.gis-top-countries span {
+  opacity: 0.75;
+  font-size: 0.78rem;
+}
+.gis-selection-box {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+.gis-selection-box-title {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(165, 180, 252, 0.9);
+  margin-bottom: 10px;
+}
+.gis-selection-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gis-selection-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.82rem;
+}
+.gis-selection-label {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.gis-selection-val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.gis-selection-hint {
+  margin: 10px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: rgba(148, 163, 184, 0.85);
+}
+.gis-sel-clear {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.gis-sel-clear:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
 .gis-legend {
   margin-top: auto;
   padding-top: 12px;

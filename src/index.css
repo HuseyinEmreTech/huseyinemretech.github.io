@@ -76,87 +76,6 @@
 }
 
 @layer base {
-  :root {
-    --card: #ffffff;
-    --ring: #34a85a;
-    --input: #d4d4d4;
-    --muted: #ddd9c4;
-    --accent: #66d9ef;
-    --border: #d4d4d4;
-    --radius: 0.5rem;
-    --chart-1: #34a85a;
-    --chart-2: #6495ed;
-    --chart-3: #66d9ef;
-    --chart-4: #ff99cc;
-    --chart-5: #33cc33;
-    --popover: #ffffff;
-    --primary: #34a85a;
-    --sidebar: #f9f9fa;
-    --font-mono: 'Source Code Pro', ui-monospace, monospace;
-    --font-sans: Montserrat, ui-sans-serif, system-ui, sans-serif;
-    --secondary: #6495ed;
-    --background: #f9f9fa;
-    --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
-    --foreground: #333333;
-    --destructive: #ef4444;
-    --sidebar-ring: #34a85a;
-    --sidebar-accent: #66d9ef;
-    --sidebar-border: #d4d4d4;
-    --card-foreground: #333333;
-    --sidebar-primary: #34a85a;
-    --muted-foreground: #6e6e6e;
-    --accent-foreground: #333333;
-    --popover-foreground: #333333;
-    --primary-foreground: #ffffff;
-    --sidebar-foreground: #333333;
-    --secondary-foreground: #ffffff;
-    --destructive-foreground: #ffffff;
-    --sidebar-accent-foreground: #333333;
-    --sidebar-primary-foreground: #ffffff;
-
-    --accent-primary: var(--primary);
-    --accent-secondary: var(--secondary);
-    --text-primary: var(--foreground);
-    --text-secondary: var(--muted-foreground);
-    --text-muted: var(--muted-foreground);
-  }
-
-  .dark {
-    --card: #2f3436;
-    --ring: #33cc33;
-    --input: #444444;
-    --muted: #444444;
-    --accent: #66d9ef;
-    --border: #444444;
-    --radius: 0.5rem;
-    --chart-1: #33cc33;
-    --chart-2: #87ceeb;
-    --chart-3: #66d9ef;
-    --chart-4: #ff99cc;
-    --chart-5: #ffcc00;
-    --popover: #2f3436;
-    --primary: #33cc33;
-    --sidebar: #1a1d23;
-    --secondary: #87ceeb;
-    --background: #1a1d23;
-    --foreground: #e5e5e5;
-    --destructive: #ef4444;
-    --sidebar-ring: #33cc33;
-    --sidebar-accent: #66d9ef;
-    --sidebar-border: #444444;
-    --card-foreground: #e5e5e5;
-    --sidebar-primary: #33cc33;
-    --muted-foreground: #a3a3a3;
-    --accent-foreground: #000000;
-    --popover-foreground: #e5e5e5;
-    --primary-foreground: #000000;
-    --sidebar-foreground: #e5e5e5;
-    --secondary-foreground: #000000;
-    --destructive-foreground: #ffffff;
-    --sidebar-accent-foreground: #000000;
-    --sidebar-primary-foreground: #000000;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -168,17 +87,35 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans);
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
     overflow-x: hidden;
     letter-spacing: -0.01em;
     @apply bg-background text-foreground;
   }
 
   html.fonts-google-enabled body {
-    font-family: var(--font-sans);
+    font-family:
+      'Inter',
+      'JetBrains Mono',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
   }
+
   * {
-    @apply border-border outline-ring/50;}
+    @apply border-border outline-ring/50;
+  }
 }
 
 @layer components {
@@ -187,11 +124,11 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl hover:scale-[1.02] active:scale-[0.98];
+    @apply bg-white text-black hover:bg-neutral-200 shadow-xl hover:scale-[1.02] active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply bg-foreground/[0.06] text-foreground/90 border border-border hover:bg-foreground/[0.1] hover:border-foreground/20 hover:text-foreground backdrop-blur-2xl;
+    @apply bg-white/[0.04] text-white/90 border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/20 hover:text-white backdrop-blur-2xl;
   }
 
   .container {
@@ -209,12 +146,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--foreground) 18%, transparent);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--foreground) 28%, transparent);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 :root {

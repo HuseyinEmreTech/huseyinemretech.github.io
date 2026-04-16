@@ -61,6 +61,10 @@ const turkishMessages = {
   'coursework-ml-desc':
     'Makine öğrenmesi dersi kapsamında talep tahmini ve harita görselleştirmesi için hazırlanan web arayüzü.',
   'coursework-ml-cta': 'Tahmin demosunu aç',
+  'coursework-presentation-title': 'Dijital dönüşüm sunumu',
+  'coursework-presentation-desc':
+    'Sunum dersi için hazırlanan dijital dönüşüm odaklı etkileşimli sunum sayfası.',
+  'coursework-presentation-cta': 'Sunumu aç',
   'sec-skills': 'Yetenekler',
   'skills-desc': 'Özelleşmiş alanlarda uzmanlık ve teknik yetkinlikler.',
   'skill-grp-erp': 'ERP & İş Süreçleri',
@@ -103,14 +107,20 @@ const turkishMessages = {
   'footer-magnetic-linkedin': 'LinkedIn',
   'footer-magnetic-email': 'E-posta',
   'footer-magnetic-contact': 'İletişim bölümü',
-  'footer-crafted-line': 'Özenle hazırlandı',
   'footer-scroll-hint': 'Aşağı kaydırarak sinematik footer’ı keşfedin',
+  'footer-scroll-to-top': 'Sayfanın başına dön',
   'footer-privacy': 'Aydınlatma metni (KVKK)',
   'footer-cookies': 'Çerez politikası',
   'legal-close': 'Kapat',
   'projects-consent-hint':
     'Projeleri yüklemek için alttaki çerez banner’ında bir seçim yapın. Liste GitHub üzerinden alınır.',
   'projects-empty': 'Herkese açık depo bulunamadı veya liste henüz yüklenemedi.',
+  'projects-wave-badge': 'Shader demosu',
+  'projects-wave-title': 'Dalga dithering çalışması',
+  'projects-wave-desc':
+    'WebGL tabanlı dalga shader’ını projeler bölümüne vitrin parçası olarak ekledim. Piksel dither dokusu ve neon tonlar, mevcut sinematik görünümle uyumlu.',
+  'projects-wave-label': 'Wave',
+  'projects-wave-pixel-label': 'Piksel boyutu',
   'contact-email': 'huseyinemre.tech@gmail.com',
   'contact-kvkk-note':
     'E-posta ile iletişimde paylaştığınız veriler yalnızca talebinize yanıt vermek için işlenir. Ayrıntılar için Aydınlatma metnine bakın.',
@@ -194,6 +204,10 @@ const englishMessages: Record<TranslationKey, string> = {
   'coursework-ml-desc':
     'Machine learning coursework demo with demand prediction and map-style visualization.',
   'coursework-ml-cta': 'Open prediction demo',
+  'coursework-presentation-title': 'Digital transformation presentation',
+  'coursework-presentation-desc':
+    'An interactive presentation page focused on digital transformation, prepared for coursework.',
+  'coursework-presentation-cta': 'Open presentation',
   'sec-skills': 'Skills',
   'skills-desc': 'Specialized expertise and technical competencies in various fields.',
   'skill-grp-erp': 'ERP & Business Processes',
@@ -235,14 +249,20 @@ const englishMessages: Record<TranslationKey, string> = {
   'footer-magnetic-linkedin': 'LinkedIn',
   'footer-magnetic-email': 'Email',
   'footer-magnetic-contact': 'Contact section',
-  'footer-crafted-line': 'Crafted with care',
   'footer-scroll-hint': 'Scroll down to reveal the cinematic footer',
+  'footer-scroll-to-top': 'Back to top',
   'footer-privacy': 'Privacy notice (KVKK)',
   'footer-cookies': 'Cookie policy',
   'legal-close': 'Close',
   'projects-consent-hint':
     'Pick an option in the cookie banner below to load projects. The list is fetched from GitHub.',
   'projects-empty': 'No public repositories found or the list could not be loaded.',
+  'projects-wave-badge': 'Shader demo',
+  'projects-wave-title': 'Wave dithering study',
+  'projects-wave-desc':
+    'A WebGL wave shader showcase in the projects section. Pixel dither texture and neon tones match the cinematic look.',
+  'projects-wave-label': 'Wave',
+  'projects-wave-pixel-label': 'Pixel size',
   'contact-email': 'huseyinemre.tech@gmail.com',
   'contact-kvkk-note':
     'If you email us, we process what you send only to respond. See the privacy notice for details.',
