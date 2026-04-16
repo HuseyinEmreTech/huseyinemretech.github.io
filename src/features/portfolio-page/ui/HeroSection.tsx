@@ -4,6 +4,7 @@ import { Spotlight } from '@/shared/components/ui/spotlight'
 import { SplineScene } from '@/shared/components/ui/SplineScene'
 import { useTranslation } from '@/features/localization/LanguageContext'
 import { ChevronDown } from 'lucide-react'
+import { cn } from '@/shared/lib/utils'
 
 const HERO_SCENE_URL = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode'
 const HERO_INTRO_KEY = 'hero-robot-intro-played'
@@ -95,7 +96,11 @@ export function HeroSection() {
         <SplineScene scene={HERO_SCENE_URL} className="relative z-10 h-full w-full" />
       </motion.div>
 
+      {/* Background Spotlight */}
+      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
         {/* ── 2. Centered Content ── */}
         <div className="flex flex-col items-center text-center max-w-3xl">
           {/* Role badge */}
@@ -140,7 +145,6 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: introStatus === 'playing' ? 1.9 : 1.1 }}
             transition={{ delay: introStatus === 'playing' ? 1.9 : 1.1 }}
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
