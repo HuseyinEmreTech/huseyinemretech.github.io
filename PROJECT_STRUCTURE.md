@@ -1,62 +1,30 @@
-# Proje Dosya Yapısı
+# Repository layout (LLM-friendly)
 
-```
+```text
 huseyinemretech.github.io/
-│
-├── index.html                 # Ana portfolyo
-├── gis-project.html           # CBS/GIS proje sayfası
-├── makine-ogrenmesi.html      # Makine öğrenmesi proje sayfası
-├── hci-adaptive-ui.html       # HCI adaptif UI proje sayfası
-│
-├── assets/
-│   ├── css/                   # Stil dosyaları
-│   │   ├── styles.css
-│   │   ├── adaptive-themes.css
-│   │   ├── adaptive-modal.css
-│   │   └── adaptive-extras.css
-│   ├── js/                    # JavaScript modülleri
-│   │   ├── script.js
-│   │   ├── adaptive.js
-│   │   ├── adaptive-layout.js
-│   │   ├── adaptive-modal.js
-│   │   ├── adaptive-animation.js
-│   │   ├── adaptive-buttons.js
-│   │   ├── adaptive-spacing.js
-│   │   ├── adaptive-font.js
-│   │   ├── adaptive-tone.js
-│   │   ├── adaptive-cta.js
-│   │   └── makine-ogrenmesi-map.js
-│   ├── img/                   # Görseller
-│   │   ├── favicon.svg
-│   │   └── social_preview_image.png
-│   └── data/
-│       └── adaptive-content.json   # (gitignore'da)
-│
-├── workers/
-│   └── cloudflare-worker.js   # Cloudflare Worker kodu
-│
-├── docs/
-│   └── CLOUDFLARE_SETUP.md
-│
-├── sunum/                     # Dijital dönüşüm sunumu
-│   ├── dijital-donusum-sunum.html
-│   └── ...
-│
-├── araba-yikama-tahmin/       # ML projesi
-│   ├── index.html
-│   ├── map.js
-│   ├── predictions.json
-│   ├── src/
-│   ├── data/
-│   └── notebooks/
-│
-├── cbs-trafik-projesi/        # CBS trafik analizi
-│   ├── data/
-│   └── scripts/
-│
-├── vite.config.js
-├── package.json
-├── CNAME
-├── README.md
-└── README_EN.md
+├── index.html                 # Vite SPA entry
+├── public/                    # Static files copied to dist root (keep URLs stable)
+│   └── gis-project.html       # → /gis-project.html when deployed
+├── src/
+│   ├── main.tsx               # React bootstrap
+│   ├── app/                   # Shell: App + providers + error boundary
+│   ├── core/                  # App-wide config (env defaults, API roots)
+│   ├── services/              # External IO (e.g. GitHub REST client)
+│   ├── hooks/                 # Reusable React hooks (e.g. GitHub portfolio loader)
+│   ├── features/              # Business capabilities (screaming folders)
+│   │   ├── localization/    # i18n + translations + LanguageContext
+│   │   ├── personalization/ # Adaptive layout + MBTI wizard
+│   │   └── portfolio-page/    # One-page sections + registry
+│   ├── entities/              # Static CV/profile content (data only)
+│   ├── shared/                # components/ui, types, utils, logging
+│   └── index.css
+├── standalone-projects/       # Separate demos linked from the site (not part of Vite bundle)
+├── assets/images/             # favicon, OG image
+├── workers/                   # Cloudflare worker (optional edge)
+├── vite.config.ts
+├── eslint.config.js
+├── tsconfig.json
+└── package.json
 ```
+
+Path aliases (see `vite.config.ts` and `tsconfig.json`): `@/*`, `@core/*`, `@services/*`, `@hooks/*` → `./src/...`.

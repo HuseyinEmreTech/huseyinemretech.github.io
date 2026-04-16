@@ -24,22 +24,24 @@ This project is a high-performance digital identity and portfolio platform with 
 - **🌌 Aurora Background & Glassmorphism 2.0:** A stunning interface that feels deep and interactive, created using CSS variables and modern backdrop-filter techniques.
 - **⚡ Performance First:** Lightning-fast builds and optimized resource management with the Vite infrastructure.
 - **📱 End-to-End Responsive:** Flawless UX design for desktop, tablet, and mobile devices.
-- **🔄 Dynamic GitHub Integration:** Projects are fetched directly from repositories and listed automatically via the GitHub API connection in `script.js`.
+- **🔄 Dynamic GitHub Integration:** `src/services/github/` (HTTP client) + `src/hooks/useGithubPortfolioProjects.ts` + `src/core/config` (VITE_* defaults).
 - **🌐 Cloudflare Workers Integration:** Infrastructure for running serverless functions at the edge via `workers/cloudflare-worker.js` (header management, contact forms, API proxy).
-- **🗺️ GIS Project Showcase:** A modern presentation of geospatial analysis projects developed using R Studio on the specially designed `gis-project.html` page.
+- **🗺️ GIS Project Showcase:** Static page at `public/gis-project.html` (served as `/gis-project.html` after build).
 - **🌐 Full Multilingual Support:** Comprehensive Turkish and English support across the entire platform.
 
 ## 📂 Architectural Structure
 
 ```text
 huseyinemretech.github.io/
-├── index.html           # Main portfolio page (Semantic HTML5)
-├── gis-project.html     # Special GIS analysis presentation page
-├── styles.css           # Advanced CSS design system (Animations, Glassmorphism)
-├── script.js            # GitHub API integration, Intersection Observer, and micro-interactions
-├── vite.config.js       # Vite configuration for multi-page and assets optimization
-├── workers/cloudflare-worker.js # Serverless Edge computing
-└── package.json         # Project dependencies and Vite build scripts
+├── index.html           # Vite entry — React portfolio SPA
+├── public/
+│   └── gis-project.html # Static GIS showcase (copied to site root on build)
+├── src/                 # React application (feature-based)
+├── assets/images/       # Favicon, Open Graph image
+├── standalone-projects/ # Linked coursework / demos (not bundled)
+├── vite.config.ts
+├── workers/cloudflare-worker.js
+└── package.json
 ```
 
 ## 🛠️ Installation & Development

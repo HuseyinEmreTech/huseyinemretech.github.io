@@ -93,7 +93,7 @@ async function handleRequest(request, env = {}) {
     newResponse.headers.set('Cross-Origin-Resource-Policy', 'cross-origin')
 
     // Content-Security-Policy - Maksimum Güvenlik, Minimum Risk
-    // unpkg.com: Leaflet harita kütüphanesi (makine-ogrenmesi, araba-yikama)
+    // unpkg.com: Leaflet (ör. standalone-projects içi harita sayfaları)
     // api.qrserver.com: Sunumdaki QR kodlar için
     newResponse.headers.set(
         'Content-Security-Policy',

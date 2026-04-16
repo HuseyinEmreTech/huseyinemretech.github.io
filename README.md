@@ -26,30 +26,28 @@ Bu proje, geleneksel tasarımların ötesine geçerek tamamen **Modern Professio
 - **🌌 Aurora Background & Glassmorphism 2.0:** CSS değişkenleri ve modern backdrop-filter teknikleriyle oluşturulmuş, etkileşimli ve derinlik hissi veren göz alıcı bir arayüz.
 - **⚡ Performance First:** Vite altyapısı ile yıldırım hızında derleme (build) ve optimize edilmiş kaynak yönetimi.
 - **📱 Uçtan Uca Responsive:** Masaüstü, tablet ve mobil cihazlar için kusursuz UX tasarımı.
-- **🔄 Dinamik GitHub Entegrasyonu:** `script.js` içerisindeki GitHub API bağlantısı sayesinde projeler doğrudan repolardan çekilerek otomatik olarak listelenir.
+- **🔄 Dinamik GitHub Entegrasyonu:** `src/services/github/` (HTTP) + `src/hooks/useGithubPortfolioProjects.ts` + `src/core/config` (VITE_* varsayılanları).
 - **🌐 Cloudflare Workers Entegrasyonu:** `workers/cloudflare-worker.js` ile uç noktada (edge computing) serverless fonksiyonlar çalıştırabilme altyapısı (Header yönetimi, iletişim formları veya API proxy işlemleri için).
-- **🗺️ GIS Proje Vitrini:** Özel olarak tasarlanmış `gis-project.html` sayfasında, R Studio kullanarak geliştirilen CBS (GIS) tabanlı mekansal analiz projelerinin modern bir sunumu.
+- **🗺️ GIS Proje Vitrini:** `public/gis-project.html` (yayında `/gis-project.html`) — R ile CBS analiz sunumu.
 
 ## 📂 Mimari Yapı
 
 ```text
 huseyinemretech.github.io/
-├── index.html              # Ana portfolyo sayfası (Semantic HTML5)
-├── gis-project.html        # CBS/GIS analiz sunum sayfası
-├── makine-ogrenmesi.html   # Makine öğrenmesi proje sayfası
-├── hci-adaptive-ui.html    # HCI adaptif UI proje sayfası
+├── index.html              # Vite girişi — React portföy SPA
+├── public/
+│   └── gis-project.html    # Statik CBS/GIS vitrin (build → site kökü /gis-project.html)
+├── src/                    # React uygulaması (core / services / hooks / features)
 ├── assets/
-│   ├── css/                # styles.css, adaptive-*.css
-│   ├── js/                 # script.js, adaptive-*.js
-│   ├── img/                # favicon, social preview
-│   └── data/               # adaptive-content.json
+│   └── images/             # favicon, OG görseli
 ├── workers/
 │   └── cloudflare-worker.js # Serverless Edge computing
 ├── docs/                   # CLOUDFLARE_SETUP.md
-├── sunum/                  # Dijital dönüşüm sunumu
-├── araba-yikama-tahmin/    # Araba yıkama ML projesi
-├── cbs-trafik-projesi/     # CBS trafik analizi
-├── vite.config.js
+├── standalone-projects/    # Siteden bağlanan ayrı vitrin / araştırma projeleri
+│   ├── sunum/              # Dijital dönüşüm sunumu
+│   ├── araba-yikama-tahmin/# Araba yıkama ML projesi
+│   └── cbs-trafik-projesi/ # CBS trafik analizi
+├── vite.config.ts
 └── package.json
 ```
 

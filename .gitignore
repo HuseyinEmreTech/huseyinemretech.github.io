@@ -15,8 +15,8 @@ adaptive-content.json
 assets/data/adaptive-content.json
 
 # Sunum — iç notlar, raporlar (opsiyonel: kalacaksa kaldır)
-sunum/GORSEL_HATA_RAPORU.md
-sunum/SUNUM_DEGISIKLIKLER.md
+standalone-projects/sunum/GORSEL_HATA_RAPORU.md
+standalone-projects/sunum/SUNUM_DEGISIKLIKLER.md
 
 # Makale PDF — telif; repoda paylaşmak istemezsen aç
-# sunum/makale.pdf
+# standalone-projects/sunum/makale.pdf

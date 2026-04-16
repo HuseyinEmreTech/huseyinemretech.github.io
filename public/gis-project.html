@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coğrafi Bilgi Sistemleri (CBS) R Dili Analiz Projesi - Hüseyin Emre">
+    <title>CBS Projesi | Hüseyin Emre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <link rel="stylesheet" href="/assets/coursework-theme.css">
+</head>
+
+<body class="cw-page">
+    <div id="page-load-overlay" class="page-load-overlay"><div class="page-load-dot"></div></div>
+    <div class="cw-ambient" aria-hidden="true"></div>
+
+    <div class="cw-nav-mount">
+        <nav class="cw-nav-pill" aria-label="Site">
+            <a href="/index.html" class="cw-nav-logo">Hüseyin Emre</a>
+            <span class="cw-nav-dot" aria-hidden="true"></span>
+            <div class="cw-nav-links">
+                <a href="/index.html">Ana sayfa</a>
+                <a href="/index.html#coursework">Ders projeleri</a>
+                <a href="https://github.com/huseyinemretech" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="cw-main">
+        <section class="hero hero--spacious">
+            <div class="container hero-content">
+                <div class="cw-kicker">Üniversite projesi · R · CBS</div>
+                <h1 class="text-gradient">Coğrafi bilgi sistemleri<br>mekansal analiz</h1>
+                <p>
+                    R (<code>sf</code>, <code>ggplot2</code>) ile il düzeyinde trafik kazası verilerinin GADM sınırlarıyla birleştirilmesi,
+                    choropleth haritalar ve bu sayfada yer alan çok yıllı etkileşimli görünüm; ders kapsamında veri–yöntem–çıktı zincirinin belgelenmesi.
+                </p>
+                <div class="cta-group">
+                    <a href="https://github.com/huseyinemretech" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fab fa-github" style="margin-right: 8px;"></i>Kodları incele
+                    </a>
+                    <a href="/standalone-projects/cbs-trafik-projesi/README.md" class="btn btn-secondary" target="_blank" rel="noopener">README</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container cw-stack">
+                <article class="project-card">
+                    <h2 class="cw-section-title" style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.25rem;">Proje özeti</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.75;">
+                        TÜİK yapısına uygun örnek il tablosu ile GADM Türkiye il poligonları birleştirilerek mekansal birleştirme (attribute join),
+                        sınıflandırılmış choropleth ve web üzerinde yıl/gösterge seçilebilen özet harita üretilmiştir.
+                    </p>
+                    <div class="skills-list">
+                        <span class="skill-tag">RStudio</span>
+                        <span class="skill-tag">sf</span>
+                        <span class="skill-tag">ggplot2</span>
+                        <span class="skill-tag">Leaflet (web)</span>
+                        <span class="skill-tag">CRS / vektör</span>
+                    </div>
+                </article>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <article class="project-card" style="padding: 1.75rem;">
+                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">1. Veri</h3>
+                        <p style="margin: 0; color: var(--text-muted); line-height: 1.65;">
+                            Ham: GADM <code>.gpkg</code>, trafik öznitelikleri <code>.csv</code>. CRS tekilleştirme ve alan adları R tarafında kontrol edilir.
+                        </p>
+                    </article>
+                    <article class="project-card" style="padding: 1.75rem;">
+                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">2. Analiz</h3>
+                        <p style="margin: 0; color: var(--text-muted); line-height: 1.65;">
+                            İl poligonu ile tablo <strong>anahtar (il adı)</strong> üzerinden birleştirilir; gösterge olarak ölüm / yaralı sayıları haritalanır.
+                        </p>
+                    </article>
+                    <article class="project-card" style="padding: 1.75rem;">
+                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">3. Çıktı</h3>
+                        <p style="margin: 0; color: var(--text-muted); line-height: 1.65;">
+                            Statik <code>ggplot2</code> görselleri ve bu sayfadaki <strong>Leaflet</strong> etkileşimli katman (aşağıda).
+                        </p>
+                    </article>
+                </div>
+
+                <div class="project-card gis-map-shell" id="gis-map-root" style="padding: 0;">
+                    <div class="gis-map-head">
+                        <h2 id="gis-map-title">İnteraktif trafik haritası</h2>
+                        <p id="gis-map-sub">
+                            Yıl ve göstergeyi seçin; iller <strong>poligon sınırları</strong> ile renklendirilir — 2D haritada choropleth, 3D kürede il alanları değere göre yükseltilir (CARTO koyu altlık).
+                            <strong>3D küre</strong> ücretsiz WebGL (globe.gl) ve uydu dokuları; sürükleyerek döndürün, tekerlek ile yakınlaştırın.
+                            <strong>Tam sayfa</strong> ile küre ve sağdaki ayarlar tüm ekranı kaplar; <kbd>Esc</kbd> veya &quot;Tam ekrandan çık&quot; ile kapatın.
+                            <strong>2024</strong> değerleri proje CSV ile uyumludur; 2015–2023 gösterimleri aynı mekansal dağılımda ölçeklenmiş örnek seridir — resmi karşılaştırma için TÜİK tabloları kullanılmalıdır.
+                        </p>
+                        <div class="gis-map-head-actions">
+                            <div class="gis-view-tabs" role="tablist" aria-label="Harita görünümü">
+                                <button type="button" class="gis-view-tab is-active" id="gis-view-2d" role="tab" aria-selected="true">2D harita</button>
+                                <button type="button" class="gis-view-tab" id="gis-view-3d" role="tab" aria-selected="false">3D küre</button>
+                            </div>
+                            <button type="button" class="gis-fullscreen-btn" id="gis-fullscreen-btn" disabled aria-disabled="true" title="Önce 3D küre sekmesini seçin">Tam sayfa</button>
+                        </div>
+                    </div>
+                    <div id="gis-map-error" role="alert"></div>
+                    <div class="gis-map-layout">
+                        <div class="gis-map-pane">
+                            <div class="gis-map-viewport">
+                                <div class="gis-map-surface" id="gis-surface-2d" data-view="2d">
+                                    <div id="gis-leaflet-map" aria-label="Türkiye trafik yoğunluk haritası"></div>
+                                </div>
+                                <div class="gis-map-surface" id="gis-surface-3d" data-view="3d" hidden>
+                                    <div id="gis-globe-mount" class="gis-globe-mount" aria-label="Türkiye trafik verisi 3D küre"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class="gis-controls" aria-label="Harita ayarları">
+                            <div class="gis-field">
+                                <label for="gis-year">Yıl</label>
+                                <select id="gis-year" title="Gösterilecek yıl"></select>
+                            </div>
+                            <div class="gis-field">
+                                <label>Gösterge</label>
+                                <div class="gis-radio-row" id="gis-metric">
+                                    <label class="gis-radio">
+                                        <input type="radio" name="gis-metric" value="olum" checked>
+                                        Ölüm sayısı
+                                    </label>
+                                    <label class="gis-radio">
+                                        <input type="radio" name="gis-metric" value="yarali">
+                                        Yaralı sayısı
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="gis-field">
+                                <label for="gis-opacity">Dolgu şeffaflığı</label>
+                                <div class="gis-range-wrap">
+                                    <input type="range" id="gis-opacity" min="35" max="100" value="82" title="Daire dolgu opaklığı">
+                                    <span class="gis-range-val" id="gis-opacity-val">82%</span>
+                                </div>
+                            </div>
+                            <p id="gis-stat-range" class="mono text-sm" style="margin:0;color:var(--text-muted);font-size:0.78rem;line-height:1.5;"></p>
+                            <button type="button" class="gis-btn-ghost" id="gis-reset-view">Haritayı sıfırla</button>
+                            <div class="gis-legend">
+                                <div class="gis-legend-labels">
+                                    <span id="gis-legend-lo">—</span>
+                                    <span style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.65rem;">Yoğunluk</span>
+                                    <span id="gis-legend-hi">—</span>
+                                </div>
+                                <div id="gis-legend-gradient"></div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+                <article class="project-card">
+                    <h2 class="cw-section-title" style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem;">R ile choropleth (2024)</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        GADM poligonları + sürekli ölçek (Magma / Viridis). Yüksek çözünürlük PNG; rapor veya sunuma doğrudan eklenmeye uygundur.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                        <figure style="margin: 0;">
+                            <img src="standalone-projects/cbs-trafik-projesi/data/processed/harita_olum_2024.png" alt="Türkiye illere göre trafik kazası ölüm sayıları 2024" style="width: 100%; border-radius: 1rem; border: var(--glass-border);">
+                            <figcaption style="color: var(--text-muted); margin-top: 0.75rem; font-size: 0.9rem;">Ölüm — Magma</figcaption>
+                        </figure>
+                        <figure style="margin: 0;">
+                            <img src="standalone-projects/cbs-trafik-projesi/data/processed/harita_yarali_2024.png" alt="Türkiye illere göre trafik kazası yaralı sayıları 2024" style="width: 100%; border-radius: 1rem; border: var(--glass-border);">
+                            <figcaption style="color: var(--text-muted); margin-top: 0.75rem; font-size: 0.9rem;">Yaralı — Viridis</figcaption>
+                        </figure>
+                    </div>
+                </article>
+
+                <article class="project-card" style="padding: 0; overflow: hidden;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px 24px; border-bottom: var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
+                        <span class="mono text-sm" style="color: var(--text-secondary);"><i class="fas fa-terminal" style="margin-right: 8px;"></i>R örneği</span>
+                        <div style="display: flex; gap: 6px;">
+                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></span>
+                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></span>
+                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></span>
+                        </div>
+                    </div>
+                    <div style="padding: 2rem; background: rgba(0,0,0,0.35);">
+                        <code class="mono" style="color: var(--text-primary); font-size: 0.9rem; line-height: 1.85;">
+                            <span style="color: var(--text-muted);"># Paketler</span><br>
+                            <span style="color: var(--accent-secondary);">library</span>(sf)<br>
+                            <span style="color: var(--accent-secondary);">library</span>(ggplot2)<br><br>
+                            <span style="color: var(--text-muted);"># GADM il okuma</span><br>
+                            iller &lt;- <span style="color: var(--accent-primary);">st_read</span>(<span style="color: var(--success);">"turkiye_iller_gadm.gpkg"</span>, layer = <span style="color: var(--success);">"ADM_ADM_1"</span>)<br><br>
+                            <span style="color: var(--text-muted);"># Trafik tablosu ile join + geom_sf</span><br>
+                            <span style="color: var(--accent-primary);">ggplot</span>(birlesik) +<br>
+                            &nbsp;&nbsp;<span style="color: var(--accent-primary);">geom_sf</span>(<span style="color: var(--accent-secondary);">aes</span>(fill = olum_2024)) +
+                        </code>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container disable-select">
+            <p>© 2026 Hüseyin Emre · CBS ders projesi · <a href="/index.html#coursework" style="color: var(--accent-secondary); text-decoration: none;">Ders projeleri</a></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="standalone-projects/cbs-trafik-projesi/gis-choropleth.js" defer></script>
+    <script>
+      requestAnimationFrame(function () {
+        var el = document.getElementById('page-load-overlay')
+        if (el) el.classList.add('is-hidden')
+      })
+    </script>
+</body>
+
+</html>
