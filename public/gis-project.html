@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kuresel yol guvenligi atlasi - ulke bazli 2D ve 3D veri gorsellestirmesi">
-    <title>Kuresel Yol Guvenligi | Huseyin Emre</title>
+    <meta name="description" content="Küresel yol güvenliği atlası — ülke bazlı 2D ve 3D veri görselleştirmesi">
+    <title>Küresel yol güvenliği | Hüseyin Emre</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
             <div class="cw-nav-links">
                 <a href="/">Ana sayfa</a>
                 <a href="/#coursework">Ders projeleri</a>
-                <a href="https://github.com/huseyinemretech" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://github.com/huseyinemretech/huseyinemretech.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
         </nav>
     </div>
@@ -34,15 +34,21 @@
     <main class="cw-main">
         <section class="hero hero--spacious">
             <div class="container hero-content">
-                <div class="cw-kicker">Universite projesi · CBS · Kuresel veri gorsellestirme</div>
-                <h1 class="text-gradient">Kuresel yol guvenligi<br>2D ve 3D atlas</h1>
+                <div class="cw-kicker">Üniversite projesi · CBS · Küresel veri görselleştirme</div>
+                <h1 class="text-gradient">Küresel yol güvenliği<br>2D ve 3D atlas</h1>
                 <p>
-                    Bu proje, Dunya Bankasi ve WHO tabanli <code>SH.STA.TRAF.P5</code> gostergesi ile
-                    ulkelerin yol trafik kaynakli olum oranlarini karsilastirir. Ayni veri hem 2D
-                    choropleth haritada hem de 3D kure uzerinde yukseltilmis ulke poligonlari ile sunulur.
+                    Bu proje, Dünya Bankası ve WHO tabanlı <code>SH.STA.TRAF.P5</code> göstergesi ile
+                    ülkelerin yol trafik kaynaklı ölüm oranlarını karşılaştırır. Aynı veri hem 2D
+                    choropleth haritada hem de 3D küre üzerinde yükseltilmiş ülke poligonları ile sunulur.
+                </p>
+                <p class="cw-gis-scope-note" style="margin-top:1rem;font-size:0.95rem;color:var(--text-muted);line-height:1.65;max-width:42rem;">
+                    <strong>Kapsam notu:</strong> Bu sayfa yalnızca <strong>ülke (küresel)</strong> düzeyindedir.
+                    Türkiye <strong>il</strong> bazlı choropleth ve örnek trafik tablosu aynı depo klasöründe
+                    (<abbr title="Coğrafi Bilgi Sistemleri">CBS</abbr> trafik projesi, R ile PNG çıktıları) bulunur;
+                    canlı vitrinde il haritası <strong>gösterilmez</strong> — ayrıntı için README’deki bölüm 2’ye bakın.
                 </p>
                 <div class="cta-group">
-                    <a href="https://github.com/huseyinemretech" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <a href="https://github.com/huseyinemretech/huseyinemretech.github.io/tree/main/standalone-projects/cbs-trafik-projesi" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                         <i class="fab fa-github" style="margin-right: 8px;"></i>Kodları incele
                     </a>
                     <a href="/standalone-projects/cbs-trafik-projesi/README.md" class="btn btn-secondary" target="_blank" rel="noopener">README</a>
@@ -53,11 +59,14 @@
         <section>
             <div class="container cw-stack">
                 <article class="project-card">
-                    <h2 class="cw-section-title" style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.25rem;">Proje ozeti</h2>
+                    <h2 class="cw-section-title" style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.25rem;">Proje özeti</h2>
                     <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.75;">
-                        173 ulke siniri ile Dunya Bankasi yol trafik olum orani serisi ISO-3 kodlari
-                        uzerinden birlestirildi. Amac, ulke duzeyinde yol guvenligi riskini sade,
-                        karsilastirilabilir ve sunumda etkileyici bir sekilde gostermek.
+                        <strong>173</strong> ülke poligonu (<code>world_countries_110m.geojson</code>, alan <code>iso3</code>) ile
+                        Dünya Bankası <code>SH.STA.TRAF.P5</code> serisi birleştirildi. Bu repodaki
+                        <code>world_road_safety.json</code> kesiti <strong>2000–2019</strong> yıllarını içerir; çoğu yılda
+                        yaklaşık <strong>165</strong> ülkede sayısal değer vardır (2016’da 166). Sağ paneldeki
+                        &quot;Kapsam&quot; satırı seçilen yıl için bu sayıyı gösterir. Daha yeni yıllar için JSON’un API’den
+                        yenilenmesi gerekir.
                     </p>
                     <div class="skills-list">
                         <span class="skill-tag">World Bank API</span>
@@ -70,36 +79,36 @@
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
                     <article class="project-card" style="padding: 1.75rem;">
-                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">1. Gosterge</h3>
+                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">1. Gösterge</h3>
                         <p style="margin: 0; color: var(--text-muted); line-height: 1.65;">
-                            <strong>Road traffic mortality per 100,000 population</strong> kullanildi.
-                            Bu secim, buyuk nufuslu ulkelerin mutlak sayilarla asiri one cikmasini engeller.
+                            <strong>Road traffic mortality per 100,000 population</strong> kullanıldı.
+                            Bu seçim, büyük nüfuslu ülkelerin mutlak sayılarla aşırı öne çıkmasını engeller.
                         </p>
                     </article>
                     <article class="project-card" style="padding: 1.75rem;">
-                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">2. Eslestirme</h3>
+                        <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">2. Eşleştirme</h3>
                         <p style="margin: 0; color: var(--text-muted); line-height: 1.65;">
-                            Dunya ulke sinirlari ile zaman serisi <strong>ISO-3 ulke kodu</strong> ile
-                            birlestirildi. Bu tercih, ad farklarindan dogan eslestirme hatalarini azaltti.
+                            Dünya ülke sınırları ile zaman serisi <strong>ISO-3 ülke kodu</strong> ile
+                            birleştirildi. Bu tercih, ad farklarından doğan eşleştirme hatalarını azalttı.
                         </p>
                     </article>
                     <article class="project-card" style="padding: 1.75rem;">
                         <h3 style="margin: 0 0 0.75rem; font-size: 1rem; color: var(--accent-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em;">3. Sunum</h3>
                         <p style="margin: 0; color: var(--text-muted); line-height: 1.65;">
-                            2D harita analitik okumayi kolaylastirir; 3D kure ise ayni veriyi
-                            daha etkileyici ve akilda kalici bicimde sunar.
+                            2D harita analitik okumayı kolaylaştırır; 3D küre ise aynı veriyi
+                            daha etkileyici ve akılda kalıcı biçimde sunar.
                         </p>
                     </article>
                 </div>
 
                 <div class="project-card gis-map-shell" id="gis-map-root" style="padding: 0;">
                     <div class="gis-map-head">
-                        <h2 id="gis-map-title">Kuresel yol guvenligi haritasi</h2>
+                        <h2 id="gis-map-title">Küresel yol güvenliği haritası</h2>
                         <p id="gis-map-sub">
-                            Yili secin; ulkeler <strong>yol trafik olum orani</strong> ile renklendirilir.
-                            2D haritada choropleth, 3D kurede ise ayni ulkeler degerlerine gore yukselir.
-                            <strong>Tam sayfa</strong> ile kure ve sag panel tum ekrani kaplar; <kbd>Esc</kbd>
-                            veya &quot;Tam ekrandan cik&quot; ile kapatabilirsiniz.
+                            Yılı seçin; ülkeler <strong>yol trafik ölüm oranı</strong> ile renklendirilir.
+                            2D haritada choropleth, 3D kürede ise aynı ülkeler değerlerine göre yükselir.
+                            <strong>Tam sayfa</strong> ile küre ve sağ panel tüm ekranı kaplar; <kbd>Esc</kbd>
+                            veya &quot;Tam ekrandan çık&quot; ile kapatabilirsiniz.
                         </p>
                         <div class="gis-map-head-actions">
                             <div class="gis-view-tabs" role="tablist" aria-label="Harita görünümü">
@@ -114,65 +123,65 @@
                         <div class="gis-map-pane">
                             <div class="gis-map-viewport">
                                 <div class="gis-map-surface" id="gis-surface-2d" data-view="2d">
-                                    <div id="gis-leaflet-map" aria-label="Dunya yol guvenligi haritasi"></div>
+                                    <div id="gis-leaflet-map" aria-label="Dünya yol güvenliği haritası"></div>
                                 </div>
                                 <div class="gis-map-surface" id="gis-surface-3d" data-view="3d" hidden>
-                                    <div id="gis-globe-mount" class="gis-globe-mount" aria-label="Dunya yol guvenligi 3D kure"></div>
+                                    <div id="gis-globe-mount" class="gis-globe-mount" aria-label="Dünya yol güvenliği 3D küre"></div>
                                 </div>
                             </div>
                         </div>
                         <aside class="gis-controls" aria-label="Harita ayarları">
                             <div class="gis-field">
-                                <label for="gis-year">Yil</label>
-                                <select id="gis-year" title="Gosterilecek yil"></select>
+                                <label for="gis-year">Yıl</label>
+                                <select id="gis-year" title="Gösterilecek yıl"></select>
                             </div>
                             <div class="gis-field">
-                                <span class="gis-field-label">Gosterge</span>
+                                <span class="gis-field-label">Gösterge</span>
                                 <div class="gis-metric-box">
-                                    <strong>Olum orani / 100.000 kisi</strong>
+                                    <strong>Ölüm oranı / 100.000 kişi</strong>
                                     <span id="gis-source-note">World Bank API · WHO Global Health Observatory</span>
                                 </div>
                             </div>
                             <div class="gis-field">
-                                <label for="gis-opacity">Dolgu seffafligi</label>
+                                <label for="gis-opacity">Dolgu şeffaflığı</label>
                                 <div class="gis-range-wrap">
-                                    <input type="range" id="gis-opacity" min="35" max="100" value="82" title="Harita dolgu opakligi">
+                                    <input type="range" id="gis-opacity" min="35" max="100" value="82" title="Harita dolgu opaklığı">
                                     <span class="gis-range-val" id="gis-opacity-val">82%</span>
                                 </div>
                             </div>
                             <p id="gis-stat-range" class="mono text-sm" style="margin:0;color:var(--text-muted);font-size:0.78rem;line-height:1.5;"></p>
                             <div class="gis-selection-box" id="gis-selection-panel" aria-live="polite">
-                                <div class="gis-selection-box-title">Secili ulke</div>
+                                <div class="gis-selection-box-title">Seçili ülke</div>
                                 <div class="gis-selection-rows">
                                     <div class="gis-selection-row">
-                                        <span class="gis-selection-label">Ulke</span>
-                                        <span id="gis-sel-country" class="gis-selection-val">Haritadan secin</span>
+                                        <span class="gis-selection-label">Ülke</span>
+                                        <span id="gis-sel-country" class="gis-selection-val">Haritadan seçin</span>
                                     </div>
                                     <div class="gis-selection-row">
-                                        <span class="gis-selection-label">Olum / 100k</span>
+                                        <span class="gis-selection-label">Ölüm / 100k</span>
                                         <span id="gis-sel-value" class="gis-selection-val">—</span>
                                     </div>
                                     <div class="gis-selection-row">
-                                        <span class="gis-selection-label">Dunya ort.</span>
+                                        <span class="gis-selection-label">Dünya ort.</span>
                                         <span id="gis-sel-avg" class="gis-selection-val">—</span>
                                     </div>
                                     <div class="gis-selection-row">
-                                        <span class="gis-selection-label">Sira (risk)</span>
+                                        <span class="gis-selection-label">Sıra (risk)</span>
                                         <span id="gis-sel-rank" class="gis-selection-val">—</span>
                                     </div>
                                 </div>
-                                <p class="gis-selection-hint" id="gis-sel-hint">2D haritada veya 3D kurde bir ulkeye tiklayin.</p>
-                                <button type="button" class="gis-sel-clear" id="gis-sel-clear" hidden>Secimi kaldir</button>
+                                <p class="gis-selection-hint" id="gis-sel-hint">2D haritada veya 3D kürede bir ülkeye tıklayın.</p>
+                                <button type="button" class="gis-sel-clear" id="gis-sel-clear" hidden>Seçimi kaldır</button>
                             </div>
                             <div class="gis-top-box">
-                                <div class="gis-top-box-title">En yuksek riskli ulkeler</div>
+                                <div class="gis-top-box-title">En yüksek riskli ülkeler</div>
                                 <ol id="gis-top-countries" class="gis-top-countries"></ol>
                             </div>
-                            <button type="button" class="gis-btn-ghost" id="gis-reset-view">Haritayi sifirla</button>
+                            <button type="button" class="gis-btn-ghost" id="gis-reset-view">Haritayı sıfırla</button>
                             <div class="gis-legend">
                                 <div class="gis-legend-labels">
                                     <span id="gis-legend-lo">—</span>
-                                    <span style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.65rem;">Olum / 100k</span>
+                                    <span style="letter-spacing:0.12em;text-transform:uppercase;font-size:0.65rem;">Ölüm / 100k</span>
                                     <span id="gis-legend-hi">—</span>
                                 </div>
                                 <div id="gis-legend-gradient"></div>
@@ -182,25 +191,25 @@
                 </div>
 
                 <article class="project-card">
-                    <h2 class="cw-section-title" style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem;">Neden bu gosterge?</h2>
+                    <h2 class="cw-section-title" style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem;">Neden bu gösterge?</h2>
                     <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                        Ulke bazli mutlak olum sayisi, buyuk nufuslu ulkeleri dogal olarak one cikarir.
-                        Bu nedenle burada <strong>100.000 kisi basina olum</strong> kullanildi; boylece
-                        risk dagilimi daha adil, akademik olarak daha savunulabilir ve yorumlanabilir hale geldi.
+                        Ülke bazlı mutlak ölüm sayısı, büyük nüfuslu ülkeleri doğal olarak öne çıkarır.
+                        Bu nedenle burada <strong>100.000 kişi başına ölüm</strong> kullanıldı; böylece
+                        risk dağılımı daha adil, akademik olarak daha savunulabilir ve yorumlanabilir hale geldi.
                     </p>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
                         <article class="project-card" style="padding: 1.75rem;">
-                            <h3 style="margin: 0 0 0.75rem;">Akademik guc</h3>
+                            <h3 style="margin: 0 0 0.75rem;">Akademik güç</h3>
                             <p style="margin: 0; color: var(--text-muted); line-height: 1.7;">
-                                Gosterge dogrudan WHO kaynaklidir ve Dunya Bankasi API uzerinden alinir.
-                                Boylece veri kaynagi, metric tanimi ve yil secimi acik bicimde savunulabilir.
+                                Gösterge doğrudan WHO kaynaklıdır ve Dünya Bankası API üzerinden alınır.
+                                Böylece veri kaynağı, ölçüt tanımı ve yıl seçimi açık biçimde savunulabilir.
                             </p>
                         </article>
                         <article class="project-card" style="padding: 1.75rem;">
                             <h3 style="margin: 0 0 0.75rem;">Sunum etkisi</h3>
                             <p style="margin: 0; color: var(--text-muted); line-height: 1.7;">
-                                2D harita analitik okumayi kolaylastirir; 3D kure ise ayni veriyi
-                                mekansal olarak daha etkileyici sunar. Bu ikili yapi sinif icin guclu bir demo etkisi yaratir.
+                                2D harita analitik okumayı kolaylaştırır; 3D küre ise aynı veriyi
+                                mekânsal olarak daha etkileyici sunar. Bu ikili yapı sınıf için güçlü bir demo etkisi yaratır.
                             </p>
                         </article>
                     </div>
@@ -208,7 +217,7 @@
 
                 <article class="project-card" style="padding: 0; overflow: hidden;">
                     <div style="background: rgba(255,255,255,0.05); padding: 12px 24px; border-bottom: var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
-                        <span class="mono text-sm" style="color: var(--text-secondary);"><i class="fas fa-terminal" style="margin-right: 8px;"></i>Veri akisi</span>
+                        <span class="mono text-sm" style="color: var(--text-secondary);"><i class="fas fa-terminal" style="margin-right: 8px;"></i>Veri akışı</span>
                         <div style="display: flex; gap: 6px;">
                             <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></span>
                             <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></span>
@@ -217,13 +226,13 @@
                     </div>
                     <div style="padding: 2rem; background: rgba(0,0,0,0.35);">
                         <code class="mono" style="color: var(--text-primary); font-size: 0.9rem; line-height: 1.85;">
-                            <span style="color: var(--text-muted);"># 1) Gostergesi al</span><br>
+                            <span style="color: var(--text-muted);"># 1) Gösterge verisini çek</span><br>
                             <span style="color: var(--accent-primary);">GET</span> /country/all/indicator/<span style="color: var(--success);">SH.STA.TRAF.P5</span><br><br>
-                            <span style="color: var(--text-muted);"># 2) Ulke sinirlarini al</span><br>
-                            <span style="color: var(--accent-primary);">GeoJSON</span> + <span style="color: var(--accent-secondary);">iso_a3</span><br><br>
-                            <span style="color: var(--text-muted);"># 3) Veri birlestir</span><br>
+                            <span style="color: var(--text-muted);"># 2) Ülke sınırlarını al</span><br>
+                            <span style="color: var(--accent-primary);">GeoJSON</span> · özellik: <span style="color: var(--accent-secondary);">properties.iso3</span><br><br>
+                            <span style="color: var(--text-muted);"># 3) Veriyi birleştir</span><br>
                             <span style="color: var(--accent-primary);">join</span>(country_iso3, feature.properties.iso3)<br><br>
-                            <span style="color: var(--text-muted);"># 4) Sunumla</span><br>
+                            <span style="color: var(--text-muted);"># 4) Sun</span><br>
                             2D <span style="color: var(--accent-primary);">choropleth</span> + 3D <span style="color: var(--accent-primary);">polygon extrusion</span>
                         </code>
                     </div>
@@ -234,7 +243,7 @@
 
     <footer>
         <div class="container disable-select">
-            <p>© 2026 Huseyin Emre · Kuresel yol guvenligi atlasi · <a href="/#coursework" style="color: var(--accent-secondary); text-decoration: none;">Ders projeleri</a></p>
+            <p>© 2026 Hüseyin Emre · Küresel yol güvenliği atlası · <a href="/#coursework" style="color: var(--accent-secondary); text-decoration: none;">Ders projeleri</a></p>
         </div>
     </footer>
 

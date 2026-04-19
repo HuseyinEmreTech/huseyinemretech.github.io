@@ -1,6 +1,6 @@
 /**
- * Kuresel yol guvenligi atlasi.
- * Veri: World Bank / WHO yol trafik olum orani + dunya ulke GeoJSON.
+ * Küresel yol güvenliği atlası.
+ * Veri: World Bank / WHO yol trafik ölüm oranı + dünya ülke GeoJSON.
  */
 ;(function () {
   const script = document.querySelector('script[src*="gis-choropleth"]')
@@ -260,7 +260,7 @@
       }
       s.onerror = function () {
         globeBundlePromise = null
-        reject(new Error('globe.gl yuklenemedi'))
+        reject(new Error('globe.gl yüklenemedi'))
       }
       document.head.appendChild(s)
     })
@@ -310,7 +310,7 @@
                   ' · ' +
                   d.year +
                   '</span><hr style="border:none;border-top:1px solid rgba(255,255,255,.15);margin:6px 0">' +
-                  '<span style="color:#a5b4fc">Olum / 100k: </span><strong>' +
+                  '<span style="color:#a5b4fc">Ölüm / 100k: </span><strong>' +
                   d.valueText +
                   '</strong></div>'
                 )
@@ -336,7 +336,7 @@
         if (errorBox) {
           errorBox.style.display = 'block'
           errorBox.textContent =
-            '3D kure yuklenemedi (ag veya tarayici engeli). 2D harita kullanilmaya devam edebilir.'
+            '3D küre yüklenemedi (ağ veya tarayıcı engeli). 2D harita kullanılmaya devam edebilir.'
         }
         if (typeof done === 'function') done()
       })
@@ -375,7 +375,7 @@
       avgEl.textContent = stats.avg == null ? '—' : fmt(stats.avg)
     }
     if (!selectedIso3) {
-      countryEl.textContent = 'Haritadan secin'
+      countryEl.textContent = 'Haritadan seçin'
       if (valueEl) valueEl.textContent = '—'
       if (rankEl) rankEl.textContent = '—'
       if (clearBtn) clearBtn.hidden = true
@@ -395,7 +395,7 @@
       } else {
         const rank = stats.rankByIso.get(selectedIso3)
         rankEl.textContent =
-          rank != null && stats.n ? rank + ' / ' + stats.n + ' ulke' : '—'
+          rank != null && stats.n ? rank + ' / ' + stats.n + ' ülke' : '—'
       }
     }
   }
@@ -425,7 +425,7 @@
 
   function updateHud(lo, hi) {
     const title = document.getElementById('gis-map-title')
-    if (title) title.textContent = currentYear + ' — Ulke bazli yol trafik olum orani'
+    if (title) title.textContent = currentYear + ' — Ülke bazlı yol trafik ölüm oranı'
     const stat = document.getElementById('gis-stat-range')
     if (stat) {
       const coverage =
@@ -437,7 +437,7 @@
         hi.toFixed(1).replace('.', ',') +
         ' · Kapsam ' +
         coverage +
-        ' ulke'
+        ' ülke'
     }
   }
 
@@ -523,19 +523,19 @@
     if (mapFullscreen) {
       btn.disabled = false
       btn.removeAttribute('aria-disabled')
-      btn.textContent = 'Tam ekrandan cik'
-      btn.title = 'Tam ekrandan cik (Esc)'
+      btn.textContent = 'Tam ekrandan çık'
+      btn.title = 'Tam ekrandan çık (Esc)'
       return
     }
     btn.textContent = 'Tam sayfa'
     if (viewMode === '3d') {
       btn.disabled = false
       btn.removeAttribute('aria-disabled')
-      btn.title = 'Kure ve menuleri tam ekran goster'
+      btn.title = 'Küre ve menüleri tam ekran göster'
     } else {
       btn.disabled = true
       btn.setAttribute('aria-disabled', 'true')
-      btn.title = 'Once 3D kure sekmesini secin'
+      btn.title = 'Önce 3D küre sekmesini seçin'
     }
   }
 
@@ -665,7 +665,7 @@
         if (errorBox) {
           errorBox.style.display = 'block'
           errorBox.textContent =
-            'Harita verisi veya ulke sinirlari yuklenemedi. Sayfayi sunucu uzerinden actiginizdan emin olun.'
+            'Harita verisi veya ülke sınırları yüklenemedi. Sayfayı sunucu üzerinden açtığınızdan emin olun.'
         }
       })
   }

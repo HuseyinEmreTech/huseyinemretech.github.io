@@ -26,7 +26,7 @@ This project is a high-performance digital identity and portfolio platform with 
 - **📱 End-to-End Responsive:** Flawless UX design for desktop, tablet, and mobile devices.
 - **🔄 Dynamic GitHub Integration:** `src/services/github/` (HTTP client) + `src/hooks/useGithubPortfolioProjects.ts` + `src/core/config` (VITE_* defaults).
 - **🌐 Cloudflare Workers Integration:** Infrastructure for running serverless functions at the edge via `workers/cloudflare-worker.js` (header management, contact forms, API proxy).
-- **🗺️ GIS Project Showcase:** Static page at `public/gis-project.html` (served as `/gis-project.html` after build).
+- **🗺️ GIS / CBS coursework showcase:** `public/gis-project.html` → `/gis-project.html` — **global (country-level)** atlas only (`SH.STA.TRAF.P5`, **2000–2019**, **173** polygons). Turkey **provincial** maps are not on that page; see `standalone-projects/cbs-trafik-projesi/README.md` section 2.
 - **🌐 Full Multilingual Support:** Comprehensive Turkish and English support across the entire platform.
 
 ## 📂 Architectural Structure
@@ -35,7 +35,7 @@ This project is a high-performance digital identity and portfolio platform with 
 huseyinemretech.github.io/
 ├── index.html           # Vite entry — React portfolio SPA
 ├── public/
-│   └── gis-project.html # Static GIS showcase (copied to site root on build)
+│   └── gis-project.html # Static CBS/GIS atlas page (copied to site root on build)
 ├── src/                 # React application (feature-based)
 ├── assets/images/       # Favicon, Open Graph image
 ├── standalone-projects/ # Linked coursework / demos (not bundled)

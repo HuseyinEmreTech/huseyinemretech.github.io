@@ -18,7 +18,7 @@ const turkishMessages = {
     'İş süreçlerinizi optimize eden, kullanıcı odaklı ve yüksek performanslı kurumsal çözümler geliştiriyorum.',
   'btn-proj': 'Projeleri Gör',
   'btn-contact': 'İletişime Geç',
-  'hero-coursework-link': 'Ders projeleri (CBS & ML)',
+  'hero-coursework-link': 'Ders projeleri (CBS ve ML)',
   'exp-years': 'Yıl Deneyim',
   'sec-about': 'Profil',
   'about-text':
@@ -55,8 +55,8 @@ const turkishMessages = {
     'Coğrafi bilgi sistemleri ve makine öğrenmesi dersleri için hazırlanan, siteden ayrı sunulan statik sayfalar.',
   'coursework-gis-title': 'Coğrafi bilgi sistemleri projesi',
   'coursework-gis-desc':
-    'CBS dersi kapsamında harita ve trafik verileriyle çalışılan proje sayfası; görseller ve özet içerik.',
-  'coursework-gis-cta': 'GIS proje sayfasını aç',
+    'CBS: /gis-project.html yalnızca küresel (ülke) atlas; Türkiye il haritası webde yok, il çıktıları ve R betikleri repoda aynı klasörde.',
+  'coursework-gis-cta': 'CBS proje sayfasını aç',
   'coursework-ml-title': 'Araba yıkama talep tahmini',
   'coursework-ml-desc':
     'Makine öğrenmesi dersi kapsamında talep tahmini ve harita görselleştirmesi için hazırlanan web arayüzü.',
@@ -198,8 +198,8 @@ const englishMessages: Record<TranslationKey, string> = {
     'Standalone pages for geographic information systems and machine learning coursework, hosted outside the React app.',
   'coursework-gis-title': 'Geographic information systems project',
   'coursework-gis-desc':
-    'Course GIS project page with maps and traffic-related visuals and narrative content.',
-  'coursework-gis-cta': 'Open GIS project page',
+    'GIS coursework: /gis-project.html is the global (country) atlas only; Turkey provincial maps are not on that page—sample data, R scripts, and PNG outputs live in the same repo folder.',
+  'coursework-gis-cta': 'Open CBS project page',
   'coursework-ml-title': 'Car wash demand forecasting',
   'coursework-ml-desc':
     'Machine learning coursework demo with demand prediction and map-style visualization.',

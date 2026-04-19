@@ -28,7 +28,7 @@ Bu proje, geleneksel tasarımların ötesine geçerek tamamen **Modern Professio
 - **📱 Uçtan Uca Responsive:** Masaüstü, tablet ve mobil cihazlar için kusursuz UX tasarımı.
 - **🔄 Dinamik GitHub Entegrasyonu:** `src/services/github/` (HTTP) + `src/hooks/useGithubPortfolioProjects.ts` + `src/core/config` (VITE_* varsayılanları).
 - **🌐 Cloudflare Workers Entegrasyonu:** `workers/cloudflare-worker.js` ile uç noktada (edge computing) serverless fonksiyonlar çalıştırabilme altyapısı (Header yönetimi, iletişim formları veya API proxy işlemleri için).
-- **🗺️ GIS Proje Vitrini:** `public/gis-project.html` (yayında `/gis-project.html`) — R ile CBS analiz sunumu.
+- **🗺️ CBS proje vitrini:** `public/gis-project.html` — yalnızca **ülke** düzeyi küresel atlas (`SH.STA.TRAF.P5`, **2000–2019**, **173** poligon). Türkiye **il** haritası bu sayfada yok; il çıktıları ve R tarafı `standalone-projects/cbs-trafik-projesi/README.md` bölüm 2’de.
 
 ## 📂 Mimari Yapı
 
@@ -46,7 +46,7 @@ huseyinemretech.github.io/
 ├── standalone-projects/    # Siteden bağlanan ayrı vitrin / araştırma projeleri
 │   ├── sunum/              # Dijital dönüşüm sunumu
 │   ├── araba-yikama-tahmin/# Araba yıkama ML projesi
-│   └── cbs-trafik-projesi/ # CBS trafik analizi
+│   └── cbs-trafik-projesi/ # CBS: webde küresel atlas; TR il R/PNG (vitrinde il haritası yok)
 ├── vite.config.ts
 └── package.json
 ```
