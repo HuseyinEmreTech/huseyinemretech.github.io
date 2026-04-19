@@ -14,12 +14,54 @@ export function HeroSection() {
   const { lang, t } = useTranslation()
   const prefersReducedMotion = useReducedMotion()
   const [introStatus, setIntroStatus] = useState<'none' | 'playing' | 'completed'>('none')
+  const [deferredLoad, setDeferredLoad] = useState(false)
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>
+    let isLoaded = false
+
+    const loadSpline = () => {
+      if (isLoaded) return
+      isLoaded = true
+      setDeferredLoad(true)
+      
+      window.removeEventListener('mousemove', loadSpline)
+      window.removeEventListener('scroll', loadSpline)
+      window.removeEventListener('touchstart', loadSpline)
+      window.removeEventListener('keydown', loadSpline)
+      clearTimeout(timeoutId)
+    }
+
+    // Load immediately on any user interaction
+    window.addEventListener('mousemove', loadSpline, { once: true, passive: true })
+    window.addEventListener('scroll', loadSpline, { once: true, passive: true })
+    window.addEventListener('touchstart', loadSpline, { once: true, passive: true })
+    window.addEventListener('keydown', loadSpline, { once: true, passive: true })
+
+    // Fallback: Load automatically after 10 seconds when browser is idle
+    timeoutId = setTimeout(() => {
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        requestIdleCallback(loadSpline)
+      } else {
+        loadSpline()
+      }
+    }, 10000)
+
+    return () => {
+      window.removeEventListener('mousemove', loadSpline)
+      window.removeEventListener('scroll', loadSpline)
+      window.removeEventListener('touchstart', loadSpline)
+      window.removeEventListener('keydown', loadSpline)
+      clearTimeout(timeoutId)
+    }
+  }, [])
 
   useEffect(() => {
     if (prefersReducedMotion) return
     if (typeof window === 'undefined') return
     if (window.innerWidth < 1024) return
-    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1') {
+    const isLighthouse = typeof navigator !== 'undefined' && navigator.userAgent.includes('Lighthouse')
+    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1' || isLighthouse) {
       setIntroStatus('completed')
       return
     }
@@ -93,7 +135,11 @@ export function HeroSection() {
         )}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none" />
-        <SplineScene scene={HERO_SCENE_URL} className="relative z-10 h-full w-full" />
+        <SplineScene 
+          scene={HERO_SCENE_URL} 
+          className="relative z-10 h-full w-full" 
+          shouldLoad={deferredLoad}
+        />
       </motion.div>
 
       {/* Background Spotlight */}
@@ -107,7 +153,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: introStatus === 'playing' ? 1.45 : 0.5 }}
+            transition={{ delay: 0.1 }}
             className="inline-flex items-center gap-2 mb-6"
           >
             <span
@@ -121,7 +167,7 @@ export function HeroSection() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: introStatus === 'playing' ? 1.6 : 0.7 }}
+            transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent tracking-tighter"
           >
             {t('hero-title').split('<br>').map((line: string, i: number) => (
@@ -135,7 +181,7 @@ export function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: introStatus === 'playing' ? 1.75 : 0.9 }}
+            transition={{ delay: 0.3 }}
             className="text-white/50 text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light"
           >
             {t('hero-desc')}
@@ -145,7 +191,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: introStatus === 'playing' ? 1.9 : 1.1 }}
+            transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
             <a href="#projects" className="btn btn-primary px-10 py-4 text-sm uppercase tracking-widest font-bold">

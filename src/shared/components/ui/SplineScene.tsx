@@ -1,17 +1,28 @@
 import { Suspense, lazy, useMemo } from 'react'
 import { hasWebGL } from '@/shared/lib/webgl'
 
-const Spline = lazy(() => import('@splinetool/react-spline'))
+const Spline = lazy(() => {
+  const original = console.warn
+  console.warn = (...args: unknown[]) => {
+    const msg = typeof args[0] === 'string' ? args[0] : ''
+    if (msg.includes('Multiple instances of Three.js') || msg.includes('updating from')) return
+    original(...args)
+  }
+  return import('@splinetool/react-spline').finally(() => {
+    console.warn = original
+  })
+})
 
 interface SplineSceneProps {
   scene: string
   className?: string
+  shouldLoad?: boolean
 }
 
-export function SplineScene({ scene, className }: SplineSceneProps) {
+export function SplineScene({ scene, className, shouldLoad = true }: SplineSceneProps) {
   const webglOk = useMemo(() => hasWebGL(), [])
 
-  if (!webglOk) {
+  if (!webglOk || !shouldLoad) {
     return (
       <div
         className={`w-full h-full min-h-[12rem] rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent ${className ?? ''}`}
@@ -23,9 +34,10 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   return (
     <Suspense
       fallback={
-        <div className="w-full h-full flex items-center justify-center">
-          <span className="loader"></span>
-        </div>
+        <div
+          className={`w-full h-full min-h-[22rem] rounded-2xl bg-[#020205] bg-gradient-to-b from-white/[0.04] to-transparent ${className ?? ''}`}
+          aria-hidden
+        />
       }
     >
       <Spline scene={scene} className={className} />

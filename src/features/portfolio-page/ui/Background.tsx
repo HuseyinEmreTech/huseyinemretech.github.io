@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { ShaderPlane } from '@/shared/components/ui/background-paper-shaders'
+import { MeshGradient } from '@paper-design/shaders-react'
 import { hasWebGL } from '@/shared/lib/webgl'
 
 export function Background() {
@@ -27,9 +26,13 @@ export function Background() {
       {/* Shader Layer */}
       {webglOk && enableBackground ? (
         <div className="absolute inset-0 opacity-20">
-          <Canvas camera={{ position: [0, 0, 1] }}>
-            <ShaderPlane position={[0, 0, 0]} color1="#6366f1" color2="#06b6d4" />
-          </Canvas>
+          <MeshGradient
+            style={{ width: '100%', height: '100%' }}
+            colors={['#020205', '#6366f1', '#06b6d4', '#020205']}
+            speed={0.3}
+            distortion={0.6}
+            swirl={0.1}
+          />
         </div>
       ) : null}
 

@@ -10,8 +10,13 @@
     <meta property="og:url" content="https://huseyinemretech.github.io">
     <meta property="og:image" content="https://huseyinemretech.github.io/assets/images/social_preview_image.png">
     <link rel="preconnect" href="https://prod.spline.design" crossorigin>
+    <link rel="dns-prefetch" href="https://prod.spline.design">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://static.cloudflareinsights.com">
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     
@@ -19,7 +24,52 @@
 </head>
 
 <body class="bg-[#020205] text-white">
-    <div id="root"></div>
+    <div id="root">
+        <style>
+            #initial-loader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #020205;
+                z-index: 99999;
+                transition: opacity 0.5s ease-out;
+            }
+            .spinner {
+                width: 40px;
+                height: 40px;
+                border: 3px solid rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                border-top-color: #06b6d4;
+                animation: spin 1s ease-in-out infinite;
+                margin-bottom: 20px;
+            }
+            .loader-text {
+                font-family: system-ui, -apple-system, sans-serif;
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 12px;
+                letter-spacing: 4px;
+                text-transform: uppercase;
+                animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.3; }
+            }
+        </style>
+        <div id="initial-loader">
+            <div class="spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
 </body>
 

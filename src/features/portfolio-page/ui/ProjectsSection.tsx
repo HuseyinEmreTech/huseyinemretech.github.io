@@ -95,6 +95,7 @@ export function ProjectsSection() {
                       href={repository.html_url}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label="View Repository on GitHub"
                       className="text-white/40 hover:text-white transition-colors"
                     >
                       <Github className="w-5 h-5" />
@@ -104,6 +105,7 @@ export function ProjectsSection() {
                         href={repository.homepage}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label="Visit Live Project"
                         className="text-white/40 hover:text-white transition-colors"
                       >
                         <ExternalLink className="w-5 h-5" />
