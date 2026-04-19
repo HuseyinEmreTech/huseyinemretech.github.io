@@ -10,12 +10,16 @@ export function PageLoader() {
   const [visible, setVisible] = useState(() => {
     if (typeof window === 'undefined') return false
     if (typeof navigator !== 'undefined' && navigator.userAgent.includes('Lighthouse')) return false
-    return window.sessionStorage.getItem(PAGE_LOADER_KEY) !== '1'
+    const alreadyShown = window.sessionStorage.getItem(PAGE_LOADER_KEY) === '1'
+    if (!alreadyShown) {
+      // Set synchronously so HeroSection's effect can read it and skip its own intro
+      window.sessionStorage.setItem(PAGE_LOADER_KEY, '1')
+    }
+    return !alreadyShown
   })
 
   useEffect(() => {
     if (!visible) return
-    window.sessionStorage.setItem(PAGE_LOADER_KEY, '1')
     const id = setTimeout(() => setVisible(false), HOLD_DURATION)
     return () => clearTimeout(id)
   }, [visible])

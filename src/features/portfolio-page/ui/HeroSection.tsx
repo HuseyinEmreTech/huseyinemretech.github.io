@@ -61,7 +61,8 @@ export function HeroSection() {
     if (typeof window === 'undefined') return
     if (window.innerWidth < 1024) return
     const isLighthouse = typeof navigator !== 'undefined' && navigator.userAgent.includes('Lighthouse')
-    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1' || isLighthouse) {
+    const pageLoaderShown = window.sessionStorage.getItem('page-loader-shown') === '1'
+    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1' || isLighthouse || pageLoaderShown) {
       setIntroStatus('completed')
       return
     }
