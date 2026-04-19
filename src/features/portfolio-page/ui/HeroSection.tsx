@@ -45,7 +45,7 @@ export function HeroSection() {
       } else {
         loadSpline()
       }
-    }, 10000)
+    }, 1500)
 
     return () => {
       window.removeEventListener('mousemove', loadSpline)
@@ -92,7 +92,6 @@ export function HeroSection() {
     <div id="about" className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center pt-20">
       {/* ── 1. The Global Robot Transition ── */}
       <motion.div
-        layout
         initial={false}
         animate={
           introStatus === 'playing'
