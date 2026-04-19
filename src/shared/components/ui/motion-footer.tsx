@@ -137,7 +137,7 @@ function FooterMarqueeRow({ items, rowKey }: { items: readonly string[]; rowKey:
 }
 
 function Magnetic({ className, children, tag, ...rest }: MagneticProps) {
-  const localRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null)
+  const localRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -145,12 +145,13 @@ function Magnetic({ className, children, tag, ...rest }: MagneticProps) {
     if (!element) return
 
     const ctx = gsap.context(() => {
-      const handleMouseMove = (e: MouseEvent) => {
+      const handleMouseMove = (e: Event) => {
+        const me = e as MouseEvent
         const rect = element.getBoundingClientRect()
         const h = rect.width / 2
         const w = rect.height / 2
-        const x = e.clientX - rect.left - h
-        const y = e.clientY - rect.top - w
+        const x = me.clientX - rect.left - h
+        const y = me.clientY - rect.top - w
 
         gsap.to(element, {
           x: x * 0.4,
@@ -192,7 +193,7 @@ function Magnetic({ className, children, tag, ...rest }: MagneticProps) {
   if (tag === 'a') {
     const { href, target, rel } = rest as { href: string; target?: string; rel?: string }
     return (
-      <a ref={localRef} href={href} target={target} rel={rel} className={cls}>
+      <a ref={localRef as React.RefObject<HTMLAnchorElement>} href={href} target={target} rel={rel} className={cls}>
         {children}
       </a>
     )
@@ -204,7 +205,7 @@ function Magnetic({ className, children, tag, ...rest }: MagneticProps) {
     'aria-label'?: string
   }
   return (
-    <button ref={localRef} type={type} onClick={onClick} className={cls} aria-label={ariaLabel}>
+    <button ref={localRef as React.RefObject<HTMLButtonElement>} type={type} onClick={onClick} className={cls} aria-label={ariaLabel}>
       {children}
     </button>
   )

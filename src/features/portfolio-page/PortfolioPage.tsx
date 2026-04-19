@@ -6,6 +6,7 @@ import { portfolioSectionComponents } from '@/features/portfolio-page/sectionReg
 import { CookieConsentBanner } from '@/features/compliance/CookieConsentBanner'
 import { LegalDialogs } from '@/features/compliance/LegalDialogs'
 import { GoogleFontLoader } from '@/features/compliance/GoogleFontLoader'
+import { PageLoader } from '@/shared/components/ui/PageLoader'
 
 const Background = lazy(() =>
   import('@/features/portfolio-page/ui/Background').then((m) => ({ default: m.Background })),
@@ -41,6 +42,7 @@ export function PortfolioPage() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <PageLoader />
       <GoogleFontLoader />
       <PortfolioNavigationBar />
       <CookieConsentBanner />

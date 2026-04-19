@@ -3,6 +3,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence, type Variants 
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/shared/lib/utils'
 import { useTranslation } from '@/features/localization/LanguageContext'
+import { type TranslationKey } from '@/features/localization/translations'
 import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutContext'
 
 const EXPAND_SCROLL_THRESHOLD = 80
@@ -78,7 +79,7 @@ export function PortfolioNavigationBar() {
     }
 
     return sectionOrder.map((id) => ({
-      name: t(keyMap[id] || `nav-${id}`),
+      name: t((keyMap[id] || `nav-${id}`) as TranslationKey),
       href: `#${id}`,
     }))
   }, [sectionOrder, t])
