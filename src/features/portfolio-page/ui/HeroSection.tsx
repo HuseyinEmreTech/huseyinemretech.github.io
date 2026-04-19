@@ -10,13 +10,25 @@ const HERO_SCENE_URL = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.spline
 const HERO_INTRO_KEY = 'hero-robot-intro-played'
 const HERO_INTRO_DURATION = 2
 
+function getInitialIntroStatus(): 'none' | 'playing' | 'completed' {
+  if (typeof window === 'undefined') return 'none'
+  if (window.innerWidth < 1024) return 'completed'
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return 'completed'
+  if (navigator.userAgent.includes('Lighthouse')) return 'completed'
+  if (window.sessionStorage.getItem('page-loader-shown') === '1') return 'completed'
+  if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1') return 'completed'
+  return 'playing'
+}
+
 export function HeroSection() {
   const { lang, t } = useTranslation()
   const prefersReducedMotion = useReducedMotion()
-  const [introStatus, setIntroStatus] = useState<'none' | 'playing' | 'completed'>('none')
-  const [deferredLoad, setDeferredLoad] = useState(false)
+  const [introStatus, setIntroStatus] = useState<'none' | 'playing' | 'completed'>(getInitialIntroStatus)
+  // Start deferred load immediately when intro will play so the scene is inside the fullscreen container
+  const [deferredLoad, setDeferredLoad] = useState(() => getInitialIntroStatus() === 'playing')
 
   useEffect(() => {
+    if (deferredLoad) return
     let timeoutId: ReturnType<typeof setTimeout>
     let isLoaded = false
 
@@ -24,7 +36,7 @@ export function HeroSection() {
       if (isLoaded) return
       isLoaded = true
       setDeferredLoad(true)
-      
+
       window.removeEventListener('mousemove', loadSpline)
       window.removeEventListener('scroll', loadSpline)
       window.removeEventListener('touchstart', loadSpline)
@@ -38,7 +50,7 @@ export function HeroSection() {
     window.addEventListener('touchstart', loadSpline, { once: true, passive: true })
     window.addEventListener('keydown', loadSpline, { once: true, passive: true })
 
-    // Fallback: Load automatically after 10 seconds when browser is idle
+    // Fallback: load automatically after browser is idle
     timeoutId = setTimeout(() => {
       if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
         requestIdleCallback(loadSpline)
@@ -54,27 +66,7 @@ export function HeroSection() {
       window.removeEventListener('keydown', loadSpline)
       clearTimeout(timeoutId)
     }
-  }, [])
-
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    if (typeof window === 'undefined') return
-    if (window.innerWidth < 1024) return
-    const isLighthouse = typeof navigator !== 'undefined' && navigator.userAgent.includes('Lighthouse')
-    const pageLoaderShown = window.sessionStorage.getItem('page-loader-shown') === '1'
-    if (window.sessionStorage.getItem(HERO_INTRO_KEY) === '1' || isLighthouse || pageLoaderShown) {
-      setIntroStatus('completed')
-      return
-    }
-
-    const frame = window.requestAnimationFrame(() => {
-      setIntroStatus('playing')
-    })
-
-    return () => {
-      window.cancelAnimationFrame(frame)
-    }
-  }, [prefersReducedMotion])
+  }, [deferredLoad])
 
   useEffect(() => {
     if (introStatus !== 'playing') return
@@ -124,21 +116,17 @@ export function HeroSection() {
           duration: introStatus === 'playing' ? 0 : HERO_INTRO_DURATION,
           ease: [0.16, 1, 0.3, 1],
         }}
-        onAnimationComplete={() => {
-          if (introStatus === 'playing') {
-            setIntroStatus('completed')
-          }
-        }}
         className={cn(
           "overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.65)] mx-auto mb-8",
           introStatus === 'playing' && "pointer-events-none"
         )}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none" />
-        <SplineScene 
-          scene={HERO_SCENE_URL} 
-          className="relative z-10 h-full w-full" 
+        <SplineScene
+          scene={HERO_SCENE_URL}
+          className="relative z-10 h-full w-full"
           shouldLoad={deferredLoad}
+          onLoad={introStatus === 'playing' ? () => setIntroStatus('completed') : undefined}
         />
       </motion.div>
 

@@ -17,9 +17,10 @@ interface SplineSceneProps {
   scene: string
   className?: string
   shouldLoad?: boolean
+  onLoad?: () => void
 }
 
-export function SplineScene({ scene, className, shouldLoad = true }: SplineSceneProps) {
+export function SplineScene({ scene, className, shouldLoad = true, onLoad }: SplineSceneProps) {
   const webglOk = useMemo(() => hasWebGL(), [])
 
   if (!webglOk || !shouldLoad) {
@@ -40,7 +41,7 @@ export function SplineScene({ scene, className, shouldLoad = true }: SplineScene
         />
       }
     >
-      <Spline scene={scene} className={className} />
+      <Spline scene={scene} className={className} onLoad={onLoad} />
     </Suspense>
   )
 }
