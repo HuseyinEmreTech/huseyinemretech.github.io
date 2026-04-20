@@ -140,6 +140,7 @@ const turkishMessages = {
   'test-bigfive-desc': 'Yakında eklenecek',
   'test-question': 'Soru',
   'test-back': 'Geri Dön',
+  'btn-personalize': 'Kişiselleştir',
 } as const
 
 export type TranslationKey = keyof typeof turkishMessages
@@ -282,6 +283,7 @@ const englishMessages: Record<TranslationKey, string> = {
   'test-bigfive-desc': 'Coming soon',
   'test-question': 'Question',
   'test-back': 'Back',
+  'btn-personalize': 'Personalize',
 }
 
 export function isTranslationMessageKey(key: string): key is TranslationKey {

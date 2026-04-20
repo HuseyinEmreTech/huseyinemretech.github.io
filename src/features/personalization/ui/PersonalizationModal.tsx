@@ -62,9 +62,7 @@ export function PersonalizationModal() {
         type="button"
       >
         <Sparkles className="w-5 h-5" />
-        <span className="text-sm font-bold pr-1">
-          {lang === 'tr' ? 'Kişiselleştir' : 'Personalize'}
-        </span>
+        <span className="text-sm font-bold pr-1">{t('btn-personalize')}</span>
       </motion.button>
 
       <AnimatePresence>

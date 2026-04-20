@@ -1,16 +1,22 @@
 import { Suspense, lazy, useMemo } from 'react'
 import { hasWebGL } from '@/shared/lib/webgl'
 
-const Spline = lazy(() => {
-  const original = console.warn
+// Spline / Three.js yüklenirken oluşan bilinen uyarıları filtrele.
+// global console.warn'u kalıcı olarak değiştirmek yerine, import süresiyle sınırlı tut.
+const FILTERED_WARNS = ['Multiple instances of Three.js', 'updating from']
+
+const Spline = lazy(async () => {
+  const originalWarn = console.warn
   console.warn = (...args: unknown[]) => {
     const msg = typeof args[0] === 'string' ? args[0] : ''
-    if (msg.includes('Multiple instances of Three.js') || msg.includes('updating from')) return
-    original(...args)
+    if (FILTERED_WARNS.some((pattern) => msg.includes(pattern))) return
+    originalWarn(...args)
   }
-  return import('@splinetool/react-spline').finally(() => {
-    console.warn = original
-  })
+  try {
+    return await import('@splinetool/react-spline')
+  } finally {
+    console.warn = originalWarn
+  }
 })
 
 interface SplineSceneProps {

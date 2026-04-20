@@ -18,6 +18,11 @@ function getCorsHeaders(origin) {
     };
 }
 
+function sanitize(str) {
+    if (!str) return '';
+    return str.replace(/[<>]/g, '').trim().substring(0, 2000);
+}
+
 export default {
     async fetch(request, env, ctx) {
         return handleRequest(request, env);
@@ -57,7 +62,7 @@ async function handleRequest(request, env = {}) {
             });
         }
         if (request.method === 'POST') {
-            return handleContactForm(request);
+            return handleContactForm(request, env);
         }
     }
 
@@ -234,7 +239,7 @@ Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7
                 fallback,
                 debug: lastError || 'OpenRouter failed'
             }), {
-                status: 200,
+                status: 503,
                 headers: getCorsHeaders(origin)
             });
         }
@@ -255,7 +260,7 @@ Big Five: Openness>0.7→vibrant+spacious, <0.4→cool+compact. Extraversion>0.7
             error: 'Server error',
             fallback: { tema: 'cool', layout: 'technical', cta: 'github-cta', ton: 'technical', fontSize: 'medium', animation: 'normal', buttonStyle: 'rounded', spacing: 'comfortable' }
         }), {
-            status: 200,
+            status: 503,
             headers: getCorsHeaders(origin)
         });
     }
@@ -316,36 +321,26 @@ function getFallbackSelection(testResult) {
 }
 
 // İLETİŞİM FORMU İŞLEYİCİSİ
-async function handleContactForm(request) {
+async function handleContactForm(request, env = {}) {
+    const origin = request.headers.get('Origin');
+    const responseOrigin = origin || 'https://huseyinemre.tech';
+
     try {
         // CSRF ve Origin Koruması - Sadece sizin sitenizden gelen istekleri kabul eder
-        const origin = request.headers.get('Origin');
         const allowedOrigins = ['https://huseyinemretech.github.io', 'https://huseyinemre.tech', 'https://www.huseyinemre.tech'];
-
-        let isLocalNode = false;
-        if (origin) {
-            isLocalNode = origin.includes('localhost') || origin.includes('127.0.0.1');
-        }
+        const isLocalNode = origin && (origin.includes('localhost') || origin.includes('127.0.0.1'));
 
         if (!isLocalNode && (!origin || !allowedOrigins.includes(origin))) {
             return new Response(JSON.stringify({ success: false, error: 'Unauthorized Origin' }), {
                 status: 403,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': origin || 'https://huseyinemre.tech'
+                    'Access-Control-Allow-Origin': responseOrigin
                 }
             });
         }
 
-        const responseOrigin = origin || 'https://huseyinemre.tech';
-
         const data = await request.json();
-
-        // Basic XSS/Injection Sanitization
-        const sanitize = (str) => {
-            if (!str) return '';
-            return str.replace(/[<>]/g, '').trim().substring(0, 2000); // Max 2000 characters, cleans HTML tags
-        };
 
         const safeData = {
             name: sanitize(data.name),
@@ -353,10 +348,41 @@ async function handleContactForm(request) {
             message: sanitize(data.message)
         };
 
-        // TODO: Implement email sending with Mailchannels, SendGrid, etc.
-        // Sending is ensured using safe data: safeData.name, safeData.email, etc.
+        // Resend API ile e-posta gönder (env.RESEND_API_KEY gerekli)
+        // Cloudflare Worker ortam değişkeni: RESEND_API_KEY = re_xxxxxxx
+        const resendKey = env.RESEND_API_KEY;
+        if (!resendKey) {
+            return new Response(JSON.stringify({ success: false, error: 'Mail service not configured' }), {
+                status: 503,
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': responseOrigin }
+            });
+        }
 
-        return new Response(JSON.stringify({ success: true, message: "Email safely received and processed." }), {
+        const emailRes = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${resendKey}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                from: 'Portfolio Contact <onboarding@resend.dev>',
+                to: ['huseyinemre.tech@gmail.com'],
+                reply_to: safeData.email || undefined,
+                subject: `Portfolio İletişim: ${safeData.name}`,
+                text: `Ad: ${safeData.name}\nE-posta: ${safeData.email}\n\nMesaj:\n${safeData.message}`,
+            }),
+        });
+
+        if (!emailRes.ok) {
+            const errBody = await emailRes.text();
+            console.error('Resend error:', emailRes.status, errBody);
+            return new Response(JSON.stringify({ success: false, error: 'Email could not be sent' }), {
+                status: 502,
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': responseOrigin }
+            });
+        }
+
+        return new Response(JSON.stringify({ success: true, message: "Mesajınız iletildi." }), {
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
@@ -369,7 +395,7 @@ async function handleContactForm(request) {
             status: 400, // Returning 400 (Bad Request) is sometimes better than 500 for security
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': request.headers.get('Origin') || 'https://huseyinemre.tech'
+                'Access-Control-Allow-Origin': responseOrigin
             }
         });
     }

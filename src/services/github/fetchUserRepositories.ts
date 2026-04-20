@@ -2,6 +2,9 @@ import type { GithubPortfolioRepository } from '@/shared/types/portfolio'
 import { GITHUB_API_BASE_URL, githubPortfolioPublicEnv } from '@core/config'
 import { logger } from '@/shared/logging/logger'
 
+const CACHE_TTL_MS = 5 * 60 * 1000
+const cache = new Map<string, { data: GithubPortfolioRepository[]; ts: number }>()
+
 function pickString(value: unknown): string | null {
   return typeof value === 'string' ? value : null
 }
@@ -39,6 +42,10 @@ export async function fetchGithubUserRepositories(
   username: string = githubPortfolioPublicEnv.username,
   perPage: number = githubPortfolioPublicEnv.repositoriesPerPage,
 ): Promise<GithubPortfolioRepository[]> {
+  const cacheKey = `${username}:${perPage}`
+  const hit = cache.get(cacheKey)
+  if (hit && Date.now() - hit.ts < CACHE_TTL_MS) return hit.data
+
   const url = `${GITHUB_API_BASE_URL}/users/${encodeURIComponent(username)}/repos?sort=updated&per_page=${perPage}`
   const response = await fetch(url)
   if (!response.ok) {
@@ -49,7 +56,9 @@ export async function fetchGithubUserRepositories(
     logger.warn('GitHub repositories payload was not an array')
     return []
   }
-  return payload
+  const data = payload
     .map(normalizeGithubRepositoryRow)
     .filter((row): row is GithubPortfolioRepository => row !== null)
+  cache.set(cacheKey, { data, ts: Date.now() })
+  return data
 }
