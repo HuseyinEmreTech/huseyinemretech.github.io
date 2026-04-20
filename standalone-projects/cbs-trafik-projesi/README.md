@@ -20,7 +20,7 @@ Aşağıdaki maddeler, **şu anki dosya içerikleriyle** birebir uyumludur; hoca
 | Web kütüphaneleri (CDN) | Leaflet **1.9.4**, globe.gl **2.32.1** (`gis-project.html` / `gis-choropleth.js` ile uyumlu) |
 | **İl bazlı Türkiye haritası (web)** | **Yok** | `/gis-project.html` yalnızca `world_road_safety.json` + `world_countries_110m.geojson` yükler; Türkiye il GeoJSON/CSV/PNG bu sayfaya bağlı değildir |
 
-### Hocaya net özet: webde ne, repoda ne?
+### webde ne, repoda ne?
 
 | Sunum kanalı | İçerik |
 |--------------|--------|
