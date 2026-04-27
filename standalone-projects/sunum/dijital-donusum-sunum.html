@@ -9,12 +9,12 @@
 
 <style>
 :root {
-  --gold: #FFD700;
-  --gold-dim: rgba(255, 215, 0, 0.2);
-  --gold-line: rgba(255, 215, 0, 0.85);
+  --gold: #FFB800;
+  --gold-dim: rgba(255, 184, 0, 0.25);
+  --gold-line: rgba(255, 184, 0, 0.85);
   --bank-blue: #2B7FFF;
   --white: #ffffff;
-  --dim: #ffffff; /* Tam beyaz — aydınlık sınıf / projektör için */
+  --dim: #ffffff;
   --dimmer: rgba(255, 255, 255, 0.85);
   --bg: #0a0a0f;
   --glass: rgba(255, 255, 255, 0.06);
@@ -22,6 +22,9 @@
   --text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
 }
 
+/* ═════════════════════════════════════════════════════════════
+   BASE RESET & VARIABLES
+   ═════════════════════════════════════════════════════════════ */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 html, body {
@@ -218,6 +221,89 @@ html, body {
 .slide.active .anim:nth-child(7) { transition-delay: 0.65s; }
 .slide.active .anim:nth-child(8) { transition-delay: 0.75s; }
 
+/* ── MINIMAL TEXT ANIMS ── */
+.anim-blur-in {
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(0.96);
+  transition: all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .anim-blur-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.anim-underline-reveal::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--gold);
+  transition: width 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .anim-underline-reveal::after {
+  width: 100%;
+}
+
+.anim-char-wave {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .anim-char-wave {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide.active .anim-char-wave:nth-child(1) { transition-delay: 0s; }
+.slide.active .anim-char-wave:nth-child(2) { transition-delay: 0.05s; }
+.slide.active .anim-char-wave:nth-child(3) { transition-delay: 0.1s; }
+.slide.active .anim-char-wave:nth-child(4) { transition-delay: 0.15s; }
+.slide.active .anim-char-wave:nth-child(5) { transition-delay: 0.2s; }
+.slide.active .anim-char-wave:nth-child(6) { transition-delay: 0.25s; }
+.slide.active .anim-char-wave:nth-child(7) { transition-delay: 0.3s; }
+.slide.active .anim-char-wave:nth-child(8) { transition-delay: 0.35s; }
+
+/* ── NUMBER ANIMS ── */
+.anim-stat-glow {
+  transition: text-shadow 0.6s ease;
+}
+.slide.active .anim-stat-glow {
+  animation: statGlow 1.5s ease-in-out;
+}
+@keyframes statGlow {
+  0% { text-shadow: 0 0 10px rgba(255,184,0,0.2); }
+  50% { text-shadow: 0 0 30px rgba(255,184,0,0.7), 0 0 60px rgba(255,184,0,0.3); }
+  100% { text-shadow: 0 0 10px rgba(255,184,0,0.2); }
+}
+
+.anim-stat-scale {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.slide.active .anim-stat-scale {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Sayı yükleniyor / kayıyor efekti */
+.anim-stat-drop {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-40px);
+}
+.slide.active .anim-stat-drop {
+  animation: statDrop 1s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes statDrop {
+  0% { opacity: 0; transform: translateY(-40px); }
+  60% { opacity: 1; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 /* Title reveal */
 .title-mask { overflow: hidden; display: block; }
 .title-inner {
@@ -284,6 +370,46 @@ html, body {
   text-shadow: var(--text-shadow);
 }
 .card-text small { display: block; margin-top: 6px; line-height: 1.4; }
+.qr-code { border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; margin-bottom: 8px; }
+
+/* ── UTILITY CLASSES ── */
+.title-inner-dim { color: var(--dimmer); }
+.title-inner-white { color: var(--white); }
+.title-inner-small { font-size: 0.7em; letter-spacing: 4px; }
+.cover-subtitle { font-family: 'JetBrains Mono',monospace; font-size: 13px; letter-spacing: 3px; color: var(--gold); margin-top: 4px; }
+.cover-names { color: var(--gold); }
+.keyword-tag { font-size: 17px; padding: 11px 22px; }
+.info-box-blue { border: 1px solid var(--bank-blue); padding: 20px; background: rgba(0,68,204,0.08); }
+.info-box-gold { border: 1px solid var(--gold-line); padding: 20px; background: rgba(201,168,76,0.05); }
+.box-title { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--gold); margin-bottom: 8px; }
+.box-text { font-size: 19px; color: var(--white); text-shadow: var(--text-shadow); }
+.stat-label { font-size: 16px; letter-spacing: 3px; text-transform: uppercase; color: var(--dimmer); margin-top: 10px; text-shadow: var(--text-shadow); }
+.chart-container { text-align: center; padding: 24px; }
+.chart-label { font-size: 13px; letter-spacing: 3px; color: var(--gold); margin-bottom: 14px; text-shadow: var(--text-shadow); }
+.pacolli-svg-label { font-family: 'Bebas Neue'; fill: var(--gold); }
+.pacolli-center-text { font-family: 'JetBrains Mono'; fill: var(--dimmer); opacity: 0.7; }
+.pacolli-caption { font-size: 13px; letter-spacing: 4px; color: var(--gold); text-align: center; margin-top: 20px; font-family: 'JetBrains Mono',monospace; opacity: 0.65; }
+.theory-pill { opacity: 0.5; }
+.theory-pill-full { opacity: 1; }
+.fail-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 52px); color: var(--gold); line-height: 1; min-width: 54px; text-align: right; flex-shrink: 0; }
+.fail-text { font-size: clamp(15px, 1.6vw, 19px); color: var(--white); line-height: 1.5; padding-top: 6px; text-shadow: var(--text-shadow); }
+.table-header { border-bottom: 1px solid var(--bank-blue); text-align: left; padding: 10px 5px; color: var(--gold); }
+.table-cell { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 5px; }
+.timeline-year { font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 2px; color: var(--gold); padding-top: 3px; }
+.timeline-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; margin-bottom: 4px; }
+.timeline-text { font-size: 20px; font-weight: 400; color: var(--dim); line-height: 1.55; }
+.question-text { font-size: 20px; color: var(--white); margin-top: 20px; text-shadow: var(--text-shadow); }
+.fig-caption { font-size: 16px; color: var(--dimmer); margin-top: 16px; text-shadow: var(--text-shadow); }
+.tip-box { border: 1px solid var(--bank-blue); padding: 24px; background: rgba(0,51,160,0.05); }
+.tip-title { font-family: 'JetBrains Mono',monospace; font-size: 14px; letter-spacing: 3px; color: var(--gold); margin-bottom: 12px; }
+.tip-body { font-size: 20px; font-weight: 400; color: var(--white); line-height: 1.6; text-shadow: var(--text-shadow); }
+.schein-quote { font-size: 18px; color: var(--white); margin-top: 24px; text-shadow: var(--text-shadow); }
+.bank-table { width: 100%; border-collapse: collapse; font-size: 18px; color: var(--white); text-shadow: var(--text-shadow); }
+.closing-qr { border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; margin-bottom: 8px; }
+.closing-links { margin-top: 32px; display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.portfolio-link { color: var(--gold); text-decoration: none; font-family: 'JetBrains Mono',monospace; font-size: 16px; border: 2px solid var(--gold-line); padding: 12px 28px; transition: all 0.3s; }
+.qr-label { font-size: 14px; color: var(--dimmer); }
+.qr-container { text-align: center; }
 
 /* ── TWO COL ── */
 .two-col {
@@ -711,39 +837,172 @@ body.light .fail-item { border-color: rgba(184,134,11,0.15); }
   }
 }
 
-/* ── LIGHT MODE ── */
+/* ═════════════════════════════════════════════════════════════
+   LIGHT MODE - Tahta/sınıf için soft, muted palette
+   ═════════════════════════════════════════════════════════════ */
 body.light {
-  --gold: #b8860b;
-  --gold-dim: rgba(184,134,11,0.15);
-  --gold-line: rgba(184,134,11,0.7);
-  --bank-blue: #1a5fd4;
-  --white: #0a0a0f;
-  --dim: #0a0a0f;
-  --dimmer: rgba(10,10,15,0.75);
-  --bg: #f5f2eb;
-  --glass: rgba(0,0,0,0.04);
-  --glass-border: rgba(0,0,0,0.15);
-  --text-shadow: 0 1px 4px rgba(255,255,255,0.6);
+  --gold: #6b5010;
+  --gold-dim: rgba(107,80,16,0.2);
+  --gold-line: rgba(107,80,16,0.55);
+  --bank-blue: #1a4d9e;
+  --white: #2a2a2a;
+  --dim: #3d3d3d;
+  --dimmer: rgba(50,50,50,0.7);
+  --bg: #d4d0c0;
+  --glass: rgba(0,0,0,0.03);
+  --glass-border: rgba(0,0,0,0.08);
+  --text-shadow: none;
 }
-body.light #bg-canvas { opacity: 0.15; }
-body.light .grain { opacity: 0.02; }
+body.light #bg-canvas { display: none; }
+body.light .grain { display: none; }
 body.light .card {
-  background: rgba(184,134,11,0.05);
-  border-color: rgba(184,134,11,0.25);
+  background: rgba(107,80,16,0.05);
+  border-color: rgba(107,80,16,0.18);
 }
-body.light .card:hover { background: rgba(184,134,11,0.1); }
+body.light .card:hover { background: rgba(107,80,16,0.08); }
 body.light .ctrl-btn {
-  background: rgba(245,242,235,0.85);
-  color: var(--gold);
-  border-color: rgba(184,134,11,0.4);
+  background: #d8d4c8;
+  color: #4a3c0c;
+  border-color: rgba(107,80,16,0.3);
 }
-body.light .ctrl-btn:hover { background: rgba(184,134,11,0.12); }
-body.light .ctrl-btn.active { background: var(--gold); color: #f5f2eb; }
-body.light .flash { background: #fff; }
-body.light .lewin-step { background: rgba(184,134,11,0.06); }
-body.light .blockquote p, body.light .t-text, body.light .card-text,
+body.light .ctrl-btn:hover { background: rgba(107,80,16,0.08); }
+body.light .ctrl-btn.active { background: #6b5010; color: #d4d0c0; }
+body.light .flash { background: #d4d0c0; }
+body.light .lewin-step { background: rgba(107,80,16,0.04); border-color: rgba(107,80,16,0.18); }
+body.light .blockquote p, body.light .card-text,
 body.light .body-text, body.light .check-list li, body.light .fail-table td,
-body.light .biblio-list { color: var(--white); }
+body.light .biblio-list { color: #2a2a2a; }
+body.light .nav-dots .dot { background: rgba(50,50,50,0.12); }
+body.light .nav-dots .dot.active { background: #6b5010; }
+body.light .timeline-item { border-bottom-color: rgba(50,50,50,0.08); }
+body.light .t-year { color: #4a3c0c; }
+body.light .t-text { color: #3d3d3d; }
+body.light .bar-label { color: #2a2a2a; }
+body.light .header-brand { opacity: 0.75; color: #2a2a2a; }
+body.light .vert-text { color: #4a3c0c; opacity: 0.65; }
+body.light .key { border-color: rgba(50,50,50,0.15); color: #3d3d3d; }
+body.light .nav-hint { color: #4a3c0c; }
+body.light .progress-bar { background: #6b5010; box-shadow: none; }
+body.light .slide-counter { color: #4a3c0c; opacity: 0.8; }
+body.light .section-label { color: #4a3c0c; }
+body.light .overline { color: #4a3c0c; }
+body.light .section-title, body.light .display-title { color: #2a2a2a; }
+body.light .theory-name { color: #3d3d3d; }
+body.light .fail-item { border-color: rgba(107,80,16,0.12); }
+body.light .stat-row .stat-desc { color: #4a3c0c; }
+body.light .lewin-desc { color: #3d3d3d; }
+body.light .lewin-label { color: #4a3c0c; }
+body.light .step-pill { color: #4a3c0c; border-color: rgba(107,80,16,0.45); background: transparent; }
+body.light .check-list li { border-bottom-color: rgba(50,50,50,0.1); color: #2a2a2a; }
+body.light .check-list li::before { color: #6b5010; }
+body.light .blockquote { border-left-color: #6b5010; }
+body.light .blockquote cite { color: #4a3c0c; }
+body.light .big-stat { color: #6b5010; opacity: 0.8; }
+body.light .big-stat-label { color: #4a3c0c; }
+body.light .stat-num { color: #6b5010; }
+body.light .bar-value { color: #6b5010; }
+body.light .bar-fill { background: linear-gradient(90deg, #6b5010, rgba(107,80,16,0.35)); }
+body.light .bar-track { background: rgba(0,0,0,0.05); }
+body.light .card-title { color: #2a2a2a; }
+body.light .card-num { color: #4a3c0c; }
+body.light .fail-table th { color: #4a3c0c; }
+body.light .fail-table td { color: #2a2a2a; }
+body.light .fail-table tr:hover { background: rgba(0,0,0,0.025); }
+body.light .biblio-list li { border-bottom-color: rgba(50,50,50,0.04); color: #2a2a2a; }
+body.light svg text { fill: #2a2a2a; }
+body.light svg circle { stroke: rgba(50,50,50,0.08); }
+body.light .deco-circle { opacity: 0.08; }
+body.light .qr-code { border: 1px solid rgba(107,80,16,0.2); border-radius: 8px; margin-bottom: 8px; }
+body.light .slide-1::after { display: none; }
+body.light .t-title { color: #2a2a2a; }
+body.light .card-text small { color: #4a3c0c; }
+body.light a { color: #4a3c0c; border-color: rgba(107,80,16,0.45); }
+body.light .lewin-step::after { color: #6b5010; }
+body.light .lewin-icon { opacity: 0.55; }
+/* Light mode - navigation */
+body.light .nav-hint .key { color: var(--dimmer); }
+body.light .nav-dots .dot { border: 1px solid rgba(10,10,15,0.15); }
+body.light .slide-counter { text-shadow: none; opacity: 0.8; }
+body.light .section-label { text-shadow: none; opacity: 0.9; }
+body.light .progress-bar { opacity: 0.85; }
+
+/* Light mode - cards & blocks */
+body.light .card { box-shadow: none; border-radius: 6px; }
+body.light .theory-block { border-left-color: rgba(184,134,11,0.4); }
+body.light .two-col > div:first-child { background: rgba(26,95,212,0.08); border: 1px solid var(--bank-blue); }
+
+/* Light mode - typography */
+body.light .display-title span[style*="color:var(--dimmer)"] { color: var(--dimmer) !important; }
+body.light .header-brand { color: var(--white); }
+body.light .ctrl-bar span { background: rgba(184,134,11,0.3); }
+body.light .gold-line { box-shadow: 0 0 6px rgba(184,134,11,0.4); }
+body.light .vert-text { opacity: 0.7; }
+
+/* Light mode - lewin SVG elements */
+body.light .lewin-step { border-radius: 8px; }
+body.light .lewin-icon svg path, 
+body.light .lewin-icon svg line, 
+body.light .lewin-icon svg circle { stroke: rgba(184,134,11,0.6); }
+body.light .wdrop { fill: rgba(26,95,212,0.5); }
+body.light #wave1, body.light #wave2 { stroke: rgba(26,95,212,0.5); }
+body.light #wave-fill { fill: rgba(26,95,212,0.12); }
+body.light #melt-puddle { fill: rgba(26,95,212,0.15); stroke: rgba(26,95,212,0.25); }
+body.light .sf-arm, body.light .sf-branch { stroke: rgba(26,95,212,0.5); }
+body.light #sf-center { fill: rgba(26,95,212,0.4); stroke: rgba(26,95,212,0.5); }
+body.light #ice-body { fill: rgba(26,95,212,0.08); stroke: rgba(26,95,212,0.3); }
+body.light #drip-a, body.light #drip-b { fill: rgba(26,77,158,0.35); }
+
+/* Light mode - background elements - hide for cleaner look */
+body.light .slide-1::after { display: none; }
+body.light #bg-canvas { display: none; }
+body.light .grain { display: none; }
+
+/* Light mode - visibility adjustments - projeksiyon dostu */
+body.light .overline { color: #4a3c0c; opacity: 0.9; }
+body.light .body-text strong { color: #6b5010; }
+body.light .card-text { color: #2a2a2a; }
+body.light .t-text { color: #3d3d3d; }
+body.light .big-stat { text-shadow: none; opacity: 0.85; }
+body.light .stat-num { text-shadow: none; color: #6b5010; }
+body.light .bar-value { text-shadow: none; color: #6b5010; }
+body.light .bar-track { background: rgba(0,0,0,0.05); }
+body.light .check-list li::before { color: #6b5010; }
+body.light .blockquote p { color: #2a2a2a; }
+body.light .card-num { color: #4a3c0c; }
+body.light .lewin-desc { color: #3d3d3d; }
+body.light .stat-desc { color: #4a3c0c; }
+body.light .card-text small { color: #4a3c0c; opacity: 0.8; }
+body.light .biblio-list { color: #2a2a2a; }
+body.light .fail-table { background: transparent; }
+body.light .fail-table tr:hover { background: rgba(0,0,0,0.02); }
+
+/* Light mode - enhanced text elements */
+body.light .body-text { color: #2a2a2a; font-weight: 500; }
+body.light .card-text { color: #2a2a2a; font-weight: 450; }
+body.light .t-text { color: #3d3d3d; font-weight: 450; }
+body.light .lewin-desc { color: #3d3d3d; font-weight: 450; }
+body.light .theory-text { color: #2a2a2a; }
+body.light .stat-desc { color: #4a3c0c; font-weight: 500; }
+body.light .timeline-text { color: #3d3d3d; }
+body.light .question-text { color: #2a2a2a; }
+body.light .fig-caption { color: #4a3c0c; opacity: 0.75; }
+body.light .biblio-list { color: #2a2a2a; }
+body.light .bank-table td { color: #2a2a2a; }
+
+/* Light mode - muted gold for projeksiyon */
+body.light .gold { color: #6b5010; }
+body.light .card-num { color: #4a3c0c; font-weight: 600; }
+body.light .overline { color: #4a3c0c; font-weight: 600; }
+body.light .section-label { color: #4a3c0c; }
+body.light .slide-counter { color: #4a3c0c; }
+body.light .t-year { color: #4a3c0c; }
+body.light .stat-num { color: #6b5010; }
+body.light .bar-value { color: #6b5010; }
+body.light .big-stat { color: #6b5010; }
+
+/* Light mode - stronger blue */
+body.light .bank-blue { color: #1540a8; }
+body.light .bank-blue-text { color: #1540a8; font-weight: 600; }
 
 /* ── COMPACT HEIGHT (küçük ekranlar) ── */
 @media (max-height: 750px) {
@@ -848,8 +1107,8 @@ body.light .biblio-list { color: var(--white); }
   ══════════════════════════════════════════ -->
   <div class="slide" data-section="STRATEJİK BAKIŞ" data-section-en="STRATEGIC VIEW">
     <div class="anim overline" data-i18n="s3-overline">Global Pazar Analizi</div>
-    <div class="big-stat anim">$2.8T</div>
-    <div class="big-stat-label anim" data-i18n="s3-stat-label">2026 Küresel Dijital Dönüşüm Harcaması Öngörüsü (IDC)</div>
+    <div class="big-stat anim anim-stat-glow">$2.8T</div>
+    <div class="big-stat-label anim anim-blur-in" data-i18n="s3-stat-label">2026 Küresel Dijital Dönüşüm Harcaması Öngörüsü (IDC)</div>
     <div class="gold-line anim"></div>
     <p class="body-text anim" data-i18n="s3-body">
       Dijital yatırımlar artık bir "lüks" değil, <strong style="color:var(--gold)">stratejik bir zorunluluktur</strong>. 2020'den bu yana harcamalar iki katına çıkmış olsa da, başarısızlık oranları insan odaklı strateji eksikliği nedeniyle hala %70 seviyelerindedir.
@@ -859,25 +1118,25 @@ body.light .biblio-list { color: var(--white); }
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="85" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter">70%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter anim-stat-glow">70%</text>
         </svg>
-        <div class="card-num" data-i18n="s3-c1-num">BAŞARISIZLIK</div>
+        <div class="card-num anim-stat-drop" data-i18n="s3-c1-num">BAŞARISIZLIK</div>
       </div>
       <div class="card" style="text-align:center; padding: 24px;">
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--bank-blue)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="198" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter">30%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter anim-stat-glow">30%</text>
         </svg>
-        <div class="card-num" data-i18n="s3-c2-num">TEKNOLOJİ ODAĞI</div>
+        <div class="card-num anim-stat-drop" data-i18n="s3-c2-num">TEKNOLOJİ ODAĞI</div>
       </div>
       <div class="card" style="text-align:center; padding: 24px;">
         <svg viewBox="0 0 100 100" style="width:100px; height:100px; margin:0 auto 12px; display:block">
           <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
           <circle class="chart-circle" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="28" style="transform: rotate(-90deg); transform-origin: 50% 50%"/>
-          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter">90%</text>
+          <text x="50" y="55" text-anchor="middle" font-family="Bebas Neue" font-size="22" fill="var(--white)" class="svg-counter anim-stat-glow">90%</text>
         </svg>
-        <div class="card-num" data-i18n="s3-c3-num">İNSAN FAKTÖRÜ</div>
+        <div class="card-num anim-stat-drop" data-i18n="s3-c3-num">İNSAN FAKTÖRÜ</div>
       </div>
     </div>
   </div>
@@ -967,7 +1226,7 @@ body.light .biblio-list { color: var(--white); }
     <div class="anim overline" data-i18n="s4-overline" style="margin-bottom:0;">Melinda Pacolli (2022) — Fig. 5</div>
     <div class="gold-line anim" style="margin:20px auto 36px;"></div>
     <div class="anim" style="display:flex; flex-direction:column; align-items:center; width:100%;">
-      <svg viewBox="0 0 420 220" style="width:100%; max-width:min(520px,72vh); height:auto;">
+      <svg viewBox="0 0 420 220" style="width:100%; max-width:min(700px,80vh); height:auto;">
         <defs>
           <linearGradient id="goldGradFull" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style="stop-color:var(--gold);stop-opacity:0.9" />
@@ -1440,11 +1699,11 @@ body.light .biblio-list { color: var(--white); }
     <div class="anim" style="margin-top: 32px; display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap;">
       <a href="../../index.html" style="color:var(--gold); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:16px; border:2px solid var(--gold-line); padding:12px 28px; transition:all 0.3s">HÜSEYİN EMRE PORTFOLYO'YA DÖN</a>
       <div style="text-align: center;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://huseyinemre.tech&bgcolor=0a0a0f&color=FFD700" alt="QR Portfolio" width="100" height="100" style="border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; margin-bottom: 8px;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://huseyinemre.tech&bgcolor=0a0a0f&color=FFD700" alt="QR Portfolio" width="100" height="100" class="qr-code">
         <div style="font-size: 14px; color: var(--dimmer);" data-i18n="s13-qr1">Portfolio</div>
       </div>
       <div style="text-align: center;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https%3A%2F%2Fhuseyinemre.tech%2Fstandalone-projects%2Fsunum%2Fmakale.pdf&bgcolor=0a0a0f&color=FFD700" alt="QR Makale" width="100" height="100" style="border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; margin-bottom: 8px;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https%3A%2F%2Fhuseyinemre.tech%2Fstandalone-projects%2Fsunum%2Fmakale.pdf&bgcolor=0a0a0f&color=FFD700" alt="QR Makale" width="100" height="100" class="qr-code">
         <div style="font-size: 14px; color: var(--dimmer);" data-i18n="s13-qr2">Makale</div>
       </div>
     </div>
@@ -1454,7 +1713,9 @@ body.light .biblio-list { color: var(--white); }
 
 <script>
 let currentLang = 'tr';
-// ── PARTICLE CANVAS ──────────────────────────────────────────
+// ═════════════════════════════════════════════════════════════
+// PARTICLE CANVAS - Animated background with floating particles
+// ═════════════════════════════════════════════════════════════
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
@@ -1511,7 +1772,9 @@ function animCanvas() {
 }
 animCanvas();
 
-// ── SLIDE ENGINE (GSAP POWERED) ───────────────────────────────
+// ═════════════════════════════════════════════════════════════
+// SLIDE ENGINE - Navigation and slide management (GSAP powered)
+// ═════════════════════════════════════════════════════════════
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
 let current = 0;
@@ -1559,14 +1822,20 @@ function updateUI() {
     });
   }
 
-  // ANIMATE CHART CIRCLES IF PRESENT
+  // ANIMATE CHART CIRCLES IF PRESENT - yükleniyor efekti
   const circles = currentSlide.querySelectorAll('.chart-circle');
   if(circles.length > 0) {
-    circles.forEach(circle => {
+    circles.forEach((circle, i) => {
       const targetOffset = circle.getAttribute('stroke-dashoffset');
+      // Önce tam boş başla, sonra yavaş yavaş yükleniyormuş gibi dolsun
       gsap.fromTo(circle, 
         { strokeDashoffset: 283 }, 
-        { strokeDashoffset: targetOffset, duration: 1.5, delay: 0.5, ease: "power2.out" }
+        { 
+          strokeDashoffset: targetOffset, 
+          duration: 3.5, 
+          delay: 0.2 + (i * 0.4),
+          ease: "power3.inOut"
+        }
       );
     });
   }
@@ -1649,7 +1918,9 @@ gsap.set(slides[0], { display: 'flex', opacity: 1 });
 updateUI();
 setTimeout(() => runSlideAnimations(slides[0]), 300);
 
-// ── ENTRANCE ANIMATIONS ───────────────────────────────────────
+// ═════════════════════════════════════════════════════════════
+// ENTRANCE ANIMATIONS - Counter, Typewriter, SVG animations
+// ═════════════════════════════════════════════════════════════
 
 // --- Number counter ---
 function parseCountVal(text) {
@@ -1757,7 +2028,9 @@ function runSlideAnimations(slideEl) {
   if (slideEl.id === 'lewin-slide') runLewinAnims();
 }
 
-// ── LEWIN BUZ ANİMASYONLARI ──────────────────────────────────
+// ═════════════════════════════════════════════════════════════
+// LEWIN ICE ANIMATIONS - Unfreeze, Change, Refreeze visuals
+// ═════════════════════════════════════════════════════════════
 let lewinTLs = [];
 
 function runLewinAnims() {
@@ -1831,7 +2104,9 @@ function runLewinAnims() {
   lewinTLs.push(freezeTL);
 }
 
-// ── SLIDE INNER WRAPPER (auto-scaler) ─────────────────────────
+// ═════════════════════════════════════════════════════════════
+// SLIDE AUTO-SCALER - Fit content to screen
+// ═════════════════════════════════════════════════════════════
 slides.forEach(slide => {
   const inner = document.createElement('div');
   inner.className = 'slide-inner';
@@ -1878,7 +2153,9 @@ if (document.fonts) {
   setTimeout(fitAll, 400);
 }
 
-// ── DARK / LIGHT THEME ────────────────────────────────────────
+// ═════════════════════════════════════════════════════════════
+// THEME TOGGLE - Dark/Light mode switcher
+// ═════════════════════════════════════════════════════════════
 let isDark = true;
 function toggleTheme() {
   isDark = !isDark;
@@ -1886,7 +2163,9 @@ function toggleTheme() {
   document.getElementById('btn-theme').textContent = isDark ? '☀' : '🌙';
 }
 
-// ── TRANSLATIONS ──────────────────────────────────────────────
+// ═════════════════════════════════════════════════════════════
+// TRANSLATIONS - i18n object for multi-language support
+// ═════════════════════════════════════════════════════════════
 const i18n = {
   tr: {
     's1-overline': 'Akademik Sunum · 2026',
@@ -2024,7 +2303,7 @@ const i18n = {
     's10-li3': '<strong>Kaynak Tahsisi:</strong> Teknolojik altyapı kadar, insan kaynağı gelişimine (Upskilling) bütçe ayırmak.',
     's10-tip-title': 'KRİTİK BAŞARI FAKTÖRÜ',
     's10-tip-body': 'Üst yönetimin dijital araçları bizzat kullanması ve süreci "sahada" takip etmesi, çalışan direncini %40 oranında azaltmaktadır.',
-    's11-overline': 'Psikolojik Baryerler',
+    's11-overline': 'Psikolojik Bariyerler',
     's11-title': 'DİRENÇTEN<br><span style="color:var(--gold)">ADAPTASYONA</span>',
     's11-c1-num': 'ADIM 01',
     's11-c1-title': 'KAYGIYI ANLAMAK',
@@ -2057,7 +2336,7 @@ const i18n = {
     's12c-overline': 'Referanslar',
     's12c-title': 'KAYNAKÇA',
     's12d-overline': 'Pacolli (2022) — Makale Anahtar Kelimeleri',
-    's12d-title': 'キーワード (ANAHTAR KELİMELER)',
+    's12d-title': 'ANAHTAR KELİMELER',
     'kw1': 'Dijital Dönüşüm',
     'kw2': 'Değişim Yönetimi',
     'kw3': 'Direnç',
@@ -2282,6 +2561,9 @@ const i18n = {
   }
 };
 
+// ═════════════════════════════════════════════════════════════
+// LANGUAGE SWITCHER - TR/EN translation handler
+// ═════════════════════════════════════════════════════════════
 function setLang(lang) {
   currentLang = lang;
   document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
