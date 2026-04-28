@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 
 const PAGE_LOADER_KEY = 'page-loader-shown'
-const HOLD_DURATION = 1200
+const MIN_DISPLAY = 600   // minimum görünme süresi (ms)
+const MAX_WAIT = 8000     // robot hiç yüklenmezse fallback (ms)
 const FADE_DURATION = 0.5
 
 export function PageLoader() {
@@ -12,7 +13,6 @@ export function PageLoader() {
     if (typeof navigator !== 'undefined' && navigator.userAgent.includes('Lighthouse')) return false
     const alreadyShown = window.sessionStorage.getItem(PAGE_LOADER_KEY) === '1'
     if (!alreadyShown) {
-      // Set synchronously so HeroSection's effect can read it and skip its own intro
       window.sessionStorage.setItem(PAGE_LOADER_KEY, '1')
     }
     return !alreadyShown
@@ -20,8 +20,25 @@ export function PageLoader() {
 
   useEffect(() => {
     if (!visible) return
-    const id = setTimeout(() => setVisible(false), HOLD_DURATION)
-    return () => clearTimeout(id)
+
+    const mountTime = Date.now()
+    let dismissed = false
+
+    const dismiss = () => {
+      if (dismissed) return
+      dismissed = true
+      const elapsed = Date.now() - mountTime
+      const remaining = Math.max(0, MIN_DISPLAY - elapsed)
+      setTimeout(() => setVisible(false), remaining)
+    }
+
+    const maxTimer = setTimeout(dismiss, MAX_WAIT)
+    window.addEventListener('robot:settled', dismiss, { once: true })
+
+    return () => {
+      clearTimeout(maxTimer)
+      window.removeEventListener('robot:settled', dismiss)
+    }
   }, [visible])
 
   if (prefersReducedMotion) return null

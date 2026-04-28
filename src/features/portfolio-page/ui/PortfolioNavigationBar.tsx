@@ -9,6 +9,10 @@ import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutCont
 const EXPAND_SCROLL_THRESHOLD = 80
 
 const containerVariants = {
+  initial: {
+    y: -90,
+    opacity: 0,
+  },
   expanded: {
     y: 0,
     opacity: 1,
@@ -103,16 +107,18 @@ export function PortfolioNavigationBar() {
 
   // Prevent scroll when mobile menu is open
   React.useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
+    if (!isMobileMenuOpen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
     }
   }, [isMobileMenuOpen])
 
   const handleNavClick = (e: React.MouseEvent) => {
     if (!isExpanded) {
-      e.preventDefault()
+      const target = e.target as HTMLElement
+      if (target.closest('a')) e.preventDefault()
       setExpanded(true)
     }
   }
@@ -126,7 +132,7 @@ export function PortfolioNavigationBar() {
     <>
       <div className="fixed top-5 left-1/2 -translate-x-1/2 z-[1100] w-full max-w-fit px-4 md:px-0">
         <motion.nav
-          initial={{ y: -90, opacity: 0 }}
+          initial="initial"
           animate={isExpanded ? 'expanded' : 'collapsed'}
           variants={containerVariants}
           whileHover={!isExpanded ? { scale: 1.05 } : {}}
@@ -149,7 +155,7 @@ export function PortfolioNavigationBar() {
             <span className="font-bold text-sm tracking-tight bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent whitespace-nowrap hidden sm:inline">
               Hüseyin Emre
             </span>
-            <span className="w-1 h-1 rounded-full bg-indigo-400 opacity-70 hidden sm:inline" />
+            <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-70 hidden sm:inline" />
           </motion.div>
 
           {/* Nav links (Desktop) */}
@@ -181,7 +187,7 @@ export function PortfolioNavigationBar() {
               className={cn(
                 'flex-shrink-0 text-[0.72rem] font-mono text-white/40 hover:text-white/80',
                 'border border-white/10 rounded-md px-1.5 py-0.5 bg-white/[0.03] hover:bg-white/[0.07] transition-colors',
-                (!isExpanded || isMobileMenuOpen) && 'pointer-events-none opacity-0',
+                isMobileMenuOpen && 'pointer-events-none opacity-0',
               )}
               aria-label={lang === 'tr' ? 'English' : 'Türkçe'}
             >
@@ -200,7 +206,7 @@ export function PortfolioNavigationBar() {
 
           {/* Dar pill — sadece md+; staggerChildren'dan ayrı: açılınca hemen kaybolmalı */}
           <div
-            className="pointer-events-none absolute inset-0 hidden items-center justify-center md:flex"
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
             aria-hidden="true"
           >
             <motion.div

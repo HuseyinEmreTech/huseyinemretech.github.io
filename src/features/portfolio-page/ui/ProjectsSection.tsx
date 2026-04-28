@@ -27,11 +27,11 @@ export function ProjectsSection() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 grid gap-10 lg:grid-cols-[1.2fr_0.8fr]"
         >
-          <div className="rounded-[2rem] border border-white/[0.06] bg-white/[0.02] p-3">
+          <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-3">
             <ProjectWaveDemo pxSize={wavePxSize} waveLabel={t('projects-wave-label')} />
           </div>
-          <div className="flex flex-col justify-center gap-6 rounded-[2rem] border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm">
-            <div className="mb-1 inline-flex max-w-fit items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.25em] text-cyan-300">
+          <div className="flex flex-col justify-center gap-6 rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-sm">
+            <div className="mb-1 inline-flex max-w-fit items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.25em] text-cyan-400">
               {t('projects-wave-badge')}
             </div>
             <div>
@@ -65,7 +65,7 @@ export function ProjectsSection() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="h-72 rounded-[2rem] bg-white/[0.02] animate-pulse border border-white/[0.05]"
+                className="h-72 rounded-[2rem] bg-white/[0.02] animate-pulse border border-white/5"
               />
             ))}
           </div>
@@ -82,12 +82,12 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group relative flex flex-col p-8 rounded-[2rem] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 overflow-hidden"
+                className="group relative flex flex-col p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 overflow-hidden"
               >
                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/[0.01] rounded-full blur-3xl group-hover:bg-white/[0.03] transition-colors" />
 
                 <div className="flex justify-between items-start mb-10 relative z-10">
-                  <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/[0.05] text-white/50 group-hover:text-white transition-colors">
+                  <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 text-white/50 group-hover:text-white transition-colors">
                     <Code2 className="w-5 h-5" />
                   </div>
                   <div className="flex gap-3">
@@ -114,7 +114,7 @@ export function ProjectsSection() {
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors leading-tight">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-tight">
                   {repository.name}
                 </h3>
 

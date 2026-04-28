@@ -24,7 +24,7 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all duration-500"
+              className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-500"
             >
               <h3 className="text-xl font-semibold mb-10 tracking-tight text-white/90">
                 {t('contact-info')}
@@ -57,7 +57,7 @@ export function ContactSection() {
                     rel="noreferrer"
                     className="flex items-center gap-6 group"
                   >
-                    <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.05] text-white/20 group-hover:text-white group-hover:bg-white/10 transition-all duration-500">
+                    <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-white/20 group-hover:text-white group-hover:bg-white/10 transition-all duration-500">
                       <item.icon className="w-5 h-5" />
                     </div>
                     <div>
@@ -79,10 +79,10 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-10 rounded-[2.5rem] bg-indigo-500/[0.02] border border-indigo-500/[0.05] hover:border-indigo-500/10 transition-all duration-500 flex flex-col justify-center items-center text-center"
+              className="p-10 rounded-[2.5rem] bg-indigo-500/[0.02] border border-indigo-500/5 hover:border-indigo-500/10 transition-all duration-500 flex flex-col justify-center items-center text-center"
             >
               <div className="w-20 h-20 rounded-full bg-white/[0.03] flex items-center justify-center mb-8">
-                <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.8)] animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)] animate-pulse" />
               </div>
               <h3 className="text-2xl font-bold tracking-tighter mb-4">
                 {t('contact-cta-title') || 'Work with me'}

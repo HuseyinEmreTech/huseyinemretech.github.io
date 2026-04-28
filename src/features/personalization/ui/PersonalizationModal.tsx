@@ -57,7 +57,7 @@ export function PersonalizationModal() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-indigo-600 text-white shadow-[0_8px_32px_rgba(99,102,241,0.4)] flex items-center gap-2"
+        className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-indigo-500 text-white shadow-[0_8px_32px_rgba(99,102,241,0.4)] flex items-center gap-2"
         aria-label={t('test-title')}
         type="button"
       >
@@ -101,9 +101,9 @@ export function PersonalizationModal() {
                     <button
                       type="button"
                       onClick={() => setStep('test')}
-                      className="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-indigo-500/50 hover:bg-white/[0.05] transition-all group"
+                      className="w-full flex items-center gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-indigo-500/30 hover:bg-white/5 transition-all group"
                     >
-                      <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:scale-110 transition-transform">
+                      <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-500 group-hover:scale-110 transition-transform">
                         <Brain className="w-6 h-6" />
                       </div>
                       <div className="text-left">
@@ -163,9 +163,9 @@ export function PersonalizationModal() {
                           key={letter}
                           type="button"
                           onClick={() => handleAnswer(letter)}
-                          className="w-full p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-indigo-500/50 hover:bg-white/[0.06] text-left transition-all flex items-center gap-4 group"
+                          className="w-full p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-indigo-500/30 hover:bg-white/[0.06] text-left transition-all flex items-center gap-4 group"
                         >
-                          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-xs font-mono text-white/30 group-hover:border-indigo-500/50 group-hover:text-indigo-400">
+                          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-xs font-mono text-white/30 group-hover:border-indigo-500/30 group-hover:text-indigo-500">
                             {letter}
                           </div>
                           <span className="font-medium text-white/80 group-hover:text-white">
