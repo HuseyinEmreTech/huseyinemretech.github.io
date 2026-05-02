@@ -842,15 +842,15 @@ body.light .fail-item { border-color: rgba(184,134,11,0.15); }
    ═════════════════════════════════════════════════════════════ */
 body.light {
   --gold: #6b5010;
-  --gold-dim: rgba(107,80,16,0.2);
-  --gold-line: rgba(107,80,16,0.55);
+  --gold-dim: rgba(107,80,16,0.18);
+  --gold-line: rgba(107,80,16,0.6);
   --bank-blue: #1a4d9e;
-  --white: #2a2a2a;
-  --dim: #3d3d3d;
-  --dimmer: rgba(50,50,50,0.7);
-  --bg: #d4d0c0;
+  --white: #1a1a1a;
+  --dim: #2a2a2a;
+  --dimmer: rgba(25,25,25,0.92);
+  --bg: #f2f0e8;
   --glass: rgba(0,0,0,0.03);
-  --glass-border: rgba(0,0,0,0.08);
+  --glass-border: rgba(0,0,0,0.12);
   --text-shadow: none;
 }
 body.light #bg-canvas { display: none; }
@@ -861,13 +861,13 @@ body.light .card {
 }
 body.light .card:hover { background: rgba(107,80,16,0.08); }
 body.light .ctrl-btn {
-  background: #d8d4c8;
+  background: #e6e2d8;
   color: #4a3c0c;
-  border-color: rgba(107,80,16,0.3);
+  border-color: rgba(107,80,16,0.35);
 }
-body.light .ctrl-btn:hover { background: rgba(107,80,16,0.08); }
-body.light .ctrl-btn.active { background: #6b5010; color: #d4d0c0; }
-body.light .flash { background: #d4d0c0; }
+body.light .ctrl-btn:hover { background: rgba(107,80,16,0.1); }
+body.light .ctrl-btn.active { background: #6b5010; color: #f5f1e8; }
+body.light .flash { background: var(--bg); }
 body.light .lewin-step { background: rgba(107,80,16,0.04); border-color: rgba(107,80,16,0.18); }
 body.light .blockquote p, body.light .card-text,
 body.light .body-text, body.light .check-list li, body.light .fail-table td,
@@ -878,13 +878,13 @@ body.light .timeline-item { border-bottom-color: rgba(50,50,50,0.08); }
 body.light .t-year { color: #4a3c0c; }
 body.light .t-text { color: #3d3d3d; }
 body.light .bar-label { color: #2a2a2a; }
-body.light .header-brand { opacity: 0.75; color: #2a2a2a; }
-body.light .vert-text { color: #4a3c0c; opacity: 0.65; }
+body.light .header-brand { opacity: 1; color: #2a2a2a; }
+body.light .vert-text { color: #4a3c0c; opacity: 0.75; }
 body.light .key { border-color: rgba(50,50,50,0.15); color: #3d3d3d; }
 body.light .nav-hint { color: #4a3c0c; }
 body.light .progress-bar { background: #6b5010; box-shadow: none; }
-body.light .slide-counter { color: #4a3c0c; opacity: 0.8; }
-body.light .section-label { color: #4a3c0c; }
+body.light .slide-counter { color: #4a3c0c; opacity: 1; }
+body.light .section-label { color: #4a3c0c; opacity: 1; }
 body.light .overline { color: #4a3c0c; }
 body.light .section-title, body.light .display-title { color: #2a2a2a; }
 body.light .theory-name { color: #3d3d3d; }
@@ -897,7 +897,7 @@ body.light .check-list li { border-bottom-color: rgba(50,50,50,0.1); color: #2a2
 body.light .check-list li::before { color: #6b5010; }
 body.light .blockquote { border-left-color: #6b5010; }
 body.light .blockquote cite { color: #4a3c0c; }
-body.light .big-stat { color: #6b5010; opacity: 0.8; }
+body.light .big-stat { color: #5a3800; opacity: 1; }
 body.light .big-stat-label { color: #4a3c0c; }
 body.light .stat-num { color: #6b5010; }
 body.light .bar-value { color: #6b5010; }
@@ -910,7 +910,8 @@ body.light .fail-table td { color: #2a2a2a; }
 body.light .fail-table tr:hover { background: rgba(0,0,0,0.025); }
 body.light .biblio-list li { border-bottom-color: rgba(50,50,50,0.04); color: #2a2a2a; }
 body.light svg text { fill: #2a2a2a; }
-body.light svg circle { stroke: rgba(50,50,50,0.08); }
+body.light svg circle:not(.chart-circle) { stroke: rgba(50,50,50,0.08); }
+body.light .chart-circle { stroke-opacity: 0.75; }
 body.light .deco-circle { opacity: 0.08; }
 body.light .qr-code { border: 1px solid rgba(107,80,16,0.2); border-radius: 8px; margin-bottom: 8px; }
 body.light .slide-1::after { display: none; }
@@ -920,11 +921,11 @@ body.light a { color: #4a3c0c; border-color: rgba(107,80,16,0.45); }
 body.light .lewin-step::after { color: #6b5010; }
 body.light .lewin-icon { opacity: 0.55; }
 /* Light mode - navigation */
-body.light .nav-hint .key { color: var(--dimmer); }
-body.light .nav-dots .dot { border: 1px solid rgba(10,10,15,0.15); }
-body.light .slide-counter { text-shadow: none; opacity: 0.8; }
-body.light .section-label { text-shadow: none; opacity: 0.9; }
-body.light .progress-bar { opacity: 0.85; }
+body.light .nav-hint .key { color: #3d3d3d; }
+body.light .nav-dots .dot { border: 1px solid rgba(10,10,15,0.18); }
+body.light .slide-counter { text-shadow: none; opacity: 1; }
+body.light .section-label { text-shadow: none; opacity: 1; }
+body.light .progress-bar { opacity: 1; }
 
 /* Light mode - cards & blocks */
 body.light .card { box-shadow: none; border-radius: 6px; }
@@ -934,9 +935,9 @@ body.light .two-col > div:first-child { background: rgba(26,95,212,0.08); border
 /* Light mode - typography */
 body.light .display-title span[style*="color:var(--dimmer)"] { color: var(--dimmer) !important; }
 body.light .header-brand { color: var(--white); }
-body.light .ctrl-bar span { background: rgba(184,134,11,0.3); }
-body.light .gold-line { box-shadow: 0 0 6px rgba(184,134,11,0.4); }
-body.light .vert-text { opacity: 0.7; }
+body.light .ctrl-bar span { background: rgba(107,80,16,0.3); }
+body.light .gold-line { box-shadow: none; }
+body.light .vert-text { opacity: 0.75; }
 
 /* Light mode - lewin SVG elements */
 body.light .lewin-step { border-radius: 8px; }
@@ -957,52 +958,157 @@ body.light .slide-1::after { display: none; }
 body.light #bg-canvas { display: none; }
 body.light .grain { display: none; }
 
-/* Light mode - visibility adjustments - projeksiyon dostu */
-body.light .overline { color: #4a3c0c; opacity: 0.9; }
-body.light .body-text strong { color: #6b5010; }
-body.light .card-text { color: #2a2a2a; }
-body.light .t-text { color: #3d3d3d; }
-body.light .big-stat { text-shadow: none; opacity: 0.85; }
-body.light .stat-num { text-shadow: none; color: #6b5010; }
-body.light .bar-value { text-shadow: none; color: #6b5010; }
-body.light .bar-track { background: rgba(0,0,0,0.05); }
+/* Light mode - visibility adjustments */
+body.light .overline { color: #4a3c0c; opacity: 1; }
+body.light .body-text strong { color: #5a3800; }
+body.light .card-text { color: #1a1a1a; }
+body.light .t-text { color: #2a2a2a; }
+body.light .big-stat { text-shadow: none; opacity: 1; color: #5a3800; }
+body.light .stat-num { text-shadow: none; color: #5a3800; }
+body.light .bar-value { text-shadow: none; color: #5a3800; }
+body.light .bar-track { background: rgba(0,0,0,0.08); }
 body.light .check-list li::before { color: #6b5010; }
-body.light .blockquote p { color: #2a2a2a; }
+body.light .blockquote p { color: #1a1a1a; }
 body.light .card-num { color: #4a3c0c; }
-body.light .lewin-desc { color: #3d3d3d; }
+body.light .lewin-desc { color: #2a2a2a; }
 body.light .stat-desc { color: #4a3c0c; }
-body.light .card-text small { color: #4a3c0c; opacity: 0.8; }
-body.light .biblio-list { color: #2a2a2a; }
+body.light .card-text small { color: #4a3c0c; opacity: 1; }
+body.light .biblio-list { color: #1a1a1a; }
 body.light .fail-table { background: transparent; }
-body.light .fail-table tr:hover { background: rgba(0,0,0,0.02); }
+body.light .fail-table tr:hover { background: rgba(0,0,0,0.03); }
 
-/* Light mode - enhanced text elements */
-body.light .body-text { color: #2a2a2a; font-weight: 500; }
-body.light .card-text { color: #2a2a2a; font-weight: 450; }
-body.light .t-text { color: #3d3d3d; font-weight: 450; }
-body.light .lewin-desc { color: #3d3d3d; font-weight: 450; }
-body.light .theory-text { color: #2a2a2a; }
-body.light .stat-desc { color: #4a3c0c; font-weight: 500; }
-body.light .timeline-text { color: #3d3d3d; }
-body.light .question-text { color: #2a2a2a; }
-body.light .fig-caption { color: #4a3c0c; opacity: 0.75; }
-body.light .biblio-list { color: #2a2a2a; }
-body.light .bank-table td { color: #2a2a2a; }
+/* Light mode - metin ağırlıkları projeksiyon için */
+body.light .body-text { color: #1a1a1a; font-weight: 600; }
+body.light .card-text { color: #1a1a1a; font-weight: 500; }
+body.light .t-text { color: #2a2a2a; font-weight: 500; }
+body.light .lewin-desc { color: #2a2a2a; font-weight: 500; }
+body.light .theory-text { color: #1a1a1a; }
+body.light .stat-desc { color: #4a3c0c; font-weight: 600; }
+body.light .timeline-text { color: #2a2a2a; }
+body.light .question-text { color: #1a1a1a; }
+body.light .fig-caption { color: #4a3c0c; opacity: 1; }
+body.light .bank-table td { color: #1a1a1a; }
 
-/* Light mode - muted gold for projeksiyon */
+/* Light mode - altın rengi projeksiyon */
 body.light .gold { color: #6b5010; }
-body.light .card-num { color: #4a3c0c; font-weight: 600; }
-body.light .overline { color: #4a3c0c; font-weight: 600; }
+body.light .card-num { color: #4a3c0c; font-weight: 700; }
+body.light .overline { color: #4a3c0c; font-weight: 700; }
 body.light .section-label { color: #4a3c0c; }
 body.light .slide-counter { color: #4a3c0c; }
-body.light .t-year { color: #4a3c0c; }
-body.light .stat-num { color: #6b5010; }
-body.light .bar-value { color: #6b5010; }
-body.light .big-stat { color: #6b5010; }
+body.light .t-year { color: #4a3c0c; font-weight: 600; }
 
 /* Light mode - stronger blue */
 body.light .bank-blue { color: #1540a8; }
 body.light .bank-blue-text { color: #1540a8; font-weight: 600; }
+
+/* ── NAV DOTS (CSS tabanlı, tema uyumlu) ── */
+.nav-dots .dot { background: rgba(255,255,255,0.2); transition: all 0.3s; }
+.nav-dots .dot.active { background: var(--gold); transform: scale(1.4); }
+
+/* ═════════════════════════════════════════════════════════════
+   PROJEKSİYON OPTİMİZASYONU — Beyaz perde, gündüz vakti
+   Yüksek kontrast, sıfır opasite kaybı, güçlü okunabilirlik
+   ═════════════════════════════════════════════════════════════ */
+
+/* — Tüm opacity azaltmalarını sıfırla — */
+body.light .theory-pill,
+body.light .step-pill        { opacity: 1 !important; color: #4a3c0c; }
+body.light .pacolli-caption  { opacity: 1 !important; color: #4a3c0c; }
+body.light .fig-caption      { opacity: 1 !important; color: #4a3c0c; }
+body.light .lewin-icon       { opacity: 0.92; }
+body.light svg text          { opacity: 1 !important; fill: #2a2a2a; }
+body.light .vert-text        { opacity: 0.75; color: #4a3c0c; }
+body.light .progress-bar     { opacity: 1; }
+body.light .section-label    { opacity: 1; }
+body.light .slide-counter    { opacity: 1; }
+body.light .header-brand     { opacity: 1; }
+body.light .deco-circle      { opacity: 0; }
+
+/* — SVG metin override düzeltmesi — */
+body.light svg text[fill*="dimmer"],
+body.light svg text[fill*="white"]  { fill: #2a2a2a !important; }
+body.light .pacolli-svg-label       { fill: #5a3800 !important; }
+body.light .pacolli-center-text     { fill: #2a2a2a !important; opacity: 1 !important; }
+
+/* — Lewin kar tanesi: beyaz mavi → koyu mavi — */
+body.light .sf-arm,
+body.light .sf-branch      { stroke: #1a4d9e !important; stroke-width: 2.5; }
+body.light #sf-center      { fill: #1a4d9e !important; stroke: #0f3080 !important; }
+
+/* — Lewin buz animasyonu: koyu mavi tonları — */
+body.light #ice-body       { fill: rgba(26,77,158,0.1)  !important; stroke: #1a4d9e !important; stroke-width: 2; }
+body.light #drip-a,
+body.light #drip-b         { fill: #1a4d9e !important; opacity: 1; }
+body.light #melt-puddle    { fill: rgba(26,77,158,0.25) !important; stroke: rgba(26,77,158,0.65) !important; }
+
+/* — Gövde metin ağırlığı projeksiyon için — */
+body.light .body-text      { font-weight: 600; color: #1a1a1a; }
+body.light .card-text      { font-weight: 500; color: #1a1a1a; }
+body.light .t-text         { font-weight: 500; color: #2a2a2a; }
+body.light .lewin-desc     { font-weight: 500; color: #2a2a2a; }
+body.light .check-list li  { font-weight: 500; color: #1a1a1a; border-bottom-color: rgba(30,30,30,0.15); }
+body.light .fi-text        { font-weight: 500; color: #1a1a1a; }
+body.light .blockquote p   { color: #1a1a1a; }
+body.light .biblio-list    { color: #1a1a1a; }
+body.light .biblio-list li { border-bottom-color: rgba(30,30,30,0.08); }
+body.light .schein-quote,
+body.light .question-text  { color: #1a1a1a; }
+body.light .bank-table td  { color: #1a1a1a; }
+body.light .tip-body       { color: #1a1a1a; }
+body.light .box-text       { color: #1a1a1a; }
+
+/* — Başlıklar — */
+body.light .section-title,
+body.light .display-title  { color: #1a1a1a; }
+body.light .card-title     { color: #1a1a1a; font-weight: 700; }
+body.light .t-title        { color: #1a1a1a; font-weight: 700; }
+body.light .lewin-label    { font-weight: 700; }
+body.light .theory-name    { font-weight: 700; }
+body.light .overline       { font-weight: 700; letter-spacing: 4px; opacity: 1; }
+body.light .section-label  { font-weight: 600; }
+body.light .card-num       { font-weight: 700; }
+body.light .card-text small  { opacity: 1; color: #4a3c0c; }
+body.light .body-text strong { color: #5a3800; }
+
+/* — İstatistik sayıları — */
+body.light .big-stat       { color: #5a3800; opacity: 1 !important; }
+body.light .big-stat-label { color: #3d3d3d; opacity: 1; }
+body.light .stat-num       { color: #5a3800; }
+body.light .stat-desc      { color: #4a3c0c; font-weight: 600; }
+body.light .bar-value      { color: #5a3800; font-weight: 700; }
+body.light .fi-num         { color: #5a3800; text-shadow: none; }
+
+/* — Bar chart projeksiyon için — */
+body.light .bar-track { background: rgba(0,0,0,0.1); }
+body.light .bar-fill  { background: linear-gradient(90deg, #5a3800, rgba(90,56,0,0.5)); }
+
+/* — Kart ve çerçeve borderleri — */
+body.light .card               { border-color: rgba(107,80,16,0.28); border-radius: 4px; }
+body.light .card:hover         { border-color: rgba(107,80,16,0.48); }
+body.light .theory-block       { border-left-width: 3px; border-left-color: rgba(107,80,16,0.5); }
+body.light .lewin-step         { border-color: rgba(107,80,16,0.28); }
+body.light .blockquote         { border-left-width: 4px; border-left-color: #6b5010; }
+body.light .timeline-item      { border-bottom-color: rgba(30,30,30,0.15); }
+body.light .fail-table th,
+body.light .fail-table td      { border-bottom-color: rgba(30,30,30,0.12); }
+body.light .fail-table td      { color: #1a1a1a; }
+body.light .fail-table th      { color: #4a3c0c; font-weight: 700; }
+
+/* — Gold yatay çizgi — */
+body.light .gold-line { background: #6b5010; box-shadow: none; height: 3px; }
+
+/* — Step pills — */
+body.light .step-pill { background: rgba(107,80,16,0.06); border-color: rgba(107,80,16,0.48); }
+
+/* — Nav hint — */
+body.light .nav-hint           { color: #3d3d3d; }
+body.light .nav-hint .key      { color: #3d3d3d; border-color: rgba(30,30,30,0.25); }
+body.light .ctrl-bar > span    { background: rgba(107,80,16,0.35) !important; }
+
+/* — Kapanış slide bağlantıları — */
+body.light .portfolio-link     { color: #4a3c0c; border-color: rgba(107,80,16,0.55); }
+body.light .portfolio-link:hover { background: rgba(107,80,16,0.1); }
+body.light .qr-label           { color: #3d3d3d; }
 
 /* ── COMPACT HEIGHT (küçük ekranlar) ── */
 @media (max-height: 750px) {
@@ -1256,7 +1362,7 @@ body.light .bank-blue-text { color: #1540a8; font-weight: 600; }
         <text x="210" y="112" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="var(--dimmer)" opacity="0.7" data-i18n="s4-svg-t4">SÜRDÜRÜLEBİLİR</text>
         <text x="210" y="130" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="var(--dimmer)" opacity="0.7" data-i18n="s4-svg-t5">DİJİTAL DÖNÜŞÜM</text>
       </svg>
-      <p class="anim" style="font-size:13px; letter-spacing:4px; color:var(--gold); text-align:center; margin-top:20px; font-family:'JetBrains Mono',monospace; opacity:0.65;" data-i18n="s4-svg-cap">PACOLLI FRAMEWORK · STRATEGIC CORE</p>
+      <p class="anim pacolli-caption" data-i18n="s4-svg-cap">PACOLLI FRAMEWORK · STRATEGIC CORE</p>
     </div>
   </div>
 
@@ -1386,7 +1492,7 @@ body.light .bank-blue-text { color: #1540a8; font-weight: 600; }
       <ul class="check-list" style="max-width:none;">
         <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li1">Yerleşik davranış, <strong>grubun öğrettiği</strong> üzerine kuruludur</li>
         <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li2">Değişim, grup üyeliğini veya kimliği tehdit ederse <strong>direnç</strong> doğar</li>
-        <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li3">Çalışanları "dinleyip saygı göstermek" antagonistleşmeyi önler (HBR, 2017)</li>
+        <li style="padding:10px 0; font-size:19px;" data-i18n="s4c-li3">Çalışanları "dinleyip saygı göstermek" düşmanca tutum oluşmasını önler (HBR, 2017)</li>
       </ul>
       <div style="border:1px solid var(--gold-line); padding:18px 20px; background:rgba(201,168,76,0.05);">
         <div style="font-family:'JetBrains Mono'; font-size:13px; letter-spacing:2px; color:var(--gold); margin-bottom:8px;" data-i18n="s4c-tip-title">BANKACILIK İPUCU</div>
@@ -1572,7 +1678,7 @@ body.light .bank-blue-text { color: #1540a8; font-weight: 600; }
        SLIDE 11 — DİRENÇ YÖNETİMİ
   ══════════════════════════════════════════ -->
   <div class="slide" data-section="İNSAN ODAKLI DÖNÜŞÜM" data-section-en="HUMAN-CENTERED">
-    <div class="anim overline" data-i18n="s11-overline">Psikolojik Baryerler</div>
+    <div class="anim overline" data-i18n="s11-overline">Psikolojik Bariyerler</div>
     <h2 class="section-title anim" data-i18n="s11-title">DİRENÇTEN<br><span style="color:var(--gold)">ADAPTASYONA</span></h2>
     <div class="gold-line anim"></div>
     <div class="cards-grid anim">
@@ -1788,7 +1894,7 @@ const navDots = document.getElementById('nav-dots');
 for (let i = 0; i < total; i++) {
   const dot = document.createElement('div');
   dot.className = 'dot' + (i === 0 ? ' active' : '');
-  dot.style.cssText = "width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.3s";
+  dot.style.cssText = "width:8px; height:8px; border-radius:50%; cursor:pointer;";
   dot.addEventListener('click', () => goTo(i));
   navDots.appendChild(dot);
 }
@@ -1808,7 +1914,7 @@ function updateUI() {
   // Update Dots
   const dots = navDots.querySelectorAll('div');
   dots.forEach((d, i) => {
-    d.style.background = i === current ? 'var(--gold)' : 'rgba(255,255,255,0.2)';
+    d.classList.toggle('active', i === current);
     d.style.transform = i === current ? 'scale(1.4)' : 'scale(1)';
   });
 
@@ -2161,6 +2267,13 @@ function toggleTheme() {
   isDark = !isDark;
   document.body.classList.toggle('light', !isDark);
   document.getElementById('btn-theme').textContent = isDark ? '☀' : '🌙';
+  const qrBg = isDark ? '0a0a0f' : 'f0ede4';
+  const qrColor = isDark ? 'FFD700' : '3d2d00';
+  document.querySelectorAll('.qr-code').forEach(img => {
+    if (img.src) img.src = img.src
+      .replace(/bgcolor=[a-fA-F0-9]+/, 'bgcolor=' + qrBg)
+      .replace(/([?&])color=[a-fA-F0-9]+/, '$1color=' + qrColor);
+  });
 }
 
 // ═════════════════════════════════════════════════════════════
@@ -2229,7 +2342,7 @@ const i18n = {
     's4c-cite': 'Schein, 2004, s. 321',
     's4c-li1': 'Yerleşik davranış, <strong>grubun öğrettiği</strong> üzerine kuruludur.',
     's4c-li2': 'Değişim, grup üyeliğini veya kimliği tehdit ederse <strong>direnç</strong> doğar.',
-    's4c-li3': 'Çalışanları "dinleyip saygı göstermek" antagonistleşmeyi önler (HBR, 2017).',
+    's4c-li3': 'Çalışanları "dinleyip saygı göstermek" düşmanca tutum oluşmasını önler (HBR, 2017).',
     's4c-tip-title': 'BANKACILIK İPUCU',
     's4c-tip-body': 'Uzun süredir çalışan veya geçmişte etkili olan kişileri dinlemezsen, kendilerini "ihmal edilmiş" hissedip dönüşümün karşıtı haline gelebilir.',
     's5-overline': 'Yeni Paradigma',
@@ -2589,6 +2702,9 @@ function setLang(lang) {
   // Refit after text changes
   setTimeout(() => fitAll(), 50);
 }
+
+// Sayfa açılışında Türkçe dil uygula
+setLang('tr');
 </script>
 </body>
 </html>
