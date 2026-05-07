@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -14,6 +14,17 @@ export default defineConfig({
       '@core': path.resolve(rootDir, 'src/core'),
       '@services': path.resolve(rootDir, 'src/services'),
       '@hooks': path.resolve(rootDir, 'src/hooks'),
+    },
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/test/setup.ts'],
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    coverage: {
+      reporter: ['text', 'lcov'],
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['src/test/**', 'src/vite-env.d.ts'],
     },
   },
   build: {

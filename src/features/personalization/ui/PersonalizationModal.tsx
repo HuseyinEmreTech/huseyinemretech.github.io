@@ -1,53 +1,15 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from '@/features/localization/LanguageContext'
-import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutContext'
 import { Sparkles, X, ChevronRight, ChevronLeft, Brain, FileText } from 'lucide-react'
-import { MBTI_PROMPTS } from '@/features/personalization/model/mbtiPrompts'
-import type { MbtiAnswerLetter } from '@/features/personalization/model/mbtiDimensions'
-import {
-  deriveMbtiTypeCode,
-  scoreAnswersAgainstMbtiPrompts,
-} from '@/features/personalization/model/mbtiScoring'
-import { mapMbtiCodeToSiteLayout } from '@/features/personalization/model/mapMbtiCodeToSiteLayout'
-import { PERSONALIZATION_WIZARD_RESET_DELAY_MS } from '@/features/personalization/ui/personalizationTiming'
-
-type WizardStep = 'choice' | 'test'
+import { useMbtiWizard } from '@/features/personalization/ui/useMbtiWizard'
 
 export function PersonalizationModal() {
   const { lang, t } = useTranslation()
-  const { setLayout } = useAdaptive()
   const [isOpen, setIsOpen] = useState(false)
-  const [step, setStep] = useState<WizardStep>('choice')
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [answers, setAnswers] = useState<MbtiAnswerLetter[]>([])
 
-  const prompts = MBTI_PROMPTS
-
-  const handleAnswer = (letter: MbtiAnswerLetter) => {
-    const nextAnswers = [...answers]
-    nextAnswers[currentQuestionIndex] = letter
-    setAnswers(nextAnswers)
-
-    if (currentQuestionIndex < prompts.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1)
-    } else {
-      completeWizard(nextAnswers)
-    }
-  }
-
-  const completeWizard = (finalAnswers: MbtiAnswerLetter[]) => {
-    const scoreBoard = scoreAnswersAgainstMbtiPrompts(prompts, finalAnswers)
-    const mbtiTypeCode = deriveMbtiTypeCode(scoreBoard)
-    const layoutPreset = mapMbtiCodeToSiteLayout(mbtiTypeCode)
-    setLayout(layoutPreset)
-    setIsOpen(false)
-    window.setTimeout(() => {
-      setStep('choice')
-      setCurrentQuestionIndex(0)
-      setAnswers([])
-    }, PERSONALIZATION_WIZARD_RESET_DELAY_MS)
-  }
+  const handleComplete = useCallback(() => setIsOpen(false), [])
+  const { step, setStep, currentQuestionIndex, prompts, handleAnswer, goBack } = useMbtiWizard(handleComplete)
 
   return (
     <>
@@ -77,6 +39,9 @@ export function PersonalizationModal() {
             />
 
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="personalization-title"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -85,6 +50,7 @@ export function PersonalizationModal() {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
+                aria-label={t('modal-close')}
                 className="absolute top-6 right-6 p-2 text-white/30 hover:text-white transition-colors"
               >
                 <X className="w-5 h-5" />
@@ -94,7 +60,7 @@ export function PersonalizationModal() {
                 {step === 'choice' ? (
                   <div className="space-y-6">
                     <div className="text-center mb-10 pt-4">
-                      <h2 className="text-2xl font-bold mb-2">{t('test-title')}</h2>
+                      <h2 id="personalization-title" className="text-2xl font-bold mb-2">{t('test-title')}</h2>
                       <p className="text-white/40 text-sm">{t('test-desc')}</p>
                     </div>
 
@@ -180,7 +146,7 @@ export function PersonalizationModal() {
                     {currentQuestionIndex > 0 && (
                       <button
                         type="button"
-                        onClick={() => setCurrentQuestionIndex(currentQuestionIndex - 1)}
+                        onClick={goBack}
                         className="flex items-center gap-2 text-sm font-medium text-white/30 hover:text-white transition-colors"
                       >
                         <ChevronLeft className="w-4 h-4" />

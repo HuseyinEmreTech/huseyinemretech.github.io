@@ -283,9 +283,18 @@ export function CinematicFooter() {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  useEffect(() => {
+    const id = 'cinematic-footer-styles'
+    if (document.getElementById(id)) return
+    const style = document.createElement('style')
+    style.id = id
+    style.textContent = STYLES
+    document.head.appendChild(style)
+    return () => { document.getElementById(id)?.remove() }
+  }, [])
+
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
       <div
         ref={wrapperRef}
