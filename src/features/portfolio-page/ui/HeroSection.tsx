@@ -23,15 +23,16 @@ export function HeroSection() {
   const rotateY = useTransform(smoothX, [-0.5, 0.5], [-7, 7])
   const rotateX = useTransform(smoothY, [-0.5, 0.5], [4, -4])
 
+  const onMouseMove = useCallback((e: MouseEvent) => {
+    rawX.set((e.clientX / window.innerWidth) - 0.5)
+    rawY.set((e.clientY / window.innerHeight) - 0.5)
+  }, [rawX, rawY])
+
   useEffect(() => {
     if (prefersReducedMotion) return
-    const onMove = (e: MouseEvent) => {
-      rawX.set((e.clientX / window.innerWidth) - 0.5)
-      rawY.set((e.clientY / window.innerHeight) - 0.5)
-    }
-    window.addEventListener('mousemove', onMove, { passive: true })
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [prefersReducedMotion])
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
+    return () => window.removeEventListener('mousemove', onMouseMove)
+  }, [prefersReducedMotion, onMouseMove])
 
   // ── Spline deferred loading ──────────────────────────────────
   // ~4MB Spline bundle'ı kritik yol bitmeden indirmemeye başla.

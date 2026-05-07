@@ -118,13 +118,12 @@ export function PortfolioNavigationBar() {
     }
   }, [isMobileMenuOpen])
 
-  const handleNavClick = (e: React.MouseEvent) => {
+  const handleNavClick = React.useCallback((e: React.MouseEvent) => {
     if (!isExpanded) {
-      const target = e.target as HTMLElement
-      if (target.closest('a')) e.preventDefault()
+      e.stopPropagation()
       setExpanded(true)
     }
-  }
+  }, [isExpanded])
 
   const handleLangToggle = (e: React.MouseEvent) => {
     e.stopPropagation()

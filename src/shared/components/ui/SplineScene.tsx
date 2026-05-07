@@ -1,4 +1,4 @@
-import { Component, Suspense, lazy, useMemo } from 'react'
+import { Component, type ErrorInfo, Suspense, lazy, useMemo } from 'react'
 import { hasWebGL } from '@/shared/lib/webgl'
 
 const FILTERED_WARNS = ['Multiple instances of Three.js', 'updating from']
@@ -22,18 +22,18 @@ interface SplineSceneProps {
   className?: string
   shouldLoad?: boolean
   onLoad?: () => void
-  onError?: () => void
+  onError?: (error?: Error) => void
 }
 
 interface EBState { hasError: boolean }
 
 class SplineErrorBoundary extends Component<
-  { children: React.ReactNode; fallback: React.ReactNode; onError?: () => void },
+  { children: React.ReactNode; fallback: React.ReactNode; onError?: (error: Error) => void },
   EBState
 > {
   state: EBState = { hasError: false }
   static getDerivedStateFromError(): EBState { return { hasError: true } }
-  componentDidCatch() { this.props.onError?.() }
+  componentDidCatch(error: Error, _info: ErrorInfo) { this.props.onError?.(error) }
   render() {
     if (this.state.hasError) return this.props.fallback
     return this.props.children
