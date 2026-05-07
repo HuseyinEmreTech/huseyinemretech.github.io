@@ -64,7 +64,7 @@ export function HeroSection() {
   useEffect(() => {
     type NavConn = { saveData?: boolean; effectiveType?: string }
     const conn = (navigator as Navigator & { connection?: NavConn }).connection
-    const isSlowConn = conn?.saveData || conn?.effectiveType === '2g' || conn?.effectiveType === 'slow-2g'
+    const isSlowConn = conn?.saveData ?? (conn?.effectiveType === '2g' || conn?.effectiveType === 'slow-2g')
 
     if (isSlowConn) {
       // Spline hiç yüklenmeyecek; loader'ı kısa sürede serbest bırak

@@ -9,7 +9,7 @@ import {
   useVelocity,
   useAnimationFrame,
   useMotionValue,
-} from 'motion/react'
+} from 'framer-motion'
 import { wrap } from '@motionone/utils'
 import { cn } from '@/shared/lib/utils'
 
