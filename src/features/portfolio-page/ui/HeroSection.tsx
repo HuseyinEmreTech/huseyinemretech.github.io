@@ -73,8 +73,8 @@ export function HeroSection() {
 
     if (!splineReady) return // idle callback bekleniyor; onLoad veya timeout halleder
 
-    // Spline yükleniyor — onLoad tetiklenmezse 7s sonra fallback
-    const id = setTimeout(fireRobotSettled, 7000)
+    // Spline yükleniyor — onLoad tetiklenmezse 5s sonra fallback (CDN engelinde hızlı geçiş)
+    const id = setTimeout(fireRobotSettled, 5000)
     return () => clearTimeout(id)
   }, [splineReady, fireRobotSettled])
 
@@ -95,6 +95,7 @@ export function HeroSection() {
           scene={HERO_SCENE_URL}
           shouldLoad={splineReady}
           onLoad={fireRobotSettled}
+          onError={fireRobotSettled}
           className="relative z-10 h-full w-full"
         />
       </motion.div>
