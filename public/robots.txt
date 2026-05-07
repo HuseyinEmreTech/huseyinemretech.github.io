@@ -1,2 +1,18 @@
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://huseyinemre.tech/sitemap.xml
+
+# Block AI crawlers (cost optimization)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /

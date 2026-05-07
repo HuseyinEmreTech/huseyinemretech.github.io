@@ -33,14 +33,30 @@ export function HeroSection() {
     return () => window.removeEventListener('mousemove', onMove)
   }, [prefersReducedMotion])
 
-  // ── Spline deferred loading ──────────────────────────────────
-  // ~4MB Spline bundle'ı kritik yol bitmeden indirmemeye başla.
-  // Yavaş / veri tasarruflu bağlantıda hiç yükleme.
+  // ── Spline deferred loading + Budget kontrolü ──────────────────
+  // Hem performans hem maliyet optimizasyonu
   const [splineReady, setSplineReady] = useState(false)
   useEffect(() => {
     type NavConn = { saveData?: boolean; effectiveType?: string }
     const conn = (navigator as Navigator & { connection?: NavConn }).connection
-    if (conn?.saveData || conn?.effectiveType === '2g' || conn?.effectiveType === 'slow-2g') return
+
+    // Veri tasarrufu + yavaş bağlantı + mobil kontrolü
+    if (conn?.saveData ||
+        conn?.effectiveType === '2g' ||
+        conn?.effectiveType === 'slow-2g' ||
+        /Mobi|Android/i.test(navigator.userAgent)) {
+      console.log('Spline CDN bypassed: bandwidth/device optimization')
+      return
+    }
+
+    // Peak hours'da Spline'ı durdur (maliyet kontrolü)
+    const hour = new Date().getHours()
+    const isPeakTraffic = hour >= 9 && hour <= 18 // 9-18 arası
+
+    if (isPeakTraffic && Math.random() > 0.3) { // %70 şansla skip
+      console.log('Spline CDN bypassed: cost optimization during peak hours')
+      return
+    }
 
     const start = () => setSplineReady(true)
     if ('requestIdleCallback' in window) {
