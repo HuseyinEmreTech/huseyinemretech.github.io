@@ -20,7 +20,25 @@ function getCorsHeaders(origin) {
 
 function sanitize(str) {
     if (!str) return '';
-    return str.replace(/[<>]/g, '').trim().substring(0, 2000);
+
+    // Proper HTML entity encoding to prevent XSS
+    const entityMap = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        '/': '&#x2F;',
+        '`': '&#x60;',
+        '=': '&#x3D;'
+    };
+
+    return str
+        .replace(/[&<>"'`=/]/g, (s) => entityMap[s] || s)
+        .replace(/[\r\n]/g, ' ') // Convert newlines to spaces
+        .replace(/\s+/g, ' ')   // Normalize whitespace
+        .trim()
+        .substring(0, 2000);
 }
 
 export default {
@@ -112,7 +130,7 @@ async function handleRequest(request, env = {}) {
         "default-src 'none'; " +
         // 'wasm-unsafe-eval': Spline physics/navmesh WebAssembly modülleri için gerekli
         // blob:: Spline'ın inline Web Worker'ları için gerekli
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net; " +
+        "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; " +
         "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
         "img-src 'self' data: blob: https: https://api.qrserver.com https://cdn.jsdelivr.net; " +

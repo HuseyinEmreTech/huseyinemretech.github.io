@@ -2,7 +2,13 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "numberOfRuns": 1
+      "numberOfRuns": 1,
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/gis-project.html",
+        "http://localhost/standalone-projects/ag_yonetimi_sunum/ag-guvenligi-sunum.html",
+        "http://localhost/standalone-projects/araba-yikama-tahmin/index.html"
+      ]
     },
     "assert": {
       "assertions": {

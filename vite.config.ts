@@ -29,6 +29,9 @@ export default defineConfig({
   },
   build: {
     sourcemap: 'hidden',
+    target: 'esnext',
+    minify: 'esbuild',
+    cssMinify: 'esbuild',
     // Spline ~4MB — beklenen büyüklük, uyarı gereksiz
     chunkSizeWarningLimit: 2200,
     modulePreload: {
@@ -39,12 +42,34 @@ export default defineConfig({
         main: path.resolve(rootDir, 'index.html'),
       },
       output: {
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name?.split('.') ?? []
+          const ext = info[info.length - 1] ?? ''
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`
+          }
+          if (/css/i.test(ext)) {
+            return `assets/css/[name]-[hash][extname]`
+          }
+          return `assets/[name]-[hash][extname]`
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            // Critical vendor chunks for better caching
+            if (id.includes('@splinetool') || id.includes('spline')) return 'vendor-spline'
             if (id.includes('framer-motion')) return 'vendor-motion'
             if (id.includes('lucide-react')) return 'vendor-icons'
             if (id.includes('react/') || id.includes('react-dom/')) return 'vendor-react'
+            if (id.includes('@radix-ui')) return 'vendor-radix'
+            // Bundle remaining node_modules together
+            return 'vendor-libs'
           }
+          // Feature-based chunks for better tree shaking
+          if (id.includes('/features/localization/')) return 'feature-i18n'
+          if (id.includes('/features/personalization/')) return 'feature-personalization'
+          if (id.includes('/features/portfolio-page/')) return 'feature-portfolio'
         },
       },
     },
