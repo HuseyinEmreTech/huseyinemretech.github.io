@@ -1,5 +1,4 @@
 import { Suspense, lazy, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutContext'
 import { PortfolioNavigationBar } from '@/features/portfolio-page/ui/PortfolioNavigationBar'
 import { portfolioSectionComponents } from '@/features/portfolio-page/sectionRegistry'
@@ -16,11 +15,6 @@ const CinematicFooter = lazy(() =>
   import('@/shared/components/ui/motion-footer').then((m) => ({ default: m.CinematicFooter })),
 )
 
-const SECTION_REVEAL_TRANSITION = {
-  duration: 0.8,
-  ease: [0.16, 1, 0.3, 1] as const,
-}
-
 export function PortfolioPage() {
   const { sectionOrder } = useAdaptive()
 
@@ -31,13 +25,38 @@ export function PortfolioPage() {
       window.history.scrollRestoration = 'manual'
     }
 
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    // URL'de hash varsa (ör. /#projects) o bölüme scroll et; yoksa başa git
+    const initialHash = window.location.hash.slice(1)
+    let timerId: ReturnType<typeof setTimeout> | undefined
+
+    if (initialHash) {
+      // PageLoader + React render için yeterince bekle (loader min ~600ms)
+      timerId = setTimeout(() => {
+        document.getElementById(initialHash)?.scrollIntoView({ behavior: 'smooth' })
+      }, 750)
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
 
     return () => {
+      clearTimeout(timerId)
       if ('scrollRestoration' in window.history) {
         window.history.scrollRestoration = previousScrollRestoration
       }
     }
+  }, [])
+
+  // Navbar hash linklerine tıklandığında smooth scroll
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.slice(1)
+      if (!hash) return
+      requestAnimationFrame(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+      })
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
   return (
@@ -52,18 +71,7 @@ export function PortfolioPage() {
         <main>
           {sectionOrder.map((sectionId) => {
             const Section = portfolioSectionComponents[sectionId]
-
-            return (
-              <motion.div
-                key={sectionId}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={SECTION_REVEAL_TRANSITION}
-              >
-                <Section />
-              </motion.div>
-            )
+            return <Section key={sectionId} />
           })}
         </main>
 

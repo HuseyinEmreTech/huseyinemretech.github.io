@@ -65,6 +65,10 @@ const turkishMessages = {
   'coursework-presentation-desc':
     'Sunum dersi için hazırlanan dijital dönüşüm odaklı etkileşimli sunum sayfası.',
   'coursework-presentation-cta': 'Sunumu aç',
+  'coursework-network-title': 'Ağ güvenliği sunumu',
+  'coursework-network-desc':
+    'Ağ yönetimi ve siber güvenlik konularını kapsayan grup sunumu. Zero Trust, yapay zeka destekli tehdit tespiti ve SASE mimarisi.',
+  'coursework-network-cta': 'Sunumu aç',
   'sec-skills': 'Yetenekler',
   'skills-desc': 'Özelleşmiş alanlarda uzmanlık ve teknik yetkinlikler.',
   'skill-grp-erp': 'ERP & İş Süreçleri',
@@ -209,6 +213,10 @@ const englishMessages: Record<TranslationKey, string> = {
   'coursework-presentation-desc':
     'An interactive presentation page focused on digital transformation, prepared for coursework.',
   'coursework-presentation-cta': 'Open presentation',
+  'coursework-network-title': 'Network security presentation',
+  'coursework-network-desc':
+    'A group presentation covering network management and cybersecurity. Zero Trust, AI-driven threat detection, and SASE architecture.',
+  'coursework-network-cta': 'Open presentation',
   'sec-skills': 'Skills',
   'skills-desc': 'Specialized expertise and technical competencies in various fields.',
   'skill-grp-erp': 'ERP & Business Processes',

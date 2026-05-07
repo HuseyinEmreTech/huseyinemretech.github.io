@@ -234,34 +234,33 @@ export function CinematicFooter() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         giantTextRef.current,
-        { y: '10vh', scale: 0.8, opacity: 0 },
+        { y: '8vh', opacity: 0 },
         {
           y: '0vh',
-          scale: 1,
           opacity: 1,
           ease: 'power1.out',
           scrollTrigger: {
             trigger: wrapperRef.current,
-            start: 'top 80%',
-            end: 'bottom bottom',
-            scrub: 1,
+            start: 'top 85%',
+            end: 'top 20%',
+            scrub: 0.5,
           },
         },
       )
 
       gsap.fromTo(
         [headingRef.current, linksRef.current],
-        { y: 50, opacity: 0 },
+        { y: 36, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.15,
+          stagger: 0.12,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: wrapperRef.current,
-            start: 'top 40%',
-            end: 'bottom bottom',
-            scrub: 1,
+            start: 'top 45%',
+            end: 'top 5%',
+            scrub: 0.4,
           },
         },
       )
@@ -271,15 +270,9 @@ export function CinematicFooter() {
   }, [])
 
   useEffect(() => {
-    const refresh = () => {
-      ScrollTrigger.refresh()
-    }
-    const raf = window.requestAnimationFrame(refresh)
+    const refresh = () => ScrollTrigger.refresh()
     window.addEventListener('resize', refresh)
-    return () => {
-      window.cancelAnimationFrame(raf)
-      window.removeEventListener('resize', refresh)
-    }
+    return () => window.removeEventListener('resize', refresh)
   }, [])
 
   const scrollToTop = () => {

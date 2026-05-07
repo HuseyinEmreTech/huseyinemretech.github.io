@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { BarChart3, ExternalLink, Map, Presentation } from 'lucide-react'
+import { BarChart3, ExternalLink, Map, Presentation, Shield } from 'lucide-react'
 import { useTranslation } from '@/features/localization/LanguageContext'
 import { COURSEWORK_PAGE_PATHS } from '@core/constants/courseworkPages'
 
@@ -27,6 +27,13 @@ export function CourseworkSection() {
       title: t('coursework-presentation-title'),
       description: t('coursework-presentation-desc'),
       cta: t('coursework-presentation-cta'),
+    },
+    {
+      href: COURSEWORK_PAGE_PATHS.networkSecurityPresentation,
+      Icon: Shield,
+      title: t('coursework-network-title'),
+      description: t('coursework-network-desc'),
+      cta: t('coursework-network-cta'),
     },
   ] as const
 

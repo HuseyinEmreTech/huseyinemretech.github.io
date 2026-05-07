@@ -18,10 +18,10 @@ export default defineConfig({
   },
   build: {
     sourcemap: 'hidden',
+    // Spline ~4MB — beklenen büyüklük, uyarı gereksiz
+    chunkSizeWarningLimit: 2200,
     modulePreload: {
-      resolveDependencies: (filename, deps, { hostId, hostType }) => {
-        return deps.filter((dep) => !dep.includes('spline'))
-      },
+      resolveDependencies: (_filename, deps) => deps.filter((dep) => !dep.includes('spline')),
     },
     rollupOptions: {
       input: {
@@ -30,7 +30,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('framer-motion') || id.includes('motion')) return 'vendor-motion'
+            if (id.includes('framer-motion')) return 'vendor-motion'
             if (id.includes('lucide-react')) return 'vendor-icons'
             if (id.includes('react/') || id.includes('react-dom/')) return 'vendor-react'
           }

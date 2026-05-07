@@ -6,7 +6,8 @@ import { useTranslation } from '@/features/localization/LanguageContext'
 import { type TranslationKey } from '@/features/localization/translations'
 import { useAdaptive } from '@/features/personalization/state/AdaptiveLayoutContext'
 
-const EXPAND_SCROLL_THRESHOLD = 80
+const EXPAND_SCROLL_THRESHOLD = 180
+const COOLDOWN_MS = 600
 
 const containerVariants = {
   initial: {
@@ -16,28 +17,22 @@ const containerVariants = {
   expanded: {
     y: 0,
     opacity: 1,
-    width: 'auto',
+    maxWidth: '800px',
     transition: {
-      y: { type: 'spring', damping: 18, stiffness: 250 },
+      y: { type: 'spring', damping: 26, stiffness: 180 },
       opacity: { duration: 0.3 },
-      type: 'spring',
-      damping: 20,
-      stiffness: 300,
-      staggerChildren: 0.05,
-      delayChildren: 0.08,
+      maxWidth: { type: 'spring', damping: 28, stiffness: 200 },
+      staggerChildren: 0.04,
+      delayChildren: 0.06,
     },
   },
   collapsed: {
     y: 0,
     opacity: 1,
-    width: '3.5rem',
+    maxWidth: '3.5rem',
     transition: {
-      type: 'spring',
-      damping: 20,
-      stiffness: 300,
+      maxWidth: { type: 'spring', damping: 28, stiffness: 200 },
       when: 'afterChildren',
-      staggerChildren: 0.03,
-      staggerDirection: 1,
     },
   },
 } as Variants
@@ -70,6 +65,8 @@ export function PortfolioNavigationBar() {
   const { scrollY } = useScroll()
   const lastScrollY = React.useRef(0)
   const scrollPositionOnCollapse = React.useRef(0)
+  const isExpandedRef = React.useRef(true)
+  const lastChangeAt = React.useRef(0)
 
   const navItems = React.useMemo(() => {
     const keyMap: Record<string, string> = {
@@ -90,19 +87,25 @@ export function PortfolioNavigationBar() {
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = lastScrollY.current
+    lastScrollY.current = latest
 
-    if (isExpanded && latest > previous && latest > 150) {
+    const now = Date.now()
+    if (now - lastChangeAt.current < COOLDOWN_MS) return
+
+    if (isExpandedRef.current && latest > previous && latest > 300) {
+      isExpandedRef.current = false
       setExpanded(false)
       scrollPositionOnCollapse.current = latest
+      lastChangeAt.current = now
     } else if (
-      !isExpanded &&
+      !isExpandedRef.current &&
       latest < previous &&
       scrollPositionOnCollapse.current - latest > EXPAND_SCROLL_THRESHOLD
     ) {
+      isExpandedRef.current = true
       setExpanded(true)
+      lastChangeAt.current = now
     }
-
-    lastScrollY.current = latest
   })
 
   // Prevent scroll when mobile menu is open

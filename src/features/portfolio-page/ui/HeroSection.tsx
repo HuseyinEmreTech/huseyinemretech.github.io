@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
 import { Spotlight } from '@/shared/components/ui/spotlight'
 import { SplineScene } from '@/shared/components/ui/SplineScene'
@@ -15,8 +15,9 @@ export function HeroSection() {
   const rawX = useMotionValue(0)
   const rawY = useMotionValue(0)
 
-  const smoothX = useSpring(rawX, { stiffness: 30, damping: 12 })
-  const smoothY = useSpring(rawY, { stiffness: 30, damping: 12 })
+  // Yüksek stiffness + damping → daha az frame hesabı, yine de akıcı
+  const smoothX = useSpring(rawX, { stiffness: 60, damping: 20 })
+  const smoothY = useSpring(rawY, { stiffness: 60, damping: 20 })
 
   // -0.5…0.5 → hafif 3D tilt (geniş ekranda ±7°, dikey ±4°)
   const rotateY = useTransform(smoothX, [-0.5, 0.5], [-7, 7])
@@ -30,14 +31,52 @@ export function HeroSection() {
     }
     window.addEventListener('mousemove', onMove, { passive: true })
     return () => window.removeEventListener('mousemove', onMove)
-  }, [rawX, rawY, prefersReducedMotion])
+  }, [prefersReducedMotion])
 
-  // ── PageLoader koordinasyonu ─────────────────────────────────
-  // Intro animasyonu yok; loader'ı kısa bir süre sonra serbest bırak
+  // ── Spline deferred loading ──────────────────────────────────
+  // ~4MB Spline bundle'ı kritik yol bitmeden indirmemeye başla.
+  // Yavaş / veri tasarruflu bağlantıda hiç yükleme.
+  const [splineReady, setSplineReady] = useState(false)
   useEffect(() => {
-    const id = setTimeout(() => window.dispatchEvent(new Event('robot:settled')), 120)
+    type NavConn = { saveData?: boolean; effectiveType?: string }
+    const conn = (navigator as Navigator & { connection?: NavConn }).connection
+    if (conn?.saveData || conn?.effectiveType === '2g' || conn?.effectiveType === 'slow-2g') return
+
+    const start = () => setSplineReady(true)
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(start, { timeout: 3000 })
+      return () => window.cancelIdleCallback(id)
+    }
+    const id = setTimeout(start, 2500)
     return () => clearTimeout(id)
   }, [])
+
+  // ── PageLoader koordinasyonu ─────────────────────────────────
+  // robot:settled → PageLoader kapanır. Sadece bir kez ateşlenir.
+  const robotSettledFiredRef = useRef(false)
+  const fireRobotSettled = useCallback(() => {
+    if (robotSettledFiredRef.current) return
+    robotSettledFiredRef.current = true
+    window.dispatchEvent(new Event('robot:settled'))
+  }, [])
+
+  useEffect(() => {
+    type NavConn = { saveData?: boolean; effectiveType?: string }
+    const conn = (navigator as Navigator & { connection?: NavConn }).connection
+    const isSlowConn = conn?.saveData || conn?.effectiveType === '2g' || conn?.effectiveType === 'slow-2g'
+
+    if (isSlowConn) {
+      // Spline hiç yüklenmeyecek; loader'ı kısa sürede serbest bırak
+      const id = setTimeout(fireRobotSettled, 500)
+      return () => clearTimeout(id)
+    }
+
+    if (!splineReady) return // idle callback bekleniyor; onLoad veya timeout halleder
+
+    // Spline yükleniyor — onLoad tetiklenmezse 7s sonra fallback
+    const id = setTimeout(fireRobotSettled, 7000)
+    return () => clearTimeout(id)
+  }, [splineReady, fireRobotSettled])
 
   return (
     <div id="about" className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center pt-20">
@@ -54,6 +93,8 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none z-20" />
         <SplineScene
           scene={HERO_SCENE_URL}
+          shouldLoad={splineReady}
+          onLoad={fireRobotSettled}
           className="relative z-10 h-full w-full"
         />
       </motion.div>
