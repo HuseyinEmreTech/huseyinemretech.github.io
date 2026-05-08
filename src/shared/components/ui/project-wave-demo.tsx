@@ -10,7 +10,7 @@ export function ProjectWaveDemo({
   waveLabel = 'Wave',
 }: ProjectWaveDemoProps) {
   return (
-    <div className="relative flex h-full min-h-[320px] w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#020817] shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+    <div className="relative flex h-full min-h-[320px] w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-[#020817] shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
       <DitheringShader
         className="absolute inset-0 h-full w-full opacity-90"
         style={{ width: '100%', height: '100%' }}

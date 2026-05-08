@@ -28,7 +28,7 @@ export function WavePixelControls({
         <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/45">
           {label}
         </span>
-        <span className="font-mono text-lg font-semibold tabular-nums text-cyan-300">
+        <span className="font-mono text-lg font-semibold tabular-nums text-cyan-400">
           {value}
         </span>
       </div>

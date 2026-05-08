@@ -17,7 +17,7 @@ function PrivacyTr() {
         <p>
           Bu internet sitesinin veri sorumlusu: <strong className="text-white">Hüseyin Emre</strong> (bireysel
           portföy sitesi). İletişim:{' '}
-          <a className="text-cyan-300 underline" href="mailto:huseyinemre.tech@gmail.com">
+          <a className="text-cyan-400 underline" href="mailto:huseyinemre.tech@gmail.com">
             huseyinemre.tech@gmail.com
           </a>
           . KVKK kapsamındaki taleplerinizi bu adrese iletebilirsiniz.
@@ -93,7 +93,7 @@ function PrivacyEn() {
         <h3 className="text-base font-semibold text-white">1. Data controller</h3>
         <p>
           Controller of this website: <strong className="text-white">Hüseyin Emre</strong> (personal portfolio). Contact:{' '}
-          <a className="text-cyan-300 underline" href="mailto:huseyinemre.tech@gmail.com">
+          <a className="text-cyan-400 underline" href="mailto:huseyinemre.tech@gmail.com">
             huseyinemre.tech@gmail.com
           </a>
           .

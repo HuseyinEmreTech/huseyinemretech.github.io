@@ -71,7 +71,7 @@ export function SkillsSection() {
                 transition={{ duration: 0.2 }}
                 className={cn(
                   "flex items-center justify-center p-4 rounded-xl border transition-all text-center",
-                  "bg-white/[0.03] border-white/10 hover:border-indigo-500/30 hover:bg-white/[0.05]"
+                  "bg-white/[0.03] border-white/10 hover:border-indigo-500/30 hover:bg-white/5"
                 )}
               >
                 <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">

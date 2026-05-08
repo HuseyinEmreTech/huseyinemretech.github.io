@@ -32,7 +32,7 @@ export class AppErrorBoundary extends Component<AppErrorBoundaryProps, AppErrorB
           <p className="text-white/60 max-w-md text-sm">{this.state.error.message}</p>
           <button
             type="button"
-            className="mt-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium hover:bg-indigo-500"
+            className="mt-2 rounded-lg bg-indigo-500 px-4 py-2 text-sm font-medium hover:bg-indigo-400"
             onClick={() => window.location.reload()}
           >
             Reload page
