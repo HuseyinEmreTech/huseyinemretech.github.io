@@ -32,6 +32,8 @@
   --dim:   rgba(240,238,255,0.82);
   --dimmer:rgba(240,238,255,0.50);
   --ts: 0 2px 16px rgba(0,0,0,0.95);
+  --err: #FF5A5A;
+  --err-bg: rgba(255, 90, 90, 0.2);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -143,7 +145,7 @@ body {
 .slide {
   position:absolute; inset:0;
   display:flex; flex-direction:column;
-  justify-content:center; align-items:flex-start;
+  align-items:flex-start;
   padding:70px 9vw;
   opacity:0; pointer-events:none; overflow:hidden auto;
 }
@@ -202,6 +204,12 @@ body {
   color:var(--dim); text-shadow:var(--ts);
 }
 .mono { font-family:'JetBrains Mono',monospace; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
 
 /* ── DIVIDER ── */
 .div-line {
@@ -278,11 +286,11 @@ body {
 /* Checklist */
 .check-list { list-style:none; max-width:700px; }
 .check-list li {
-  display:flex; gap:16px; align-items:flex-start;
-  padding:13px 0; border-bottom:1px solid rgba(255,255,255,.08);
-  font-size:clamp(17px,1.8vw,23px); color:var(--dim); line-height:1.5;
+  position: relative; padding: 13px 0 13px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-size: clamp(17px,1.8vw,23px); color: var(--dim); line-height: 1.5;
 }
-.check-list li::before { content:'—'; color:var(--acc); flex-shrink:0; margin-top:2px; transition:color .9s; }
+.check-list li::before { content: '—'; position: absolute; left: 0; color: var(--acc); transition: color .9s; }
 
 /* Blockquote */
 .bq {
@@ -338,6 +346,11 @@ body {
 /* Two-col */
 .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:24px; width:100%; max-width:980px; }
 
+/* Info box */
+.info-box { border: 1px solid rgba(255,255,255,.08); padding: 20px; background: rgba(255,255,255,.025); }
+.info-box.alt { border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.05); }
+.info-mono { font-family: 'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.35); margin-bottom: 12px; }
+
 /* Case box */
 .case-box {
   border:1px solid rgba(255,255,255,.07); padding:20px 22px;
@@ -358,8 +371,11 @@ body {
 
 /* Slide inner scaler */
 .slide-inner{
-  width:100%; max-height:84vh;
+  width:100%; max-height:100%;
   display:flex; flex-direction:column; align-items:flex-start;
+}
+.slide-inner > * {
+  flex-shrink: 0;
 }
 .slide.center .slide-inner{align-items:center;text-align:center}
 
@@ -398,7 +414,7 @@ body.light .ctrl-btn{background:#e8e0f0;color:#2a2030;border-color:rgba(0,0,0,.1
 body.light .div-line,
 body.light .progress-bar{box-shadow:none}
 body.light .bq{border-left-width:5px}
-body.light { background: #f0ecf8 !important; }
+body.light { background: #f0ecf8 !important; --err: #dc2626; --err-bg: rgba(220, 38, 38, 0.1); }
 body.light #tint-overlay{ display:none; }
 body.light .small-text { color:#3a2f4a; font-weight:500; }
 body.light .overline   { font-weight:600; }
@@ -407,6 +423,17 @@ body.light .section-label { color:var(--acc); }
 body.light .nav-hint,
 body.light .key { color:#5a4a6a; border-color:rgba(0,0,0,.18); }
 body.light .h-bg-num { color:#1a0a2a; }
+body.light ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); }
+body.light ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+body.light .info-box, body.light .info-box.alt { border-color: rgba(0,0,0,.1); background: rgba(0,0,0,.03); }
+body.light .info-mono { color: #5a4a6a; }
+body.light .pill-0 { border-color: rgba(0,0,0,0.2); color: var(--c0); }
+body.light .pill-0:hover { background: rgba(0,0,0,0.05); }
+body.light .pill-1 { border-color: rgba(8, 145, 178, 0.4); }
+body.light .pill-2 { border-color: rgba(124, 58, 237, 0.4); }
+body.light .pill-3 { border-color: rgba(234, 88, 12, 0.4); }
+body.light .pill-4 { border-color: rgba(5, 150, 105, 0.4); }
+body.light .pill-acc { border-color: rgba(0,0,0,0.2); }
 
 /* ── SCAN OVERLAY (CRT lines + sweep) ── */
 body::after {
@@ -668,84 +695,86 @@ body.light #slide-sweep {
   <div class="anim overline">2024–2026 Siber Tehdit Ekosistemi</div>
   <h2 class="section-title anim" style="font-size:clamp(48px,7vw,100px)">NEDEN <span style="color:var(--c1)">DEĞİŞTİ?</span></h2>
   <div class="div-line anim"></div>
-  <div class="anim two-col" style="align-items:start;gap:22px;max-width:1020px">
+  <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1020px;align-items:start">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div class="stat-box" style="border-color:rgba(34,211,238,.2)">
         <div class="stat-num" data-count="89" data-suffix="%↑" style="color:var(--c1)">89%↑</div>
-        <div class="stat-desc">Ajan YZ kullanımlı saldırı artışı (CrowdStrike 2024)</div>
+        <div class="stat-desc">YZ kullanımlı saldırı artışı<br><span style="opacity:.7">(CrowdStrike 2024)</span></div>
       </div>
       <div class="stat-box" style="border-color:rgba(34,211,238,.2)">
         <div class="stat-num" data-count="29" data-suffix=" dk" style="color:var(--c1)">29 dk</div>
-        <div class="stat-desc">Saldırganın ağa sızıp harekete geçme süresi (breakout time)</div>
+        <div class="stat-desc">Saldırgan ağa sızma süresi<br><span style="opacity:.7">(breakout time)</span></div>
       </div>
       <div class="stat-box" style="border-color:rgba(34,211,238,.2)">
         <div class="stat-num" data-count="82" data-suffix="%" style="color:var(--c1)">82%</div>
-        <div class="stat-desc">Dosyasız (fileless) saldırı oranı — RAM'de çalışır, iz bırakmaz</div>
+        <div class="stat-desc">Dosyasız saldırı oranı<br><span style="opacity:.7">(fileless)</span></div>
       </div>
       <div class="stat-box" style="border-color:rgba(34,211,238,.2)">
         <div class="stat-num" data-count="4.45" data-suffix="M$" style="color:var(--c1)">4.45M$</div>
-        <div class="stat-desc">Ort. veri ihlali maliyeti (IBM Cost of Breach, 2023)</div>
+        <div class="stat-desc">Ort. veri ihlali maliyeti<br><span style="opacity:.7">(IBM 2023)</span></div>
       </div>
     </div>
-    <ul class="check-list" style="max-width:460px">
-      <li><strong>Dağıtık sistemler:</strong> IoT, mikroservis, bulut — fiziksel sınır kalmadı.</li>
-      <li><strong>Kimlik ihlalleri:</strong> Veri sızıntılarının <strong style="color:var(--c1)">%80'i</strong> çalınmış kimlik bilgisinden kaynaklanıyor.</li>
-      <li><strong>İnsan-Dışı Kimlikler:</strong> API &amp; bot kimlikleri, çalışanları <strong style="color:var(--c1)">82'ye 1</strong> oranında geçti.</li>
-      <li><strong>Sıfır Gün:</strong> Zero-Day istismarlarında <strong style="color:var(--c1)">%42</strong> artış yaşandı.</li>
-      <li><strong>Q-Day Tehdidi:</strong> Kuantum bilgisayarlar mevcut şifreleri kırabilir — "Şimdi topla, sonra çöz" stratejileri başladı.</li>
-    </ul>
+    <div>
+      <div class="bq" style="margin-bottom:16px">
+        <p style="font-size:clamp(18px,2vw,26px)">"<strong style="color:var(--c1)">%80</strong> veri ihlali<br>çalınmış kimlik bilgisinden."</p>
+      </div>
+      <ul class="check-list" style="max-width:100%">
+        <li><strong>Dağıtık sistemler:</strong> IoT, bulut, mikroservis — fiziksel sınır kalmadı</li>
+        <li><strong>İnsan-Dışı Kimlikler:</strong> API &amp; botlar, çalışanları <strong style="color:var(--c1)">82:1</strong> aştı</li>
+        <li><strong>Sıfır Gün:</strong> Zero-Day istismarlarında <strong style="color:var(--c1)">%42</strong> artış</li>
+        <li><strong>Q-Day:</strong> Kuantum bilgisayarlar mevcut şifreleri kıracak — "şimdi topla, sonra çöz" stratejisi</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <!-- ─── S6 · YENİ PARADIGMA (TEAL) ─── -->
 <div class="slide" data-section="ALPEREN · TEMEL KAVRAMLAR" data-p="1" data-pl="ALPEREN HAMZA GÜNGÖR — TEMEL KAVRAMLAR">
   <div class="anim overline">Kimlik Yeni Çevredir</div>
-  <h2 class="section-title anim" style="font-size:clamp(44px,6.5vw,96px)">YENİ NESİL<br><span style="color:var(--c1)">YAKLAŞIM</span></h2>
+  <h2 class="section-title anim" style="font-size:clamp(40px,6vw,88px)">YENİ NESİL<br><span style="color:var(--c1)">YAKLAŞIM</span></h2>
   <div class="div-line anim"></div>
-  <div class="anim two-col" style="align-items:start;gap:22px;max-width:1020px">
+  <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1020px;align-items:start">
     <div>
-      <div class="bq" style="margin-bottom:18px">
-        <p>"Artık <strong style="color:var(--c1)">ağın içi güvenli kabul edilmiyor.</strong><br>Kimlik, yeni güvenlik çevresidir."</p>
-        <cite>Gartner Security Leadership · 2023</cite>
+      <div class="bq" style="margin-bottom:16px">
+        <p style="font-size:clamp(18px,2vw,24px)">"Artık <strong style="color:var(--c1)">ağın içi güvenli kabul edilmiyor.</strong><br>Kimlik, yeni güvenlik çevresidir."</p>
       </div>
-      <div class="cards-grid" style="grid-template-columns:1fr 1fr;gap:12px">
+      <div class="cards-grid" style="grid-template-columns:1fr 1fr;gap:10px">
         <div class="card" style="border-color:rgba(34,211,238,.15)">
           <div class="card-bar"></div>
           <div class="card-num">NGFW — DERİN PAKET</div>
-          <div class="card-title" style="font-size:22px">DPI &amp; TLS DEŞİFRE</div>
-          <div class="card-text" style="font-size:14px">7. katmana inerek uygulama trafiğini analiz eder. SSL/TLS şifreli tünelleri açarak gizlenmiş tehditleri yakalar.</div>
+          <div class="card-title" style="font-size:20px">DPI &amp; TLS DEŞİFRE</div>
+          <div class="card-text" style="font-size:13px">7. katmana inerek uygulama trafiğini analiz eder. SSL/TLS şifreli tünelleri açarak gizlenmiş tehditleri yakalar.</div>
         </div>
         <div class="card" style="border-color:rgba(34,211,238,.15)">
           <div class="card-bar"></div>
           <div class="card-num">NGFW — SINIR</div>
-          <div class="card-title" style="font-size:22px">GECİKME (LATENCY)</div>
-          <div class="card-text" style="font-size:14px">Şifre çözme işlemcilere yük bindiriyor. Finans &amp; sağlık gibi ms-kritik sektörlerde <strong style="color:var(--c1)">ağ darboğazı</strong> yaratabilir.</div>
+          <div class="card-title" style="font-size:20px">GECİKME (LATENCY)</div>
+          <div class="card-text" style="font-size:13px">Şifre çözme işlemcilere yük bindiriyor. Finans &amp; sağlıkta <strong style="color:var(--c1)">ağ darboğazı</strong> yaratabilir.</div>
         </div>
         <div class="card" style="border-color:rgba(34,211,238,.15)">
           <div class="card-bar"></div>
           <div class="card-num">PRENSİP</div>
-          <div class="card-title" style="font-size:22px">PAM &amp; JIT ERİŞİM</div>
-          <div class="card-text" style="font-size:14px">Ayrıcalıklı Erişim Yönetimi: yetki sadece ihtiyaç anında (Just-In-Time) veriliyor, sonra otomatik kaldırılıyor.</div>
+          <div class="card-title" style="font-size:20px">PAM &amp; JIT ERİŞİM</div>
+          <div class="card-text" style="font-size:13px">Yetki sadece ihtiyaç anında (Just-In-Time) veriliyor, sonra otomatik kaldırılıyor.</div>
         </div>
         <div class="card" style="border-color:rgba(34,211,238,.15)">
           <div class="card-bar"></div>
           <div class="card-num">PRENSİP</div>
-          <div class="card-title" style="font-size:22px">MİKRO SEGMENTASYON</div>
-          <div class="card-text" style="font-size:14px">Kurumsal trafiğin <strong style="color:var(--c1)">%80'i</strong> sunucular arası Doğu-Batı trafiği. Segmentasyon olmadan fidye yazılımı serbestçe yayılır.</div>
+          <div class="card-title" style="font-size:20px">MİKRO SEGMENTASYON</div>
+          <div class="card-text" style="font-size:13px">Kurumsal trafiğin <strong style="color:var(--c1)">%80'i</strong> Doğu-Batı. Segmentasyon olmadan fidye yazılımı serbestçe yayılır.</div>
         </div>
       </div>
     </div>
     <div>
-      <div style="border:1px solid rgba(34,211,238,.2);padding:20px;background:rgba(34,211,238,.04);margin-bottom:14px">
-        <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--c1);margin-bottom:14px">SOLARWINDS — 2020 TEDARİK ZİNCİRİ SALDIRISI</div>
-        <div class="small-text" style="line-height:2;color:var(--dim)">
-          Yazılım güncellemesine yerleştirilen zararlı kod,<br>
-          <strong style="color:var(--c1)">18.000+</strong> kurumun sistemine sızdı.<br>
-          ABD Hazine &amp; Savunma Bakanlığı dahil etkilendi.<br>
-          <span style="color:var(--c1)">→</span> Tedarik zinciri güvenliği = kritik öncelik.
+      <div style="border:1px solid rgba(34,211,238,.2);padding:18px;background:rgba(34,211,238,.04);margin-bottom:12px">
+        <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--c1);margin-bottom:12px">SOLARWINDS — 2020 TEDARİK ZİNCİRİ SALDIRISI</div>
+        <div class="small-text" style="line-height:1.9;color:var(--dim)">
+          Yazılım güncellemesine yerleştirilen zararlı kod <strong style="color:var(--c1)">18.000+</strong> kurumun sistemine sızdı.<br>
+          ABD Hazine &amp; Savunma Bakanlığı dahil.<br>
+          <span style="color:var(--c1)">→</span> Tedarik zinciri güvenliği = kritik.
         </div>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
         <span class="pill pill-acc">MFA</span>
         <span class="pill pill-acc">Least Privilege</span>
         <span class="pill pill-acc">Zero Trust</span>
@@ -782,8 +811,8 @@ body.light #slide-sweep {
     Ağ içindeki ya da dışındaki <strong>hiçbir kullanıcı, cihaz veya uygulamaya</strong> otomatik güvenilmez. Her erişim talebi kimlik + cihaz + bağlam üçlüsüyle değerlendirilir.
   </p>
   <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px;margin-top:22px">
-    <div style="border:1px solid rgba(255,255,255,.08);padding:20px;background:rgba(255,255,255,.025)">
-      <div class="mono" style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.35);margin-bottom:12px">ESKİ DÜNYA ANLAYIŞI</div>
+    <div class="info-box">
+      <div class="info-mono">ESKİ DÜNYA ANLAYIŞI</div>
       <div class="small-text" style="line-height:2">
         🔓 İçerideysen güvenilirsin<br>
         🔓 Bir kez giriş = tam erişim<br>
@@ -804,48 +833,45 @@ body.light #slide-sweep {
 <!-- ─── S9 · NASIL ÇALIŞIR (VİOLET) ─── -->
 <div class="slide" data-section="HÜSEYİN EMRE · ZERO TRUST" data-p="2" data-pl="HÜSEYİN EMRE — ZERO TRUST MODELİ">
   <div class="anim overline">NIST SP 800-207 Mimarisi</div>
-  <h2 class="section-title anim" style="font-size:clamp(44px,6.5vw,90px)">NASIL <span style="color:var(--c2)">ÇALIŞIR?</span><br><span style="font-size:0.5em;letter-spacing:4px;opacity:.6">PIP · PDP · PEP</span></h2>
+  <h2 class="section-title anim" style="font-size:clamp(38px,5.5vw,80px)">NASIL <span style="color:var(--c2)">ÇALIŞIR?</span><br><span style="font-size:0.45em;letter-spacing:4px;opacity:.6">PIP · PDP · PEP</span></h2>
   <div class="div-line anim"></div>
   <div class="anim flow" style="max-width:1000px">
     <div class="flow-step" style="border-color:rgba(168,85,247,.35);background:rgba(168,85,247,.07)">
       <div class="flow-icon">📡</div>
       <div class="flow-label" style="font-size:16px">PIP</div>
-      <div class="flow-desc"><strong style="color:var(--c2)">Politika Bilgi Noktası</strong><br>Telemetri toplar:<br>kimlik · cihaz · konum · zaman</div>
+      <div class="flow-desc"><strong style="color:var(--c2)">Politika Bilgi Noktası</strong><br>Telemetri toplar: kimlik · cihaz · konum · zaman</div>
     </div>
     <div class="flow-arrow">→</div>
     <div class="flow-step" style="border-color:rgba(168,85,247,.35);background:rgba(168,85,247,.07)">
       <div class="flow-icon">🧠</div>
       <div class="flow-label" style="font-size:16px">PDP</div>
-      <div class="flow-desc"><strong style="color:var(--c2)">Politika Karar Noktası</strong><br>Anlık karar verir.<br>Stokastik oyun teorisi ile optimize</div>
+      <div class="flow-desc"><strong style="color:var(--c2)">Politika Karar Noktası</strong><br>Anlık karar verir. Stokastik oyun teorisi ile optimize.</div>
     </div>
     <div class="flow-arrow">→</div>
     <div class="flow-step" style="border-color:rgba(168,85,247,.7);background:rgba(168,85,247,.12)">
       <div class="flow-icon">🔐</div>
       <div class="flow-label" style="font-size:16px">PEP</div>
-      <div class="flow-desc"><strong style="color:var(--c2)">Politika Uygulama Noktası</strong><br>Erişimi verir ya da keser.<br>Dinamik Çalışma Zamanı Yetkilendirmesi</div>
+      <div class="flow-desc"><strong style="color:var(--c2)">Politika Uygulama Noktası</strong><br>Erişimi verir ya da keser. Dinamik Çalışma Zamanı Yetkilendirmesi.</div>
     </div>
   </div>
-  <div class="anim two-col" style="align-items:start;gap:18px;max-width:1000px;margin-top:18px">
-    <div class="cards-grid" style="grid-template-columns:1fr 1fr;gap:12px">
-      <div class="card" style="border-color:rgba(168,85,247,.15)">
-        <div class="card-bar"></div>
-        <div class="card-num">PRENSİP 01</div>
-        <div class="card-title" style="font-size:20px">MFA + KİMLİK</div>
-        <div class="card-text" style="font-size:14px">Parola yetmez. Her erişimde çok faktörlü doğrulama zorunlu.</div>
-      </div>
-      <div class="card" style="border-color:rgba(168,85,247,.15)">
-        <div class="card-bar"></div>
-        <div class="card-num">PRENSİP 02</div>
-        <div class="card-title" style="font-size:20px">EN AZ YETKİ</div>
-        <div class="card-text" style="font-size:14px">Least Privilege: Sadece gereken kaynak. JIT ile yetki verilir, sonra kaldırılır.</div>
-      </div>
+  <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1000px;margin-top:16px;align-items:start">
+    <div class="card" style="border-color:rgba(168,85,247,.15)">
+      <div class="card-bar"></div>
+      <div class="card-num">PRENSİP 01</div>
+      <div class="card-title" style="font-size:20px">MFA + KİMLİK</div>
+      <div class="card-text" style="font-size:14px">Parola yetmez. Her erişimde çok faktörlü doğrulama zorunlu.</div>
     </div>
-    <div style="border:1px solid rgba(168,85,247,.2);padding:18px;background:rgba(168,85,247,.05)">
-      <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--c2);margin-bottom:12px">ALGORİTMİK KARAR MEKANİZMASI</div>
-      <div class="small-text" style="line-height:2.1;color:var(--dim)">
-        Erişim kararları <strong style="color:var(--c2)">statik değil</strong> — sürekli değişen bağlam verisiyle güncelleniyor.<br>
-        Stokastik oyun teorisi kullanılarak ağ dalgalanmaları<br>
-        <strong style="color:var(--c2)">%50'den fazla</strong> azaltılıyor.<br>
+    <div class="card" style="border-color:rgba(168,85,247,.15)">
+      <div class="card-bar"></div>
+      <div class="card-num">PRENSİP 02</div>
+      <div class="card-title" style="font-size:20px">EN AZ YETKİ</div>
+      <div class="card-text" style="font-size:14px">Least Privilege: Sadece gereken kaynak. JIT ile yetki verilir, sonra kaldırılır.</div>
+    </div>
+    <div style="border:1px solid rgba(168,85,247,.2);padding:16px;background:rgba(168,85,247,.05);grid-column:1/-1">
+      <div class="mono" style="font-size:10px;letter-spacing:3px;color:var(--c2);margin-bottom:10px">ALGORİTMİK KARAR MEKANİZMASI</div>
+      <div class="small-text" style="line-height:1.9;color:var(--dim)">
+        Erişim kararları <strong style="color:var(--c2)">statik değil</strong> — sürekli değişen bağlam verisiyle güncelleniyor.
+        Stokastik oyun teorisi ile ağ dalgalanmaları <strong style="color:var(--c2)">%50+</strong> azaltılıyor.
         Anomali tespit edildiğinde oturum <strong style="color:var(--c2)">anında kesiliyor.</strong>
       </div>
     </div>
@@ -864,13 +890,13 @@ body.light #slide-sweep {
         <div class="case-year">2009 · OPERATION AURORA SONRASI</div>
         <div class="case-text">Google, 2009 siber saldırısının ardından VPN'i tamamen terk etti. 100.000+ çalışan, fiziksel ofis ya da VPN olmaksızın yalnızca kimlik doğrulama ile kurumsal kaynaklara erişiyor.</div>
       </div>
-      <div class="case-box" style="border-color:rgba(255,90,90,.2)">
+      <div class="case-box" style="border-color:var(--err-bg)">
         <div class="case-company">ENGELLENEN ERİŞİM — CANLIYKEN</div>
-        <div class="case-year" style="color:#FF5A5A">ANOMALİ TESPİT SENARYOSU</div>
+        <div class="case-year" style="color:var(--err)">ANOMALİ TESPİT SENARYOSU</div>
         <div class="case-text">
           ✅ MFA onaylandı &nbsp;·&nbsp; ❌ Cihaz yamalaması eksik<br>
           ⚠️ Yabancı ülkeden bağlantı &nbsp;·&nbsp; ⚠️ 03:17 gece<br>
-          <strong style="color:#FF5A5A">→ ERİŞİM OTOMATİK REDDEDİLDİ + UYARI GÖNDERİLDİ</strong>
+          <strong style="color:var(--err)">→ ERİŞİM OTOMATİK REDDEDİLDİ + UYARI GÖNDERİLDİ</strong>
         </div>
       </div>
     </div>
@@ -904,48 +930,43 @@ body.light #slide-sweep {
 <!-- ─── S12 · YZ + DARKTRACE (AMBER) ─── -->
 <div class="slide" data-section="ALPHAN · YENİ TEKNOLOJİLER" data-p="3" data-pl="ALPHAN MUTLUAY — YENİ TEKNOLOJİLER">
   <div class="anim overline">Yapay Zeka &amp; Güvenlik</div>
-  <h2 class="section-title anim" style="font-size:clamp(44px,6.5vw,90px)">YZ <span style="color:var(--c3)">DESTEKLİ</span><br>GÜVENLİK</h2>
+  <h2 class="section-title anim" style="font-size:clamp(40px,6vw,84px)">YZ <span style="color:var(--c3)">DESTEKLİ</span><br>GÜVENLİK</h2>
   <div class="div-line anim"></div>
-  <div class="anim two-col" style="align-items:start;gap:20px;max-width:1020px">
-    <div>
-      <div class="cards-grid" style="grid-template-columns:1fr;gap:11px">
-        <div class="card" style="border-color:rgba(249,115,22,.15)">
-          <div class="card-bar"></div>
-          <div class="card-num">1.1 — ANOMALİ TESPİTİ</div>
-          <div class="card-title" style="font-size:20px">NORMAL DIŞI DAVRANIM</div>
-          <div class="card-text" style="font-size:14px">Sistem normal kalıpları öğrenir. Günde <strong style="color:var(--c3)">1 MB</strong> fatura indiren çalışan aniden <strong style="color:var(--c3)">100 GB</strong> veri tabanı indirmeye başlarsa — anında bloklanır.</div>
-        </div>
-        <div class="card" style="border-color:rgba(249,115,22,.15)">
-          <div class="card-bar"></div>
-          <div class="card-num">1.2 — DAVRANIŞ ANALİZİ (UEBA)</div>
-          <div class="card-title" style="font-size:20px">DİJİTAL PARMAK İZİ</div>
-          <div class="card-text" style="font-size:14px">Tıklama hızı, konum, çalışma saati analiz edilir. <strong style="color:var(--c3)">Türkiye'den</strong> çalışan bir hesaba aniden <strong style="color:var(--c3)">okyanus ötesinden</strong>, farklı hızla giriş → yakalandı.</div>
-        </div>
-        <div class="card" style="border-color:rgba(249,115,22,.15)">
-          <div class="card-bar"></div>
-          <div class="card-num">1.3 — OTOMATİK MÜDAHALE</div>
-          <div class="card-title" style="font-size:20px">İNSAN GEREKMİYOR</div>
-          <div class="card-text" style="font-size:14px">Virüs indirildiği anda sistem o bilgisayarı <strong style="color:var(--c3)">ağdan ayırır</strong>, yayılmayı engeller — insan müdahalesi olmaksızın.</div>
-        </div>
+  <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1020px;align-items:start">
+    <div style="display:grid;grid-template-columns:1fr;gap:10px">
+      <div class="card" style="border-color:rgba(249,115,22,.15)">
+        <div class="card-bar"></div>
+        <div class="card-num">1.1 — ANOMALİ TESPİTİ</div>
+        <div class="card-title" style="font-size:18px">NORMAL DIŞI DAVRANIM</div>
+        <div class="card-text" style="font-size:13px">Sistem normal kalıpları öğrenir. Günde 1 MB fatura indiren çalışan aniden 100 GB veri indirirse — anında bloklanır.</div>
+      </div>
+      <div class="card" style="border-color:rgba(249,115,22,.15)">
+        <div class="card-bar"></div>
+        <div class="card-num">1.2 — DAVRANIŞ ANALİZİ (UEBA)</div>
+        <div class="card-title" style="font-size:18px">DİJİTAL PARMAK İZİ</div>
+        <div class="card-text" style="font-size:13px">Tıklama hızı, konum, çalışma saati analiz edilir. Türkiye'den çalışana aniden okyanus ötesinden giriş → yakalandı.</div>
+      </div>
+      <div class="card" style="border-color:rgba(249,115,22,.15)">
+        <div class="card-bar"></div>
+        <div class="card-num">1.3 — OTOMATİK MÜDAHALE</div>
+        <div class="card-title" style="font-size:18px">İNSAN GEREKMİYOR</div>
+        <div class="card-text" style="font-size:13px">Virüs indirildiği anda sistem o bilgisayarı ağdan ayırır, yayılmayı engeller — insan müdahalesi olmaksızın.</div>
       </div>
     </div>
     <div>
       <div class="case-box" style="border-color:rgba(249,115,22,.25);margin-bottom:12px">
         <div class="case-company">DARKTRACE — AKVARYUM VAKASI</div>
-        <div class="case-year">2017 · KUZEY AMERİKA KUMARHANE · GERÇEK OLAY</div>
-        <div class="case-text">
-          Kumarhane lobisindeki <strong style="color:var(--c3)">akvaryum termometresi</strong> IoT ağı üzerinden kurumsal sisteme sızmak için kullanıldı.<br><br>
-          Darktrace AI, cihazın normalin dışında trafik oluşturduğunu tespit edip <strong style="color:var(--c3)">2 dakika içinde</strong> izole etti. Hiçbir insan müdahalesi olmaksızın.
-        </div>
+        <div class="case-year">2017 · KUZEY AMERİKA KUMARHANE</div>
+        <div class="case-text">Kumarhane lobisindeki <strong style="color:var(--c3)">akvaryum termometresi</strong> IoT ağı üzerinden kurumsal sisteme sızmak için kullanıldı. Darktrace AI cihazın normalin dışında trafik oluşturduğunu tespit edip <strong style="color:var(--c3)">2 dakika içinde</strong> izole etti.</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <div class="stat-box" style="border-color:rgba(249,115,22,.2)">
           <div class="stat-num" data-count="10" data-suffix="M+" style="color:var(--c3)">10M+</div>
-          <div class="stat-desc">Günlük işlenen log (ort. kurum)</div>
+          <div class="stat-desc">Günlük işlenen log</div>
         </div>
         <div class="stat-box" style="border-color:rgba(249,115,22,.2)">
-          <div class="stat-num" style="color:var(--c3);font-size:clamp(32px,4vw,58px)">&lt;1ms</div>
-          <div class="stat-desc">AI tespiti<br>insan: 277 gün</div>
+          <div class="stat-num" style="color:var(--c3);font-size:clamp(26px,3.5vw,48px)">&lt;1ms</div>
+          <div class="stat-desc">YZ tespiti<br>(insan: 277 gün)</div>
         </div>
       </div>
     </div>
@@ -1034,15 +1055,15 @@ body.light #slide-sweep {
         </div>
       </div>
     </div>
-    <div class="case-box" style="border-color:rgba(255,90,90,.3)">
+    <div class="case-box" style="border-color:var(--err-bg)">
       <div class="case-company">A.P. MØLLER–MAERSK</div>
-      <div class="case-year" style="color:#FF5A5A">HAZİRAN 2017 · NOTPETYA FİDYE YAZILIMI</div>
+      <div class="case-year" style="color:var(--err)">HAZİRAN 2017 · NOTPETYA FİDYE YAZILIMI</div>
       <div class="case-text" style="line-height:1.85">
         Dünyanın en büyük nakliye şirketi. NotPetya, bir muhasebe güncellemesi üzerinden sızdı.<br><br>
-        <span style="color:#FF5A5A">⚠</span> 45.000 PC ve 4.000 sunucu <strong>10 dakikada</strong> çöktü<br>
-        <span style="color:#FF5A5A">⚠</span> 17 liman terminali kapandı, gemiler yönlendirildi<br>
-        <span style="color:#FF5A5A">⚠</span> Sistemi yeniden kurmak <strong>10 gün</strong> sürdü<br>
-        <span style="color:#FF5A5A">⚠</span> Toplam maliyet: <strong style="color:#FF5A5A">~300 milyon dolar</strong><br><br>
+        <span style="color:var(--err)">⚠</span> 45.000 PC ve 4.000 sunucu <strong>10 dakikada</strong> çöktü<br>
+        <span style="color:var(--err)">⚠</span> 17 liman terminali kapandı, gemiler yönlendirildi<br>
+        <span style="color:var(--err)">⚠</span> Sistemi yeniden kurmak <strong>10 gün</strong> sürdü<br>
+        <span style="color:var(--err)">⚠</span> Toplam maliyet: <strong style="color:var(--err)">~300 milyon dolar</strong><br><br>
         Zero Trust mikro-segmentasyonu olsaydı<br>yayılma ilk dakikada durdurulabilirdi.
       </div>
     </div>
@@ -1136,19 +1157,8 @@ body.light #slide-sweep {
   <div style="display:flex;flex-direction:row;align-items:center;justify-content:center;gap:clamp(28px,5vw,72px);max-width:1100px;padding:0 24px;width:100%">
     <!-- FOTOĞRAF -->
     <div class="anim" style="flex-shrink:0">
-      <div style="
-        width: clamp(180px,22vw,300px);
-        height: clamp(220px,28vw,380px);
-        overflow:hidden;
-        border-radius:8px;
-        border: 2px solid rgba(226,232,240,0.25);
-        box-shadow: 0 0 60px rgba(226,232,240,0.08), 0 12px 40px rgba(0,0,0,0.7);
-      ">
-        <img
-          src="indir.jpg"
-          alt="Mustafa Kemal Atatürk"
-          style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:grayscale(15%) contrast(1.05);"
-        />
+      <div style="width:clamp(180px,22vw,300px);height:clamp(220px,28vw,380px);overflow:hidden;border-radius:8px;border:2px solid rgba(226,232,240,0.25);box-shadow:0 0 60px rgba(226,232,240,0.08),0 12px 40px rgba(0,0,0,0.7)">
+        <img src="ataturk.webp" alt="Mustafa Kemal Atatürk" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:grayscale(15%) contrast(1.05)"/>
       </div>
     </div>
     <!-- ALINTI -->
@@ -1655,6 +1665,7 @@ document.addEventListener('keydown', e => {
 });
 
 document.addEventListener('click', e => {
+  if (window.getSelection().toString().length > 0) return;
   if (e.target.closest('.card,.person-card,.key,.nav-dots,a,.ctrl-bar,.bq,.flow-step')) return;
   e.clientX > innerWidth*.45 ? next() : prev();
 });
@@ -1683,7 +1694,7 @@ function fitSlide(el) {
   inner.style.transform='none'; inner.style.marginTop='0';
   inner.style.transformOrigin = el.classList.contains('center') ? 'top center' : 'top left';
   requestAnimationFrame(()=>{
-    const avail = el.clientHeight - 110;
+    const avail = el.clientHeight - 140;
     const cont  = inner.scrollHeight;
     const scale = cont > avail ? Math.max(avail/cont, 0.56) : 1;
     inner.style.transform = scale<1 ? `scale(${scale})` : 'none';
@@ -1786,7 +1797,7 @@ function runCounters(slideEl) {
       else {
         el.textContent = fmt(target)+suffix;
         el.style.transition='text-shadow .15s';
-        el.style.textShadow=`0 0 28px ${theme.acc}`;
+        el.style.textShadow = dark ? `0 0 28px ${theme.acc}` : 'none';
         setTimeout(()=>{el.style.textShadow='';},500);
       }
     };
